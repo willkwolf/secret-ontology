@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Exploración filosófica interactiva de la ontología del secreto mediante un grafo epistémico modal dinámico. / Interactive philosophical exploration of the ontology of secrecy through a dynamic modal epistemic graph.">
+  <meta name="theme-color" content="#0A0C12">
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="Ontología del Secreto — Grafo Epistémico Modal Dinámico">
+  <meta property="og:description" content="¿Cuál es el mejor secreto posible? Una exploración modal del conocimiento, el ocultamiento y los horizontes de lo incognoscible.">
+  <meta property="og:type"        content="website">
+
+  <title>Ontología del Secreto — Grafo Epistémico Modal Dinámico</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<!-- SKIP LINK (a11y) -->
+<a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+<!-- ─── NAV ──────────────────────────────────────────────────────────────── -->
+<nav aria-label="Navegación principal">
+  <div class="nav-title">GEMD · 2026</div>
+  <div class="nav-right">
+    <div class="nav-tabs" role="tablist" aria-label="Dominio epistémico">
+      <button class="nav-tab active" role="tab" aria-selected="true"
+              data-domain="all"
+              onclick="changeDomainUI('all',this)">Todo</button>
+      <button class="nav-tab" role="tab" aria-selected="false"
+              data-domain="science"
+              onclick="changeDomainUI('science',this)">Ciencia</button>
+      <button class="nav-tab" role="tab" aria-selected="false"
+              data-domain="political"
+              onclick="changeDomainUI('political',this)">Político</button>
+      <button class="nav-tab" role="tab" aria-selected="false"
+              data-domain="existential"
+              onclick="changeDomainUI('existential',this)">Existencial</button>
+      <button class="nav-tab" role="tab" aria-selected="false"
+              data-domain="math"
+              onclick="changeDomainUI('math',this)">Matemática</button>
+    </div>
+    <button class="lang-btn" id="lang-btn"
+            aria-label="Cambiar idioma / Switch language"
+            onclick="toggleLang()">EN</button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
+<div class="hero" role="banner">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div style="position:relative; z-index:1;">
+    <div class="hero-overline">Ontología del Secreto · Investigación filosófica interactiva</div>
+    <h1 class="hero-title">¿Cuál es el <em>mejor</em><br>secreto posible?</h1>
+    <p class="hero-subtitle">Una exploración modal del conocimiento, el ocultamiento<br>y los horizontes de lo incognoscible</p>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Desplazar</span>
+  </div>
+</div>
+
+<!-- ─── MAIN CONTENT ─────────────────────────────────────────────────────── -->
+<main id="main-content">
+
+  <!-- § 01 — DEFINICIÓN -->
+  <section aria-labelledby="s01-heading">
+    <div class="fade-in">
+      <div class="section-label">§ 01 — Definición nuclear</div>
+      <h2 id="s01-heading">El secreto no es<br>una <em>cosa</em>. Es una relación.</h2>
+      <p>La intuición común trata el secreto como un objeto: algo que se guarda, que se esconde, que se pierde. Pero esta imagen es filosóficamente inadecuada. El secreto no existe en el vacío — existe siempre entre un <strong>contenido</strong>, un <strong>agente</strong> y un <strong>mundo epistémico</strong>.</p>
+      <p>Formalizado en lógica modal, el secreto es una relación triádica:</p>
+      <div class="formula" role="math" aria-label="Fórmula: Secret de C, a, w es equivalente a C y no-K-sub-a de C, w">
+        Secret(C, a, w) &nbsp;≡&nbsp; C &nbsp;∧&nbsp; ¬Kₐ(C, w)<br>
+        <span class="comment">donde C = contenido · a = agente · w = mundo · K = operador de conocimiento</span>
+      </div>
+      <p>Leído en español: <strong>hay secreto cuando un contenido C es verdadero en un mundo w, pero el agente a no lo conoce en ese mundo.</strong> No hay secreto sin alguien para quien sea secreto.</p>
+      <p>Esta definición tiene consecuencias inmediatas: cambiar el agente, el mundo, o el contenido transforma — y puede eliminar — el secreto. Lo que es un misterio para un agente puede ser conocimiento rutinario para otro, en el mismo mundo.</p>
+    </div>
+  </section>
+
+  <!-- § 02 — DISTINCIÓN SECRETO/MISTERIO -->
+  <section aria-labelledby="s02-heading">
+    <div class="fade-in">
+      <div class="section-label">§ 02 — Distinción crítica</div>
+      <h2 id="s02-heading">Secreto vs. <em>Misterio</em></h2>
+      <p>La filosofía popular confunde constantemente dos categorías que exigen separación rigurosa. Un secreto es cognoscible en principio. Un misterio, no.</p>
+      <div class="distinction">
+        <div class="distinction-card secret">
+          <h4>Secreto</h4>
+          <p>El agente no conoce C ahora, pero <em>podría</em> conocerlo. Existe al menos un mundo accesible donde el conocimiento ocurre.</p>
+          <div class="mono" aria-label="Fórmula: no-K-a-C y posiblemente K-a-C">¬Kₐ(C) &nbsp;∧&nbsp; ◇Kₐ(C)</div>
+        </div>
+        <div class="distinction-card mystery">
+          <h4>Misterio</h4>
+          <p>No existe ningún mundo accesible donde el agente conozca C. La incognoscibilidad es <em>estructural</em>, no circunstancial.</p>
+          <div class="mono" aria-label="Fórmula: no-K-a-C y necesariamente no-K-a-C">¬Kₐ(C) &nbsp;∧&nbsp; □¬Kₐ(C)</div>
+        </div>
+      </div>
+      <p>Ejemplos concretos: que la NSA tenga registros de tus llamadas es un <em>secreto</em> — es cognoscible, hay investigaciones periodísticas que lo han revelado. Que la experiencia subjetiva del dolor "se sienta de cierta manera" es, para muchos filósofos, un <em>misterio</em> — ningún acceso físico al cerebro parece poder capturarlo desde fuera.</p>
+      <p>En el grafo modal que sigue, las aristas punteadas representan secretos (acceso posible). Las aristas bloqueadas en violeta representan misterios (incognoscibilidad estructural).</p>
+    </div>
+  </section>
+
+  <!-- § 03 — MUNDOS EXTREMOS -->
+  <section aria-labelledby="s03-heading">
+    <div class="fade-in">
+      <div class="section-label">§ 03 — Mundos epistémicos extremos</div>
+      <h2 id="s03-heading">Los cinco mundos<br>en los <em>límites</em></h2>
+      <p>Para cartografiar el espacio del secreto, primero necesitamos sus fronteras. Los <span class="tip" data-tip="En la semántica de Kripke, los mundos posibles son situaciones completas — no universos físicos, sino estados totales de cosas, incluyendo qué se sabe y qué no.">mundos posibles</span> extremos definen los polos del grafo:</p>
+      <div class="worlds-grid">
+        <div class="world-card">
+          <div class="world-sym">w_T</div>
+          <h4>Transparencia absoluta</h4>
+          <p>Todo contenido es conocido por todos los agentes. El secreto es imposible por definición.</p>
+        </div>
+        <div class="world-card">
+          <div class="world-sym">w_O</div>
+          <h4>Opacidad absoluta</h4>
+          <p>Ningún contenido es cognoscible. El conocimiento mismo colapsa. No hay agentes epistémicos.</p>
+        </div>
+        <div class="world-card">
+          <div class="world-sym">w_E</div>
+          <h4>Conocimiento eterno</h4>
+          <p>Toda verdad es conocida. No hay frontera dinámica, no hay emergencia de nuevas incertidumbres.</p>
+        </div>
+        <div class="world-card">
+          <div class="world-sym">w_F</div>
+          <h4>Cognición finita regenerativa</h4>
+          <p>El conocimiento crece pero siempre emergen nuevas regiones de incertidumbre: horizonte móvil.</p>
+        </div>
+        <div class="world-card">
+          <div class="world-sym">w_N</div>
+          <h4>No-dualidad epistémica</h4>
+          <p>La distinción sujeto-objeto colapsa. No hay secreto porque no hay agente separado del contenido.</p>
+        </div>
+      </div>
+      <p>Nuestro mundo — el universo tal como lo habitamos — es una variación de w_F: conocimiento real pero finito, con un horizonte que se desplaza pero nunca desaparece.</p>
+    </div>
+  </section>
+
+  <!-- § 04 — GRAPH -->
+  <div class="graph-section" aria-labelledby="s04-heading">
+    <div class="graph-container">
+      <div class="graph-header">
+        <div class="graph-header-left">
+          <div class="section-label">§ 04 — Visualización interactiva</div>
+          <h2 id="s04-heading" style="font-size:clamp(1.4rem,4vw,1.9rem); margin-bottom:6px;">
+            Grafo Epistémico<br>Modal Dinámico
+          </h2>
+          <p class="graph-hint" style="font-size:0.85rem; margin:0; color:var(--text-dimmer);">
+            Toca o arrastra los nodos para explorar. Haz clic en un nodo para ver su ficha.
+          </p>
+        </div>
+        <div>
+          <!-- Edge filters -->
+          <div class="graph-controls" id="edge-filters" role="group" aria-label="Filtrar por tipo de arista">
+            <button class="ctrl-btn active" data-filter="all"
+                    onclick="filterEdgeUI('all',this)">Todas las aristas</button>
+            <button class="ctrl-btn" data-filter="revelación"
+                    onclick="filterEdgeUI('revelación',this)">Revelación</button>
+            <button class="ctrl-btn" data-filter="ocultamiento"
+                    onclick="filterEdgeUI('ocultamiento',this)">Ocultamiento</button>
+            <button class="ctrl-btn" data-filter="emergencia"
+                    onclick="filterEdgeUI('emergencia',this)">Emergencia</button>
+            <button class="ctrl-btn" data-filter="compresión"
+                    onclick="filterEdgeUI('compresión',this)">Compresión</button>
+            <button class="ctrl-btn" data-filter="bifurcación"
+                    onclick="filterEdgeUI('bifurcación',this)">Bifurcación</button>
+          </div>
+          <!-- Legend -->
+          <div class="legend" aria-label="Leyenda de tipos de arista">
+            <div class="legend-item" data-type="Revelation">
+              <div class="legend-line" style="background:#C5A86B; border-top:2px dashed #C5A86B; height:0;"></div>
+              <span>Revelación</span>
+            </div>
+            <div class="legend-item" data-type="Concealment">
+              <div class="legend-line" style="background:#7F8C8D;"></div>
+              <span>Ocultamiento</span>
+            </div>
+            <div class="legend-item" data-type="Emergence">
+              <div class="legend-line" style="background:#5DADE2; border-top:2px dashed #5DADE2; height:0;"></div>
+              <span>Emergencia</span>
+            </div>
+            <div class="legend-item" data-type="Compression">
+              <div class="legend-line" style="background:#1ABC9C;"></div>
+              <span>Compresión</span>
+            </div>
+            <div class="legend-item" data-type="Bifurcation">
+              <div class="legend-line" style="background:#8E44AD; border-top:2px dashed #8E44AD; height:0;"></div>
+              <span>Bifurcación</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SVG + Node panel -->
+      <div style="position:relative;">
+        <svg id="graph-svg" height="520"
+             aria-label="Grafo epistémico modal dinámico interactivo"
+             role="img"></svg>
+
+        <!-- Node detail panel -->
+        <div class="node-panel" id="node-panel" role="dialog"
+             aria-modal="false" aria-labelledby="panel-name">
+          <button class="panel-close" onclick="closePanel()"
+                  aria-label="Cerrar panel">✕</button>
+          <h4 id="panel-name"></h4>
+          <div class="world-id" id="panel-id"></div>
+          <div class="panel-section">
+            <div class="panel-label" id="panel-label-agents">Agentes</div>
+            <div class="panel-content" id="panel-agents"></div>
+          </div>
+          <div class="panel-section">
+            <div class="panel-label" id="panel-label-contents">Contenidos accesibles</div>
+            <div class="panel-content" id="panel-contents"></div>
+          </div>
+          <div class="panel-section">
+            <div class="panel-label" id="panel-label-horizon">Horizonte epistémico</div>
+            <div class="horizon-rings" id="panel-horizon"></div>
+          </div>
+          <div class="panel-section">
+            <div class="panel-label" id="panel-label-refs">Referencias</div>
+            <div class="panel-content" id="panel-refs" style="font-size:0.78rem; font-style:italic;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edge detail panel (fixed, follows cursor) -->
+      <div class="edge-panel" id="edge-panel" role="tooltip" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <!-- § 05 — REGENERACIÓN -->
+  <section aria-labelledby="s05-heading">
+    <div class="fade-in">
+      <div class="section-label">§ 05 — Principio dinámico</div>
+      <h2 id="s05-heading">Conocer engendra<br>nueva <em>ignorancia</em></h2>
+      <p>Existe un prejuicio implícito en la idea de progreso epistémico: que revelar un secreto <em>reduce</em> la ignorancia total. Pero la evidencia histórica contradice esta intuición de manera sistemática.</p>
+      <p>El principio correcto no es conservación sino <strong>regeneración de fronteras epistémicas</strong>: en sistemas finitos, la expansión del conocimiento genera nuevos dominios de incertidumbre antes no planteados.</p>
+      <div class="regen-demo">
+        <h4>Demostración interactiva — Haz clic en "Revelar"</h4>
+        <div class="regen-nodes" id="regen-nodes" aria-live="polite">
+          <div class="regen-node">Estructura del ADN</div>
+          <div class="regen-arrow" aria-hidden="true">→</div>
+          <div class="regen-node" style="opacity:0.3;">Epigenoma</div>
+          <div class="regen-arrow" aria-hidden="true">→</div>
+          <div class="regen-node" style="opacity:0.15;">? ? ?</div>
+        </div>
+        <div class="regen-nodes" id="regen-nodes-2" style="display:none;" aria-live="polite">
+          <div class="regen-node revealed">Estructura del ADN ✓</div>
+          <div class="regen-arrow" aria-hidden="true">→</div>
+          <div class="regen-node revealed">Epigenoma ✓</div>
+          <div class="regen-arrow" aria-hidden="true">→</div>
+          <div class="regen-node emerged">Epigenética social</div>
+          <div class="regen-arrow" aria-hidden="true">→</div>
+          <div class="regen-node emerged">Herencia no-mendeliana</div>
+          <div class="regen-arrow" aria-hidden="true">→</div>
+          <div class="regen-node emerged">??? (nueva frontera)</div>
+        </div>
+        <button class="regen-btn" id="regen-btn" aria-pressed="false">Revelar →</button>
+        <p style="margin-top:12px; font-size:0.82rem; color:var(--text-dimmer);">
+          Cada revelación redistribuye la accesibilidad epistémica. El horizonte no retrocede — se transforma.
+        </p>
+      </div>
+      <p>Este principio conecta con el <span class="tip" data-tip="Gödel demostró que en cualquier sistema formal suficientemente expresivo, existen verdades que el sistema no puede demostrar desde dentro de sí mismo.">Teorema de Incompletitud de Gödel</span>, con la <span class="tip" data-tip="Chaitin mostró que la complejidad algorítmica genera inevitablemente verdades matemáticas que son irreducibles — no derivables de axiomas finitos.">complejidad algorítmica de Chaitin</span> y con la práctica científica real: cada modelo que se confirma abre diez preguntas nuevas.</p>
+      <p>No hay "conservación del secreto": hay transformación perpetua de las fronteras entre lo conocido, lo desconocido y lo incognoscible.</p>
+    </div>
+  </section>
+
+  <!-- § 06 — MEJOR SECRETO -->
+  <section aria-labelledby="s06-heading">
+    <div class="fade-in">
+      <div class="section-label">§ 06 — La pregunta central</div>
+      <h2 id="s06-heading">¿Cuál es el <em>mejor</em><br>secreto posible?</h2>
+      <p>Retomamos la pregunta inicial con el aparato construido. ¿Qué haría "mejor" a un secreto? Podemos explorar varias respuestas desde el grafo:</p>
+      <div class="formula" role="math" aria-label="Tres candidatos formales para el mejor secreto">
+        Candidato 1: Secret(C, a, w) maximizando ◇Kₐ(C)<br>
+        <span class="comment">El secreto más revelable — cognoscible pero aún no conocido.</span><br><br>
+        Candidato 2: Secret(C, a, w) tal que □¬Kₐ(C)<br>
+        <span class="comment">El misterio — estructuralmente incognoscible. Pero ¿es aún "secreto"?</span><br><br>
+        Candidato 3: Secret(C, a, w) donde revelar C genera maximal ΔH<br>
+        <span class="comment">El secreto cuya revelación maximiza la transformación del horizonte epistémico.</span>
+      </div>
+      <p>La tercera opción resulta la más fecunda filosóficamente: el <strong>mejor secreto</strong> no sería el más guardado ni el más inaccesible, sino aquel que, al ser conocido, <em>reconfigura todo el horizonte epistémico</em> sin aniquilar el misterio.</p>
+      <p>Un secreto así actúa como una <span class="tip" data-tip="En física teórica, una singularidad es un punto donde las ecuaciones del modelo dejan de tener solución bien definida. Epistemológicamente, una singularidad epistémica es un punto donde el marco de conocimiento se rompe al contacto con el nuevo contenido.">singularidad epistémica</span>: al atravesarlo, el agente no solo gana un dato — gana un nuevo territorio de preguntas posibles.</p>
+      <div class="divider" aria-hidden="true"></div>
+      <p>Explora el grafo interactivo arriba. Las aristas de Emergencia (azul punteado) señalan exactamente estas singularidades: transiciones donde revelar un nodo hace aparecer nuevos nodos desconocidos.</p>
+    </div>
+  </section>
+
+  <!-- § 07 — DESENLACE -->
+  <section aria-labelledby="s07-heading">
+    <div class="fade-in">
+      <div class="section-label">§ 07 — Desenlace abierto</div>
+      <h2 id="s07-heading">El secreto que no<br><em>termina</em> al revelarse</h2>
+      <p>La investigación nos deja sin respuesta unívoca, y esto no es una falla — es el resultado correcto. La ontología del secreto revela que el conocimiento no es una cantidad que se acumula hacia un límite, sino una estructura dinámica con fronteras que se desplazan, bifurcan y regeneran.</p>
+      <blockquote class="final-quote">
+        <p>"El mejor secreto posible quizá sea aquel que, al ser finalmente conocido, nos enseña que nunca habíamos formulado las preguntas correctas."</p>
+      </blockquote>
+      <p>El grafo modal dinámico no es una respuesta. Es una herramienta para habitar la pregunta con más precisión. Cada nodo que exploras no cierra el mapa — lo extiende. Cada arista que filtras no simplifica el sistema — te muestra una dimensión que antes era invisible.</p>
+      <p>Quizás esto sea lo que la filosofía siempre ha hecho: construir mejores secretos a partir de los que ya tenemos.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ─── MUSEUM FOOTER ─────────────────────────────────────────────────────── -->
+<footer class="museum-footer" aria-label="Ficha técnica de la obra">
+  <div class="museum-inner" data-label="FICHA TÉCNICA">
+    <div class="museum-title">Grafo Epistémico Modal Dinámico: Ontología del Secreto</div>
+    <div class="museum-grid">
+      <div class="museum-key">Año</div>
+      <div class="museum-val">2026</div>
+      <div class="museum-key">Corriente</div>
+      <div class="museum-val">Arte + Ciencia + Dataísmo</div>
+      <div class="museum-key">Métodos</div>
+      <div class="museum-val">Lógica modal (Kripke) · Teoría de grafos · Epistemología formal · Topología epistémica · Semántica de mundos posibles · Visualización de datos (D3.js)</div>
+      <div class="museum-key">Referencias</div>
+      <div class="museum-val">Saul Kripke · G. W. Leibniz · Jaakko Hintikka · Edmund Gettier · David Chalmers · Kurt Gödel · Gregory Chaitin · Johan van Benthem · Alexandru Baltag · Luciano Floridi</div>
+      <div class="museum-key">Stack</div>
+      <div class="museum-val">HTML5 · CSS3 · JavaScript ES6 · D3.js v7</div>
+    </div>
+    <hr class="museum-sep">
+    <p class="museum-limitations">
+      <strong style="color:var(--text-dim); font-style:normal;">Limitaciones del modelo:</strong>
+      El grafo es una abstracción finita de fenómenos continuos; no captura la temporalidad subjetiva del agente ni la dimensión afectiva de lo oculto. La clasificación de aristas es estilizada y no agota todas las transformaciones epistémicas posibles. La representación de la incognoscibilidad es intrínsecamente paradójica al intentar visualizar lo que no puede ser delineado desde dentro del sistema.
+    </p>
+    <div class="cc">
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/"
+         target="_blank" rel="noopener noreferrer"
+         style="color:inherit; text-decoration:underline dotted;">
+        Creative Commons BY-SA 4.0
+      </a>
+      · Colectivo de Investigación · 2026
+    </div>
+  </div>
+</footer>
+
+<!-- ─── GLOBAL TOOLTIP ────────────────────────────────────────────────────── -->
+<div class="tooltip" id="tooltip" role="tooltip" aria-live="polite"></div>
+
+<!-- ─── SCRIPTS ──────────────────────────────────────────────────────────── -->
+<!-- D3.js v7 -->
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"
+        crossorigin="anonymous"></script>
+
+<!-- App (ES module) -->
+<script type="module" src="js/app.js"></script>
+
+</body>
+</html>

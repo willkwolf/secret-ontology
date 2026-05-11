@@ -1,0 +1,134 @@
+{
+  "es": {
+    "lang": "es",
+    "langLabel": "ES",
+    "switchLang": "EN",
+    "nav": {
+      "title": "GEMD · 2026",
+      "all": "Todo",
+      "science": "Ciencia",
+      "political": "Político",
+      "existential": "Existencial",
+      "math": "Matemática"
+    },
+    "hero": {
+      "overline": "Ontología del Secreto · Investigación filosófica interactiva",
+      "title": "¿Cuál es el <em>mejor</em><br>secreto posible?",
+      "subtitle": "Una exploración modal del conocimiento, el ocultamiento y los horizontes de lo incognoscible",
+      "scroll": "Desplazar"
+    },
+    "graph": {
+      "sectionLabel": "§ 04 — Visualización interactiva",
+      "title": "Grafo Epistémico<br>Modal Dinámico",
+      "hint": "Toca o arrastra los nodos para explorar. Haz clic en un nodo para ver su ficha.",
+      "filterAll": "Todas las aristas",
+      "filterRevelation": "Revelación",
+      "filterConcealment": "Ocultamiento",
+      "filterEmergence": "Emergencia",
+      "filterCompression": "Compresión",
+      "filterBifurcation": "Bifurcación",
+      "legendRevelation": "Revelación",
+      "legendConcealment": "Ocultamiento",
+      "legendEmergence": "Emergencia",
+      "legendMystery": "Misterio",
+      "legendBifurcation": "Bifurcación",
+      "legendCompression": "Compresión"
+    },
+    "panel": {
+      "agents": "Agentes",
+      "contents": "Contenidos accesibles",
+      "horizon": "Horizonte epistémico",
+      "refs": "Referencias",
+      "close": "Cerrar panel",
+      "known": "conocido",
+      "unknown": "desconocido",
+      "incognoscible": "incognoscible",
+      "edgeType": "Tipo",
+      "edgeCost": "Coste",
+      "edgeNarrative": "Narrativa"
+    },
+    "footer": {
+      "label": "FICHA TÉCNICA",
+      "title": "Grafo Epistémico Modal Dinámico: Ontología del Secreto",
+      "year": "Año",
+      "yearVal": "2026",
+      "current": "Corriente",
+      "currentVal": "Arte + Ciencia + Dataísmo",
+      "methods": "Métodos",
+      "methodsVal": "Lógica modal (Kripke) · Teoría de grafos · Epistemología formal · Topología epistémica · Semántica de mundos posibles · Visualización de datos (D3.js)",
+      "refs": "Referencias",
+      "refsVal": "Saul Kripke · G. W. Leibniz · Jaakko Hintikka · Edmund Gettier · David Chalmers · Kurt Gödel · Gregory Chaitin",
+      "stack": "Stack",
+      "stackVal": "HTML5 · CSS3 · JavaScript ES6 · D3.js v7",
+      "limitsLabel": "Limitaciones del modelo:",
+      "limitsVal": "El grafo es una abstracción finita de fenómenos continuos; no captura la temporalidad subjetiva del agente ni la dimensión afectiva de lo oculto. La clasificación de aristas es estilizada y no agota todas las transformaciones epistémicas posibles. La representación de la incognoscibilidad es intrínsecamente paradójica al intentar visualizar lo que no puede ser delineado desde dentro del sistema.",
+      "license": "Creative Commons BY-SA 4.0 · Colectivo de Investigación"
+    }
+  },
+  "en": {
+    "lang": "en",
+    "langLabel": "EN",
+    "switchLang": "ES",
+    "nav": {
+      "title": "GEMD · 2026",
+      "all": "All",
+      "science": "Science",
+      "political": "Political",
+      "existential": "Existential",
+      "math": "Mathematics"
+    },
+    "hero": {
+      "overline": "Ontology of Secrecy · Interactive philosophical inquiry",
+      "title": "What is the <em>best</em><br>possible secret?",
+      "subtitle": "A modal exploration of knowledge, concealment, and the horizons of the unknowable",
+      "scroll": "Scroll"
+    },
+    "graph": {
+      "sectionLabel": "§ 04 — Interactive visualisation",
+      "title": "Dynamic Modal<br>Epistemic Graph",
+      "hint": "Touch or drag nodes to explore. Click a node to see its card.",
+      "filterAll": "All edges",
+      "filterRevelation": "Revelation",
+      "filterConcealment": "Concealment",
+      "filterEmergence": "Emergence",
+      "filterCompression": "Compression",
+      "filterBifurcation": "Bifurcation",
+      "legendRevelation": "Revelation",
+      "legendConcealment": "Concealment",
+      "legendEmergence": "Emergence",
+      "legendMystery": "Mystery",
+      "legendBifurcation": "Bifurcation",
+      "legendCompression": "Compression"
+    },
+    "panel": {
+      "agents": "Agents",
+      "contents": "Accessible contents",
+      "horizon": "Epistemic horizon",
+      "refs": "References",
+      "close": "Close panel",
+      "known": "known",
+      "unknown": "unknown",
+      "incognoscible": "unknowable",
+      "edgeType": "Type",
+      "edgeCost": "Cost",
+      "edgeNarrative": "Narrative"
+    },
+    "footer": {
+      "label": "TECHNICAL SHEET",
+      "title": "Dynamic Modal Epistemic Graph: Ontology of Secrecy",
+      "year": "Year",
+      "yearVal": "2026",
+      "current": "Movement",
+      "currentVal": "Art + Science + Dataism",
+      "methods": "Methods",
+      "methodsVal": "Modal logic (Kripke) · Graph theory · Formal epistemology · Epistemic topology · Possible-worlds semantics · Data visualisation (D3.js)",
+      "refs": "References",
+      "refsVal": "Saul Kripke · G. W. Leibniz · Jaakko Hintikka · Edmund Gettier · David Chalmers · Kurt Gödel · Gregory Chaitin",
+      "stack": "Stack",
+      "stackVal": "HTML5 · CSS3 · JavaScript ES6 · D3.js v7",
+      "limitsLabel": "Model limitations:",
+      "limitsVal": "The graph is a finite abstraction of continuous phenomena; it does not capture the subjective temporality of the agent nor the affective dimension of concealment. Edge classification is stylised and does not exhaust all possible epistemic transformations. The representation of unknowability is intrinsically paradoxical when attempting to visualise what cannot be delineated from within the system.",
+      "license": "Creative Commons BY-SA 4.0 · Research Collective"
+    }
+  }
+}
