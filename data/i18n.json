@@ -13,7 +13,7 @@
     },
     "hero": {
       "overline": "Ontología del Secreto · Investigación filosófica interactiva",
-      "title": "¿Cuál es el <em>mejor</em><br>secreto posible?",
+      "title": "Ontología del <em>secreto</em>",
       "subtitle": "Una exploración modal del conocimiento, el ocultamiento y los horizontes de lo incognoscible",
       "scroll": "Desplazar"
     },
@@ -27,12 +27,29 @@
       "filterEmergence": "Emergencia",
       "filterCompression": "Compresión",
       "filterBifurcation": "Bifurcación",
+      "filterDegrada": "Degrada",
+      "filterImposibilita": "Imposibilita",
+      "filterRestringe_termo": "Restringe (termo)",
+      "filterFusiona": "Fusiona",
+      "filterColapsa": "Colapsa",
       "legendRevelation": "Revelación",
       "legendConcealment": "Ocultamiento",
       "legendEmergence": "Emergencia",
       "legendMystery": "Misterio",
       "legendBifurcation": "Bifurcación",
-      "legendCompression": "Compresión"
+      "legendCompression": "Compresión",
+      "legendDegrada": "Degrada",
+      "legendImposibilita": "Imposibilita",
+      "legendRestringe_termo": "Restringe (termo)",
+      "legendFusiona": "Fusiona",
+      "legendColapsa": "Colapsa",
+      "layers": {
+        "topology": "Topología",
+        "epistemic": "Epistémico",
+        "temporal": "Temporal",
+        "metalogic": "Metalógica",
+        "narrative": "Narrativa"
+      }
     },
     "panel": {
       "agents": "Agentes",
@@ -45,7 +62,39 @@
       "incognoscible": "incognoscible",
       "edgeType": "Tipo",
       "edgeCost": "Coste",
-      "edgeNarrative": "Narrativa"
+      "edgeNarrative": "Narrativa",
+      "layers": "Capas",
+      "metalogic": "Reglas metalógicas",
+      "minimap": "Posición en la topología",
+      "structuralLimit": "Límite estructural no-antropocéntrico"
+    },
+    "nodes": {
+      "límite_gödel": "Límite de Gödel",
+      "límite_turing": "Límite de Turing",
+      "horizonte_caótico": "Horizonte Caótico",
+      "indeterminación_cuántica": "Indeterminación Cuántica",
+      "flecha_termodinámica": "Flecha Termodinámica"
+    },
+    "layers": {
+      "selectorLabel": "Capas",
+      "showingLabel": "Mostrando:",
+      "ariaLabel": {
+        "topology": "Activar capa de topología",
+        "epistemic": "Activar capa epistémica",
+        "temporal": "Activar capa temporal",
+        "metalogic": "Activar capa metalógica",
+        "narrative": "Activar capa narrativa",
+        "group": "Selector de capas"
+      }
+    },
+    "metalogic": {
+      "matematico": "Incompletitud: existen verdades formalmente indemostrables en este dominio.",
+      "cuantico": "Indeterminación: el conocimiento simultáneo de variables conjugadas está limitado estructuralmente.",
+      "cientifico": "Horizonte caótico: la predictibilidad a largo plazo está limitada por sensibilidad a condiciones iniciales.",
+      "politico": "Opacidad institucional: el acceso al conocimiento está mediado por estructuras de poder.",
+      "ontologico": "Límite modal: los mundos posibles definen el espacio de lo cognoscible.",
+      "existencial": "Misterio duro: la experiencia subjetiva es estructuralmente inaccesible desde la tercera persona.",
+      "meta": "Paradoja epistémica: la pregunta por el mejor secreto se autoaplica."
     },
     "footer": {
       "label": "FICHA TÉCNICA",
@@ -55,14 +104,37 @@
       "current": "Corriente",
       "currentVal": "Arte + Ciencia + Dataísmo",
       "methods": "Métodos",
-      "methodsVal": "Lógica modal (Kripke) · Teoría de grafos · Epistemología formal · Topología epistémica · Semántica de mundos posibles · Visualización de datos (D3.js)",
+      "methodsVal": "Lógica modal (Kripke) · Teoría de grafos · Epistemología formal · Topología epistémica estratificada · Semántica de mundos posibles · Visualización de datos (D3.js) · Límites formales y computacionales · Termodinámica de la información",
       "refs": "Referencias",
-      "refsVal": "Saul Kripke · G. W. Leibniz · Jaakko Hintikka · Edmund Gettier · David Chalmers · Kurt Gödel · Gregory Chaitin",
-      "stack": "Stack",
-      "stackVal": "HTML5 · CSS3 · JavaScript ES6 · D3.js v7",
+      "refsVal": "Saul Kripke · G. W. Leibniz · Jaakko Hintikka · Edmund Gettier · David Chalmers · Kurt Gödel · Gregory Chaitin · Werner Heisenberg · Edward Lorenz · Ludwig Boltzmann · Alan Turing",
+      "code": "Repositorio",
+      "codeVal": "<a href='https://github.com/willkwolf/secret-ontology' target='_blank' rel='noopener noreferrer' style='color:var(--gold); text-decoration:underline;'>github.com/willkwolf/secret-ontology</a>",
       "limitsLabel": "Limitaciones del modelo:",
-      "limitsVal": "El grafo es una abstracción finita de fenómenos continuos; no captura la temporalidad subjetiva del agente ni la dimensión afectiva de lo oculto. La clasificación de aristas es estilizada y no agota todas las transformaciones epistémicas posibles. La representación de la incognoscibilidad es intrínsecamente paradójica al intentar visualizar lo que no puede ser delineado desde dentro del sistema.",
+      "limitsVal": "El grafo es una abstracción finita de fenómenos continuos; no captura la temporalidad subjetiva del agente ni la dimensión afectiva de lo oculto. La clasificación de aristas es estilizada y no agota todas las transformaciones epistémicas posibles. La representación de la incognoscibilidad es intrínsecamente paradójica al intentar visualizar lo que no puede ser delineado desde dentro del sistema. El sistema de capas es una aproximación finita de estratos ontológicos continuos. La capa temporal anima pero no simula dinámicas epistémicas reales.",
       "license": "Creative Commons BY-SA 4.0 · Colectivo de Investigación"
+    },
+    "domainLabel": "Dominio epistémico",
+    "formula": {
+      "legendTitle": "Guía de Lectura Rápida",
+      "secretDef": "<strong>El Secreto:</strong> La relación en la que algo permanece oculto para un agente en un mundo específico.",
+      "equivDef": "<strong>Equivale a:</strong> Significa que se definen y cumplen exactamente las condiciones a la derecha.",
+      "contentDef": "<strong>Contenido (C):</strong> La información o hecho real en cuestión (debe ser verdadero en el mundo actual).",
+      "andDef": "<strong>Y (Conjunción):</strong> Conector que exige que ambas partes de la fórmula se cumplan a la vez.",
+      "notDef": "<strong>No (Negación):</strong> Indica que lo que sigue es falso o que el agente no tiene acceso a ello.",
+      "knowDef": "<strong>Operador de Conocimiento (K):</strong> Lo que el agente <em>a</em> sabe o tiene incorporado en su marco epistémico.",
+      "worldDef": "<strong>(C, w):</strong> El contenido C dentro del contexto del mundo posible <em>w</em> en el que se sitúa la relación.",
+      "nuclearExplanation": "Leído en español: <strong>hay secreto cuando un contenido C es verdadero en un mundo w, pero el agente a no lo conoce en ese mundo.</strong> No hay secreto sin alguien para quien sea secreto."
+    },
+    "distinction": {
+      "secretTitle": "Secreto",
+      "secretDesc": "El agente no conoce C ahora, pero <em>podría</em> conocerlo. Existe al menos un mundo accesible donde el conocimiento ocurre.",
+      "mysteryTitle": "Misterio",
+      "mysteryDesc": "No existe ningún mundo accesible donde el agente conozca C. La incognoscibilidad es <em>estructural</em>, no circunstancial."
+    },
+    "explanation": {
+      "modalTitle": "Desglose de los Operadores Modales",
+      "modalSecret": "<strong>Secreto Revelable:</strong> El agente no conoce C hoy <em>(¬Kₐ(C))</em>, <strong>Y</strong> es factible o posible que llegue a conocerlo en el futuro <em>(◇Kₐ(C))</em>.<br><small class='text-dim'>El rombo (<strong>◇</strong>) representa <strong>posibilidad modal</strong>: significa que existe al menos un mundo accesible donde la barrera de ignorancia cae.</small>",
+      "modalMystery": "<strong>Misterio Absoluto:</strong> El agente no conoce C hoy <em>(¬Kₐ(C))</em>, <strong>Y</strong> es estrictamente necesario que nunca pueda conocerlo <em>(□¬Kₐ(C))</em>.<br><small class='text-dim'>El cuadrado (<strong>□</strong>) representa <strong>necesidad modal</strong>: indica que en todos los universos o mundos posibles de la estructura, la incognoscibilidad es absoluta.</small>"
     }
   },
   "en": {
@@ -79,7 +151,7 @@
     },
     "hero": {
       "overline": "Ontology of Secrecy · Interactive philosophical inquiry",
-      "title": "What is the <em>best</em><br>possible secret?",
+      "title": "Ontology of <em>secrecy</em>",
       "subtitle": "A modal exploration of knowledge, concealment, and the horizons of the unknowable",
       "scroll": "Scroll"
     },
@@ -93,12 +165,29 @@
       "filterEmergence": "Emergence",
       "filterCompression": "Compression",
       "filterBifurcation": "Bifurcation",
+      "filterDegrada": "Degrades",
+      "filterImposibilita": "Impossibilates",
+      "filterRestringe_termo": "Restricts (thermo)",
+      "filterFusiona": "Fuses",
+      "filterColapsa": "Collapses",
       "legendRevelation": "Revelation",
       "legendConcealment": "Concealment",
       "legendEmergence": "Emergence",
       "legendMystery": "Mystery",
       "legendBifurcation": "Bifurcation",
-      "legendCompression": "Compression"
+      "legendCompression": "Compression",
+      "legendDegrada": "Degrades",
+      "legendImposibilita": "Impossibilates",
+      "legendRestringe_termo": "Restricts (thermo)",
+      "legendFusiona": "Fuses",
+      "legendColapsa": "Collapses",
+      "layers": {
+        "topology": "Topology",
+        "epistemic": "Epistemic",
+        "temporal": "Temporal",
+        "metalogic": "Metalogic",
+        "narrative": "Narrative"
+      }
     },
     "panel": {
       "agents": "Agents",
@@ -111,7 +200,39 @@
       "incognoscible": "unknowable",
       "edgeType": "Type",
       "edgeCost": "Cost",
-      "edgeNarrative": "Narrative"
+      "edgeNarrative": "Narrative",
+      "layers": "Layers",
+      "metalogic": "Meta-logic rules",
+      "minimap": "Position in topology",
+      "structuralLimit": "Non-anthropocentric structural limit"
+    },
+    "nodes": {
+      "límite_gödel": "Gödel's Limit",
+      "límite_turing": "Turing's Limit",
+      "horizonte_caótico": "Chaotic Horizon",
+      "indeterminación_cuántica": "Quantum Indeterminacy",
+      "flecha_termodinámica": "Thermodynamic Arrow"
+    },
+    "layers": {
+      "selectorLabel": "Layers",
+      "showingLabel": "Showing:",
+      "ariaLabel": {
+        "topology": "Activate topology layer",
+        "epistemic": "Activate epistemic layer",
+        "temporal": "Activate temporal layer",
+        "metalogic": "Activate metalogic layer",
+        "narrative": "Activate narrative layer",
+        "group": "Layer selector"
+      }
+    },
+    "metalogic": {
+      "matematico": "Incompleteness: there exist formally unprovable truths in this domain.",
+      "cuantico": "Indeterminacy: simultaneous knowledge of conjugate variables is structurally limited.",
+      "cientifico": "Chaotic horizon: long-term predictability is limited by sensitivity to initial conditions.",
+      "politico": "Institutional opacity: access to knowledge is mediated by power structures.",
+      "ontologico": "Modal limit: possible worlds define the space of the knowable.",
+      "existencial": "Hard mystery: subjective experience is structurally inaccessible from the third-person perspective.",
+      "meta": "Epistemic paradox: the question of the best secret applies to itself."
     },
     "footer": {
       "label": "TECHNICAL SHEET",
@@ -121,14 +242,37 @@
       "current": "Movement",
       "currentVal": "Art + Science + Dataism",
       "methods": "Methods",
-      "methodsVal": "Modal logic (Kripke) · Graph theory · Formal epistemology · Epistemic topology · Possible-worlds semantics · Data visualisation (D3.js)",
+      "methodsVal": "Modal logic (Kripke) · Graph theory · Formal epistemology · Stratified epistemic topology · Possible-worlds semantics · Data visualisation (D3.js) · Formal and computational limits · Information thermodynamics",
       "refs": "References",
-      "refsVal": "Saul Kripke · G. W. Leibniz · Jaakko Hintikka · Edmund Gettier · David Chalmers · Kurt Gödel · Gregory Chaitin",
-      "stack": "Stack",
-      "stackVal": "HTML5 · CSS3 · JavaScript ES6 · D3.js v7",
+      "refsVal": "Saul Kripke · G. W. Leibniz · Jaakko Hintikka · Edmund Gettier · David Chalmers · Kurt Gödel · Gregory Chaitin · Werner Heisenberg · Edward Lorenz · Ludwig Boltzmann · Alan Turing",
+      "code": "Repository",
+      "codeVal": "<a href='https://github.com/willkwolf/secret-ontology' target='_blank' rel='noopener noreferrer' style='color:var(--gold); text-decoration:underline;'>github.com/willkwolf/secret-ontology</a>",
       "limitsLabel": "Model limitations:",
-      "limitsVal": "The graph is a finite abstraction of continuous phenomena; it does not capture the subjective temporality of the agent nor the affective dimension of concealment. Edge classification is stylised and does not exhaust all possible epistemic transformations. The representation of unknowability is intrinsically paradoxical when attempting to visualise what cannot be delineated from within the system.",
+      "limitsVal": "The graph is a finite abstraction of continuous phenomena; it does not capture the subjective temporality of the agent nor the affective dimension of concealment. Edge classification is stylised and does not exhaust all possible epistemic transformations. The representation of unknowability is intrinsically paradoxical when attempting to visualise what cannot be delineated from within the system. The layer system is a finite approximation of continuous ontological strata. The temporal layer animates but does not simulate actual epistemic dynamics.",
       "license": "Creative Commons BY-SA 4.0 · Research Collective"
+    },
+    "domainLabel": "Epistemic domain",
+    "formula": {
+      "legendTitle": "Quick Reading Guide",
+      "secretDef": "<strong>The Secret:</strong> The relation in which something remains hidden from an agent in a specific world.",
+      "equivDef": "<strong>Is equivalent to:</strong> Means that the conditions on the right are precisely met.",
+      "contentDef": "<strong>Content (C):</strong> The information or actual fact in question (must be true in the current world).",
+      "andDef": "<strong>And (Conjunction):</strong> Logical connector requiring both parts of the formula to hold simultaneously.",
+      "notDef": "<strong>Not (Negation):</strong> Indicates that the following is false or that the agent lacks access to it.",
+      "knowDef": "<strong>Knowledge Operator (K):</strong> What agent <em>a</em> knows or has integrated into their epistemic framework.",
+      "worldDef": "<strong>(C, w):</strong> Content C within the context of the possible world <em>w</em> in which the relation is situated.",
+      "nuclearExplanation": "Read in English: <strong>there is a secret when a content C is true in a world w, but agent a does not know it in that world.</strong> There is no secret without someone for whom it is a secret."
+    },
+    "distinction": {
+      "secretTitle": "Secret",
+      "secretDesc": "The agent does not know C now, but <em>could</em> know it. There is at least one accessible world where the knowledge occurs.",
+      "mysteryTitle": "Mystery",
+      "mysteryDesc": "There is no accessible world where the agent knows C. Unknowability is <em>structural</em>, not circumstantial."
+    },
+    "explanation": {
+      "modalTitle": "Breakdown of Modal Operators",
+      "modalSecret": "<strong>Revealable Secret:</strong> Agent does not know C today <em>(¬Kₐ(C))</em>, <strong>AND</strong> it is feasible or possible that they will know it in the future <em>(◇Kₐ(C))</em>.<br><small class='text-dim'>The diamond (<strong>◇</strong>) represents <strong>modal possibility</strong>: meaning at least one accessible world exists where the barrier of ignorance falls.</small>",
+      "modalMystery": "<strong>Absolute Mystery:</strong> Agent does not know C today <em>(¬Kₐ(C))</em>, <strong>AND</strong> it is strictly necessary that they can never know it <em>(□¬Kₐ(C))</em>.<br><small class='text-dim'>The box (<strong>□</strong>) represents <strong>modal necessity</strong>: indicating that in all possible worlds of the structure, unknowability is absolute.</small>"
     }
   }
 }

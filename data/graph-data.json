@@ -10,7 +10,10 @@
       "contents": ["Todas las proposiciones verdaderas"],
       "horizon": { "conocido": 1.0, "desconocido": 0.0, "incognoscible": 0.0 },
       "references": ["Leibniz (Dios calculador)", "Realismo absoluto"],
-      "style": { "color": "#F5F5F5", "size": 22, "shape": "hexagon" }
+      "style": { "color": "#F5F5F5", "size": 22, "shape": "hexagon" },
+      "initialX": 350,
+      "initialY": 60,
+      "layers": ["topology", "narrative"]
     },
     {
       "id": "w_O",
@@ -22,7 +25,10 @@
       "contents": [],
       "horizon": { "conocido": 0.0, "desconocido": 0.0, "incognoscible": 1.0 },
       "references": ["Escepticismo radical", "Nihilismo epistémico"],
-      "style": { "color": "#1A1A1A", "size": 22, "shape": "hexagon" }
+      "style": { "color": "#1A1A1A", "size": 22, "shape": "hexagon" },
+      "initialX": 350,
+      "initialY": 460,
+      "layers": ["topology", "narrative"]
     },
     {
       "id": "w_E",
@@ -34,7 +40,10 @@
       "contents": ["Conjunto completo de verdades necesarias"],
       "horizon": { "conocido": 1.0, "desconocido": 0.0, "incognoscible": 0.0 },
       "references": ["Tomás de Aquino", "Teología racional"],
-      "style": { "color": "#E6D5B8", "size": 22, "shape": "hexagon" }
+      "style": { "color": "#E6D5B8", "size": 22, "shape": "hexagon" },
+      "initialX": 640,
+      "initialY": 260,
+      "layers": ["topology", "narrative"]
     },
     {
       "id": "w_F",
@@ -46,7 +55,10 @@
       "contents": ["Leyes físicas conocidas", "Datos empíricos acumulados"],
       "horizon": { "conocido": 0.3, "desconocido": 0.6, "incognoscible": 0.1 },
       "references": ["Gödel (incompletitud)", "Chaitin (complejidad)", "Popper (falsacionismo)"],
-      "style": { "color": "#4A90E2", "size": 20, "shape": "circle" }
+      "style": { "color": "#4A90E2", "size": 20, "shape": "circle" },
+      "initialX": 350,
+      "initialY": 260,
+      "layers": ["topology", "narrative"]
     },
     {
       "id": "w_N",
@@ -58,7 +70,10 @@
       "contents": ["Unidad indiferenciada"],
       "horizon": { "conocido": 0.0, "desconocido": 0.0, "incognoscible": 0.0 },
       "references": ["Advaita Vedanta", "Misticismo filosófico (Plotino, Eckhart)"],
-      "style": { "color": "#9B59B6", "size": 22, "shape": "hexagon" }
+      "style": { "color": "#9B59B6", "size": 22, "shape": "hexagon" },
+      "initialX": 60,
+      "initialY": 260,
+      "layers": ["topology", "narrative"]
     },
     {
       "id": "pre_adn",
@@ -70,7 +85,10 @@
       "contents": ["Leyes de Mendel", "Cromosomas observados"],
       "horizon": { "conocido": 0.2, "desconocido": 0.7, "incognoscible": 0.1 },
       "references": ["Morgan", "Avery"],
-      "style": { "color": "#7FB3D5", "size": 15 }
+      "style": { "color": "#7FB3D5", "size": 15 },
+      "initialX": 490,
+      "initialY": 100,
+      "layers": ["epistemic", "narrative"]
     },
     {
       "id": "post_adn",
@@ -82,7 +100,10 @@
       "contents": ["Estructura del ADN", "Código genético"],
       "horizon": { "conocido": 0.5, "desconocido": 0.4, "incognoscible": 0.1 },
       "references": ["Watson & Crick 1953", "Dogma central"],
-      "style": { "color": "#2E86C1", "size": 15 }
+      "style": { "color": "#2E86C1", "size": 15 },
+      "initialX": 530,
+      "initialY": 120,
+      "layers": ["epistemic", "narrative"]
     },
     {
       "id": "emerg_epigen",
@@ -94,7 +115,10 @@
       "contents": ["Marcas epigenéticas", "ARN no codificante"],
       "horizon": { "conocido": 0.3, "desconocido": 0.6, "incognoscible": 0.1 },
       "references": ["Waddington", "Allis"],
-      "style": { "color": "#A3E4D7", "size": 14 }
+      "style": { "color": "#A3E4D7", "size": 14 },
+      "initialX": 560,
+      "initialY": 140,
+      "layers": ["epistemic", "narrative"]
     },
     {
       "id": "conciencia",
@@ -106,7 +130,10 @@
       "contents": ["Correlatos neurales", "Funciones cognitivas"],
       "horizon": { "conocido": 0.1, "desconocido": 0.3, "incognoscible": 0.6 },
       "references": ["Chalmers (hard problem)", "Nagel (What is it like?)"],
-      "style": { "color": "#C0392B", "size": 18 }
+      "style": { "color": "#C0392B", "size": 18 },
+      "initialX": 120,
+      "initialY": 200,
+      "layers": ["epistemic", "narrative"]
     },
     {
       "id": "secreto_estado",
@@ -118,7 +145,10 @@
       "contents": ["Planes militares", "Información clasificada"],
       "horizon": { "conocido": 0.1, "desconocido": 0.8, "incognoscible": 0.1 },
       "references": ["Filosofía política del secreto (Simmel)", "Transparencia vs. seguridad"],
-      "style": { "color": "#E74C3C", "size": 15 }
+      "style": { "color": "#E74C3C", "size": 15 },
+      "initialX": 140,
+      "initialY": 360,
+      "layers": ["epistemic", "narrative"]
     },
     {
       "id": "filtracion",
@@ -130,7 +160,10 @@
       "contents": ["Documentos filtrados", "Debate público"],
       "horizon": { "conocido": 0.5, "desconocido": 0.4, "incognoscible": 0.1 },
       "references": ["WikiLeaks", "Snowden"],
-      "style": { "color": "#E67E22", "size": 15 }
+      "style": { "color": "#E67E22", "size": 15 },
+      "initialX": 160,
+      "initialY": 390,
+      "layers": ["epistemic", "narrative"]
     },
     {
       "id": "secreto_reforzado",
@@ -142,7 +175,10 @@
       "contents": ["Información previamente pública ahora restringida"],
       "horizon": { "conocido": 0.05, "desconocido": 0.85, "incognoscible": 0.1 },
       "references": ["Ley de secreto post‑Snowden", "Paradoja de la transparencia"],
-      "style": { "color": "#C0392B", "size": 15, "shape": "diamond" }
+      "style": { "color": "#C0392B", "size": 15, "shape": "diamond" },
+      "initialX": 180,
+      "initialY": 410,
+      "layers": ["epistemic", "narrative"]
     },
     {
       "id": "incompletitud",
@@ -154,7 +190,10 @@
       "contents": ["Sentencias indecidibles"],
       "horizon": { "conocido": 0.4, "desconocido": 0.1, "incognoscible": 0.5 },
       "references": ["Gödel 1931", "Teoremas de incompletitud"],
-      "style": { "color": "#8E44AD", "size": 17 }
+      "style": { "color": "#8E44AD", "size": 17 },
+      "initialX": 520,
+      "initialY": 390,
+      "layers": ["epistemic", "narrative"]
     },
     {
       "id": "indecidibilidad",
@@ -166,7 +205,10 @@
       "contents": ["Máquinas de Turing", "Problemas NP‑completos"],
       "horizon": { "conocido": 0.3, "desconocido": 0.1, "incognoscible": 0.6 },
       "references": ["Turing 1936", "Teoría de la computabilidad"],
-      "style": { "color": "#6C3483", "size": 17 }
+      "style": { "color": "#6C3483", "size": 17 },
+      "initialX": 560,
+      "initialY": 420,
+      "layers": ["epistemic", "narrative"]
     },
     {
       "id": "misterio_cuantico",
@@ -178,7 +220,10 @@
       "contents": ["Formalismo cuántico", "Superposición"],
       "horizon": { "conocido": 0.5, "desconocido": 0.2, "incognoscible": 0.3 },
       "references": ["Bohr", "Everett", "Bell"],
-      "style": { "color": "#F1C40F", "size": 18 }
+      "style": { "color": "#F1C40F", "size": 18 },
+      "initialX": 140,
+      "initialY": 110,
+      "layers": ["epistemic", "narrative"]
     },
     {
       "id": "copenhague",
@@ -190,7 +235,10 @@
       "contents": ["Colapso", "Principio de complementariedad"],
       "horizon": { "conocido": 0.6, "desconocido": 0.2, "incognoscible": 0.2 },
       "references": ["Interpretación ortodoxa"],
-      "style": { "color": "#F39C12", "size": 13 }
+      "style": { "color": "#F39C12", "size": 13 },
+      "initialX": 160,
+      "initialY": 130,
+      "layers": ["epistemic", "narrative"]
     },
     {
       "id": "muchos_mundos",
@@ -202,7 +250,10 @@
       "contents": ["Decoherencia", "Universalidad cuántica"],
       "horizon": { "conocido": 0.5, "desconocido": 0.3, "incognoscible": 0.2 },
       "references": ["Everett 1957"],
-      "style": { "color": "#F5B041", "size": 13 }
+      "style": { "color": "#F5B041", "size": 13 },
+      "initialX": 180,
+      "initialY": 100,
+      "layers": ["epistemic", "narrative"]
     },
     {
       "id": "bohm",
@@ -214,7 +265,10 @@
       "contents": ["Onda piloto", "Potencial cuántico"],
       "horizon": { "conocido": 0.5, "desconocido": 0.3, "incognoscible": 0.2 },
       "references": ["Teorías de variables ocultas"],
-      "style": { "color": "#F7DC6F", "size": 13 }
+      "style": { "color": "#F7DC6F", "size": 13 },
+      "initialX": 160,
+      "initialY": 150,
+      "layers": ["epistemic", "narrative"]
     },
     {
       "id": "incertidumbre_cosmologica",
@@ -226,7 +280,10 @@
       "contents": ["Mecánica celeste", "Éter luminífero"],
       "horizon": { "conocido": 0.4, "desconocido": 0.5, "incognoscible": 0.1 },
       "references": ["Newton", "Maxwell"],
-      "style": { "color": "#85C1E9", "size": 14 }
+      "style": { "color": "#85C1E9", "size": 14 },
+      "initialX": 510,
+      "initialY": 110,
+      "layers": ["epistemic", "narrative"]
     },
     {
       "id": "relatividad_general",
@@ -238,7 +295,10 @@
       "contents": ["Curvatura del espacio‑tiempo", "Ondas gravitacionales"],
       "horizon": { "conocido": 0.7, "desconocido": 0.2, "incognoscible": 0.1 },
       "references": ["Einstein 1915"],
-      "style": { "color": "#1ABC9C", "size": 16 }
+      "style": { "color": "#1ABC9C", "size": 16 },
+      "initialX": 540,
+      "initialY": 130,
+      "layers": ["epistemic", "narrative"]
     },
     {
       "id": "mejor_secreto",
@@ -250,7 +310,75 @@
       "contents": ["Ninguno definido aún", "Pregunta abierta"],
       "horizon": { "conocido": 0.0, "desconocido": 0.5, "incognoscible": 0.5 },
       "references": ["Arte conceptual", "Paradoja epistémica"],
-      "style": { "color": "#16A085", "size": 24, "shape": "star" }
+      "style": { "color": "#16A085", "size": 24, "shape": "star" },
+      "initialX": 350,
+      "initialY": 260,
+      "layers": ["metalogic", "narrative"]
+    },
+    {
+      "id": "límite_gödel",
+      "label": "Límite de Gödel",
+      "type": "structural_limit",
+      "domain": "matematico",
+      "description": "Límite formal de la demostrabilidad: en todo sistema axiomático suficientemente expresivo, existen verdades que no pueden ser demostradas desde dentro del sistema.",
+      "horizon": { "conocido": 0.3, "desconocido": 0.1, "incognoscible": 0.6 },
+      "references": ["Gödel 1931", "Primer teorema de incompletitud"],
+      "style": { "color": "#FF6B35", "size": 18, "shape": "hexagon" },
+      "initialX": 580,
+      "initialY": 420,
+      "layers": ["topology", "metalogic"]
+    },
+    {
+      "id": "límite_turing",
+      "label": "Límite de Turing",
+      "type": "structural_limit",
+      "domain": "matematico",
+      "description": "Límite computacional absoluto: el problema de la parada es formalmente irresoluble por cualquier máquina de Turing.",
+      "horizon": { "conocido": 0.3, "desconocido": 0.1, "incognoscible": 0.6 },
+      "references": ["Turing 1936", "Problema de la parada"],
+      "style": { "color": "#FF6B35", "size": 18, "shape": "hexagon" },
+      "initialX": 620,
+      "initialY": 380,
+      "layers": ["topology", "metalogic"]
+    },
+    {
+      "id": "horizonte_caótico",
+      "label": "Horizonte Caótico",
+      "type": "structural_limit",
+      "domain": "cientifico",
+      "description": "Límite predictivo del caos determinista: la sensibilidad exponencial a condiciones iniciales hace imposible la predicción a largo plazo.",
+      "horizon": { "conocido": 0.4, "desconocido": 0.4, "incognoscible": 0.2 },
+      "references": ["Lorenz 1963", "Teoría del caos"],
+      "style": { "color": "#FF6B35", "size": 18, "shape": "hexagon" },
+      "initialX": 560,
+      "initialY": 100,
+      "layers": ["topology", "metalogic"]
+    },
+    {
+      "id": "indeterminación_cuántica",
+      "label": "Indeterminación Cuántica",
+      "type": "structural_limit",
+      "domain": "cuantico",
+      "description": "Principio de indeterminación de Heisenberg: existe un límite fundamental e irreducible a la precisión con que pueden conocerse simultáneamente pares de variables conjugadas.",
+      "horizon": { "conocido": 0.5, "desconocido": 0.2, "incognoscible": 0.3 },
+      "references": ["Heisenberg 1927", "Principio de incertidumbre"],
+      "style": { "color": "#FF6B35", "size": 18, "shape": "hexagon" },
+      "initialX": 120,
+      "initialY": 80,
+      "layers": ["topology", "metalogic"]
+    },
+    {
+      "id": "flecha_termodinámica",
+      "label": "Flecha Termodinámica",
+      "type": "structural_limit",
+      "domain": "cientifico",
+      "description": "La irreversibilidad termodinámica impone una dirección al tiempo: el pasado es cognoscible en principio, el futuro no.",
+      "horizon": { "conocido": 0.4, "desconocido": 0.4, "incognoscible": 0.2 },
+      "references": ["Boltzmann", "Segunda ley de la termodinámica"],
+      "style": { "color": "#FF6B35", "size": 18, "shape": "hexagon" },
+      "initialX": 500,
+      "initialY": 140,
+      "layers": ["topology", "metalogic"]
     }
   ],
   "edges": [
@@ -264,7 +392,8 @@
       "cost": "Décadas de investigación, competencia científica intensa",
       "narrative": "En 1953, Watson y Crick revelaron la estructura del ADN, haciendo cognoscible el mecanismo molecular de la herencia. El secreto de la vida se volvió accesible.",
       "style": { "stroke": "#C5A86B", "strokeWidth": 2.8, "dashArray": "5,3", "opacity": 0.95 },
-      "domain": "cientifico"
+      "domain": "cientifico",
+      "layers": ["narrative"]
     },
     {
       "id": "e_emerg_epigen",
@@ -276,7 +405,8 @@
       "cost": "Conceptual: redefinición de la regulación génica",
       "narrative": "Al conocer el genoma, emergieron incógnitas sobre cómo se regula la expresión génica. El secreto del ADN dio a luz nuevos continentes de ignorancia.",
       "style": { "stroke": "#5DADE2", "strokeWidth": 2.2, "dashArray": "8,4", "opacity": 0.8 },
-      "domain": "cientifico"
+      "domain": "cientifico",
+      "layers": ["narrative"]
     },
     {
       "id": "e_ocult_filtracion",
@@ -288,7 +418,8 @@
       "cost": "Alto: legislación de emergencia, re‑clasificación masiva",
       "narrative": "Tras la revelación de secretos, el sistema político incrementa la opacidad: nuevos documentos pasan a ser clasificados. La transparencia momentánea genera más sombras.",
       "style": { "stroke": "#7F8C8D", "strokeWidth": 2.0, "dashArray": "2,4", "opacity": 0.6 },
-      "domain": "politico"
+      "domain": "politico",
+      "layers": ["narrative"]
     },
     {
       "id": "e_rev_filtracion",
@@ -300,7 +431,8 @@
       "cost": "Riesgo personal extremo, controversia global",
       "narrative": "Un whistleblower hace público un conjunto de documentos clasificados. El secreto gubernamental se convierte en conocimiento distribuido. La potencialidad se actualiza.",
       "style": { "stroke": "#C5A86B", "strokeWidth": 3.0, "dashArray": "5,3", "opacity": 1.0 },
-      "domain": "politico"
+      "domain": "politico",
+      "layers": ["narrative"]
     },
     {
       "id": "e_compres_cosmo",
@@ -312,7 +444,8 @@
       "cost": "Revolución conceptual: abandonar el espacio y tiempo absolutos",
       "narrative": "La Relatividad General redujo drásticamente la incertidumbre fundamental en cosmología: la gravedad se explicó como geometría. La ignorancia se comprimió, aunque nuevas preguntas (singularidades, energía oscura) permanecieron.",
       "style": { "stroke": "#1ABC9C", "strokeWidth": 3.5, "dashArray": "", "opacity": 0.9 },
-      "domain": "cientifico"
+      "domain": "cientifico",
+      "layers": ["narrative"]
     },
     {
       "id": "e_bif_copenhague",
@@ -324,7 +457,8 @@
       "cost": "Elección filosófica: aceptar la indeterminación fundamental",
       "narrative": "Ante el misterio de la medición, surge una rama interpretativa: la conciencia o el aparato clásico colapsan la función de onda. Un mismo enigma, múltiples lecturas.",
       "style": { "stroke": "#8E44AD", "strokeWidth": 2.0, "dashArray": "10,5", "opacity": 0.7 },
-      "domain": "cuantico"
+      "domain": "cuantico",
+      "layers": ["narrative"]
     },
     {
       "id": "e_bif_mundos",
@@ -336,7 +470,8 @@
       "cost": "Compromiso ontológico radical con realidades múltiples",
       "narrative": "Otra vía: negar el colapso. Cada posibilidad se realiza en un mundo separado. La ignorancia es solo aparente desde nuestra rama particular.",
       "style": { "stroke": "#8E44AD", "strokeWidth": 2.0, "dashArray": "10,5", "opacity": 0.7 },
-      "domain": "cuantico"
+      "domain": "cuantico",
+      "layers": ["narrative"]
     },
     {
       "id": "e_bif_bohm",
@@ -348,7 +483,8 @@
       "cost": "Postular entidades no locales y trayectorias deterministas",
       "narrative": "Una tercera rama: hay realidad determinista bajo el velo cuántico, con partículas guiadas por una onda piloto. El misterio se desplaza a las variables ocultas.",
       "style": { "stroke": "#8E44AD", "strokeWidth": 2.0, "dashArray": "10,5", "opacity": 0.7 },
-      "domain": "cuantico"
+      "domain": "cuantico",
+      "layers": ["narrative"]
     },
     {
       "id": "e_transparencia_utopica",
@@ -360,7 +496,8 @@
       "cost": "Inalcanzable: requeriría capacidad computacional infinita",
       "narrative": "La cognición finita aspira a un mundo sin ignorancia, pero la transparencia absoluta es un límite ideal, una singularidad epistémica fuera del alcance.",
       "style": { "stroke": "#BDC3C7", "strokeWidth": 1.0, "dashArray": "2,6", "opacity": 0.3 },
-      "domain": "ontologico"
+      "domain": "ontologico",
+      "layers": ["narrative"]
     },
     {
       "id": "e_opacidad_utopica",
@@ -372,7 +509,8 @@
       "cost": "Contrafáctico extremo: pérdida de toda cognición",
       "narrative": "La opacidad absoluta es el reverso inalcanzable. Un mundo sin ningún conocimiento no puede sostener agentes, es una abstracción límite.",
       "style": { "stroke": "#BDC3C7", "strokeWidth": 1.0, "dashArray": "2,6", "opacity": 0.3 },
-      "domain": "ontologico"
+      "domain": "ontologico",
+      "layers": ["narrative"]
     },
     {
       "id": "e_mejor_secreto_explora",
@@ -384,7 +522,8 @@
       "cost": "Reflexión filosófica permanente",
       "narrative": "La pregunta por el mejor secreto posible rebota hacia lo finito: quizá resida en la capacidad regenerativa de la ignorancia, o en un contenido que se autoprotege al ser conocido.",
       "style": { "stroke": "#16A085", "strokeWidth": 2.5, "dashArray": "4,4", "opacity": 0.8 },
-      "domain": "meta"
+      "domain": "meta",
+      "layers": ["narrative"]
     },
     {
       "id": "e_mejor_secreto_misterio",
@@ -396,7 +535,8 @@
       "cost": "Definición de lo indecible",
       "narrative": "Un secreto perfecto podría ser aquel que, incluso al ser revelado, sigue siendo inaccesible: la experiencia subjetiva ajena. Nunca se vuelve completamente público.",
       "style": { "stroke": "#E74C3C", "strokeWidth": 2.2, "dashArray": "6,3", "opacity": 0.75 },
-      "domain": "meta"
+      "domain": "meta",
+      "layers": ["narrative"]
     },
     {
       "id": "e_godel_incompletitud",
@@ -408,7 +548,8 @@
       "cost": "Revolución en los fundamentos de las matemáticas",
       "narrative": "El teorema de Gödel hizo emerger la incognoscibilidad estructural dentro de cualquier sistema axiomático: hay verdades que nunca serán demostrables.",
       "style": { "stroke": "#8E44AD", "strokeWidth": 2.8, "dashArray": "8,4", "opacity": 0.9 },
-      "domain": "matematico"
+      "domain": "matematico",
+      "layers": ["narrative"]
     },
     {
       "id": "e_turing_indecidibilidad",
@@ -420,7 +561,8 @@
       "cost": "Traducción del límite lógico al algorítmico",
       "narrative": "Turing formalizó la indecidibilidad, mostrando que hay problemas que ninguna máquina puede resolver. El secreto de la parada es un misterio computacional permanente.",
       "style": { "stroke": "#C5A86B", "strokeWidth": 2.6, "dashArray": "5,3", "opacity": 0.9 },
-      "domain": "matematico"
+      "domain": "matematico",
+      "layers": ["narrative"]
     },
     {
       "id": "e_no_dualidad",
@@ -432,7 +574,112 @@
       "cost": "Salto fuera del marco racional-discursivo",
       "narrative": "La no‑dualidad no oculta contenido, sino que elimina la estructura misma del secreto al disolver la dualidad cognoscente-conocido. Límite experiencial, no formal.",
       "style": { "stroke": "#9B59B6", "strokeWidth": 1.5, "dashArray": "3,5", "opacity": 0.5 },
-      "domain": "ontologico"
+      "domain": "ontologico",
+      "layers": ["narrative"]
+    },
+    {
+      "id": "e_godel_limit",
+      "source": "límite_gödel",
+      "target": "incompletitud",
+      "type": "imposibilita",
+      "label": "Límite formal de la demostrabilidad",
+      "weight": 0.9,
+      "cost": "Irreducible: ningún sistema puede demostrar su propia consistencia",
+      "narrative": "El límite de Gödel imposibilita que cualquier sistema formal suficientemente expresivo sea a la vez completo y consistente.",
+      "style": { "stroke": "#E74C3C", "strokeWidth": 2.5, "dashArray": "", "opacity": 0.9 },
+      "domain": "matematico",
+      "layers": ["topology", "metalogic"]
+    },
+    {
+      "id": "e_turing_limit",
+      "source": "límite_turing",
+      "target": "indecidibilidad",
+      "type": "imposibilita",
+      "label": "Límite computacional absoluto",
+      "weight": 0.9,
+      "cost": "Irreducible: ningún algoritmo puede resolver el problema de la parada",
+      "narrative": "El límite de Turing imposibilita la resolución algorítmica del problema de la parada.",
+      "style": { "stroke": "#E74C3C", "strokeWidth": 2.5, "dashArray": "", "opacity": 0.9 },
+      "domain": "matematico",
+      "layers": ["topology", "metalogic"]
+    },
+    {
+      "id": "e_caos_cosmo",
+      "source": "horizonte_caótico",
+      "target": "incertidumbre_cosmologica",
+      "type": "restringe_termo",
+      "label": "Horizonte predictivo del caos",
+      "weight": 0.8,
+      "cost": "Sensibilidad exponencial a condiciones iniciales",
+      "narrative": "El horizonte caótico restringe la predictibilidad cosmológica: pequeñas variaciones en condiciones iniciales producen divergencias exponenciales.",
+      "style": { "stroke": "#E67E22", "strokeWidth": 2.2, "dashArray": "6,3", "opacity": 0.85 },
+      "domain": "cientifico",
+      "layers": ["topology", "metalogic"]
+    },
+    {
+      "id": "e_cuantico_misterio",
+      "source": "indeterminación_cuántica",
+      "target": "misterio_cuantico",
+      "type": "restringe_termo",
+      "label": "Indeterminación fundamental",
+      "weight": 0.85,
+      "cost": "Límite ontológico, no epistémico",
+      "narrative": "La indeterminación cuántica restringe el conocimiento simultáneo de posición y momento: no es ignorancia sino límite estructural.",
+      "style": { "stroke": "#E67E22", "strokeWidth": 2.2, "dashArray": "6,3", "opacity": 0.85 },
+      "domain": "cuantico",
+      "layers": ["topology", "metalogic"]
+    },
+    {
+      "id": "e_termo_flecha",
+      "source": "flecha_termodinámica",
+      "target": "relatividad_general",
+      "type": "fusiona",
+      "label": "Flecha del tiempo termodinámica",
+      "weight": 0.7,
+      "cost": "Asimetría temporal irreversible",
+      "narrative": "La flecha termodinámica y la relatividad general se fusionan en la descripción del tiempo cósmico: la entropía define la dirección del tiempo.",
+      "style": { "stroke": "#1ABC9C", "strokeWidth": 2.0, "dashArray": "", "opacity": 0.8 },
+      "domain": "cientifico",
+      "layers": ["topology", "metalogic"]
+    },
+    {
+      "id": "e_godel_mejor",
+      "source": "límite_gödel",
+      "target": "mejor_secreto",
+      "type": "colapsa",
+      "label": "El secreto de la incompletitud",
+      "weight": 0.6,
+      "cost": "Paradoja autorreferencial",
+      "narrative": "El límite de Gödel colapsa hacia la pregunta por el mejor secreto: ¿puede un sistema conocer su propio límite?",
+      "style": { "stroke": "#C0392B", "strokeWidth": 2.0, "dashArray": "8,3", "opacity": 0.75 },
+      "domain": "meta",
+      "layers": ["topology", "metalogic", "narrative"]
+    },
+    {
+      "id": "e_caos_emerg",
+      "source": "horizonte_caótico",
+      "target": "emerg_epigen",
+      "type": "degrada",
+      "label": "Degradación caótica de la predictibilidad",
+      "weight": 0.65,
+      "cost": "Pérdida de determinismo en sistemas complejos",
+      "narrative": "El horizonte caótico degrada la predictibilidad de los sistemas epigenéticos: la complejidad no-lineal hace imposible la predicción a largo plazo.",
+      "style": { "stroke": "#9B59B6", "strokeWidth": 1.8, "dashArray": "4,2", "opacity": 0.7 },
+      "domain": "cientifico",
+      "layers": ["topology", "metalogic"]
+    },
+    {
+      "id": "e_cuantico_conciencia",
+      "source": "indeterminación_cuántica",
+      "target": "conciencia",
+      "type": "degrada",
+      "label": "Indeterminación y conciencia",
+      "weight": 0.5,
+      "cost": "Relación especulativa pero filosóficamente relevante",
+      "narrative": "La indeterminación cuántica degrada la posibilidad de una explicación determinista de la conciencia.",
+      "style": { "stroke": "#9B59B6", "strokeWidth": 1.8, "dashArray": "4,2", "opacity": 0.7 },
+      "domain": "existencial",
+      "layers": ["topology", "metalogic"]
     }
   ]
 }

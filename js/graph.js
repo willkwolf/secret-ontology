@@ -1,28 +1,50 @@
 /**
  * graph.js — D3.js v7 Dynamic Modal Epistemic Graph
  *
- * Implements the edge semantics from kaizen1.md:
- * - Five typed directed edges: revelación, ocultamiento, emergencia,
- *   compresión, bifurcación
- * - SVG <marker> arrowheads per type
+ * Implements the edge semantics from kaizen1.md and kaizen2.md:
+ * - Ten typed directed edges: revelación, ocultamiento, emergencia,
+ *   compresión, bifurcación, degrada, imposibilita, restringe_termo,
+ *   fusiona, colapsa
+ * - SVG <marker> arrowheads per type + special markers/filters
  * - Curved paths (quadratic Bézier) for directed edges
  * - Rich edge tooltip: label, type, cost, narrative
- * - Node panel with horizon rings
+ * - Node panel with horizon rings, layers, meta-logic rules, minimap
  * - Domain filtering + edge-type filtering
  * - Touch + mouse drag, zoom/pan
+ * - Five-layer architecture with LayerSystem integration
+ * - Cluster force, extreme-node forces, pinning, viewport clamping
+ * - Halo animations, bridge nodes, inaccessible regions, collapse zones
  */
 
 import { t } from './i18n.js';
+import layerSystem from './layers.js';
+
+// ─── META-LOGIC RULES MAP ─────────────────────────────────────────────────────
+
+const METALOGIC_RULES = {
+  matematico:  'metalogic.matematico',
+  cuantico:    'metalogic.cuantico',
+  cientifico:  'metalogic.cientifico',
+  politico:    'metalogic.politico',
+  ontologico:  'metalogic.ontologico',
+  existencial: 'metalogic.existencial',
+  meta:        'metalogic.meta',
+};
 
 // ─── VISUAL CONFIG ────────────────────────────────────────────────────────────
 
 const EDGE_STYLE = {
-  revelación:   { stroke: '#C5A86B', strokeWidth: 2.5, dashArray: '5,3',  opacity: 0.9 },
-  ocultamiento: { stroke: '#7F8C8D', strokeWidth: 2.0, dashArray: '2,4',  opacity: 0.55 },
-  emergencia:   { stroke: '#5DADE2', strokeWidth: 2.2, dashArray: '8,4',  opacity: 0.8 },
-  compresión:   { stroke: '#1ABC9C', strokeWidth: 3.0, dashArray: '',     opacity: 0.9 },
-  bifurcación:  { stroke: '#8E44AD', strokeWidth: 2.0, dashArray: '10,5', opacity: 0.7 },
-  mystery:      { stroke: '#9060C0', strokeWidth: 1.5, dashArray: '3,3',  opacity: 0.5 },
+  revelación:      { stroke: '#C5A86B', strokeWidth: 2.5, dashArray: '5,3',  opacity: 0.9 },
+  ocultamiento:    { stroke: '#7F8C8D', strokeWidth: 2.0, dashArray: '2,4',  opacity: 0.55 },
+  emergencia:      { stroke: '#5DADE2', strokeWidth: 2.2, dashArray: '8,4',  opacity: 0.8 },
+  compresión:      { stroke: '#1ABC9C', strokeWidth: 3.0, dashArray: '',     opacity: 0.9 },
+  bifurcación:     { stroke: '#8E44AD', strokeWidth: 2.0, dashArray: '10,5', opacity: 0.7 },
+  mystery:         { stroke: '#9060C0', strokeWidth: 1.5, dashArray: '3,3',  opacity: 0.5 },
+  degrada:         { stroke: '#9B59B6', strokeWidth: 1.8, dashArray: '4,2',  opacity: 0.7,  filter: 'url(#turbulence-filter)' },
+  imposibilita:    { stroke: '#E74C3C', strokeWidth: 2.5, dashArray: '',     opacity: 0.9,  markerEnd: 'arrow-bar' },
+  restringe_termo: { stroke: '#E67E22', strokeWidth: 2.2, dashArray: '6,3',  opacity: 0.85, markerEnd: 'arrow-stop' },
+  fusiona:         { stroke: '#1ABC9C', strokeWidth: 2.0, dashArray: '',     opacity: 0.8 },
+  colapsa:         { stroke: '#C0392B', strokeWidth: 2.0, dashArray: '8,3',  opacity: 0.75, markerStart: 'arrow-x-source' },
 };
 
 // Fallback for legacy 'revelation'/'concealment' keys from inline data
@@ -69,11 +91,16 @@ const DOMAIN_MAP = {
 // ─── MODULE STATE ─────────────────────────────────────────────────────────────
 
 let _graphData = null;   // raw JSON from data/graph-data.json
+let _allGraphData = null; // full unfiltered data (same as _graphData after load)
 let _svg, _g, _linkGroup, _nodeGroup, _defs;
 let _simulation;
 let _currentDomain = 'all';
 let _currentEdgeFilter = 'all';
 let _edgePanelEl, _nodePanelEl;
+let _bridgeNodeIds = new Set();
+let _inaccessibleRegion = null;
+let _collapseZone = null;
+let _currentPanelNode = null;
 
 // ─── PUBLIC API ───────────────────────────────────────────────────────────────
 
@@ -83,9 +110,16 @@ let _edgePanelEl, _nodePanelEl;
 export async function initGraph() {
   const res = await fetch('data/graph-data.json');
   _graphData = await res.json();
+  _allGraphData = _graphData;
+
+  // Store original counts for LayerSystem preservation invariant
+  layerSystem.setOriginalCounts(_graphData.nodes.length, _graphData.edges.length);
 
   _edgePanelEl = document.getElementById('edge-panel');
   _nodePanelEl = document.getElementById('node-panel');
+
+  // Compute bridge nodes from full data
+  _bridgeNodeIds = _computeBridgeNodes(_graphData.nodes, _graphData.edges);
 
   _buildSVG();
   _updateGraph();
@@ -122,6 +156,22 @@ function _buildSVG() {
   _buildMarkers();
 
   _g = _svg.append('g');
+
+  // Append background shapes BEFORE link and node groups so they render behind
+  _inaccessibleRegion = _g.append('ellipse')
+    .attr('class', 'inaccessible-region')
+    .attr('fill', 'none')
+    .attr('stroke', 'var(--text-dimmer, #555)')
+    .attr('stroke-dasharray', '6,4')
+    .attr('opacity', 0.3)
+    .attr('rx', 60).attr('ry', 40);
+
+  _collapseZone = _g.append('circle')
+    .attr('class', 'collapse-zone')
+    .attr('fill', 'rgba(144,96,192,0.08)')
+    .attr('stroke', 'none')
+    .attr('r', 50);
+
   _linkGroup = _g.append('g').attr('class', 'links');
   _nodeGroup = _g.append('g').attr('class', 'nodes');
 
@@ -131,12 +181,18 @@ function _buildSVG() {
     _hideEdgePanel();
   });
 
+  // Listen for layer changes
+  document.addEventListener('layerchange', () => _applyLayerVisibility());
+
   // Resize handler
   window.addEventListener('resize', _onResize);
 }
 
 function _buildMarkers() {
   _defs.selectAll('marker').remove();
+  _defs.selectAll('filter').remove();
+
+  // Standard arrow markers for all 10 edge types
   const types = Object.keys(EDGE_STYLE);
   types.forEach(type => {
     const style = EDGE_STYLE[type];
@@ -153,6 +209,61 @@ function _buildMarkers() {
         .attr('fill', style.stroke)
         .attr('opacity', 0.8);
   });
+
+  // ── Turbulence filter for `degrada` ──
+  const turbFilter = _defs.append('filter')
+    .attr('id', 'turbulence-filter')
+    .attr('x', '-20%').attr('y', '-20%').attr('width', '140%').attr('height', '140%');
+  turbFilter.append('feTurbulence')
+    .attr('type', 'turbulence')
+    .attr('baseFrequency', '0.02')
+    .attr('numOctaves', '2')
+    .attr('result', 'turbulence');
+  turbFilter.append('feDisplacementMap')
+    .attr('in', 'SourceGraphic')
+    .attr('in2', 'turbulence')
+    .attr('scale', '3')
+    .attr('xChannelSelector', 'R')
+    .attr('yChannelSelector', 'G');
+
+  // ── Bar termination marker for `imposibilita` ──
+  const barMarker = _defs.append('marker')
+    .attr('id', 'arrow-bar')
+    .attr('viewBox', '-2 -6 4 12')
+    .attr('refX', 22).attr('refY', 0)
+    .attr('markerWidth', 6).attr('markerHeight', 10)
+    .attr('orient', 'auto');
+  barMarker.append('line')
+    .attr('x1', 0).attr('y1', -6).attr('x2', 0).attr('y2', 6)
+    .attr('stroke', '#E74C3C').attr('stroke-width', 2.5);
+
+  // ── Stop-sign marker for `restringe_termo` ──
+  const stopMarker = _defs.append('marker')
+    .attr('id', 'arrow-stop')
+    .attr('viewBox', '-8 -8 16 16')
+    .attr('refX', 22).attr('refY', 0)
+    .attr('markerWidth', 8).attr('markerHeight', 8)
+    .attr('orient', 'auto');
+  stopMarker.append('circle')
+    .attr('cx', 0).attr('cy', 0).attr('r', 6)
+    .attr('fill', 'none').attr('stroke', '#E67E22').attr('stroke-width', 2);
+  stopMarker.append('line')
+    .attr('x1', -4).attr('y1', -4).attr('x2', 4).attr('y2', 4)
+    .attr('stroke', '#E67E22').attr('stroke-width', 1.5);
+
+  // ── X-shaped source marker for `colapsa` ──
+  const xMarker = _defs.append('marker')
+    .attr('id', 'arrow-x-source')
+    .attr('viewBox', '-6 -6 12 12')
+    .attr('refX', -18).attr('refY', 0)
+    .attr('markerWidth', 8).attr('markerHeight', 8)
+    .attr('orient', 'auto');
+  xMarker.append('line')
+    .attr('x1', -4).attr('y1', -4).attr('x2', 4).attr('y2', 4)
+    .attr('stroke', '#C0392B').attr('stroke-width', 2);
+  xMarker.append('line')
+    .attr('x1', 4).attr('y1', -4).attr('x2', -4).attr('y2', 4)
+    .attr('stroke', '#C0392B').attr('stroke-width', 2);
 }
 
 function _onResize() {
@@ -207,11 +318,49 @@ function _updateGraph() {
 
   if (_simulation) _simulation.stop();
 
+  // ── Pin Extreme_Nodes to fixed viewport positions ──
+  const EXTREME_PINS = {
+    w_T: [W/2, 40],
+    w_O: [W/2, H-40],
+    w_N: [40, H/2],
+    w_E: [W-40, H/2],
+    w_F: [W/2, H/2],
+  };
+  nodes.forEach(n => {
+    if (EXTREME_PINS[n.id]) {
+      n.fx = EXTREME_PINS[n.id][0];
+      n.fy = EXTREME_PINS[n.id][1];
+      // Set initial position to pin location
+      if (n.x === undefined) n.x = n.fx;
+      if (n.y === undefined) n.y = n.fy;
+    } else {
+      // Use initialX/initialY as starting positions
+      if (n.x === undefined && n.initialX !== undefined) n.x = n.initialX;
+      if (n.y === undefined && n.initialY !== undefined) n.y = n.initialY;
+    }
+  });
+
   _simulation = d3.forceSimulation(nodes)
     .force('link',      d3.forceLink(edges).id(d => d.id).distance(130).strength(0.45))
     .force('charge',    d3.forceManyBody().strength(-320))
     .force('center',    d3.forceCenter(W / 2, H / 2))
-    .force('collision', d3.forceCollide(40));
+    .force('collision', d3.forceCollide(40))
+    .force('cluster',   _buildClusterForce(nodes))
+    .force('extreme',   _buildExtremeForce(nodes));
+
+  const PADDING = 40;
+  const EXTREME_IDS_SET = new Set(['w_T', 'w_O', 'w_N', 'w_E', 'w_F']);
+
+  // Clamp on simulation end
+  _simulation.on('end', () => {
+    nodes.forEach(n => {
+      if (!EXTREME_IDS_SET.has(n.id)) {
+        n.x = Math.max(PADDING, Math.min(W - PADDING, n.x));
+        n.y = Math.max(PADDING, Math.min(H - PADDING, n.y));
+      }
+    });
+    _nodeGroup.selectAll('g.node').attr('transform', d => `translate(${d.x},${d.y})`);
+  });
 
   // ── EDGES ──
   const linkSel = _linkGroup.selectAll('path.link')
@@ -236,12 +385,32 @@ function _updateGraph() {
     .each(function(d) {
       const type = EDGE_ALIAS[d.type] || d.type;
       const style = EDGE_STYLE[type] || EDGE_STYLE['revelación'];
+      const markerEndId = style.markerEnd || `arrow-${type}`;
+      const markerStartId = style.markerStart || null;
       d3.select(this)
         .attr('stroke',           style.stroke)
-        .attr('stroke-width',     style.strokeWidth * (d.weight || 0.7))
+        .attr('stroke-width',     Math.max(1, Math.min(5, style.strokeWidth * (d.weight || 0.7))))
         .attr('stroke-dasharray', style.dashArray || null)
         .attr('stroke-opacity',   style.opacity)
-        .attr('marker-end',       `url(#arrow-${type})`);
+        .attr('filter',           style.filter || null)
+        .attr('marker-end',       `url(#${markerEndId})`)
+        .attr('marker-start',     markerStartId ? `url(#${markerStartId})` : null);
+    });
+
+  // ── Fusiona offset paths (second parallel line) ──
+  // Remove stale fusiona-2 paths first
+  _linkGroup.selectAll('path.link-fusiona-2').remove();
+
+  linkEnter.filter(d => (EDGE_ALIAS[d.type] || d.type) === 'fusiona')
+    .each(function(d) {
+      d3.select(this.parentNode).append('path')
+        .datum(d)
+        .attr('class', 'link link-fusiona-2')
+        .attr('fill', 'none')
+        .attr('stroke', '#1ABC9C')
+        .attr('stroke-width', 1.5)
+        .attr('stroke-opacity', 0.6)
+        .attr('pointer-events', 'none');
     });
 
   // ── NODES ──
@@ -265,12 +434,68 @@ function _updateGraph() {
     .on('click',   (e, d) => { e.stopPropagation(); _showNodePanel(e, d); })
     .on('keydown', (e, d) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); _showNodePanel(e, d); } });
 
-  // Circle
+  // ── Halo for Extreme_Nodes (appended BEFORE circle so it renders behind) ──
+  nodeEnter.filter(d => d.type === 'extremo')
+    .append('circle')
+    .attr('class', 'halo')
+    .attr('r', d => _nodeRadius(d) + 12)
+    .attr('fill', 'none')
+    .attr('stroke', d => NODE_STROKE[d.type] || '#4A7BC8')
+    .attr('stroke-width', 1)
+    .attr('stroke-opacity', 0.3)
+    .attr('pointer-events', 'none');
+
+  // ── Main circle ──
   nodeEnter.append('circle')
-    .attr('r', d => _nodeRadius(d))
+    .attr('r', d => {
+      if (_bridgeNodeIds.has(d.id)) return _nodeRadius(d) * 1.3;
+      return _nodeRadius(d);
+    })
     .attr('fill',         d => NODE_FILL[d.type]   || '#1A3050')
-    .attr('stroke',       d => NODE_STROKE[d.type] || '#4A7BC8')
-    .attr('stroke-width', 1.5);
+    .attr('stroke',       d => {
+      if (d.type === 'structural_limit') return '#FF6B35';
+      if (_bridgeNodeIds.has(d.id)) return '#C5A86B';
+      return NODE_STROKE[d.type] || '#4A7BC8';
+    })
+    .attr('stroke-width', d => {
+      if (d.type === 'structural_limit') return 2.5;
+      if (_bridgeNodeIds.has(d.id)) return 2.5;
+      return 1.5;
+    })
+    // Collapse indicator: reduced opacity + dashed border for high incognoscible nodes
+    .attr('stroke-dasharray', d => (d.horizon && d.horizon.incognoscible > 0.8) ? '4,3' : null)
+    .attr('opacity',           d => (d.horizon && d.horizon.incognoscible > 0.8) ? 0.6 : 1);
+
+  // ── Hexagonal clip for structural_limit nodes ──
+  nodeEnter.filter(d => d.type === 'structural_limit')
+    .each(function(d) {
+      const r = _nodeRadius(d);
+      const hexPoints = Array.from({length: 6}, (_, i) => {
+        const angle = (Math.PI / 3) * i - Math.PI / 6;
+        return `${r * Math.cos(angle)},${r * Math.sin(angle)}`;
+      }).join(' ');
+      const clipId = `hex-clip-${d.id.replace(/[^a-zA-Z0-9]/g, '_')}`;
+      _defs.append('clipPath').attr('id', clipId)
+        .append('polygon').attr('points', hexPoints);
+      d3.select(this).select('circle')
+        .attr('clip-path', `url(#${clipId})`)
+        .attr('r', r);
+    });
+
+  // ── Halo hover/focus handlers ──
+  nodeEnter
+    .on('mouseenter.halo', function(e, d) {
+      if (d.type === 'extremo') {
+        d3.select(this).select('.halo')
+          .attr('r', _nodeRadius(d) + 20);
+      }
+    })
+    .on('mouseleave.halo', function(e, d) {
+      if (d.type === 'extremo') {
+        d3.select(this).select('.halo')
+          .attr('r', _nodeRadius(d) + 12);
+      }
+    });
 
   // Symbol label inside
   nodeEnter.append('text')
@@ -299,9 +524,38 @@ function _updateGraph() {
 
   // ── TICK ──
   _simulation.on('tick', () => {
-    _linkGroup.selectAll('path.link').attr('d', _edgePath);
+    // Clamp non-pinned nodes to viewport bounds
+    nodes.forEach(n => {
+      if (!EXTREME_IDS_SET.has(n.id)) {
+        n.x = Math.max(PADDING, Math.min(W - PADDING, n.x));
+        n.y = Math.max(PADDING, Math.min(H - PADDING, n.y));
+      }
+    });
+
+    _linkGroup.selectAll('path.link:not(.link-fusiona-2)').attr('d', _edgePath);
+    _linkGroup.selectAll('path.link-fusiona-2').attr('d', d => _edgePathOffset(d, 4));
     _nodeGroup.selectAll('g.node').attr('transform', d => `translate(${d.x},${d.y})`);
+
+    // Update inaccessible region between w_O and w_N
+    const wO = nodes.find(n => n.id === 'w_O');
+    const wN = nodes.find(n => n.id === 'w_N');
+    if (wO && wN && _inaccessibleRegion) {
+      _inaccessibleRegion
+        .attr('cx', (wO.x + wN.x) / 2)
+        .attr('cy', (wO.y + wN.y) / 2);
+    }
+
+    // Update collapse zone centroid
+    const collapseNodes = nodes.filter(n => n.horizon && n.horizon.incognoscible > 0.5);
+    if (collapseNodes.length > 0 && _collapseZone) {
+      const cx = collapseNodes.reduce((s, n) => s + n.x, 0) / collapseNodes.length;
+      const cy = collapseNodes.reduce((s, n) => s + n.y, 0) / collapseNodes.length;
+      _collapseZone.attr('cx', cx).attr('cy', cy);
+    }
   });
+
+  // Apply initial layer visibility
+  _applyLayerVisibility();
 }
 
 // ─── EDGE PATH (quadratic Bézier for curved directed edges) ───────────────────
@@ -311,10 +565,213 @@ function _edgePath(d) {
   const tx = d.target.x, ty = d.target.y;
   // Slight curve offset so bidirectional edges don't overlap
   const dx = tx - sx, dy = ty - sy;
-  const dr = Math.sqrt(dx * dx + dy * dy);
   const cx = (sx + tx) / 2 - dy * 0.15;
   const cy = (sy + ty) / 2 + dx * 0.15;
   return `M${sx},${sy} Q${cx},${cy} ${tx},${ty}`;
+}
+
+// ─── EDGE PATH OFFSET (for fusiona second line) ───────────────────────────────
+
+function _edgePathOffset(d, offset) {
+  const sx = d.source.x, sy = d.source.y;
+  const tx = d.target.x, ty = d.target.y;
+  const dx = tx - sx, dy = ty - sy;
+  const len = Math.sqrt(dx*dx + dy*dy) || 1;
+  const nx = -dy/len * offset, ny = dx/len * offset;
+  const cx = (sx+tx)/2 - dy*0.15 + nx;
+  const cy = (sy+ty)/2 + dx*0.15 + ny;
+  return `M${sx+nx},${sy+ny} Q${cx},${cy} ${tx},${ty}`;
+}
+
+// ─── CLUSTER FORCE ────────────────────────────────────────────────────────────
+
+function _buildClusterForce(nodes) {
+  // Compute centroids per domain from initialX/initialY values
+  const centroids = {};
+  nodes.forEach(n => {
+    if (!n.domain) return;
+    if (!centroids[n.domain]) centroids[n.domain] = { x: 0, y: 0, count: 0 };
+    centroids[n.domain].x += (n.initialX || n.x || 350);
+    centroids[n.domain].y += (n.initialY || n.y || 260);
+    centroids[n.domain].count++;
+  });
+  Object.values(centroids).forEach(c => { c.x /= c.count; c.y /= c.count; });
+
+  return function(alpha) {
+    nodes.forEach(n => {
+      if (!n.domain || !centroids[n.domain]) return;
+      const c = centroids[n.domain];
+      n.vx += (c.x - n.x) * 0.08 * alpha;
+      n.vy += (c.y - n.y) * 0.08 * alpha;
+    });
+  };
+}
+
+// ─── EXTREME-NODE ATTRACTION/REPULSION FORCE ──────────────────────────────────
+
+function _buildExtremeForce(nodes) {
+  const EXTREME_IDS = new Set(['w_T', 'w_O', 'w_N', 'w_E', 'w_F']);
+  const extremeMap = {};
+  nodes.forEach(n => { if (EXTREME_IDS.has(n.id)) extremeMap[n.id] = n; });
+
+  return function(alpha) {
+    nodes.forEach(n => {
+      if (EXTREME_IDS.has(n.id)) return;
+      const hz = n.horizon || {};
+      const known   = hz.conocido       || 0;
+      const unknown = hz.desconocido    || 0;
+      const incog   = hz.incognoscible  || 0;
+
+      // w_T: attract high conocido
+      if (extremeMap.w_T && known > 0.5) {
+        n.vx += (extremeMap.w_T.x - n.x) * known * 0.02 * alpha;
+        n.vy += (extremeMap.w_T.y - n.y) * known * 0.02 * alpha;
+      }
+      // w_O: attract high incognoscible
+      if (extremeMap.w_O && incog > 0.3) {
+        n.vx += (extremeMap.w_O.x - n.x) * incog * 0.02 * alpha;
+        n.vy += (extremeMap.w_O.y - n.y) * incog * 0.02 * alpha;
+      }
+      // w_N: attract low combined
+      if (extremeMap.w_N && (known + unknown) < 0.3) {
+        n.vx += (extremeMap.w_N.x - n.x) * 0.015 * alpha;
+        n.vy += (extremeMap.w_N.y - n.y) * 0.015 * alpha;
+      }
+      // w_E: attract conocido === 1.0
+      if (extremeMap.w_E && known >= 0.95) {
+        n.vx += (extremeMap.w_E.x - n.x) * 0.03 * alpha;
+        n.vy += (extremeMap.w_E.y - n.y) * 0.03 * alpha;
+      }
+      // w_F: weak central attractor for all
+      if (extremeMap.w_F) {
+        n.vx += (extremeMap.w_F.x - n.x) * 0.005 * alpha;
+        n.vy += (extremeMap.w_F.y - n.y) * 0.005 * alpha;
+      }
+    });
+  };
+}
+
+// ─── BRIDGE NODE DETECTION ────────────────────────────────────────────────────
+
+function _computeBridgeNodes(nodes, edges) {
+  const nodeDomain = {};
+  nodes.forEach(n => { nodeDomain[n.id] = n.domain; });
+  const bridgeIds = new Set();
+  edges.forEach(e => {
+    const sid = e.source?.id || e.source;
+    const tid = e.target?.id || e.target;
+    if (nodeDomain[sid] && nodeDomain[tid] && nodeDomain[sid] !== nodeDomain[tid]) {
+      bridgeIds.add(sid);
+      bridgeIds.add(tid);
+    }
+  });
+  return bridgeIds;
+}
+
+// ─── TEMPORAL LAYER ANIMATION ─────────────────────────────────────────────────
+
+let _temporalAnimFrame = null;
+let _temporalBaseRadii = new Map(); // nodeId → base radius
+
+function _startTemporalAnimation() {
+  if (_temporalAnimFrame) return; // already running
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return; // static representation only
+
+  const period = 3000; // 3s period
+  const start = performance.now();
+
+  function tick(now) {
+    const t = ((now - start) % period) / period; // 0..1
+    const phase = Math.sin(t * 2 * Math.PI);     // -1..1
+
+    _nodeGroup && _nodeGroup.selectAll('g.node').each(function(d) {
+      if (!d || !d.horizon) return;
+      // Skip nodes being dragged
+      if (d.fx !== null && d.fx !== undefined && !['w_T','w_O','w_N','w_E','w_F'].includes(d.id)) return;
+
+      const hz = d.horizon;
+      const circle = d3.select(this).select('circle');
+      if (circle.empty()) return;
+
+      const baseR = _nodeRadius(d) * (_bridgeNodeIds.has(d.id) ? 1.3 : 1);
+      let dr = 0;
+      if (hz.desconocido > 0.5) {
+        dr = phase * 4 * hz.desconocido; // pulse outward
+      } else if (hz.conocido > 0.5) {
+        dr = phase * -2 * hz.conocido;   // pulse inward
+      }
+      circle.attr('r', Math.max(8, baseR + dr));
+    });
+
+    _temporalAnimFrame = requestAnimationFrame(tick);
+  }
+
+  _temporalAnimFrame = requestAnimationFrame(tick);
+}
+
+function _stopTemporalAnimation() {
+  if (_temporalAnimFrame) {
+    cancelAnimationFrame(_temporalAnimFrame);
+    _temporalAnimFrame = null;
+  }
+  // Restore base radii
+  _nodeGroup && _nodeGroup.selectAll('g.node')
+    .transition().duration(500)
+    .select('circle')
+    .attr('r', d => {
+      if (!d) return 16;
+      const base = _nodeRadius(d);
+      return _bridgeNodeIds.has(d.id) ? base * 1.3 : base;
+    });
+}
+
+// ─── LAYER VISIBILITY ─────────────────────────────────────────────────────────
+
+function _applyLayerVisibility() {
+  if (!_nodeGroup || !_linkGroup) return;
+
+  // Handle temporal layer animation
+  const activeLayers = layerSystem.getActiveLayers();
+  if (activeLayers.includes('temporal')) {
+    _startTemporalAnimation();
+  } else {
+    _stopTemporalAnimation();
+  }
+
+  _nodeGroup.selectAll('g.node')
+    .transition().duration(300)
+    .attr('opacity', d => layerSystem.isNodeVisible(d) ? 1 : 0)
+    .attr('pointer-events', d => layerSystem.isNodeVisible(d) ? 'all' : 'none');
+
+  _linkGroup.selectAll('path.link:not(.link-fusiona-2)')
+    .transition().duration(300)
+    .attr('opacity', d => {
+      if (!layerSystem.isEdgeVisible(d)) return 0;
+      const type = EDGE_ALIAS[d.type] || d.type;
+      return (EDGE_STYLE[type]?.opacity || 0.7);
+    })
+    .attr('pointer-events', d => layerSystem.isEdgeVisible(d) ? 'stroke' : 'none');
+
+  _linkGroup.selectAll('path.link-fusiona-2')
+    .transition().duration(300)
+    .attr('opacity', d => layerSystem.isEdgeVisible(d) ? 0.6 : 0);
+
+  // Update node panel layers section if open
+  if (_nodePanelEl && _nodePanelEl.classList.contains('visible') && _currentPanelNode) {
+    _updatePanelLayersSection(_currentPanelNode);
+  }
+}
+
+function _updatePanelLayersSection(node) {
+  const layersEl = _nodePanelEl && _nodePanelEl.querySelector('#panel-layers');
+  if (!layersEl) return;
+  const activeLayers = layerSystem.getActiveLayers();
+  const nodeLayers = node.layers || ['narrative'];
+  layersEl.innerHTML = nodeLayers.map(l => {
+    const isActive = activeLayers.includes(l);
+    return `<span class="layer-tag${isActive ? ' active' : ''}">${l}</span>`;
+  }).join(' ');
 }
 
 // ─── NODE RADIUS ──────────────────────────────────────────────────────────────
@@ -335,7 +792,10 @@ function _dragStart(e, d) {
 function _dragged(e, d) { d.fx = e.x; d.fy = e.y; }
 function _dragEnd(e, d) {
   if (!e.active) _simulation.alphaTarget(0);
-  d.fx = null; d.fy = null;
+  const EXTREME_IDS = new Set(['w_T', 'w_O', 'w_N', 'w_E', 'w_F']);
+  if (!EXTREME_IDS.has(d.id)) {
+    d.fx = null; d.fy = null;
+  }
 }
 
 // ─── NODE PANEL ───────────────────────────────────────────────────────────────
@@ -343,6 +803,8 @@ function _dragEnd(e, d) {
 function _showNodePanel(e, d) {
   const panel = _nodePanelEl;
   if (!panel) return;
+
+  _currentPanelNode = d;
 
   panel.querySelector('#panel-name').textContent = d.label || d.id;
   panel.querySelector('#panel-id').textContent   = d.id;
@@ -378,12 +840,92 @@ function _showNodePanel(e, d) {
     </div>
   `;
 
+  // Layers section
+  const layersContainer = panel.querySelector('#panel-layers');
+  if (layersContainer) {
+    _updatePanelLayersSection(d);
+  }
+
+  // Meta-logic rules section
+  const metalogicEl = panel.querySelector('#panel-metalogic');
+  if (metalogicEl) {
+    const ruleKey = METALOGIC_RULES[d.domain];
+    metalogicEl.textContent = ruleKey ? t(ruleKey) : '—';
+  }
+
+  // Structural limit note
+  const structLimitEl = panel.querySelector('#panel-structural-limit');
+  if (structLimitEl) {
+    const section = panel.querySelector('#panel-structural-limit-section');
+    if (section) {
+      section.style.display = d.type === 'structural_limit' ? 'block' : 'none';
+    }
+    structLimitEl.style.display = d.type === 'structural_limit' ? 'block' : 'none';
+  }
+
+  // Minimap SVG inset
+  const minimapEl = panel.querySelector('#panel-minimap');
+  if (minimapEl && _graphData) {
+    _renderMinimap(minimapEl, d);
+  }
+
   panel.classList.add('visible');
   _positionPanel(panel, e);
 }
 
 function _hideNodePanel() {
   _nodePanelEl && _nodePanelEl.classList.remove('visible');
+  _currentPanelNode = null;
+}
+
+// ─── MINIMAP ──────────────────────────────────────────────────────────────────
+
+function _renderMinimap(svgEl, selectedNode) {
+  const W = 120, H = 80;
+  const extremeNodes = _graphData.nodes.filter(n => n.type === 'extremo');
+
+  // Scale: map initialX/initialY to minimap dimensions
+  const allX = extremeNodes.map(n => n.initialX || 350);
+  const allY = extremeNodes.map(n => n.initialY || 260);
+  const minX = Math.min(...allX), maxX = Math.max(...allX);
+  const minY = Math.min(...allY), maxY = Math.max(...allY);
+  const scaleX = (x) => ((x - minX) / (maxX - minX + 1)) * (W - 20) + 10;
+  const scaleY = (y) => ((y - minY) / (maxY - minY + 1)) * (H - 20) + 10;
+
+  // Clear and rebuild
+  const svg = d3.select(svgEl);
+  svg.selectAll('*').remove();
+
+  // ARIA attributes
+  svg.attr('role', 'img').attr('aria-label', t('panel.minimap') || 'Posición en la topología');
+
+  // Draw extreme nodes as small circles
+  extremeNodes.forEach(n => {
+    svg.append('circle')
+      .attr('cx', scaleX(n.initialX || 350))
+      .attr('cy', scaleY(n.initialY || 260))
+      .attr('r', 4)
+      .attr('fill', '#4A7BC8')
+      .attr('opacity', 0.7);
+    svg.append('text')
+      .attr('x', scaleX(n.initialX || 350))
+      .attr('y', scaleY(n.initialY || 260) - 6)
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '6px')
+      .attr('fill', '#6A8AB8')
+      .text(n.id);
+  });
+
+  // Draw selected node
+  const sx = selectedNode.initialX || selectedNode.x || 350;
+  const sy = selectedNode.initialY || selectedNode.y || 260;
+  svg.append('circle')
+    .attr('cx', scaleX(sx))
+    .attr('cy', scaleY(sy))
+    .attr('r', 5)
+    .attr('fill', '#C5A86B')
+    .attr('stroke', '#FFD700')
+    .attr('stroke-width', 1.5);
 }
 
 // ─── EDGE PANEL ───────────────────────────────────────────────────────────────
@@ -413,7 +955,7 @@ function _onEdgeEnter(e, d) {
   const style = EDGE_STYLE[type] || EDGE_STYLE['revelación'];
   d3.select(this)
     .attr('stroke-opacity', 1)
-    .attr('stroke-width', style.strokeWidth * 1.6);
+    .attr('stroke-width', Math.max(1, Math.min(5, style.strokeWidth * 1.6)));
   _showEdgePanel(e, d);
 }
 function _onEdgeLeave(e, d) {
@@ -421,7 +963,7 @@ function _onEdgeLeave(e, d) {
   const style = EDGE_STYLE[type] || EDGE_STYLE['revelación'];
   d3.select(this)
     .attr('stroke-opacity', style.opacity)
-    .attr('stroke-width',   style.strokeWidth * (d.weight || 0.7));
+    .attr('stroke-width',   Math.max(1, Math.min(5, style.strokeWidth * (d.weight || 0.7))));
   _hideEdgePanel();
 }
 

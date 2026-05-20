@@ -7,11 +7,11 @@
   <meta name="theme-color" content="#0A0C12">
 
   <!-- Open Graph -->
-  <meta property="og:title"       content="Ontología del Secreto — Grafo Epistémico Modal Dinámico">
+  <meta property="og:title"       content="Ontología del secreto">
   <meta property="og:description" content="¿Cuál es el mejor secreto posible? Una exploración modal del conocimiento, el ocultamiento y los horizontes de lo incognoscible.">
   <meta property="og:type"        content="website">
 
-  <title>Ontología del Secreto — Grafo Epistémico Modal Dinámico</title>
+  <title>Ontología del secreto</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,23 +30,6 @@
 <nav aria-label="Navegación principal">
   <div class="nav-title">GEMD · 2026</div>
   <div class="nav-right">
-    <div class="nav-tabs" role="tablist" aria-label="Dominio epistémico">
-      <button class="nav-tab active" role="tab" aria-selected="true"
-              data-domain="all"
-              onclick="changeDomainUI('all',this)">Todo</button>
-      <button class="nav-tab" role="tab" aria-selected="false"
-              data-domain="science"
-              onclick="changeDomainUI('science',this)">Ciencia</button>
-      <button class="nav-tab" role="tab" aria-selected="false"
-              data-domain="political"
-              onclick="changeDomainUI('political',this)">Político</button>
-      <button class="nav-tab" role="tab" aria-selected="false"
-              data-domain="existential"
-              onclick="changeDomainUI('existential',this)">Existencial</button>
-      <button class="nav-tab" role="tab" aria-selected="false"
-              data-domain="math"
-              onclick="changeDomainUI('math',this)">Matemática</button>
-    </div>
     <button class="lang-btn" id="lang-btn"
             aria-label="Cambiar idioma / Switch language"
             onclick="toggleLang()">EN</button>
@@ -78,11 +61,38 @@
       <h2 id="s01-heading">El secreto no es<br>una <em>cosa</em>. Es una relación.</h2>
       <p>La intuición común trata el secreto como un objeto: algo que se guarda, que se esconde, que se pierde. Pero esta imagen es filosóficamente inadecuada. El secreto no existe en el vacío — existe siempre entre un <strong>contenido</strong>, un <strong>agente</strong> y un <strong>mundo epistémico</strong>.</p>
       <p>Formalizado en lógica modal, el secreto es una relación triádica:</p>
-      <div class="formula" role="math" aria-label="Fórmula: Secret de C, a, w es equivalente a C y no-K-sub-a de C, w">
-        Secret(C, a, w) &nbsp;≡&nbsp; C &nbsp;∧&nbsp; ¬Kₐ(C, w)<br>
-        <span class="comment">donde C = contenido · a = agente · w = mundo · K = operador de conocimiento</span>
+      <div class="formula-container">
+        <div class="formula" role="math" aria-label="Fórmula: Secret de C, a, w es equivalente a C y no-K-sub-a de C, w">
+          Secret(C, a, w) &nbsp;≡&nbsp; C &nbsp;∧&nbsp; ¬Kₐ(C, w)
+        </div>
+        <!-- Guía de Lectura Rápida en español -->
+        <div class="formula-legend" aria-label="Leyenda de la fórmula nuclear">
+          <div class="legend-title" id="formula-legend-title">Guía de Lectura Rápida</div>
+          <div class="legend-grid">
+            <div class="legend-cell font-mono">Secret(C, a, w)</div>
+            <div class="legend-cell" id="legend-secret-def"><strong>El Secreto:</strong> La relación en la que algo permanece oculto para un agente en un mundo específico.</div>
+            
+            <div class="legend-cell font-mono">≡</div>
+            <div class="legend-cell" id="legend-equiv-def"><strong>Equivale a:</strong> Significa que se definen y cumplen exactamente las condiciones a la derecha.</div>
+            
+            <div class="legend-cell font-mono">C</div>
+            <div class="legend-cell" id="legend-content-def"><strong>Contenido (C):</strong> La información o hecho real en cuestión (debe ser verdadero en el mundo actual).</div>
+            
+            <div class="legend-cell font-mono">∧</div>
+            <div class="legend-cell" id="legend-and-def"><strong>Y (Conjunción):</strong> Conector que exige que ambas partes de la fórmula se cumplan a la vez.</div>
+            
+            <div class="legend-cell font-mono">¬</div>
+            <div class="legend-cell" id="legend-not-def"><strong>No (Negación):</strong> Indica que lo que sigue es falso o que el agente no tiene acceso a ello.</div>
+            
+            <div class="legend-cell font-mono">Kₐ</div>
+            <div class="legend-cell" id="legend-know-def"><strong>Operador de Conocimiento (K):</strong> Lo que el agente <em>a</em> sabe o tiene incorporado en su marco epistémico.</div>
+            
+            <div class="legend-cell font-mono">(C, w)</div>
+            <div class="legend-cell" id="legend-world-def"><strong>(C, w):</strong> El contenido C dentro del contexto del mundo posible <em>w</em> en el que se sitúa la relación.</div>
+          </div>
+        </div>
       </div>
-      <p>Leído en español: <strong>hay secreto cuando un contenido C es verdadero en un mundo w, pero el agente a no lo conoce en ese mundo.</strong> No hay secreto sin alguien para quien sea secreto.</p>
+      <p id="formula-nuclear-explanation">Leído en español: <strong>hay secreto cuando un contenido C es verdadero en un mundo w, pero el agente a no lo conoce en ese mundo.</strong> No hay secreto sin alguien para quien sea secreto.</p>
       <p>Esta definición tiene consecuencias inmediatas: cambiar el agente, el mundo, o el contenido transforma — y puede eliminar — el secreto. Lo que es un misterio para un agente puede ser conocimiento rutinario para otro, en el mismo mundo.</p>
     </div>
   </section>
@@ -95,15 +105,36 @@
       <p>La filosofía popular confunde constantemente dos categorías que exigen separación rigurosa. Un secreto es cognoscible en principio. Un misterio, no.</p>
       <div class="distinction">
         <div class="distinction-card secret">
-          <h4>Secreto</h4>
-          <p>El agente no conoce C ahora, pero <em>podría</em> conocerlo. Existe al menos un mundo accesible donde el conocimiento ocurre.</p>
+          <h4 id="distinction-secret-title">Secreto</h4>
+          <p id="distinction-secret-desc">El agente no conoce C ahora, pero <em>podría</em> conocerlo. Existe al menos un mundo accesible donde el conocimiento ocurre.</p>
           <div class="mono" aria-label="Fórmula: no-K-a-C y posiblemente K-a-C">¬Kₐ(C) &nbsp;∧&nbsp; ◇Kₐ(C)</div>
         </div>
         <div class="distinction-card mystery">
-          <h4>Misterio</h4>
-          <p>No existe ningún mundo accesible donde el agente conozca C. La incognoscibilidad es <em>estructural</em>, no circunstancial.</p>
+          <h4 id="distinction-mystery-title">Misterio</h4>
+          <p id="distinction-mystery-desc">No existe ningún mundo accesible donde el agente conozca C. La incognoscibilidad es <em>estructural</em>, no circunstancial.</p>
           <div class="mono" aria-label="Fórmula: no-K-a-C y necesariamente no-K-a-C">¬Kₐ(C) &nbsp;∧&nbsp; □¬Kₐ(C)</div>
         </div>
+      </div>
+      
+      <!-- Desglose de símbolos lógicos de secreto vs. misterio -->
+      <div class="formula-explanation" aria-label="Explicación detallada de la lógica de secreto y misterio">
+        <div class="explanation-title" id="explanation-modal-title">Desglose de los Operadores Modales</div>
+        <ul class="explanation-list">
+          <li>
+            <span class="symbol font-mono">¬Kₐ(C) &nbsp;∧&nbsp; ◇Kₐ(C)</span>
+            <span class="desc" id="explanation-modal-secret">
+              <strong>Secreto Revelable:</strong> El agente no conoce C hoy <em>(¬Kₐ(C))</em>, <strong>Y</strong> es factible o posible que llegue a conocerlo en el futuro <em>(◇Kₐ(C))</em>.
+              <br><small class="text-dim">El rombo (<strong>◇</strong>) representa <strong>posibilidad modal</strong>: significa que existe al menos un mundo accesible donde la barrera de ignorancia cae.</small>
+            </span>
+          </li>
+          <li>
+            <span class="symbol font-mono">¬Kₐ(C) &nbsp;∧&nbsp; □¬Kₐ(C)</span>
+            <span class="desc" id="explanation-modal-mystery">
+              <strong>Misterio Absoluto:</strong> El agente no conoce C hoy <em>(¬Kₐ(C))</em>, <strong>Y</strong> es estrictamente necesario que nunca pueda conocerlo <em>(□¬Kₐ(C))</em>.
+              <br><small class="text-dim">El cuadrado (<strong>□</strong>) representa <strong>necesidad modal</strong>: indica que en todos los universos o mundos posibles de la estructura, la incognoscibilidad es absoluta.</small>
+            </span>
+          </li>
+        </ul>
       </div>
       <p>Ejemplos concretos: que la NSA tenga registros de tus llamadas es un <em>secreto</em> — es cognoscible, hay investigaciones periodísticas que lo han revelado. Que la experiencia subjetiva del dolor "se sienta de cierta manera" es, para muchos filósofos, un <em>misterio</em> — ningún acceso físico al cerebro parece poder capturarlo desde fuera.</p>
       <p>En el grafo modal que sigue, las aristas punteadas representan secretos (acceso posible). Las aristas bloqueadas en violeta representan misterios (incognoscibilidad estructural).</p>
@@ -160,6 +191,40 @@
             Toca o arrastra los nodos para explorar. Haz clic en un nodo para ver su ficha.
           </p>
         </div>
+        <!-- Domain selector -->
+        <div class="domain-selector-container">
+          <div class="panel-label" id="domain-selector-label">Dominio epistémico</div>
+          <div class="graph-controls" id="domain-filters" role="group" aria-label="Filtrar por dominio epistémico">
+            <button class="ctrl-btn active" data-domain="all"
+                    onclick="changeDomainUI('all',this)">Todo</button>
+            <button class="ctrl-btn" data-domain="science"
+                    onclick="changeDomainUI('science',this)">Ciencia</button>
+            <button class="ctrl-btn" data-domain="political"
+                    onclick="changeDomainUI('political',this)">Político</button>
+            <button class="ctrl-btn" data-domain="existential"
+                    onclick="changeDomainUI('existential',this)">Existencial</button>
+            <button class="ctrl-btn" data-domain="math"
+                    onclick="changeDomainUI('math',this)">Matemática</button>
+          </div>
+        </div>
+        <!-- Layer selector -->
+        <div class="layer-selector" id="layer-selector">
+          <div class="layer-panel" role="group" aria-label="Selector de capas" id="layer-panel">
+            <button class="layer-btn ctrl-btn" data-layer="topology" aria-pressed="true" aria-label="Activar capa de topología">Topología</button>
+            <button class="layer-btn ctrl-btn" data-layer="epistemic" aria-pressed="true" aria-label="Activar capa epistémica">Epistémico</button>
+            <button class="layer-btn ctrl-btn" data-layer="temporal" aria-pressed="true" aria-label="Activar capa temporal">Temporal</button>
+            <button class="layer-btn ctrl-btn" data-layer="metalogic" aria-pressed="true" aria-label="Activar capa metalógica">Metalógica</button>
+            <button class="layer-btn ctrl-btn" data-layer="narrative" aria-pressed="true" aria-label="Activar capa narrativa">Narrativa</button>
+          </div>
+          <select class="layer-dropdown" aria-label="Selector de capas" id="layer-dropdown">
+            <option value="topology">Topología</option>
+            <option value="epistemic">Epistémico</option>
+            <option value="temporal">Temporal</option>
+            <option value="metalogic">Metalógica</option>
+            <option value="narrative" selected>Narrativa</option>
+          </select>
+          <div class="layer-showing" id="layer-showing" aria-live="polite">Mostrando: Narrativa</div>
+        </div>
         <div>
           <!-- Edge filters -->
           <div class="graph-controls" id="edge-filters" role="group" aria-label="Filtrar por tipo de arista">
@@ -175,6 +240,11 @@
                     onclick="filterEdgeUI('compresión',this)">Compresión</button>
             <button class="ctrl-btn" data-filter="bifurcación"
                     onclick="filterEdgeUI('bifurcación',this)">Bifurcación</button>
+            <button class="ctrl-btn" data-filter="degrada" onclick="filterEdgeUI('degrada',this)">Degrada</button>
+            <button class="ctrl-btn" data-filter="imposibilita" onclick="filterEdgeUI('imposibilita',this)">Imposibilita</button>
+            <button class="ctrl-btn" data-filter="restringe_termo" onclick="filterEdgeUI('restringe_termo',this)">Restringe (termo)</button>
+            <button class="ctrl-btn" data-filter="fusiona" onclick="filterEdgeUI('fusiona',this)">Fusiona</button>
+            <button class="ctrl-btn" data-filter="colapsa" onclick="filterEdgeUI('colapsa',this)">Colapsa</button>
           </div>
           <!-- Legend -->
           <div class="legend" aria-label="Leyenda de tipos de arista">
@@ -197,6 +267,26 @@
             <div class="legend-item" data-type="Bifurcation">
               <div class="legend-line" style="background:#8E44AD; border-top:2px dashed #8E44AD; height:0;"></div>
               <span>Bifurcación</span>
+            </div>
+            <div class="legend-item" data-type="Degrada">
+              <div class="legend-line" style="background:#9B59B6; border-top:2px dashed #9B59B6; height:0;"></div>
+              <span>Degrada</span>
+            </div>
+            <div class="legend-item" data-type="Imposibilita">
+              <div class="legend-line" style="background:#E74C3C;"></div>
+              <span>Imposibilita</span>
+            </div>
+            <div class="legend-item" data-type="Restringe_termo">
+              <div class="legend-line" style="background:#E67E22; border-top:2px dashed #E67E22; height:0;"></div>
+              <span>Restringe (termo)</span>
+            </div>
+            <div class="legend-item" data-type="Fusiona">
+              <div class="legend-line" style="background:#1ABC9C;"></div>
+              <span>Fusiona</span>
+            </div>
+            <div class="legend-item" data-type="Colapsa">
+              <div class="legend-line" style="background:#C0392B; border-top:2px dashed #C0392B; height:0;"></div>
+              <span>Colapsa</span>
             </div>
           </div>
         </div>
@@ -231,6 +321,21 @@
             <div class="panel-label" id="panel-label-refs">Referencias</div>
             <div class="panel-content" id="panel-refs" style="font-size:0.78rem; font-style:italic;"></div>
           </div>
+          <div class="panel-section" aria-label="Capas del nodo">
+            <div class="panel-label" id="panel-label-layers">Capas</div>
+            <div class="panel-content" id="panel-layers"></div>
+          </div>
+          <div class="panel-section" aria-label="Reglas metalógicas">
+            <div class="panel-label" id="panel-label-metalogic">Reglas metalógicas</div>
+            <div class="panel-content" id="panel-metalogic" style="font-size:0.78rem; font-style:italic;"></div>
+          </div>
+          <div class="panel-section" id="panel-structural-limit-section" style="display:none;" aria-label="Límite estructural">
+            <div class="panel-content" id="panel-structural-limit" style="font-size:0.78rem; color:#FF6B35; font-style:italic;">
+              Límite estructural no-antropocéntrico
+            </div>
+          </div>
+          <svg class="minimap" id="panel-minimap" width="120" height="80"
+               role="img" aria-label="Posición en la topología"></svg>
         </div>
       </div>
 
@@ -273,6 +378,39 @@
       </div>
       <p>Este principio conecta con el <span class="tip" data-tip="Gödel demostró que en cualquier sistema formal suficientemente expresivo, existen verdades que el sistema no puede demostrar desde dentro de sí mismo.">Teorema de Incompletitud de Gödel</span>, con la <span class="tip" data-tip="Chaitin mostró que la complejidad algorítmica genera inevitablemente verdades matemáticas que son irreducibles — no derivables de axiomas finitos.">complejidad algorítmica de Chaitin</span> y con la práctica científica real: cada modelo que se confirma abre diez preguntas nuevas.</p>
       <p>No hay "conservación del secreto": hay transformación perpetua de las fronteras entre lo conocido, lo desconocido y lo incognoscible.</p>
+    </div>
+  </section>
+
+  <!-- § 05b — TOPOLOGÍA -->
+  <section id="s05b" aria-labelledby="s05b-heading" data-layer="topology">
+    <div class="fade-in">
+      <div class="section-label">§ 05b — Topología epistémica</div>
+      <h2 id="s05b-heading">Los cinco mundos<br>como <em>polos modales</em></h2>
+      <p>La topología del grafo no es arbitraria. Los cinco mundos extremos — Transparencia, Opacidad, Eternidad, No-dualidad y Cognición Finita — actúan como polos que estructuran el espacio de todos los mundos posibles.</p>
+      <p>Cada nodo del grafo ocupa una posición determinada por su distancia relativa a estos polos. Un mundo con alto conocimiento se acerca a w_T; uno con alta incognoscibilidad se acerca a w_O. La topología es la geometría del secreto.</p>
+      <p>Activa la capa de <strong>Topología</strong> en el selector para ver los nodos de límite estructural y los polos modales en su posición relativa.</p>
+    </div>
+  </section>
+
+  <!-- § 05c — METALÓGICA -->
+  <section id="s05c" aria-labelledby="s05c-heading" data-layer="metalogic">
+    <div class="fade-in">
+      <div class="section-label">§ 05c — Límites estructurales</div>
+      <h2 id="s05c-heading">Más allá del agente:<br><em>límites formales</em></h2>
+      <p>Hasta ahora hemos hablado de secretos relativos a agentes: lo que alguien no sabe pero podría saber. Pero existen barreras que no dependen de ningún agente — son límites formales, computacionales y físicos.</p>
+      <p>El <strong>Límite de Gödel</strong> imposibilita que cualquier sistema formal suficientemente expresivo sea completo. El <strong>Límite de Turing</strong> hace irresoluble el problema de la parada. La <strong>Indeterminación Cuántica</strong> establece un piso irreducible de incertidumbre. El <strong>Horizonte Caótico</strong> hace impredecible el largo plazo. La <strong>Flecha Termodinámica</strong> hace asimétrico el tiempo.</p>
+      <p>Estos no son secretos — son misterios estructurales. Activa la capa <strong>Metalógica</strong> para verlos en el grafo.</p>
+    </div>
+  </section>
+
+  <!-- § 05d — TEMPORAL -->
+  <section id="s05d" aria-labelledby="s05d-heading" data-layer="temporal">
+    <div class="fade-in">
+      <div class="section-label">§ 05d — Dinámica temporal</div>
+      <h2 id="s05d-heading">Las fronteras<br><em>se mueven</em></h2>
+      <p>El conocimiento no es estático. Las fronteras epistémicas se expanden y comprimen con el tiempo: nuevos descubrimientos amplían lo conocido, pero también revelan nuevas regiones de ignorancia.</p>
+      <p>La capa <strong>Temporal</strong> del grafo captura esta dinámica: los nodos con alto horizonte de desconocido pulsan hacia afuera, los de alto conocido se comprimen. La cognición finita regenerativa (w_F) es el motor de esta dinámica perpetua.</p>
+      <p>Activa la capa <strong>Temporal</strong> para observar la animación de las fronteras cognitivas.</p>
     </div>
   </section>
 
@@ -323,16 +461,18 @@
       <div class="museum-key">Corriente</div>
       <div class="museum-val">Arte + Ciencia + Dataísmo</div>
       <div class="museum-key">Métodos</div>
-      <div class="museum-val">Lógica modal (Kripke) · Teoría de grafos · Epistemología formal · Topología epistémica · Semántica de mundos posibles · Visualización de datos (D3.js)</div>
+      <div class="museum-val">Lógica modal (Kripke) · Teoría de grafos · Epistemología formal · Topología epistémica estratificada · Semántica de mundos posibles · Visualización de datos (D3.js) · Límites formales y computacionales · Termodinámica de la información</div>
       <div class="museum-key">Referencias</div>
-      <div class="museum-val">Saul Kripke · G. W. Leibniz · Jaakko Hintikka · Edmund Gettier · David Chalmers · Kurt Gödel · Gregory Chaitin · Johan van Benthem · Alexandru Baltag · Luciano Floridi</div>
-      <div class="museum-key">Stack</div>
-      <div class="museum-val">HTML5 · CSS3 · JavaScript ES6 · D3.js v7</div>
+      <div class="museum-val">Saul Kripke · G. W. Leibniz · Jaakko Hintikka · Edmund Gettier · David Chalmers · Kurt Gödel · Gregory Chaitin · Johan van Benthem · Alexandru Baltag · Luciano Floridi · Werner Heisenberg · Edward Lorenz · Ludwig Boltzmann · Alan Turing</div>
+      <div class="museum-key" id="footer-code-key">Repositorio</div>
+      <div class="museum-val" id="footer-code-val">
+        <a href="https://github.com/willkwolf/secret-ontology" target="_blank" rel="noopener noreferrer" style="color:var(--gold); text-decoration:underline;">github.com/willkwolf/secret-ontology</a>
+      </div>
     </div>
     <hr class="museum-sep">
     <p class="museum-limitations">
       <strong style="color:var(--text-dim); font-style:normal;">Limitaciones del modelo:</strong>
-      El grafo es una abstracción finita de fenómenos continuos; no captura la temporalidad subjetiva del agente ni la dimensión afectiva de lo oculto. La clasificación de aristas es estilizada y no agota todas las transformaciones epistémicas posibles. La representación de la incognoscibilidad es intrínsecamente paradójica al intentar visualizar lo que no puede ser delineado desde dentro del sistema.
+      El grafo es una abstracción finita de fenómenos continuos; no captura la temporalidad subjetiva del agente ni la dimensión afectiva de lo oculto. La clasificación de aristas es estilizada y no agota todas las transformaciones epistémicas posibles. La representación de la incognoscibilidad es intrínsecamente paradójica al intentar visualizar lo que no puede ser delineado desde dentro del sistema. El sistema de capas es una aproximación finita de estratos ontológicos continuos. La capa temporal anima pero no simula dinámicas epistémicas reales.
     </p>
     <div class="cc">
       <a href="https://creativecommons.org/licenses/by-sa/4.0/"
