@@ -216,32 +216,32 @@
       <p>Para cartografiar el espacio del secreto, primero necesitamos sus fronteras. Los <span class="tip" data-tip="En la semántica de Kripke, los mundos posibles son situaciones completas — no universos físicos, sino estados totales de cosas, incluyendo qué se sabe y qué no.">mundos posibles</span> extremos definen los polos del grafo:</p>
       <div class="worlds-grid">
         <div class="world-card">
-          <div class="world-sym">w_T</div>
+          <div class="world-sym">w<sub>T</sub></div>
           <h4>Transparencia absoluta</h4>
           <p>Todo contenido es conocido por todos los agentes. El secreto es imposible por definición.</p>
         </div>
         <div class="world-card">
-          <div class="world-sym">w_O</div>
+          <div class="world-sym">w<sub>O</sub></div>
           <h4>Opacidad absoluta</h4>
           <p>Ningún contenido es cognoscible. El conocimiento mismo colapsa. No hay agentes epistémicos.</p>
         </div>
         <div class="world-card">
-          <div class="world-sym">w_E</div>
+          <div class="world-sym">w<sub>E</sub></div>
           <h4>Conocimiento eterno</h4>
           <p>Toda verdad es conocida. No hay frontera dinámica, no hay emergencia de nuevas incertidumbres.</p>
         </div>
         <div class="world-card">
-          <div class="world-sym">w_F</div>
+          <div class="world-sym">w<sub>F</sub></div>
           <h4>Cognición finita regenerativa</h4>
           <p>El conocimiento crece pero siempre emergen nuevas regiones de incertidumbre: horizonte móvil.</p>
         </div>
         <div class="world-card">
-          <div class="world-sym">w_N</div>
+          <div class="world-sym">w<sub>N</sub></div>
           <h4>No-dualidad epistémica</h4>
           <p>La distinción sujeto-objeto colapsa. No hay secreto porque no hay agente separado del contenido.</p>
         </div>
       </div>
-      <p>Nuestro mundo — el universo tal como lo habitamos — es una variación de w_F: conocimiento real pero finito, con un horizonte que se desplaza pero nunca desaparece.</p>
+      <p>Nuestro mundo — el universo tal como lo habitamos — es una variación de <strong>Cognición finita regenerativa (w<sub>F</sub>)</strong>: conocimiento real pero finito, con un horizonte que se desplaza pero nunca desaparece.</p>
     </div>
   </section>
 
@@ -258,120 +258,151 @@
             Toca o arrastra los nodos para explorar. Haz clic en un nodo para ver su ficha.
           </p>
         </div>
-        <!-- Domain selector -->
-        <div class="domain-selector-container">
-          <div class="panel-label" id="domain-selector-label">Dominio epistémico</div>
-          <div class="graph-controls" id="domain-filters" role="group" aria-label="Filtrar por dominio epistémico">
-            <button class="ctrl-btn active" data-domain="all"
-                    onclick="changeDomainUI('all',this)">Todo</button>
-            <button class="ctrl-btn" data-domain="science"
-                    onclick="changeDomainUI('science',this)">Ciencia</button>
-            <button class="ctrl-btn" data-domain="political"
-                    onclick="changeDomainUI('political',this)">Político</button>
-            <button class="ctrl-btn" data-domain="existential"
-                    onclick="changeDomainUI('existential',this)">Existencial</button>
-            <button class="ctrl-btn" data-domain="math"
-                    onclick="changeDomainUI('math',this)">Matemática</button>
-          </div>
-        </div>
-        <!-- Layer selector -->
-        <div class="layer-selector" id="layer-selector">
-          <div class="layer-panel" role="group" aria-label="Selector de capas" id="layer-panel">
-            <button class="layer-btn ctrl-btn" data-layer="topology" aria-pressed="true" aria-label="Activar capa de topología">Topología</button>
-            <button class="layer-btn ctrl-btn" data-layer="epistemic" aria-pressed="true" aria-label="Activar capa epistémica">Epistémico</button>
-            <button class="layer-btn ctrl-btn" data-layer="temporal" aria-pressed="true" aria-label="Activar capa temporal">Temporal</button>
-            <button class="layer-btn ctrl-btn" data-layer="metalogic" aria-pressed="true" aria-label="Activar capa metalógica">Metalógica</button>
-            <button class="layer-btn ctrl-btn" data-layer="narrative" aria-pressed="true" aria-label="Activar capa narrativa">Narrativa</button>
-          </div>
-          <select class="layer-dropdown" aria-label="Selector de capas" id="layer-dropdown">
-            <option value="topology">Topología</option>
-            <option value="epistemic">Epistémico</option>
-            <option value="temporal">Temporal</option>
-            <option value="metalogic">Metalógica</option>
-            <option value="narrative" selected>Narrativa</option>
-          </select>
-          <div class="layer-showing" id="layer-showing" aria-live="polite">Mostrando: Narrativa</div>
-        </div>
-        <!-- Tour selector -->
-        <div class="tour-selector-container">
-          <div class="panel-label" id="tour-selector-label">Recorridos Guiados</div>
-          <div class="graph-controls" id="tour-selector" role="group" aria-label="Recorridos guiados">
-            <button class="ctrl-btn" data-tour="reveal" id="btn-tour-reveal">Ruta de la Revelación</button>
-            <button class="ctrl-btn" data-tour="mystery" id="btn-tour-mystery">Senda del Misterio</button>
-            <button class="ctrl-btn" data-tour="computability" id="btn-tour-computability">Límite Computacional</button>
-          </div>
-        </div>
-        <div>
-          <!-- Edge filters -->
-          <div class="graph-controls" id="edge-filters" role="group" aria-label="Filtrar por tipo de arista">
-            <button class="ctrl-btn active" data-filter="all"
-                    onclick="filterEdgeUI('all',this)">Todas las aristas</button>
-            <button class="ctrl-btn" data-filter="revelación"
-                    onclick="filterEdgeUI('revelación',this)">Revelación</button>
-            <button class="ctrl-btn" data-filter="ocultamiento"
-                    onclick="filterEdgeUI('ocultamiento',this)">Ocultamiento</button>
-            <button class="ctrl-btn" data-filter="emergencia"
-                    onclick="filterEdgeUI('emergencia',this)">Emergencia</button>
-            <button class="ctrl-btn" data-filter="compresión"
-                    onclick="filterEdgeUI('compresión',this)">Compresión</button>
-            <button class="ctrl-btn" data-filter="bifurcación"
-                    onclick="filterEdgeUI('bifurcación',this)">Bifurcación</button>
-            <button class="ctrl-btn" data-filter="degrada" onclick="filterEdgeUI('degrada',this)">Degrada</button>
-            <button class="ctrl-btn" data-filter="imposibilita" onclick="filterEdgeUI('imposibilita',this)">Imposibilita</button>
-            <button class="ctrl-btn" data-filter="restringe_termo" onclick="filterEdgeUI('restringe_termo',this)">Restringe (termo)</button>
-            <button class="ctrl-btn" data-filter="fusiona" onclick="filterEdgeUI('fusiona',this)">Fusiona</button>
-            <button class="ctrl-btn" data-filter="colapsa" onclick="filterEdgeUI('colapsa',this)">Colapsa</button>
-          </div>
-          <!-- Legend -->
-          <div class="legend" aria-label="Leyenda de tipos de arista">
-            <div class="legend-item" data-type="Revelation">
-              <div class="legend-line" style="background:#C5A86B; border-top:2px dashed #C5A86B; height:0;"></div>
-              <span>Revelación</span>
-            </div>
-            <div class="legend-item" data-type="Concealment">
-              <div class="legend-line" style="background:#7F8C8D;"></div>
-              <span>Ocultamiento</span>
-            </div>
-            <div class="legend-item" data-type="Emergence">
-              <div class="legend-line" style="background:#5DADE2; border-top:2px dashed #5DADE2; height:0;"></div>
-              <span>Emergencia</span>
-            </div>
-            <div class="legend-item" data-type="Compression">
-              <div class="legend-line" style="background:#1ABC9C;"></div>
-              <span>Compresión</span>
-            </div>
-            <div class="legend-item" data-type="Bifurcation">
-              <div class="legend-line" style="background:#8E44AD; border-top:2px dashed #8E44AD; height:0;"></div>
-              <span>Bifurcación</span>
-            </div>
-            <div class="legend-item" data-type="Degrada">
-              <div class="legend-line" style="background:#9B59B6; border-top:2px dashed #9B59B6; height:0;"></div>
-              <span>Degrada</span>
-            </div>
-            <div class="legend-item" data-type="Imposibilita">
-              <div class="legend-line" style="background:#E74C3C;"></div>
-              <span>Imposibilita</span>
-            </div>
-            <div class="legend-item" data-type="Restringe_termo">
-              <div class="legend-line" style="background:#E67E22; border-top:2px dashed #E67E22; height:0;"></div>
-              <span>Restringe (termo)</span>
-            </div>
-            <div class="legend-item" data-type="Fusiona">
-              <div class="legend-line" style="background:#1ABC9C;"></div>
-              <span>Fusiona</span>
-            </div>
-            <div class="legend-item" data-type="Colapsa">
-              <div class="legend-line" style="background:#C0392B; border-top:2px dashed #C0392B; height:0;"></div>
-              <span>Colapsa</span>
-            </div>
-          </div>
-        </div>
       </div>
 
-      <div style="position:relative;">
+      <div class="graph-relative-wrapper">
+        <!-- Floating HUD Header Overlay -->
+        <div class="graph-overlay-header">
+          <!-- 1. Domain Selector Group -->
+          <div class="graph-overlay-group domain-overlay-group">
+            <div class="panel-label" id="domain-selector-label">Dominio epistémico</div>
+            
+            <!-- Desktop Buttons -->
+            <div class="desktop-only-controls graph-controls" id="domain-filters" role="group" aria-label="Filtrar por dominio epistémico">
+              <button class="ctrl-btn active" data-domain="all" onclick="changeDomainUI('all',this)">Todo</button>
+              <button class="ctrl-btn" data-domain="science" onclick="changeDomainUI('science',this)">Ciencia</button>
+              <button class="ctrl-btn" data-domain="political" onclick="changeDomainUI('political',this)">Político</button>
+              <button class="ctrl-btn" data-domain="existential" onclick="changeDomainUI('existential',this)">Existencial</button>
+              <button class="ctrl-btn" data-domain="math" onclick="changeDomainUI('math',this)">Matemática</button>
+            </div>
+            
+            <!-- Mobile Selector -->
+            <select id="mobile-domain-select" class="mobile-only-select overlay-select" aria-label="Seleccionar dominio epistémico" onchange="changeDomainUI(this.value, null)">
+              <option value="all">Todo</option>
+              <option value="science">Ciencia</option>
+              <option value="political">Político</option>
+              <option value="existential">Existencial</option>
+              <option value="math">Matemática</option>
+            </select>
+          </div>
+
+          <!-- 2. Layer Selector Group -->
+          <div class="graph-overlay-group layer-overlay-group" id="layer-selector">
+            <div class="panel-label" id="layers-selector-label">Capas</div>
+            
+            <!-- Desktop Buttons -->
+            <div class="desktop-only-controls layer-panel" role="group" aria-label="Selector de capas" id="layer-panel">
+              <button class="layer-btn ctrl-btn" data-layer="topology" aria-pressed="true" aria-label="Activar capa de topología">Topología</button>
+              <button class="layer-btn ctrl-btn" data-layer="epistemic" aria-pressed="true" aria-label="Activar capa epistémica">Epistémico</button>
+              <button class="layer-btn ctrl-btn" data-layer="temporal" aria-pressed="true" aria-label="Activar capa temporal">Temporal</button>
+              <button class="layer-btn ctrl-btn" data-layer="metalogic" aria-pressed="true" aria-label="Activar capa metalógica">Metalógica</button>
+              <button class="layer-btn ctrl-btn" data-layer="narrative" aria-pressed="true" aria-label="Activar capa narrativa">Narrativa</button>
+            </div>
+            
+            <!-- Mobile Selector -->
+            <select class="layer-dropdown overlay-select" aria-label="Selector de capas" id="layer-dropdown">
+              <option value="topology">Topología</option>
+              <option value="epistemic">Epistémico</option>
+              <option value="temporal">Temporal</option>
+              <option value="metalogic">Metalógica</option>
+              <option value="narrative" selected>Narrativa</option>
+            </select>
+            <div class="layer-showing" id="layer-showing" aria-live="polite">Mostrando: Narrativa</div>
+          </div>
+
+          <!-- 3. Tour Selector Group -->
+          <div class="graph-overlay-group tour-overlay-group">
+            <div class="panel-label" id="tour-selector-label">Recorridos Guiados</div>
+            
+            <!-- Desktop Buttons -->
+            <div class="desktop-only-controls graph-controls" id="tour-selector" role="group" aria-label="Recorridos guiados">
+              <button class="ctrl-btn" data-tour="reveal" id="btn-tour-reveal">Ruta de la Revelación</button>
+              <button class="ctrl-btn" data-tour="mystery" id="btn-tour-mystery">Senda del Misterio</button>
+              <button class="ctrl-btn" data-tour="computability" id="btn-tour-computability">Límite Computacional</button>
+            </div>
+            
+            <!-- Mobile Selector -->
+            <select id="mobile-tour-select" class="mobile-only-select overlay-select" aria-label="Seleccionar recorrido guiado">
+              <option value="" id="opt-tour-none">Seleccionar recorrido...</option>
+              <option value="reveal" id="opt-tour-reveal">Ruta de la Revelación</option>
+              <option value="mystery" id="opt-tour-mystery">Senda del Misterio</option>
+              <option value="computability" id="opt-tour-computability">Límite Computacional</option>
+            </select>
+          </div>
+        </div>
+
         <svg id="graph-svg" height="520"
              aria-label="Grafo epistémico modal dinámico interactivo"
              role="img"></svg>
+
+        <!-- Toggle Legend button at bottom-right of SVG container -->
+        <button id="toggle-legend-btn" class="toggle-legend-btn" aria-expanded="false" aria-controls="overlay-legend-card">
+          Aristas & Leyenda ⇅
+        </button>
+
+        <!-- Collapsible overlay Legend + Edge Filters card -->
+        <div id="overlay-legend-card" class="overlay-legend-card" role="region" aria-label="Leyenda y Filtro de Aristas">
+          <div class="overlay-legend-title" id="legend-overlay-title">Aristas & Leyenda</div>
+          
+          <div class="mobile-edge-filter-container">
+            <select id="mobile-edge-filter" class="overlay-select" aria-label="Filtrar por tipo de arista">
+              <option value="all">Todas las aristas</option>
+              <option value="revelación">Revelación</option>
+              <option value="ocultamiento">Ocultamiento</option>
+              <option value="emergencia">Emergencia</option>
+              <option value="compresión">Compresión</option>
+              <option value="bifurcación">Bifurcación</option>
+              <option value="degrada">Degrada</option>
+              <option value="imposibilita">Imposibilita</option>
+              <option value="restringe_termo">Restringe (termo)</option>
+              <option value="fusiona">Fusiona</option>
+              <option value="colapsa">Colapsa</option>
+            </select>
+          </div>
+
+          <div class="compact-legend-list">
+            <div class="legend-item" data-type="Revelation">
+              <div class="legend-line" style="border-top: 2px dashed #C5A86B;"></div>
+              <span id="legend-lbl-revelation">Revelación</span>
+            </div>
+            <div class="legend-item" data-type="Concealment">
+              <div class="legend-line" style="background: #7F8C8D;"></div>
+              <span id="legend-lbl-concealment">Ocultamiento</span>
+            </div>
+            <div class="legend-item" data-type="Emergence">
+              <div class="legend-line" style="border-top: 2px dashed #5DADE2;"></div>
+              <span id="legend-lbl-emergence">Emergencia</span>
+            </div>
+            <div class="legend-item" data-type="Compression">
+              <div class="legend-line" style="background: #1ABC9C;"></div>
+              <span id="legend-lbl-compression">Compresión</span>
+            </div>
+            <div class="legend-item" data-type="Bifurcation">
+              <div class="legend-line" style="border-top: 2px dashed #8E44AD;"></div>
+              <span id="legend-lbl-bifurcation">Bifurcación</span>
+            </div>
+            <div class="legend-item" data-type="Degrada">
+              <div class="legend-line" style="border-top: 2px dashed #9B59B6;"></div>
+              <span id="legend-lbl-degrada">Degrada</span>
+            </div>
+            <div class="legend-item" data-type="Imposibilita">
+              <div class="legend-line" style="background: #E74C3C;"></div>
+              <span id="legend-lbl-imposibilita">Imposibilita</span>
+            </div>
+            <div class="legend-item" data-type="Restringe_termo">
+              <div class="legend-line" style="border-top: 2px dashed #E67E22;"></div>
+              <span id="legend-lbl-restringe">Restringe (termo)</span>
+            </div>
+            <div class="legend-item" data-type="Fusiona">
+              <div class="legend-line" style="background: #1ABC9C;"></div>
+              <span id="legend-lbl-fusiona">Fusiona</span>
+            </div>
+            <div class="legend-item" data-type="Colapsa">
+              <div class="legend-line" style="border-top: 2px dashed #C0392B;"></div>
+              <span id="legend-lbl-colapsa">Colapsa</span>
+            </div>
+          </div>
+        </div>
 
         <!-- Tour narrative panel -->
         <div class="tour-panel" id="tour-narrative-panel" style="display:none;" role="dialog" aria-modal="false" aria-labelledby="tour-badge-text">
@@ -478,7 +509,7 @@
       <div class="section-label">§ 05b — Topología epistémica</div>
       <h2 id="s05b-heading">Los cinco mundos<br>como <em>polos modales</em></h2>
       <p>La topología del grafo no es arbitraria. Los cinco mundos extremos — Transparencia, Opacidad, Eternidad, No-dualidad y Cognición Finita — actúan como polos que estructuran el espacio de todos los mundos posibles.</p>
-      <p>Cada nodo del grafo ocupa una posición determinada por su distancia relativa a estos polos. Un mundo con alto conocimiento se acerca a w_T; uno con alta incognoscibilidad se acerca a w_O. La topología es la geometría del secreto.</p>
+      <p>Cada nodo del grafo ocupa una posición determinada por su distancia relativa a estos polos. Un mundo con alto conocimiento se acerca a <strong>Transparencia absoluta (w<sub>T</sub>)</strong>; uno con alta incognoscibilidad se acerca a <strong>Opacidad absoluta (w<sub>O</sub>)</strong>. La topología es la geometría del secreto.</p>
       <p>Activa la capa de <strong>Topología</strong> en el selector para ver los nodos de límite estructural y los polos modales en su posición relativa.</p>
     </div>
   </section>
@@ -500,7 +531,7 @@
       <div class="section-label">§ 05d — Dinámica temporal</div>
       <h2 id="s05d-heading">Las fronteras<br><em>se mueven</em></h2>
       <p>El conocimiento no es estático. Las fronteras epistémicas se expanden y comprimen con el tiempo: nuevos descubrimientos amplían lo conocido, pero también revelan nuevas regiones de ignorancia.</p>
-      <p>La capa <strong>Temporal</strong> del grafo captura esta dinámica: los nodos con alto horizonte de desconocido pulsan hacia afuera, los de alto conocido se comprimen. La cognición finita regenerativa (w_F) es el motor de esta dinámica perpetua.</p>
+      <p>La capa <strong>Temporal</strong> del grafo captura esta dinámica: los nodos con alto horizonte de desconocido pulsan hacia afuera, los de alto conocido se comprimen. La <strong>Cognición finita regenerativa (w<sub>F</sub>)</strong> es el motor de esta dinámica perpetua.</p>
       <p>Activa la capa <strong>Temporal</strong> para observar la animación de las fronteras cognitivas.</p>
     </div>
   </section>

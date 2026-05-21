@@ -1132,6 +1132,14 @@ window.startGuidedTour = function(tourId) {
   // Close standard node panel if visible
   _hideNodePanel();
   
+  // Sync desktop buttons active class
+  document.querySelectorAll('#tour-selector .ctrl-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tour === tourId);
+  });
+  // Sync mobile select value
+  const select = document.getElementById('mobile-tour-select');
+  if (select) select.value = tourId;
+  
   // Render first step
   _renderTourStep();
 };
@@ -1155,6 +1163,14 @@ window.prevTourStep = function() {
 window.exitGuidedTour = function() {
   _activeTour = null;
   _activeTourStep = 0;
+  
+  // Sync desktop buttons (remove all active classes)
+  document.querySelectorAll('#tour-selector .ctrl-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  // Sync mobile select value
+  const select = document.getElementById('mobile-tour-select');
+  if (select) select.value = '';
   
   // Hide panel
   const panel = document.getElementById('tour-narrative-panel');
@@ -1279,4 +1295,16 @@ function _initTourEvents() {
   if (btnPrev) btnPrev.addEventListener('click', () => window.prevTourStep());
   if (btnNext) btnNext.addEventListener('click', () => window.nextTourStep());
   if (btnExit) btnExit.addEventListener('click', () => window.exitGuidedTour());
+
+  const mobileTourSelect = document.getElementById('mobile-tour-select');
+  if (mobileTourSelect) {
+    mobileTourSelect.addEventListener('change', (e) => {
+      const val = e.target.value;
+      if (val) {
+        window.startGuidedTour(val);
+      } else {
+        window.exitGuidedTour();
+      }
+    });
+  }
 }

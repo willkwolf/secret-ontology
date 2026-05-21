@@ -166,16 +166,16 @@
       "exit": "Salir del Tour",
       "step": "Paso",
       "reveal": {
-        "step1": "<strong>Paso 1: Mundo Existencial (w_E)</strong> - El agente existe en un estado de ignorancia inicial. Hay secretos, pero la arista discontinua representa un puente de posibilidad hacia el saber.",
-        "step2": "<strong>Paso 2: Mundo Narrativo (w_N)</strong> - El secreto se decodifica y transfiere. Las aristas de revelación fluyen y comprimen la incertidumbre.",
-        "step3": "<strong>Paso 3: Mundo de la Topología (w_T)</strong> - Conocimiento total. El agente ha asimilado la información y el secreto se ha disipado por completo."
+        "step1": "<strong>Paso 1: Conocimiento eterno (w<sub>E</sub>)</strong> - El agente existe en un estado de ignorancia inicial. Hay secretos, pero la arista discontinua representa un puente de posibilidad hacia el saber.",
+        "step2": "<strong>Paso 2: No-dualidad epistémica (w<sub>N</sub>)</strong> - El secreto se decodifica y transfiere. Las aristas de revelación fluyen y comprimen la incertidumbre.",
+        "step3": "<strong>Paso 3: Transparencia absoluta (w<sub>T</sub>)</strong> - Conocimiento total. El agente ha asimilado la información y el secreto se ha disipado por completo."
       },
       "mystery": {
-        "step1": "<strong>Paso 1: Mundo Ontológico (w_O)</strong> - La estructura del ser y las leyes de mundos posibles. El misterio se define aquí por la imposibilidad de comunicación con ciertos estratos.",
+        "step1": "<strong>Paso 1: Opacidad absoluta (w<sub>O</sub>)</strong> - La estructura del ser y las leyes de mundos posibles. El misterio se define aquí por la imposibilidad de comunicación con ciertos estratos.",
         "step2": "<strong>Paso 2: Experiencia Subjetiva (Misterio Duro)</strong> - El nodo existencial representa lo que Chalmers llama el problema difícil. Ningún acceso en tercera persona puede capturar la cualidad de la experiencia."
       },
       "computability": {
-        "step1": "<strong>Paso 1: Mundo Formal (w_F)</strong> - El reino de las verdades lógicas y computables. Todo parece deducible mediante reglas estrictas.",
+        "step1": "<strong>Paso 1: Cognición finita regenerativa (w<sub>F</sub>)</strong> - El reino de las verdades lógicas y computables. Todo parece deducible mediante reglas estrictas.",
         "step2": "<strong>Paso 2: Límite de Gödel (Incompletitud)</strong> - Nos topamos con verdades matemáticas indemostrables. El sistema formal no puede auto-explicarse por completo.",
         "step3": "<strong>Paso 3: Límite de Turing (Incomputabilidad)</strong> - Hay problemas de decisión que ninguna máquina puede resolver. Un límite matemático insalvable que nos separa de la omnisciencia."
       }
@@ -348,16 +348,16 @@
       "exit": "Exit Tour",
       "step": "Step",
       "reveal": {
-        "step1": "<strong>Step 1: Existential World (w_E)</strong> - The agent starts in a state of initial ignorance. Secrets exist, but the dashed edge represents a bridge of possibility towards knowing.",
-        "step2": "<strong>Step 2: Narrative World (w_N)</strong> - The secret is decoded and transferred. Revelation edges flow and compress uncertainty.",
-        "step3": "<strong>Step 3: Topology World (w_T)</strong> - Total knowledge. The agent has assimilated the information and the secret has completely dissolved."
+        "step1": "<strong>Step 1: Eternal knowledge (w<sub>E</sub>)</strong> - The agent starts in a state of initial ignorance. Secrets exist, but the dashed edge represents a bridge of possibility towards knowing.",
+        "step2": "<strong>Step 2: Epistemic non-duality (w<sub>N</sub>)</strong> - The secret is decoded and transferred. Revelation edges flow and compress uncertainty.",
+        "step3": "<strong>Step 3: Absolute transparency (w<sub>T</sub>)</strong> - Total knowledge. The agent has assimilated the information and the secret has completely dissolved."
       },
       "mystery": {
-        "step1": "<strong>Step 1: Ontological World (w_O)</strong> - The structure of being and possible worlds laws. Mystery is defined here by the impossibility of communicating with certain strata.",
+        "step1": "<strong>Step 1: Absolute opacity (w<sub>O</sub>)</strong> - The structure of being and possible worlds laws. Mystery is defined here by the impossibility of communicating with certain strata.",
         "step2": "<strong>Step 2: Subjective Experience (Hard Mystery)</strong> - The existential node represents what Chalmers calls the hard problem. No third-person access can capture the raw feel of subjective experience."
       },
       "computability": {
-        "step1": "<strong>Step 1: Formal World (w_F)</strong> - The realm of logical and computable truths. Everything seems deducible via strict mechanical rules.",
+        "step1": "<strong>Step 1: Finite regenerative cognition (w<sub>F</sub>)</strong> - The realm of logical and computable truths. Everything seems deducible via strict mechanical rules.",
         "step2": "<strong>Step 2: Gödel's Limit (Incompleteness)</strong> - We hit unprovable mathematical truths. The formal system cannot completely self-explain.",
         "step3": "<strong>Step 3: Turing's Limit (Incomputability)</strong> - There are decision problems that no machine can solve. An insurmountable mathematical boundary separating us from omniscience."
       }

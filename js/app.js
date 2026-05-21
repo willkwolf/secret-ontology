@@ -21,6 +21,7 @@ async function bootstrap() {
   _initTooltips();
   _initRegenDemo();
   _initPlayground();
+  _initLegendOverlay();
 }
 
 function _applyStrings() {
@@ -60,12 +61,50 @@ function _applyStrings() {
   const graphHint = document.querySelector('.graph-hint');
   if (graphHint) graphHint.textContent = t('graph.hint');
 
-  // Edge filter buttons
-  const filterBtns = document.querySelectorAll('#edge-filters .ctrl-btn');
-  filterBtns.forEach(btn => {
-    const key = btn.dataset.filter;
-    if (key) btn.textContent = t(`graph.filter${_capitalize(key)}`);
-  });
+  // Translate mobile edge filter options
+  const mobileEdgeFilter = document.getElementById('mobile-edge-filter');
+  if (mobileEdgeFilter) {
+    mobileEdgeFilter.querySelectorAll('option').forEach(opt => {
+      const val = opt.value;
+      opt.textContent = t(`graph.filter${_getI18nEdgeKey(val)}`);
+    });
+  }
+
+  // Translate mobile domain select options
+  const mobileDomainSelect = document.getElementById('mobile-domain-select');
+  if (mobileDomainSelect) {
+    mobileDomainSelect.querySelectorAll('option').forEach(opt => {
+      const domain = opt.value;
+      opt.textContent = t(`nav.${domain}`);
+    });
+  }
+
+  // Translate mobile tour select options
+  const mobileTourSelect = document.getElementById('mobile-tour-select');
+  if (mobileTourSelect) {
+    const optNone = document.getElementById('opt-tour-none');
+    if (optNone) optNone.textContent = getLang() === 'es' ? 'Seleccionar recorrido...' : 'Select tour...';
+    
+    const optReveal = document.getElementById('opt-tour-reveal');
+    if (optReveal) optReveal.textContent = t('tours.btnReveal');
+    
+    const optMystery = document.getElementById('opt-tour-mystery');
+    if (optMystery) optMystery.textContent = t('tours.btnMystery');
+    
+    const optComputability = document.getElementById('opt-tour-computability');
+    if (optComputability) optComputability.textContent = t('tours.btnComputability');
+  }
+
+  // Translate Legend Overlay Title & Toggle button
+  const legendOverlayTitle = document.getElementById('legend-overlay-title');
+  if (legendOverlayTitle) {
+    legendOverlayTitle.textContent = getLang() === 'es' ? 'Aristas & Leyenda' : 'Edges & Legend';
+  }
+
+  const toggleLegendBtn = document.getElementById('toggle-legend-btn');
+  if (toggleLegendBtn) {
+    toggleLegendBtn.textContent = getLang() === 'es' ? 'Aristas & Leyenda ⇅' : 'Edges & Legend ⇅';
+  }
 
   // Legend
   document.querySelectorAll('.legend-item[data-type]').forEach(el => {
@@ -282,14 +321,26 @@ window.toggleLang = async function() {
 // ─── DOMAIN / EDGE FILTER WIRING ─────────────────────────────────────────────
 
 window.changeDomainUI = function(domain, btn) {
-  document.querySelectorAll('#domain-filters .ctrl-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+  // Sync desktop buttons active class
+  document.querySelectorAll('#domain-filters .ctrl-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.domain === domain);
+  });
+  // Sync mobile select value
+  const select = document.getElementById('mobile-domain-select');
+  if (select) select.value = domain;
+  
   changeDomain(domain);
 };
 
 window.filterEdgeUI = function(type, btn) {
-  document.querySelectorAll('#edge-filters .ctrl-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+  // Sync desktop buttons active class (if any exists)
+  document.querySelectorAll('#edge-filters .ctrl-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.filter === type);
+  });
+  // Sync mobile select value
+  const select = document.getElementById('mobile-edge-filter');
+  if (select) select.value = type;
+  
   filterEdge(type);
 };
 
@@ -534,6 +585,68 @@ function _initPlayground() {
 function _capitalize(s) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
+
+function _getI18nEdgeKey(filterKey) {
+  const map = {
+    'all': 'All',
+    'revelación': 'Revelation',
+    'ocultamiento': 'Concealment',
+    'emergencia': 'Emergence',
+    'compresión': 'Compression',
+    'bifurcación': 'Bifurcation',
+    'degrada': 'Degrada',
+    'imposibilita': 'Imposibilita',
+    'restringe_termo': 'Restringe_termo',
+    'fusiona': 'Fusiona',
+    'colapsa': 'Colapsa'
+  };
+  return map[filterKey] || filterKey;
+}
+
+function _initLegendOverlay() {
+  const mobileEdgeFilter = document.getElementById('mobile-edge-filter');
+  if (mobileEdgeFilter) {
+    mobileEdgeFilter.addEventListener('change', () => {
+      window.filterEdgeUI(mobileEdgeFilter.value, null);
+    });
+  }
+
+  const toggleLegendBtn = document.getElementById('toggle-legend-btn');
+  const overlayCard = document.getElementById('overlay-legend-card');
+
+  if (toggleLegendBtn) {
+    toggleLegendBtn.addEventListener('click', (e) => {
+      window.toggleLegendOverlay(e);
+    });
+  }
+
+  // Click outside overlay close
+  document.addEventListener('click', (e) => {
+    if (!overlayCard || !toggleLegendBtn) return;
+    if (overlayCard.classList.contains('visible')) {
+      if (!overlayCard.contains(e.target) && !toggleLegendBtn.contains(e.target)) {
+        overlayCard.classList.remove('visible');
+        toggleLegendBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+  });
+}
+
+window.toggleLegendOverlay = function(event) {
+  if (event) event.stopPropagation();
+  const toggleLegendBtn = document.getElementById('toggle-legend-btn');
+  const overlayCard = document.getElementById('overlay-legend-card');
+  if (!overlayCard) return;
+
+  const isVisible = overlayCard.classList.contains('visible');
+  if (isVisible) {
+    overlayCard.classList.remove('visible');
+    toggleLegendBtn?.setAttribute('aria-expanded', 'false');
+  } else {
+    overlayCard.classList.add('visible');
+    toggleLegendBtn?.setAttribute('aria-expanded', 'true');
+  }
+};
 
 // ─── BOOT ─────────────────────────────────────────────────────────────────────
 
