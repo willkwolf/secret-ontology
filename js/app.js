@@ -20,6 +20,7 @@ async function bootstrap() {
   _initScrollAnimations();
   _initTooltips();
   _initRegenDemo();
+  _initPlayground();
 }
 
 function _applyStrings() {
@@ -180,6 +181,67 @@ function _applyStrings() {
 
   const explanationModalMystery = document.getElementById('explanation-modal-mystery');
   if (explanationModalMystery) explanationModalMystery.innerHTML = t('explanation.modalMystery');
+
+  // Playground Static Text
+  const playLabelSec = document.getElementById('playground-label-section');
+  if (playLabelSec) playLabelSec.textContent = t('playground.title');
+
+  const playHeading = document.getElementById('s03-heading');
+  if (playHeading) playHeading.innerHTML = t('playground.subtitle');
+
+  const playIntro = document.getElementById('playground-intro-text');
+  if (playIntro) playIntro.textContent = t('playground.intro');
+
+  const playC_label = document.getElementById('play-toggle-c-label');
+  if (playC_label) playC_label.textContent = t('playground.toggleC');
+
+  const playC_desc = document.getElementById('play-toggle-c-desc');
+  if (playC_desc) playC_desc.textContent = t('playground.toggleCDesc');
+
+  const playK_label = document.getElementById('play-toggle-k-label');
+  if (playK_label) playK_label.textContent = t('playground.toggleK');
+
+  const playK_desc = document.getElementById('play-toggle-k-desc');
+  if (playK_desc) playK_desc.textContent = t('playground.toggleKDesc');
+
+  const playAcc_label = document.getElementById('play-toggle-access-label');
+  if (playAcc_label) playAcc_label.textContent = t('playground.toggleAccess');
+
+  const playAcc_desc = document.getElementById('play-toggle-access-desc');
+  if (playAcc_desc) playAcc_desc.textContent = t('playground.toggleAccessDesc');
+
+  const playStatusHeader = document.getElementById('play-status-header');
+  if (playStatusHeader) playStatusHeader.textContent = t('playground.statusLabel');
+
+  if (window.updatePlaygroundUI) {
+    window.updatePlaygroundUI();
+  }
+
+  if (window.updateTourLanguageUI) {
+    window.updateTourLanguageUI();
+  }
+
+  // Tours UI translations
+  const tourSelectorLabel = document.getElementById('tour-selector-label');
+  if (tourSelectorLabel) tourSelectorLabel.textContent = t('tours.title');
+
+  const btnTourReveal = document.getElementById('btn-tour-reveal');
+  if (btnTourReveal) btnTourReveal.textContent = t('tours.btnReveal');
+
+  const btnTourMystery = document.getElementById('btn-tour-mystery');
+  if (btnTourMystery) btnTourMystery.textContent = t('tours.btnMystery');
+
+  const btnTourComputability = document.getElementById('btn-tour-computability');
+  if (btnTourComputability) btnTourComputability.textContent = t('tours.btnComputability');
+
+  const btnTourPrev = document.getElementById('btn-tour-prev');
+  if (btnTourPrev) btnTourPrev.textContent = t('tours.prev');
+
+  const btnTourNext = document.getElementById('btn-tour-next');
+  if (btnTourNext) btnTourNext.textContent = t('tours.next');
+
+  const btnTourExit = document.getElementById('btn-tour-exit');
+  if (btnTourExit) btnTourExit.textContent = t('tours.exit');
 
   _applyMuseumGrid();
 }
@@ -371,6 +433,100 @@ function _initRegenDemo() {
     document.getElementById('regen-nodes-2').style.display = triggered ? 'flex' : 'none';
     btn.textContent = triggered ? 'Reiniciar ↺' : 'Revelar →';
   });
+}
+
+// ─── PLAYGROUND SIMULATOR ─────────────────────────────────────────────────────
+
+function _initPlayground() {
+  const playC = document.getElementById('play-c');
+  const playK = document.getElementById('play-k');
+  const playAccess = document.getElementById('play-access');
+
+  if (!playC || !playK || !playAccess) return;
+
+  const update = () => {
+    const C = playC.checked;
+    const K = playK.checked;
+    const Access = playAccess.checked;
+
+    let stateKey = '';
+
+    if (!C) {
+      stateKey = 'stateAbsurd';
+    } else if (K) {
+      stateKey = 'stateKnow';
+    } else if (Access) {
+      stateKey = 'stateRevealable';
+    } else {
+      stateKey = 'stateMystery';
+    }
+
+    const badge = document.getElementById('play-status-badge');
+    const explanation = document.getElementById('play-status-explanation');
+
+    if (badge) {
+      badge.textContent = t(`playground.${stateKey}`);
+      badge.className = 'status-badge ' + stateKey;
+    }
+    if (explanation) {
+      explanation.innerHTML = t(`playground.${stateKey}Desc`);
+    }
+
+    const symSecret = document.getElementById('sym-secret');
+    const symEquiv = document.getElementById('sym-equiv');
+    const symC = document.getElementById('sym-c');
+    const symAnd = document.getElementById('sym-and');
+    const symNot = document.getElementById('sym-not');
+    const symKnow = document.getElementById('sym-know');
+
+    const hasSecretRelation = C && !K;
+
+    if (symSecret) {
+      symSecret.classList.toggle('active', hasSecretRelation);
+      symSecret.classList.toggle('disabled', !hasSecretRelation);
+    }
+    if (symEquiv) {
+      symEquiv.classList.toggle('active', C);
+      symEquiv.classList.toggle('disabled', !C);
+    }
+    if (symC) {
+      symC.classList.toggle('active', C);
+      symC.classList.toggle('disabled', !C);
+    }
+    if (symAnd) {
+      symAnd.classList.toggle('active', C);
+      symAnd.classList.toggle('disabled', !C);
+    }
+    if (symNot) {
+      symNot.classList.toggle('active', !K);
+      symNot.classList.toggle('disabled', K);
+    }
+    if (symKnow) {
+      symKnow.classList.toggle('active', K);
+      symKnow.classList.toggle('disabled', !K);
+    }
+
+    const formulaBox = document.getElementById('play-formula-box');
+    if (formulaBox) {
+      if (hasSecretRelation) {
+        formulaBox.classList.add('secret-active');
+        if (stateKey === 'stateMystery') {
+          formulaBox.classList.add('mystery-active');
+        } else {
+          formulaBox.classList.remove('mystery-active');
+        }
+      } else {
+        formulaBox.classList.remove('secret-active', 'mystery-active');
+      }
+    }
+  };
+
+  playC.addEventListener('change', update);
+  playK.addEventListener('change', update);
+  playAccess.addEventListener('change', update);
+
+  window.updatePlaygroundUI = update;
+  update();
 }
 
 // ─── HELPERS ──────────────────────────────────────────────────────────────────

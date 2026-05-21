@@ -141,11 +141,78 @@
     </div>
   </section>
 
-  <!-- § 03 — MUNDOS EXTREMOS -->
-  <section aria-labelledby="s03-heading">
+  <!-- § 03 — SIMULADOR EPISTÉMICO -->
+  <section aria-labelledby="s03-heading" class="formula-playground-section">
     <div class="fade-in">
-      <div class="section-label">§ 03 — Mundos epistémicos extremos</div>
-      <h2 id="s03-heading">Los cinco mundos<br>en los <em>límites</em></h2>
+      <div class="section-label" id="playground-label-section">§ 03 — Simulador Epistémico</div>
+      <h2 id="s03-heading">Parque Infantil de Lógica Modal</h2>
+      <p id="playground-intro-text">Experimenta en tiempo real con las condiciones lógicas de la ontología. Activa o desactiva las variables a continuación para ver cómo muta el estado de la fórmula.</p>
+      
+      <div class="playground-container">
+        <!-- Interactive Controls -->
+        <div class="playground-controls">
+          <div class="control-switch-group">
+            <div>
+              <span class="switch-title" id="play-toggle-c-label">Hecho Verdadero (C)</span>
+              <span class="switch-description" id="play-toggle-c-desc">¿Es el contenido real en este mundo?</span>
+            </div>
+            <label class="switch" aria-label="Toggle Contenido C">
+              <input type="checkbox" id="play-c" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="control-switch-group">
+            <div>
+              <span class="switch-title" id="play-toggle-k-label">Agente Sabe (Kₐ)</span>
+              <span class="switch-description" id="play-toggle-k-desc">¿El agente tiene el conocimiento?</span>
+            </div>
+            <label class="switch" aria-label="Toggle Conocimiento K">
+              <input type="checkbox" id="play-k">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="control-switch-group">
+            <div>
+              <span class="switch-title" id="play-toggle-access-label">Acceso Modal (◇)</span>
+              <span class="switch-description" id="play-toggle-access-desc">¿Existe acceso a mundos alternativos?</span>
+            </div>
+            <label class="switch" aria-label="Toggle Acceso Modal">
+              <input type="checkbox" id="play-access" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Formula and State Display -->
+        <div class="playground-display">
+          <div class="playground-formula" id="play-formula-box">
+            <span class="play-symbol" id="sym-secret">Secret(C, a, w)</span>
+            <span class="play-symbol" id="sym-equiv">≡</span>
+            <span class="play-symbol" id="sym-c">C</span>
+            <span class="play-symbol" id="sym-and">∧</span>
+            <span class="play-symbol" id="sym-not">¬</span>
+            <span class="play-symbol" id="sym-know">Kₐ(C, w)</span>
+          </div>
+
+          <div class="playground-status">
+            <div class="status-header" id="play-status-header">Estado Epistémico Resultante:</div>
+            <div class="status-badge" id="play-status-badge">Secreto Revelable</div>
+            <div class="status-explanation" id="play-status-explanation">
+              <strong>Secreto Activo:</strong> El agente ignora el contenido hoy, pero el acceso a otros mundos posibles garantiza que es cognoscible en principio.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 04 — MUNDOS EXTREMOS -->
+  <section aria-labelledby="s04-heading">
+    <div class="fade-in">
+      <div class="section-label">§ 04 — Mundos epistémicos extremos</div>
+      <h2 id="s04-heading">Los cinco mundos<br>en los <em>límites</em></h2>
       <p>Para cartografiar el espacio del secreto, primero necesitamos sus fronteras. Los <span class="tip" data-tip="En la semántica de Kripke, los mundos posibles son situaciones completas — no universos físicos, sino estados totales de cosas, incluyendo qué se sabe y qué no.">mundos posibles</span> extremos definen los polos del grafo:</p>
       <div class="worlds-grid">
         <div class="world-card">
@@ -178,13 +245,13 @@
     </div>
   </section>
 
-  <!-- § 04 — GRAPH -->
-  <div class="graph-section" aria-labelledby="s04-heading">
+  <!-- § 05 — GRAPH -->
+  <div class="graph-section" aria-labelledby="s05-heading">
     <div class="graph-container">
       <div class="graph-header">
         <div class="graph-header-left">
-          <div class="section-label">§ 04 — Visualización interactiva</div>
-          <h2 id="s04-heading" style="font-size:clamp(1.4rem,4vw,1.9rem); margin-bottom:6px;">
+          <div class="section-label" id="graph-section-label">§ 05 — Visualización interactiva</div>
+          <h2 id="s05-heading" class="graph-main-title" style="font-size:clamp(1.4rem,4vw,1.9rem); margin-bottom:6px;">
             Grafo Epistémico<br>Modal Dinámico
           </h2>
           <p class="graph-hint" style="font-size:0.85rem; margin:0; color:var(--text-dimmer);">
@@ -224,6 +291,15 @@
             <option value="narrative" selected>Narrativa</option>
           </select>
           <div class="layer-showing" id="layer-showing" aria-live="polite">Mostrando: Narrativa</div>
+        </div>
+        <!-- Tour selector -->
+        <div class="tour-selector-container">
+          <div class="panel-label" id="tour-selector-label">Recorridos Guiados</div>
+          <div class="graph-controls" id="tour-selector" role="group" aria-label="Recorridos guiados">
+            <button class="ctrl-btn" data-tour="reveal" id="btn-tour-reveal">Ruta de la Revelación</button>
+            <button class="ctrl-btn" data-tour="mystery" id="btn-tour-mystery">Senda del Misterio</button>
+            <button class="ctrl-btn" data-tour="computability" id="btn-tour-computability">Límite Computacional</button>
+          </div>
         </div>
         <div>
           <!-- Edge filters -->
@@ -292,11 +368,26 @@
         </div>
       </div>
 
-      <!-- SVG + Node panel -->
       <div style="position:relative;">
         <svg id="graph-svg" height="520"
              aria-label="Grafo epistémico modal dinámico interactivo"
              role="img"></svg>
+
+        <!-- Tour narrative panel -->
+        <div class="tour-panel" id="tour-narrative-panel" style="display:none;" role="dialog" aria-modal="false" aria-labelledby="tour-badge-text">
+          <div class="tour-panel-header">
+            <span class="tour-badge" id="tour-badge-text">Tour</span>
+            <span class="tour-step-count" id="tour-step-indicator">Paso 1 de 3</span>
+          </div>
+          <div class="tour-narrative-content" id="tour-step-description">
+            <!-- Dynamically populated -->
+          </div>
+          <div class="tour-actions">
+            <button class="tour-nav-btn ctrl-btn" id="btn-tour-prev">Anterior</button>
+            <button class="tour-nav-btn ctrl-btn" id="btn-tour-next">Siguiente</button>
+            <button class="tour-exit-btn ctrl-btn" id="btn-tour-exit">Salir del Tour</button>
+          </div>
+        </div>
 
         <!-- Node detail panel -->
         <div class="node-panel" id="node-panel" role="dialog"

@@ -18,7 +18,7 @@
       "scroll": "Desplazar"
     },
     "graph": {
-      "sectionLabel": "§ 04 — Visualización interactiva",
+      "sectionLabel": "§ 05 — Visualización interactiva",
       "title": "Grafo Epistémico<br>Modal Dinámico",
       "hint": "Toca o arrastra los nodos para explorar. Haz clic en un nodo para ver su ficha.",
       "filterAll": "Todas las aristas",
@@ -135,6 +135,50 @@
       "modalTitle": "Desglose de los Operadores Modales",
       "modalSecret": "<strong>Secreto Revelable:</strong> El agente no conoce C hoy <em>(¬Kₐ(C))</em>, <strong>Y</strong> es factible o posible que llegue a conocerlo en el futuro <em>(◇Kₐ(C))</em>.<br><small class='text-dim'>El rombo (<strong>◇</strong>) representa <strong>posibilidad modal</strong>: significa que existe al menos un mundo accesible donde la barrera de ignorancia cae.</small>",
       "modalMystery": "<strong>Misterio Absoluto:</strong> El agente no conoce C hoy <em>(¬Kₐ(C))</em>, <strong>Y</strong> es estrictamente necesario que nunca pueda conocerlo <em>(□¬Kₐ(C))</em>.<br><small class='text-dim'>El cuadrado (<strong>□</strong>) representa <strong>necesidad modal</strong>: indica que en todos los universos o mundos posibles de la estructura, la incognoscibilidad es absoluta.</small>"
+    },
+    "playground": {
+      "title": "§ 03 — Simulador Epistémico",
+      "subtitle": "Parque Infantil de Lógica Modal",
+      "intro": "Experimenta en tiempo real con las condiciones lógicas de la ontología. Activa o desactiva las variables a continuación para ver cómo muta el estado de la fórmula.",
+      "toggleC": "Hecho Verdadero (C)",
+      "toggleCDesc": "¿Es el contenido real en este mundo?",
+      "toggleK": "Agente Sabe (Kₐ)",
+      "toggleKDesc": "¿El agente tiene el conocimiento?",
+      "toggleAccess": "Acceso Modal (◇)",
+      "toggleAccessDesc": "¿Existe acceso a mundos alternativos?",
+      "statusLabel": "Estado Epistémico Resultante:",
+      "stateAbsurd": "Ocultamiento Absurdo",
+      "stateAbsurdDesc": "<strong>No hay secreto:</strong> No se puede ocultar o ignorar algo que es objetivamente falso. La verdad de C es la primera condición del secreto.",
+      "stateKnow": "Conocimiento Pleno",
+      "stateKnowDesc": "<strong>No hay secreto:</strong> El agente ha asimilado el hecho. La ignorancia se ha disipado y la relación de ocultamiento ya no existe.",
+      "stateRevealable": "Secreto Revelable (¬Kₐ(C) ∧ ◇Kₐ(C))",
+      "stateRevealableDesc": "<strong>Secreto Activo:</strong> El agente ignora el contenido hoy, pero el acceso a otros mundos posibles (representado por el operador de posibilidad <em>◇</em>) garantiza que es cognoscible y revelable en principio.",
+      "stateMystery": "Misterio Absoluto (¬Kₐ(C) ∧ □¬Kₐ(C))",
+      "stateMysteryDesc": "<strong>Misterio Estructural:</strong> El agente no sabe, y la falta de acceso a otros estados (operador de necesidad de ignorancia <em>□¬Kₐ</em>) convierte la ignorancia en absoluta e insalvable."
+    },
+    "tours": {
+      "title": "Recorridos Guiados",
+      "btnReveal": "Ruta de la Revelación",
+      "btnMystery": "Senda del Misterio",
+      "btnComputability": "Límite Computacional",
+      "prev": "Anterior",
+      "next": "Siguiente",
+      "exit": "Salir del Tour",
+      "step": "Paso",
+      "reveal": {
+        "step1": "<strong>Paso 1: Mundo Existencial (w_E)</strong> - El agente existe en un estado de ignorancia inicial. Hay secretos, pero la arista discontinua representa un puente de posibilidad hacia el saber.",
+        "step2": "<strong>Paso 2: Mundo Narrativo (w_N)</strong> - El secreto se decodifica y transfiere. Las aristas de revelación fluyen y comprimen la incertidumbre.",
+        "step3": "<strong>Paso 3: Mundo de la Topología (w_T)</strong> - Conocimiento total. El agente ha asimilado la información y el secreto se ha disipado por completo."
+      },
+      "mystery": {
+        "step1": "<strong>Paso 1: Mundo Ontológico (w_O)</strong> - La estructura del ser y las leyes de mundos posibles. El misterio se define aquí por la imposibilidad de comunicación con ciertos estratos.",
+        "step2": "<strong>Paso 2: Experiencia Subjetiva (Misterio Duro)</strong> - El nodo existencial representa lo que Chalmers llama el problema difícil. Ningún acceso en tercera persona puede capturar la cualidad de la experiencia."
+      },
+      "computability": {
+        "step1": "<strong>Paso 1: Mundo Formal (w_F)</strong> - El reino de las verdades lógicas y computables. Todo parece deducible mediante reglas estrictas.",
+        "step2": "<strong>Paso 2: Límite de Gödel (Incompletitud)</strong> - Nos topamos con verdades matemáticas indemostrables. El sistema formal no puede auto-explicarse por completo.",
+        "step3": "<strong>Paso 3: Límite de Turing (Incomputabilidad)</strong> - Hay problemas de decisión que ninguna máquina puede resolver. Un límite matemático insalvable que nos separa de la omnisciencia."
+      }
     }
   },
   "en": {
@@ -156,7 +200,7 @@
       "scroll": "Scroll"
     },
     "graph": {
-      "sectionLabel": "§ 04 — Interactive visualisation",
+      "sectionLabel": "§ 05 — Interactive visualisation",
       "title": "Dynamic Modal<br>Epistemic Graph",
       "hint": "Touch or drag nodes to explore. Click a node to see its card.",
       "filterAll": "All edges",
@@ -273,6 +317,50 @@
       "modalTitle": "Breakdown of Modal Operators",
       "modalSecret": "<strong>Revealable Secret:</strong> Agent does not know C today <em>(¬Kₐ(C))</em>, <strong>AND</strong> it is feasible or possible that they will know it in the future <em>(◇Kₐ(C))</em>.<br><small class='text-dim'>The diamond (<strong>◇</strong>) represents <strong>modal possibility</strong>: meaning at least one accessible world exists where the barrier of ignorance falls.</small>",
       "modalMystery": "<strong>Absolute Mystery:</strong> Agent does not know C today <em>(¬Kₐ(C))</em>, <strong>AND</strong> it is strictly necessary that they can never know it <em>(□¬Kₐ(C))</em>.<br><small class='text-dim'>The box (<strong>□</strong>) represents <strong>modal necessity</strong>: indicating that in all possible worlds of the structure, unknowability is absolute.</small>"
+    },
+    "playground": {
+      "title": "§ 03 — Epistemic Simulator",
+      "subtitle": "Modal Logic Playground",
+      "intro": "Experiment in real time with the logical conditions of the ontology. Toggle the variables below to watch the formula state mutate.",
+      "toggleC": "Fact is True (C)",
+      "toggleCDesc": "Is the content real in this world?",
+      "toggleK": "Agent Knows (Kₐ)",
+      "toggleKDesc": "Has the agent integrated the knowledge?",
+      "toggleAccess": "Modal Access (◇)",
+      "toggleAccessDesc": "Is there access to alternative worlds?",
+      "statusLabel": "Resulting Epistemic State:",
+      "stateAbsurd": "Absurd Concealment",
+      "stateAbsurdDesc": "<strong>No secret exists:</strong> You cannot conceal or be ignorant of something that is objectively false. The truth of C is the primary condition of secrecy.",
+      "stateKnow": "Full Knowledge",
+      "stateKnowDesc": "<strong>No secret exists:</strong> The agent has assimilated the fact. Ignorance has dissolved and the concealment relation no longer exists.",
+      "stateRevealable": "Revealable Secret (¬Kₐ(C) ∧ ◇Kₐ(C))",
+      "stateRevealableDesc": "<strong>Active Secret:</strong> The agent is ignorant of the content today, but access to alternative possible worlds (represented by the possibility operator <em>◇</em>) guarantees it is knowable and revealable in principle.",
+      "stateMystery": "Absolute Mystery (¬Kₐ(C) ∧ □¬Kₐ(C))",
+      "stateMysteryDesc": "<strong>Structural Mystery:</strong> The agent does not know, and the complete lack of access to other states (ignorance necessity operator <em>□¬Kₐ</em>) renders the ignorance absolute and inescapable."
+    },
+    "tours": {
+      "title": "Guided Tours",
+      "btnReveal": "Path of Revelation",
+      "btnMystery": "Path of Mystery",
+      "btnComputability": "Computability Barrier",
+      "prev": "Previous",
+      "next": "Next",
+      "exit": "Exit Tour",
+      "step": "Step",
+      "reveal": {
+        "step1": "<strong>Step 1: Existential World (w_E)</strong> - The agent starts in a state of initial ignorance. Secrets exist, but the dashed edge represents a bridge of possibility towards knowing.",
+        "step2": "<strong>Step 2: Narrative World (w_N)</strong> - The secret is decoded and transferred. Revelation edges flow and compress uncertainty.",
+        "step3": "<strong>Step 3: Topology World (w_T)</strong> - Total knowledge. The agent has assimilated the information and the secret has completely dissolved."
+      },
+      "mystery": {
+        "step1": "<strong>Step 1: Ontological World (w_O)</strong> - The structure of being and possible worlds laws. Mystery is defined here by the impossibility of communicating with certain strata.",
+        "step2": "<strong>Step 2: Subjective Experience (Hard Mystery)</strong> - The existential node represents what Chalmers calls the hard problem. No third-person access can capture the raw feel of subjective experience."
+      },
+      "computability": {
+        "step1": "<strong>Step 1: Formal World (w_F)</strong> - The realm of logical and computable truths. Everything seems deducible via strict mechanical rules.",
+        "step2": "<strong>Step 2: Gödel's Limit (Incompleteness)</strong> - We hit unprovable mathematical truths. The formal system cannot completely self-explain.",
+        "step3": "<strong>Step 3: Turing's Limit (Incomputability)</strong> - There are decision problems that no machine can solve. An insurmountable mathematical boundary separating us from omniscience."
+      }
     }
   }
 }

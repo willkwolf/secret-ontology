@@ -92,8 +92,10 @@ const DOMAIN_MAP = {
 
 let _graphData = null;   // raw JSON from data/graph-data.json
 let _allGraphData = null; // full unfiltered data (same as _graphData after load)
-let _svg, _g, _linkGroup, _nodeGroup, _defs;
-let _simulation;
+let _svg, _g, _linkGroup, _nodeGroup, _defs, _particleGroup;
+let _simulation, _zoom;
+let _activeTour = null;
+let _activeTourStep = 0;
 let _currentDomain = 'all';
 let _currentEdgeFilter = 'all';
 let _edgePanelEl, _nodePanelEl;
@@ -123,6 +125,7 @@ export async function initGraph() {
 
   _buildSVG();
   _updateGraph();
+  _initTourEvents();
 }
 
 export function changeDomain(domain) {
@@ -142,15 +145,15 @@ function _buildSVG() {
   const W = container.clientWidth || 700;
   const H = parseInt(container.getAttribute('height')) || 520;
 
+  _zoom = d3.zoom()
+    .scaleExtent([0.25, 4])
+    .on('zoom', e => _g.attr('transform', e.transform));
+
   _svg = d3.select('#graph-svg')
     .attr('viewBox', `0 0 ${W} ${H}`)
     .attr('role', 'img')
     .attr('aria-label', 'Grafo Epistémico Modal Dinámico')
-    .call(
-      d3.zoom()
-        .scaleExtent([0.25, 4])
-        .on('zoom', e => _g.attr('transform', e.transform))
-    );
+    .call(_zoom);
 
   _defs = _svg.append('defs');
   _buildMarkers();
@@ -173,6 +176,7 @@ function _buildSVG() {
     .attr('r', 50);
 
   _linkGroup = _g.append('g').attr('class', 'links');
+  _particleGroup = _g.append('g').attr('class', 'particles');
   _nodeGroup = _g.append('g').attr('class', 'nodes');
 
   // Close panels on background click
@@ -726,6 +730,124 @@ function _stopTemporalAnimation() {
     });
 }
 
+// ─── TEMPORAL PARTICLE ANIMATION ENGINE ───────────────────────────────────────
+
+let _particleAnimFrame = null;
+let _particles = [];
+
+function _startParticleFlow() {
+  if (_particleAnimFrame) return; // already running
+  if (!_particleGroup) {
+    _particleGroup = _g.select('.particles');
+    if (_particleGroup.empty()) {
+      _particleGroup = _g.append('g').attr('class', 'particles');
+    }
+  }
+
+  let lastSpawn = 0;
+  const spawnInterval = 350; // Spawn a particle every 350ms
+
+  function animate(now) {
+    if (now - lastSpawn > spawnInterval) {
+      lastSpawn = now;
+      _spawnParticles();
+    }
+
+    const nextParticles = [];
+    _particles.forEach(p => {
+      const elapsed = now - p.startTime;
+      const progress = Math.min(1, elapsed / p.duration);
+
+      const isMysteryEdge = p.isMystery || p.type === 'ocultamiento' || p.type === 'imposibilita' || p.type === 'colapsa';
+      const limit = isMysteryEdge ? 0.5 : 1.0;
+
+      if (progress >= limit) {
+        p.el.remove();
+      } else {
+        try {
+          const point = p.pathNode.getPointAtLength(progress * p.length);
+          p.el
+            .attr('cx', point.x)
+            .attr('cy', point.y);
+          
+          if (isMysteryEdge) {
+            // Fade out as it hits mystery barrier (limit = 0.5)
+            const opacity = (1.0 - (progress / 0.5)) * 0.95;
+            p.el.attr('opacity', opacity);
+          }
+          nextParticles.push(p);
+        } catch(e) {
+          p.el.remove();
+        }
+      }
+    });
+    _particles = nextParticles;
+
+    _particleAnimFrame = requestAnimationFrame(animate);
+  }
+
+  _particleAnimFrame = requestAnimationFrame(animate);
+}
+
+function _stopParticleFlow() {
+  if (_particleAnimFrame) {
+    cancelAnimationFrame(_particleAnimFrame);
+    _particleAnimFrame = null;
+  }
+  if (_particleGroup) {
+    _particleGroup.selectAll('*').remove();
+  }
+  _particles = [];
+}
+
+function _spawnParticles() {
+  if (!_linkGroup) return;
+  const visibleLinks = _linkGroup.selectAll('path.link:not(.link-fusiona-2)')
+    .filter(function() {
+      const op = d3.select(this).attr('opacity');
+      return op && parseFloat(op) > 0.1;
+    });
+
+  if (visibleLinks.empty()) return;
+
+  const nodes = visibleLinks.nodes();
+  const count = Math.min(3, nodes.length);
+  const shuffled = nodes.sort(() => 0.5 - Math.random());
+
+  for (let i = 0; i < count; i++) {
+    const pathNode = shuffled[i];
+    const d3Path = d3.select(pathNode);
+    const d = d3Path.datum();
+    if (!d) continue;
+
+    const type = EDGE_ALIAS[d.type] || d.type;
+    const isMystery = type === 'mystery' || type === 'ocultamiento' || type === 'imposibilita' || type === 'colapsa';
+    
+    try {
+      const length = pathNode.getTotalLength();
+      if (length <= 0) continue;
+
+      const circle = _particleGroup.append('circle')
+        .attr('class', 'epistemic-particle' + (isMystery ? ' mystery' : ''))
+        .attr('r', isMystery ? 2.5 : 3.0)
+        .attr('opacity', 0.95);
+
+      _particles.push({
+        pathNode,
+        length,
+        duration: length * (isMystery ? 10 : 16),
+        startTime: performance.now(),
+        el: circle,
+        type,
+        isMystery
+      });
+    } catch(e) {
+      // ignore geometry errors
+    }
+  }
+}
+
+
 // ─── LAYER VISIBILITY ─────────────────────────────────────────────────────────
 
 function _applyLayerVisibility() {
@@ -735,8 +857,10 @@ function _applyLayerVisibility() {
   const activeLayers = layerSystem.getActiveLayers();
   if (activeLayers.includes('temporal')) {
     _startTemporalAnimation();
+    _startParticleFlow();
   } else {
     _stopTemporalAnimation();
+    _stopParticleFlow();
   }
 
   _nodeGroup.selectAll('g.node')
@@ -978,4 +1102,181 @@ function _positionPanel(panel, e) {
   if (py + ph > svgRect.height) py = Math.max(0, e.clientY - svgRect.top - ph);
   panel.style.left = px + 'px';
   panel.style.top  = py + 'px';
+}
+
+
+// ─── GUIDED TOURS SEMANTICS ───────────────────────────────────────────────────
+
+const TOURS_DATA = {
+  reveal: [
+    { nodeId: 'w_E', i18nKey: 'tours.reveal.step1' },
+    { nodeId: 'w_N', i18nKey: 'tours.reveal.step2' },
+    { nodeId: 'w_T', i18nKey: 'tours.reveal.step3' }
+  ],
+  mystery: [
+    { nodeId: 'w_O', i18nKey: 'tours.mystery.step1' },
+    { nodeId: 'mejor_secreto', i18nKey: 'tours.mystery.step2' }
+  ],
+  computability: [
+    { nodeId: 'w_F', i18nKey: 'tours.computability.step1' },
+    { nodeId: 'incompletitud', i18nKey: 'tours.computability.step2' },
+    { nodeId: 'indecidibilidad', i18nKey: 'tours.computability.step3' }
+  ]
+};
+
+window.startGuidedTour = function(tourId) {
+  if (!TOURS_DATA[tourId]) return;
+  _activeTour = tourId;
+  _activeTourStep = 0;
+  
+  // Close standard node panel if visible
+  _hideNodePanel();
+  
+  // Render first step
+  _renderTourStep();
+};
+
+window.nextTourStep = function() {
+  if (!_activeTour) return;
+  if (_activeTourStep < TOURS_DATA[_activeTour].length - 1) {
+    _activeTourStep++;
+    _renderTourStep();
+  }
+};
+
+window.prevTourStep = function() {
+  if (!_activeTour) return;
+  if (_activeTourStep > 0) {
+    _activeTourStep--;
+    _renderTourStep();
+  }
+};
+
+window.exitGuidedTour = function() {
+  _activeTour = null;
+  _activeTourStep = 0;
+  
+  // Hide panel
+  const panel = document.getElementById('tour-narrative-panel');
+  if (panel) panel.style.display = 'none';
+  
+  // Restore all nodes and links using standard visibility
+  _applyLayerVisibility();
+  
+  // Reset tour highlight classes
+  _nodeGroup.selectAll('g.node circle').classed('tour-highlight', false);
+  
+  // Restore zoom transform back to center
+  if (_svg && _zoom) {
+    _svg.transition().duration(800).call(
+      _zoom.transform,
+      d3.zoomIdentity
+    );
+  }
+};
+
+window.updateTourLanguageUI = function() {
+  if (!_activeTour) return;
+  const steps = TOURS_DATA[_activeTour];
+  const step = steps[_activeTourStep];
+  const lang = t('lang') || 'es';
+  
+  const indicatorText = lang === 'es'
+    ? `Paso ${_activeTourStep + 1} de ${steps.length}`
+    : `Step ${_activeTourStep + 1} of ${steps.length}`;
+  
+  const badgeText = _activeTour === 'reveal' ? t('tours.btnReveal')
+                  : _activeTour === 'mystery' ? t('tours.btnMystery')
+                  : t('tours.btnComputability');
+                  
+  const badgeEl = document.getElementById('tour-badge-text');
+  if (badgeEl) badgeEl.textContent = badgeText;
+  
+  const indicatorEl = document.getElementById('tour-step-indicator');
+  if (indicatorEl) indicatorEl.textContent = indicatorText;
+  
+  const descEl = document.getElementById('tour-step-description');
+  if (descEl) descEl.innerHTML = t(step.i18nKey);
+  
+  const prevEl = document.getElementById('btn-tour-prev');
+  if (prevEl) prevEl.textContent = t('tours.prev');
+  
+  const nextEl = document.getElementById('btn-tour-next');
+  if (nextEl) nextEl.textContent = t('tours.next');
+  
+  const exitEl = document.getElementById('btn-tour-exit');
+  if (exitEl) exitEl.textContent = t('tours.exit');
+};
+
+function _renderTourStep() {
+  if (!_activeTour) return;
+  const steps = TOURS_DATA[_activeTour];
+  const step = steps[_activeTourStep];
+  
+  // Find node in graph data
+  const node = _graphData.nodes.find(n => n.id === step.nodeId);
+  if (!node) return;
+  
+  // 1. Remove highlight class from all nodes
+  _nodeGroup.selectAll('g.node circle').classed('tour-highlight', false);
+  
+  // 2. Dim non-active nodes and highlight focused node
+  _nodeGroup.selectAll('g.node')
+    .transition().duration(400)
+    .attr('opacity', d => d.id === node.id ? 1.0 : 0.15)
+    .attr('pointer-events', d => d.id === node.id ? 'all' : 'none');
+    
+  // Add class to active circle
+  _nodeGroup.selectAll('g.node')
+    .filter(d => d.id === node.id)
+    .select('circle')
+    .classed('tour-highlight', true);
+    
+  // 3. Dim non-active links, keep connected links visible
+  _linkGroup.selectAll('path.link')
+    .transition().duration(400)
+    .attr('opacity', d => (d.source.id === node.id || d.target.id === node.id) ? 0.7 : 0.05)
+    .attr('pointer-events', d => (d.source.id === node.id || d.target.id === node.id) ? 'stroke' : 'none');
+    
+  // Dim fusion links
+  _linkGroup.selectAll('path.link-fusiona-2')
+    .transition().duration(400)
+    .attr('opacity', d => (d.source.id === node.id || d.target.id === node.id) ? 0.6 : 0.05);
+
+  // 4. Center camera on the focused node
+  if (_svg && _zoom) {
+    const vb = _svg.attr('viewBox').split(' ');
+    const W = +vb[2] || 700;
+    const H = +vb[3] || 520;
+    
+    _svg.transition().duration(800).call(
+      _zoom.transform,
+      d3.zoomIdentity.translate(W / 2, H / 2).scale(1.4).translate(-node.x, -node.y)
+    );
+  }
+  
+  // 5. Show narrative panel
+  const panel = document.getElementById('tour-narrative-panel');
+  if (panel) {
+    panel.style.display = 'block';
+  }
+  
+  // Update narrative strings
+  window.updateTourLanguageUI();
+}
+
+function _initTourEvents() {
+  const btnReveal = document.getElementById('btn-tour-reveal');
+  const btnMystery = document.getElementById('btn-tour-mystery');
+  const btnComputability = document.getElementById('btn-tour-computability');
+  const btnPrev = document.getElementById('btn-tour-prev');
+  const btnNext = document.getElementById('btn-tour-next');
+  const btnExit = document.getElementById('btn-tour-exit');
+  
+  if (btnReveal) btnReveal.addEventListener('click', () => window.startGuidedTour('reveal'));
+  if (btnMystery) btnMystery.addEventListener('click', () => window.startGuidedTour('mystery'));
+  if (btnComputability) btnComputability.addEventListener('click', () => window.startGuidedTour('computability'));
+  if (btnPrev) btnPrev.addEventListener('click', () => window.prevTourStep());
+  if (btnNext) btnNext.addEventListener('click', () => window.nextTourStep());
+  if (btnExit) btnExit.addEventListener('click', () => window.exitGuidedTour());
 }
