@@ -300,11 +300,6 @@ function _applyMuseumGrid() {
     <div class="museum-val">${t(v)}</div>
   `).join('');
 
-  const limitsEl = document.querySelector('.museum-limitations');
-  if (limitsEl) {
-    limitsEl.innerHTML = `<strong style="color:var(--text-dim);font-style:normal;">${t('footer.limitsLabel')}</strong> ${t('footer.limitsVal')}`;
-  }
-
   const ccEl = document.querySelector('.cc');
   if (ccEl) ccEl.textContent = t('footer.license');
 }
