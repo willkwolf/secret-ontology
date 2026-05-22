@@ -11,10 +11,17 @@ import { initMicroGraphs, updatePlaygroundGraph } from './micro-graphs.js';
 // ─── LANGUAGE ─────────────────────────────────────────────────────────────────
 
 const STORAGE_KEY = 'gemd-lang';
+const READING_STORAGE_KEY = 'gemd-reading-mode';
 
 async function bootstrap() {
   const savedLang = localStorage.getItem(STORAGE_KEY) || 'es';
   await loadStrings(savedLang);
+
+  const savedReading = localStorage.getItem(READING_STORAGE_KEY) === 'true';
+  if (savedReading) {
+    document.body.classList.add('reading-mode');
+  }
+
   _applyStrings();
   await initGraph();
   initMicroGraphs();
@@ -33,6 +40,12 @@ function _applyStrings() {
   document.querySelector('.nav-title').textContent = t('nav.title');
   const langBtn = document.getElementById('lang-btn');
   if (langBtn) langBtn.textContent = t('switchLang');
+
+  const readingBtn = document.getElementById('reading-mode-btn');
+  if (readingBtn) {
+    const isReading = document.body.classList.contains('reading-mode');
+    readingBtn.textContent = isReading ? t('nav.standardMode') : t('nav.readingMode');
+  }
 
   // Domain selector
   const domainLabel = document.getElementById('domain-selector-label');
@@ -334,6 +347,17 @@ function _applyMuseumGrid() {
   const ccEl = document.querySelector('.cc');
   if (ccEl) ccEl.textContent = t('footer.license');
 }
+
+// ─── READING MODE TOGGLE ──────────────────────────────────────────────────────
+
+window.toggleReadingMode = function() {
+  const isReading = document.body.classList.toggle('reading-mode');
+  localStorage.setItem(READING_STORAGE_KEY, isReading ? 'true' : 'false');
+  const readingBtn = document.getElementById('reading-mode-btn');
+  if (readingBtn) {
+    readingBtn.textContent = isReading ? t('nav.standardMode') : t('nav.readingMode');
+  }
+};
 
 // ─── LANGUAGE TOGGLE ──────────────────────────────────────────────────────────
 

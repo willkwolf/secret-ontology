@@ -17,6 +17,8 @@ let _playgroundNodeW1 = null;
 export function initMicroGraphs() {
   _initDistinctionGraph();
   _initPlaygroundGraph();
+  _initTopologyGraph();
+  _initTemporalGraph();
 }
 
 /**
@@ -290,3 +292,218 @@ export function updatePlaygroundGraph(C, K, Access) {
       .style('filter', 'drop-shadow(0 0 4px rgba(144, 96, 192, 0.4))');
   }
 }
+
+/**
+ * Section § 05b: Topology (Pentagonal Poles) Micro-Graph
+ */
+function _initTopologyGraph() {
+  const container = document.getElementById('micro-graph-topology');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  const width = 320;
+  const height = 240;
+
+  const svg = d3.select('#micro-graph-topology')
+    .append('svg')
+    .attr('viewBox', `0 0 ${width} ${height}`)
+    .attr('width', '100%')
+    .attr('height', '100%');
+
+  const defs = svg.append('defs');
+
+  // Gold arrow marker
+  defs.append('marker')
+    .attr('id', 'topo-arrow-gold')
+    .attr('viewBox', '0 -5 10 10')
+    .attr('refX', 22)
+    .attr('refY', 0)
+    .attr('markerWidth', 6)
+    .attr('markerHeight', 6)
+    .attr('orient', 'auto')
+    .append('path')
+    .attr('d', 'M0,-5L10,0L0,5')
+    .attr('fill', 'var(--gold)');
+
+  // Violet bar marker
+  defs.append('marker')
+    .attr('id', 'topo-bar-violet')
+    .attr('viewBox', '0 -5 10 10')
+    .attr('refX', 22)
+    .attr('refY', 0)
+    .attr('markerWidth', 6)
+    .attr('markerHeight', 6)
+    .attr('orient', 'auto')
+    .append('path')
+    .attr('d', 'M0,-4 L2,-4 L2,4 L0,4 Z')
+    .attr('fill', 'var(--mystery)');
+
+  // 5 Nodes in a neat pentagon
+  const nodes = [
+    { id: 'wT', base: 'w', sub: 'T', x: 160, y: 45, key: 'micro.wTDesc' },
+    { id: 'wE', base: 'w', sub: 'E', x: 222, y: 90, key: 'micro.wEDesc' },
+    { id: 'wF', base: 'w', sub: 'F', x: 198, y: 163, key: 'micro.wFDesc' },
+    { id: 'wN', base: 'w', sub: 'N', x: 122, y: 163, key: 'micro.wNDesc' },
+    { id: 'wO', base: 'w', sub: 'O', x: 98, y: 90, key: 'micro.wODesc' }
+  ];
+
+  // Kripke transitions
+  const links = [
+    { source: 'wT', target: 'wE', class: 'dashed-gold', marker: 'url(#topo-arrow-gold)' },
+    { source: 'wT', target: 'wN', class: 'dashed-gold', marker: 'url(#topo-arrow-gold)' },
+    { source: 'wF', target: 'wT', class: 'dashed-gold', marker: 'url(#topo-arrow-gold)' },
+    { source: 'wF', target: 'wE', class: 'dashed-gold', marker: 'url(#topo-arrow-gold)' },
+    { source: 'wE', target: 'wF', class: 'dashed-gold', marker: 'url(#topo-arrow-gold)' },
+    { source: 'wN', target: 'wF', class: 'dashed-gold', marker: 'url(#topo-arrow-gold)' },
+    { source: 'wO', target: 'wT', class: 'mystery-violet', marker: 'url(#topo-bar-violet)' },
+    { source: 'wO', target: 'wN', class: 'mystery-violet', marker: 'url(#topo-bar-violet)' }
+  ];
+
+  // Draw Edges
+  svg.selectAll('.micro-edge')
+    .data(links)
+    .enter()
+    .append('path')
+    .attr('class', d => `micro-edge ${d.class}`)
+    .attr('d', d => {
+      const s = nodes.find(n => n.id === d.source);
+      const t = nodes.find(n => n.id === d.target);
+      return `M${s.x},${s.y} L${t.x},${t.y}`;
+    })
+    .attr('marker-end', d => d.marker);
+
+  // Draw Nodes
+  const nodeElems = svg.selectAll('.micro-node')
+    .data(nodes)
+    .enter()
+    .append('g')
+    .attr('class', 'micro-node')
+    .attr('transform', d => `translate(${d.x},${d.y})`)
+    .on('click', (event, d) => {
+      nodeElems.classed('active', false);
+      d3.select(event.currentTarget).classed('active', true);
+
+      const descPanel = document.getElementById('micro-graph-topology-desc');
+      if (descPanel) {
+        descPanel.innerHTML = `<p>${t(d.key)}</p>`;
+      }
+    });
+
+  nodeElems.append('circle')
+    .attr('r', 16);
+
+  const textNode = nodeElems.append('text');
+  textNode.append('tspan').text(d => d.base);
+  textNode.append('tspan')
+    .attr('dy', '4')
+    .attr('font-size', '8px')
+    .text(d => d.sub);
+
+  // Initial prompt
+  const descPanel = document.getElementById('micro-graph-topology-desc');
+  if (descPanel) {
+    descPanel.innerHTML = `<p class="click-prompt">${t('micro.topologyPrompt')}</p>`;
+  }
+}
+
+/**
+ * Section § 05d: Temporal Dynamics (Pulsating Shifting Boundaries) Micro-Graph
+ */
+let _temporalInterval = null;
+function _initTemporalGraph() {
+  const container = document.getElementById('micro-graph-temporal');
+  if (!container) return;
+
+  container.innerHTML = '';
+  if (_temporalInterval) {
+    _temporalInterval.stop();
+  }
+
+  const width = 360;
+  const height = 240;
+
+  const svg = d3.select('#micro-graph-temporal')
+    .append('svg')
+    .attr('viewBox', `0 0 ${width} ${height}`)
+    .attr('width', '100%')
+    .attr('height', '100%');
+
+  const nodes = [
+    { id: 'wF', base: 'w', sub: 'F', x: 110, y: 120, label: 'Frontera Cognitiva', color: 'var(--gold)' },
+    { id: 'secreto_estado', base: 'S', sub: 'E', x: 250, y: 120, label: 'Secreto de Estado', color: 'var(--blue-light)' }
+  ];
+
+  // Draw central connecting flow
+  svg.append('path')
+    .attr('class', 'micro-edge dashed-gold')
+    .attr('d', `M${nodes[0].x},${nodes[0].y} L${nodes[1].x},${nodes[1].y}`)
+    .style('stroke', 'var(--text-dimmer)')
+    .style('stroke-width', '1.5px');
+
+  // Draw Nodes
+  const nodeElems = svg.selectAll('.micro-node')
+    .data(nodes)
+    .enter()
+    .append('g')
+    .attr('class', 'micro-node active')
+    .attr('transform', d => `translate(${d.x},${d.y})`);
+
+  const circles = nodeElems.append('circle')
+    .attr('r', 16)
+    .style('stroke', d => d.color);
+
+  const textNode = nodeElems.append('text');
+  textNode.append('tspan').text(d => d.base);
+  textNode.append('tspan')
+    .attr('dy', '4')
+    .attr('font-size', '8px')
+    .text(d => d.sub);
+
+  // Breathing animation
+  function breathe() {
+    circles.transition()
+      .duration(1800)
+      .ease(d3.easeSinInOut)
+      .attr('r', 21)
+      .transition()
+      .duration(1800)
+      .ease(d3.easeSinInOut)
+      .attr('r', 15)
+      .on('end', breathe);
+  }
+  breathe();
+
+  // Ripple propagation
+  function triggerRipple(x, y, color) {
+    svg.append('circle')
+      .attr('cx', x)
+      .attr('cy', y)
+      .attr('r', 18)
+      .attr('fill', 'none')
+      .attr('stroke', color)
+      .attr('stroke-width', 1.5)
+      .attr('stroke-dasharray', '4,3')
+      .attr('opacity', 0.8)
+      .lower() // Send ripples behind the solid node circles
+      .transition()
+      .duration(3200)
+      .ease(d3.easeQuadOut)
+      .attr('r', 90)
+      .attr('opacity', 0)
+      .remove();
+  }
+
+  // Set interval for ripples
+  _temporalInterval = d3.interval(() => {
+    triggerRipple(nodes[0].x, nodes[0].y, nodes[0].color);
+    triggerRipple(nodes[1].x, nodes[1].y, nodes[1].color);
+  }, 1600);
+
+  // Initial Prompt / Text
+  const descPanel = document.getElementById('micro-graph-temporal-desc');
+  if (descPanel) {
+    descPanel.innerHTML = `<p>${t('micro.temporalPrompt')}</p>`;
+  }
+}
+

@@ -34,17 +34,17 @@ const METALOGIC_RULES = {
 // ─── VISUAL CONFIG ────────────────────────────────────────────────────────────
 
 const EDGE_STYLE = {
-  revelación:      { stroke: '#C5A86B', strokeWidth: 2.5, dashArray: '5,3',  opacity: 0.9 },
-  ocultamiento:    { stroke: '#7F8C8D', strokeWidth: 2.0, dashArray: '2,4',  opacity: 0.55 },
-  emergencia:      { stroke: '#5DADE2', strokeWidth: 2.2, dashArray: '8,4',  opacity: 0.8 },
-  compresión:      { stroke: '#1ABC9C', strokeWidth: 3.0, dashArray: '',     opacity: 0.9 },
-  bifurcación:     { stroke: '#8E44AD', strokeWidth: 2.0, dashArray: '10,5', opacity: 0.7 },
-  mystery:         { stroke: '#9060C0', strokeWidth: 1.5, dashArray: '3,3',  opacity: 0.5 },
-  degrada:         { stroke: '#9B59B6', strokeWidth: 1.8, dashArray: '4,2',  opacity: 0.7,  filter: 'url(#turbulence-filter)' },
-  imposibilita:    { stroke: '#E74C3C', strokeWidth: 2.5, dashArray: '',     opacity: 0.9,  markerEnd: 'arrow-bar' },
-  restringe_termo: { stroke: '#E67E22', strokeWidth: 2.2, dashArray: '6,3',  opacity: 0.85, markerEnd: 'arrow-stop' },
-  fusiona:         { stroke: '#1ABC9C', strokeWidth: 2.0, dashArray: '',     opacity: 0.8 },
-  colapsa:         { stroke: '#C0392B', strokeWidth: 2.0, dashArray: '8,3',  opacity: 0.75, markerStart: 'arrow-x-source' },
+  revelación:      { stroke: 'var(--gold)', strokeWidth: 2.5, dashArray: '5,3',  opacity: 0.9 },
+  ocultamiento:    { stroke: 'var(--text-dimmer)', strokeWidth: 2.0, dashArray: '2,4',  opacity: 0.55 },
+  emergencia:      { stroke: 'var(--blue-light)', strokeWidth: 2.2, dashArray: '8,4',  opacity: 0.8 },
+  compresión:      { stroke: 'var(--green-teal)', strokeWidth: 3.0, dashArray: '',     opacity: 0.9 },
+  bifurcación:     { stroke: 'var(--mystery)', strokeWidth: 2.0, dashArray: '10,5', opacity: 0.7 },
+  mystery:         { stroke: 'var(--mystery)', strokeWidth: 1.5, dashArray: '3,3',  opacity: 0.5 },
+  degrada:         { stroke: 'var(--mystery)', strokeWidth: 1.8, dashArray: '4,2',  opacity: 0.7,  filter: 'url(#turbulence-filter)' },
+  imposibilita:    { stroke: 'var(--danger)', strokeWidth: 2.5, dashArray: '',     opacity: 0.9,  markerEnd: 'arrow-bar' },
+  restringe_termo: { stroke: 'var(--danger)', strokeWidth: 2.2, dashArray: '6,3',  opacity: 0.85, markerEnd: 'arrow-stop' },
+  fusiona:         { stroke: 'var(--green-teal)', strokeWidth: 2.0, dashArray: '',     opacity: 0.8 },
+  colapsa:         { stroke: 'var(--danger)', strokeWidth: 2.0, dashArray: '8,3',  opacity: 0.75, markerStart: 'arrow-x-source' },
 };
 
 // Fallback for legacy 'revelation'/'concealment' keys from inline data
@@ -57,26 +57,26 @@ const EDGE_ALIAS = {
 };
 
 const NODE_FILL = {
-  extremo:            '#1A3A6A',
-  central:            '#2A4B7C',
-  contextual:         '#1A3050',
-  meta:               '#16403A',
-  'domain-science':   '#1A4A3A',
-  'domain-political': '#4A3A1A',
-  'domain-existential':'#3A1A4A',
-  'domain-math':      '#1A1A4A',
-  emergent:           '#3A2A1A',
+  extremo:            'var(--blue-deep)',
+  central:            'var(--blue-mid)',
+  contextual:         'var(--blue-deep)',
+  meta:               'var(--green-teal)',
+  'domain-science':   'var(--green-teal)',
+  'domain-political': 'var(--gold-dim)',
+  'domain-existential':'var(--mystery)',
+  'domain-math':      'var(--blue-mid)',
+  emergent:           'var(--gold)',
 };
 const NODE_STROKE = {
-  extremo:            '#4A7BC8',
-  central:            '#C5A86B',
-  contextual:         '#4A7BC8',
-  meta:               '#1ABC9C',
-  'domain-science':   '#4AC890',
-  'domain-political': '#C8A040',
-  'domain-existential':'#A060C0',
-  'domain-math':      '#6080C8',
-  emergent:           '#C07040',
+  extremo:            'var(--blue-light)',
+  central:            'var(--gold)',
+  contextual:         'var(--blue-light)',
+  meta:               'var(--green-teal)',
+  'domain-science':   'var(--green-teal)',
+  'domain-political': 'var(--gold)',
+  'domain-existential':'var(--mystery)',
+  'domain-math':      'var(--blue-light)',
+  emergent:           'var(--gold)',
 };
 
 // Domain → node id sets (for filtering)
@@ -246,7 +246,7 @@ function _buildMarkers() {
     .attr('orient', 'auto');
   barMarker.append('line')
     .attr('x1', 0).attr('y1', -6).attr('x2', 0).attr('y2', 6)
-    .attr('stroke', '#E74C3C').attr('stroke-width', 2.5);
+    .attr('stroke', 'var(--danger)').attr('stroke-width', 2.5);
 
   // ── Stop-sign marker for `restringe_termo` ──
   const stopMarker = _defs.append('marker')
@@ -257,10 +257,10 @@ function _buildMarkers() {
     .attr('orient', 'auto');
   stopMarker.append('circle')
     .attr('cx', 0).attr('cy', 0).attr('r', 6)
-    .attr('fill', 'none').attr('stroke', '#E67E22').attr('stroke-width', 2);
+    .attr('fill', 'none').attr('stroke', 'var(--danger)').attr('stroke-width', 2);
   stopMarker.append('line')
     .attr('x1', -4).attr('y1', -4).attr('x2', 4).attr('y2', 4)
-    .attr('stroke', '#E67E22').attr('stroke-width', 1.5);
+    .attr('stroke', 'var(--danger)').attr('stroke-width', 1.5);
 
   // ── X-shaped source marker for `colapsa` ──
   const xMarker = _defs.append('marker')
@@ -271,10 +271,10 @@ function _buildMarkers() {
     .attr('orient', 'auto');
   xMarker.append('line')
     .attr('x1', -4).attr('y1', -4).attr('x2', 4).attr('y2', 4)
-    .attr('stroke', '#C0392B').attr('stroke-width', 2);
+    .attr('stroke', 'var(--danger)').attr('stroke-width', 2);
   xMarker.append('line')
     .attr('x1', 4).attr('y1', -4).attr('x2', -4).attr('y2', 4)
-    .attr('stroke', '#C0392B').attr('stroke-width', 2);
+    .attr('stroke', 'var(--danger)').attr('stroke-width', 2);
 }
 
 function _onResize() {

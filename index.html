@@ -30,6 +30,9 @@
 <nav aria-label="Navegación principal">
   <div class="nav-title">GEMD · 2026</div>
   <div class="nav-right">
+    <button class="nav-tab" id="reading-mode-btn"
+            aria-label="Alternar modo lectura / Toggle reading mode"
+            onclick="toggleReadingMode()">📖 MODO LECTURA</button>
     <button class="lang-btn" id="lang-btn"
             aria-label="Cambiar idioma / Switch language"
             onclick="toggleLang()">EN</button>
@@ -260,12 +263,100 @@
     </div>
   </section>
 
-  <!-- § 05 — GRAPH -->
+
+
+  <!-- § 05 — REGENERACIÓN -->
+  <section aria-labelledby="s05-heading">
+    <div class="fade-in">
+      <div class="section-label">§ 05 — Principio dinámico</div>
+      <h2 id="s05-heading">Conocer engendra<br>nueva <em>ignorancia</em></h2>
+      <p>Existe un prejuicio implícito en la idea de progreso epistémico: que revelar un secreto <em>reduce</em> la ignorancia total. Pero la evidencia histórica contradice esta intuición de manera sistemática.</p>
+      <p>El principio correcto no es conservación sino <strong>regeneración de fronteras epistémicas</strong>: en sistemas finitos, la expansión del conocimiento genera nuevos dominios de incertidumbre antes no planteados.</p>
+      <div class="regen-demo">
+        <h4>Demostración interactiva — Haz clic en "Revelar"</h4>
+        <div class="regen-nodes" id="regen-nodes" aria-live="polite">
+          <div class="regen-node">Estructura del ADN</div>
+          <div class="regen-arrow" aria-hidden="true">→</div>
+          <div class="regen-node" style="opacity:0.3;">Epigenoma</div>
+          <div class="regen-arrow" aria-hidden="true">→</div>
+          <div class="regen-node" style="opacity:0.15;">? ? ?</div>
+        </div>
+        <div class="regen-nodes" id="regen-nodes-2" style="display:none;" aria-live="polite">
+          <div class="regen-node revealed">Estructura del ADN ✓</div>
+          <div class="regen-arrow" aria-hidden="true">→</div>
+          <div class="regen-node revealed">Epigenoma ✓</div>
+          <div class="regen-arrow" aria-hidden="true">→</div>
+          <div class="regen-node emerged">Epigenética social</div>
+          <div class="regen-arrow" aria-hidden="true">→</div>
+          <div class="regen-node emerged">Herencia no-mendeliana</div>
+          <div class="regen-arrow" aria-hidden="true">→</div>
+          <div class="regen-node emerged">??? (nueva frontera)</div>
+        </div>
+        <button class="regen-btn" id="regen-btn" aria-pressed="false">Revelar →</button>
+        <p style="margin-top:12px; font-size:0.82rem; color:var(--text-dimmer);">
+          Cada revelación redistribuye la accesibilidad epistémica. El horizonte no retrocede — se transforma.
+        </p>
+      </div>
+      <p>Este principio conecta con el <span class="tip" data-tip="Gödel demostró que en cualquier sistema formal suficientemente expresivo, existen verdades que el sistema no puede demostrar desde dentro de sí mismo.">Teorema de Incompletitud de Gödel</span>, con la <span class="tip" data-tip="Chaitin mostró que la complejidad algorítmica genera inevitablemente verdades matemáticas que son irreducibles — no derivables de axiomas finitos.">complejidad algorítmica de Chaitin</span> y con la práctica científica real: cada modelo que se confirma abre diez preguntas nuevas.</p>
+      <p>No hay "conservación del secreto": hay transformación perpetua de las fronteras entre lo conocido, lo desconocido y lo incognoscible.</p>
+    </div>
+  </section>
+
+  <!-- § 05b — TOPOLOGÍA -->
+  <section id="s05b" aria-labelledby="s05b-heading" data-layer="topology">
+    <div class="fade-in">
+      <div class="section-label">§ 05b — Topología epistémica</div>
+      <h2 id="s05b-heading">Los cinco mundos<br>como <em>polos modales</em></h2>
+      <p>La topología del grafo no es arbitraria. Los cinco mundos extremos — Transparencia, Opacidad, Eternidad, No-dualidad y Cognición Finita — actúan como polos que estructuran el espacio de todos los mundos posibles.</p>
+      <p>Cada nodo del grafo ocupa una posición determinada por su distancia relativa a estos polos. Un mundo con alto conocimiento se acerca a <strong>Transparencia absoluta (w<sub>T</sub>)</strong>; uno con alta incognoscibilidad se acerca a <strong>Opacidad absoluta (w<sub>O</sub>)</strong>. La topología es la geometría del secreto.</p>
+      <p>Activa la capa de <strong>Topología</strong> en el selector para ver los nodos de límite estructural y los polos modales en su posición relativa.</p>
+
+      <div id="micro-graph-topology-container" class="micro-graph-section-wrapper">
+        <h3 id="micro-topology-title" class="micro-graph-title">Polos de la Estructura Modal</h3>
+        <div id="micro-graph-topology" class="micro-graph-container"></div>
+        <div id="micro-graph-topology-desc" class="micro-graph-desc-panel">
+          <p style="text-align: center; color: var(--text-dimmer);">Haz clic en un polo modal para explorar su topología.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 05c — METALÓGICA -->
+  <section id="s05c" aria-labelledby="s05c-heading" data-layer="metalogic">
+    <div class="fade-in">
+      <div class="section-label">§ 05c — Límites estructurales</div>
+      <h2 id="s05c-heading">Más allá del agente:<br><em>límites formales</em></h2>
+      <p>Hasta ahora hemos hablado de secretos relativos a agentes: lo que alguien no sabe pero podría saber. Pero existen barreras que no dependen de ningún agente — son límites formales, computacionales y físicos.</p>
+      <p>El <strong>Límite de Gödel</strong> imposibilita que cualquier sistema formal suficientemente expresivo sea completo. El <strong>Límite de Turing</strong> hace irresoluble el problema de la parada. La <strong>Indeterminación Cuántica</strong> establece un piso irreducible de incertidumbre. El <strong>Horizonte Caótico</strong> hace impredecible el largo plazo. La <strong>Flecha Termodinámica</strong> hace asimétrico el tiempo.</p>
+      <p>Estos no son secretos — son misterios estructurales. Activa la capa <strong>Metalógica</strong> para verlos en el grafo.</p>
+    </div>
+  </section>
+
+  <!-- § 05d — TEMPORAL -->
+  <section id="s05d" aria-labelledby="s05d-heading" data-layer="temporal">
+    <div class="fade-in">
+      <div class="section-label">§ 05d — Dinámica temporal</div>
+      <h2 id="s05d-heading">Las fronteras<br><em>se mueven</em></h2>
+      <p>El conocimiento no es estático. Las fronteras epistémicas se expanden y comprimen con el tiempo: nuevos descubrimientos amplían lo conocido, pero también revelan nuevas regiones de ignorancia.</p>
+      <p>La capa <strong>Temporal</strong> del grafo captura esta dinámica: los nodos con alto horizonte de desconocido pulsan hacia afuera, los de alto conocido se comprimen. La <strong>Cognición finita regenerativa (w<sub>F</sub>)</strong> es el motor de esta dinámica perpetua.</p>
+      <p>Activa la capa <strong>Temporal</strong> para observar la animación de las fronteras cognitivas.</p>
+
+      <div id="micro-graph-temporal-container" class="micro-graph-section-wrapper">
+        <h3 id="micro-temporal-title" class="micro-graph-title">Fronteras Cognitivas Móviles</h3>
+        <div id="micro-graph-temporal" class="micro-graph-container"></div>
+        <div id="micro-graph-temporal-desc" class="micro-graph-desc-panel">
+          <p style="text-align: center; color: var(--text-dimmer);">Los horizontes epistémicos pulsan, expandiendo la incertidumbre a medida que el conocimiento avanza.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 05e — EL DISPOSITIVO EPISTÉMICO COMPLETO -->
   <div class="graph-section" aria-labelledby="s05-heading">
     <div class="graph-container">
       <div class="graph-header">
         <div class="graph-header-left">
-          <div class="section-label" id="graph-section-label">§ 05 — Visualización interactiva</div>
+          <div class="section-label" id="graph-section-label">§ 05e — El dispositivo epistémico completo</div>
           <h2 id="s05-heading" class="graph-main-title" style="font-size:clamp(1.4rem,4vw,1.9rem); margin-bottom:6px;">
             Grafo Epistémico<br>Modal Dinámico
           </h2>
@@ -397,43 +488,43 @@
 
           <div class="compact-legend-list">
             <div class="legend-item" data-type="Revelation">
-              <div class="legend-line" style="border-top: 2px dashed #C5A86B;"></div>
+              <div class="legend-line" style="border-top: 2px dashed var(--gold);"></div>
               <span id="legend-lbl-revelation">Revelación</span>
             </div>
             <div class="legend-item" data-type="Concealment">
-              <div class="legend-line" style="background: #7F8C8D;"></div>
+              <div class="legend-line" style="background: var(--text-dimmer);"></div>
               <span id="legend-lbl-concealment">Ocultamiento</span>
             </div>
             <div class="legend-item" data-type="Emergence">
-              <div class="legend-line" style="border-top: 2px dashed #5DADE2;"></div>
+              <div class="legend-line" style="border-top: 2px dashed var(--blue-light);"></div>
               <span id="legend-lbl-emergence">Emergencia</span>
             </div>
             <div class="legend-item" data-type="Compression">
-              <div class="legend-line" style="background: #1ABC9C;"></div>
+              <div class="legend-line" style="background: var(--green-teal);"></div>
               <span id="legend-lbl-compression">Compresión</span>
             </div>
             <div class="legend-item" data-type="Bifurcation">
-              <div class="legend-line" style="border-top: 2px dashed #8E44AD;"></div>
+              <div class="legend-line" style="border-top: 2px dashed var(--mystery);"></div>
               <span id="legend-lbl-bifurcation">Bifurcación</span>
             </div>
             <div class="legend-item" data-type="Degrada">
-              <div class="legend-line" style="border-top: 2px dashed #9B59B6;"></div>
+              <div class="legend-line" style="border-top: 2px dashed var(--mystery);"></div>
               <span id="legend-lbl-degrada">Degrada</span>
             </div>
             <div class="legend-item" data-type="Imposibilita">
-              <div class="legend-line" style="background: #E74C3C;"></div>
+              <div class="legend-line" style="background: var(--danger);"></div>
               <span id="legend-lbl-imposibilita">Imposibilita</span>
             </div>
             <div class="legend-item" data-type="Restringe_termo">
-              <div class="legend-line" style="border-top: 2px dashed #E67E22;"></div>
+              <div class="legend-line" style="border-top: 2px dashed var(--text-dim);"></div>
               <span id="legend-lbl-restringe">Restringe (termo)</span>
             </div>
             <div class="legend-item" data-type="Fusiona">
-              <div class="legend-line" style="background: #1ABC9C;"></div>
+              <div class="legend-line" style="background: var(--green-teal);"></div>
               <span id="legend-lbl-fusiona">Fusiona</span>
             </div>
             <div class="legend-item" data-type="Colapsa">
-              <div class="legend-line" style="border-top: 2px dashed #C0392B;"></div>
+              <div class="legend-line" style="border-top: 2px dashed var(--danger);"></div>
               <span id="legend-lbl-colapsa">Colapsa</span>
             </div>
           </div>
@@ -500,76 +591,6 @@
       <div class="edge-panel" id="edge-panel" role="tooltip" aria-live="polite"></div>
     </div>
   </div>
-
-  <!-- § 05 — REGENERACIÓN -->
-  <section aria-labelledby="s05-heading">
-    <div class="fade-in">
-      <div class="section-label">§ 05 — Principio dinámico</div>
-      <h2 id="s05-heading">Conocer engendra<br>nueva <em>ignorancia</em></h2>
-      <p>Existe un prejuicio implícito en la idea de progreso epistémico: que revelar un secreto <em>reduce</em> la ignorancia total. Pero la evidencia histórica contradice esta intuición de manera sistemática.</p>
-      <p>El principio correcto no es conservación sino <strong>regeneración de fronteras epistémicas</strong>: en sistemas finitos, la expansión del conocimiento genera nuevos dominios de incertidumbre antes no planteados.</p>
-      <div class="regen-demo">
-        <h4>Demostración interactiva — Haz clic en "Revelar"</h4>
-        <div class="regen-nodes" id="regen-nodes" aria-live="polite">
-          <div class="regen-node">Estructura del ADN</div>
-          <div class="regen-arrow" aria-hidden="true">→</div>
-          <div class="regen-node" style="opacity:0.3;">Epigenoma</div>
-          <div class="regen-arrow" aria-hidden="true">→</div>
-          <div class="regen-node" style="opacity:0.15;">? ? ?</div>
-        </div>
-        <div class="regen-nodes" id="regen-nodes-2" style="display:none;" aria-live="polite">
-          <div class="regen-node revealed">Estructura del ADN ✓</div>
-          <div class="regen-arrow" aria-hidden="true">→</div>
-          <div class="regen-node revealed">Epigenoma ✓</div>
-          <div class="regen-arrow" aria-hidden="true">→</div>
-          <div class="regen-node emerged">Epigenética social</div>
-          <div class="regen-arrow" aria-hidden="true">→</div>
-          <div class="regen-node emerged">Herencia no-mendeliana</div>
-          <div class="regen-arrow" aria-hidden="true">→</div>
-          <div class="regen-node emerged">??? (nueva frontera)</div>
-        </div>
-        <button class="regen-btn" id="regen-btn" aria-pressed="false">Revelar →</button>
-        <p style="margin-top:12px; font-size:0.82rem; color:var(--text-dimmer);">
-          Cada revelación redistribuye la accesibilidad epistémica. El horizonte no retrocede — se transforma.
-        </p>
-      </div>
-      <p>Este principio conecta con el <span class="tip" data-tip="Gödel demostró que en cualquier sistema formal suficientemente expresivo, existen verdades que el sistema no puede demostrar desde dentro de sí mismo.">Teorema de Incompletitud de Gödel</span>, con la <span class="tip" data-tip="Chaitin mostró que la complejidad algorítmica genera inevitablemente verdades matemáticas que son irreducibles — no derivables de axiomas finitos.">complejidad algorítmica de Chaitin</span> y con la práctica científica real: cada modelo que se confirma abre diez preguntas nuevas.</p>
-      <p>No hay "conservación del secreto": hay transformación perpetua de las fronteras entre lo conocido, lo desconocido y lo incognoscible.</p>
-    </div>
-  </section>
-
-  <!-- § 05b — TOPOLOGÍA -->
-  <section id="s05b" aria-labelledby="s05b-heading" data-layer="topology">
-    <div class="fade-in">
-      <div class="section-label">§ 05b — Topología epistémica</div>
-      <h2 id="s05b-heading">Los cinco mundos<br>como <em>polos modales</em></h2>
-      <p>La topología del grafo no es arbitraria. Los cinco mundos extremos — Transparencia, Opacidad, Eternidad, No-dualidad y Cognición Finita — actúan como polos que estructuran el espacio de todos los mundos posibles.</p>
-      <p>Cada nodo del grafo ocupa una posición determinada por su distancia relativa a estos polos. Un mundo con alto conocimiento se acerca a <strong>Transparencia absoluta (w<sub>T</sub>)</strong>; uno con alta incognoscibilidad se acerca a <strong>Opacidad absoluta (w<sub>O</sub>)</strong>. La topología es la geometría del secreto.</p>
-      <p>Activa la capa de <strong>Topología</strong> en el selector para ver los nodos de límite estructural y los polos modales en su posición relativa.</p>
-    </div>
-  </section>
-
-  <!-- § 05c — METALÓGICA -->
-  <section id="s05c" aria-labelledby="s05c-heading" data-layer="metalogic">
-    <div class="fade-in">
-      <div class="section-label">§ 05c — Límites estructurales</div>
-      <h2 id="s05c-heading">Más allá del agente:<br><em>límites formales</em></h2>
-      <p>Hasta ahora hemos hablado de secretos relativos a agentes: lo que alguien no sabe pero podría saber. Pero existen barreras que no dependen de ningún agente — son límites formales, computacionales y físicos.</p>
-      <p>El <strong>Límite de Gödel</strong> imposibilita que cualquier sistema formal suficientemente expresivo sea completo. El <strong>Límite de Turing</strong> hace irresoluble el problema de la parada. La <strong>Indeterminación Cuántica</strong> establece un piso irreducible de incertidumbre. El <strong>Horizonte Caótico</strong> hace impredecible el largo plazo. La <strong>Flecha Termodinámica</strong> hace asimétrico el tiempo.</p>
-      <p>Estos no son secretos — son misterios estructurales. Activa la capa <strong>Metalógica</strong> para verlos en el grafo.</p>
-    </div>
-  </section>
-
-  <!-- § 05d — TEMPORAL -->
-  <section id="s05d" aria-labelledby="s05d-heading" data-layer="temporal">
-    <div class="fade-in">
-      <div class="section-label">§ 05d — Dinámica temporal</div>
-      <h2 id="s05d-heading">Las fronteras<br><em>se mueven</em></h2>
-      <p>El conocimiento no es estático. Las fronteras epistémicas se expanden y comprimen con el tiempo: nuevos descubrimientos amplían lo conocido, pero también revelan nuevas regiones de ignorancia.</p>
-      <p>La capa <strong>Temporal</strong> del grafo captura esta dinámica: los nodos con alto horizonte de desconocido pulsan hacia afuera, los de alto conocido se comprimen. La <strong>Cognición finita regenerativa (w<sub>F</sub>)</strong> es el motor de esta dinámica perpetua.</p>
-      <p>Activa la capa <strong>Temporal</strong> para observar la animación de las fronteras cognitivas.</p>
-    </div>
-  </section>
 
   <!-- § 06 — MEJOR SECRETO -->
   <section aria-labelledby="s06-heading">

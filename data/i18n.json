@@ -9,7 +9,9 @@
       "science": "Ciencia",
       "political": "Político",
       "existential": "Existencial",
-      "math": "Matemática"
+      "math": "Matemática",
+      "readingMode": "Modo Lectura",
+      "standardMode": "Modo Estándar"
     },
     "hero": {
       "overline": "Ontología del Secreto · Investigación filosófica interactiva",
@@ -18,7 +20,7 @@
       "scroll": "Desplazar"
     },
     "graph": {
-      "sectionLabel": "§ 05 — Visualización interactiva",
+      "sectionLabel": "§ 05e — El dispositivo epistémico completo",
       "title": "Grafo Epistémico<br>Modal Dinámico",
       "hint": "Toca o arrastra los nodos para explorar. Haz clic en un nodo para ver su ficha.",
       "filterAll": "Todas las aristas",
@@ -167,7 +169,16 @@
       "w2Desc": "<strong>Misterio w₂:</strong> No hay acceso formal o físico a este mundo (arista bloqueada en violeta). La incognoscibilidad es estructural.",
       "clickPrompt": "Haz clic en los nodos para explorar su relación modal...",
       "distinctionTitle": "Visualización del Secreto vs. Misterio (Kripke)",
-      "playgroundTitle": "Relación Dinámica de Accesibilidad"
+      "playgroundTitle": "Relación Dinámica de Accesibilidad",
+      "topologyTitle": "Polos de la Estructura Modal",
+      "topologyPrompt": "Haz clic en un polo modal para explorar su topología.",
+      "wTDesc": "<strong>Transparencia absoluta (w<sub>T</sub>):</strong> El polo del conocimiento total, donde todo secreto se disuelve en conocimiento pleno.",
+      "wODesc": "<strong>Opacidad absoluta (w<sub>O</sub>):</strong> El polo de la incognoscibilidad, donde la incomunicabilidad es total y nada puede ser conocido.",
+      "wEDesc": "<strong>Eternidad epistémica (w<sub>E</sub>):</strong> El polo del conocimiento estático. No hay misterio ni movimiento, todo es inmutable y ya conocido.",
+      "wNDesc": "<strong>No-dualidad (w<sub>N</sub>):</strong> El polo donde la separación sujeto-objeto se disuelve. Sin observador ni observado, el secreto deja de existir.",
+      "wFDesc": "<strong>Cognición finita (w<sub>F</sub>):</strong> El polo del dinamismo y el aprendizaje humano. Cada descubrimiento regenera y expande la frontera de lo desconocido.",
+      "temporalTitle": "Fronteras Cognitivas Móviles",
+      "temporalPrompt": "Las fronteras epistémicas pulsan, expandiendo la incertidumbre a medida que el conocimiento avanza."
     },
     "tours": {
       "title": "Recorridos Guiados",
@@ -204,7 +215,9 @@
       "science": "Science",
       "political": "Political",
       "existential": "Existential",
-      "math": "Mathematics"
+      "math": "Mathematics",
+      "readingMode": "Reading Mode",
+      "standardMode": "Standard Mode"
     },
     "hero": {
       "overline": "Ontology of Secrecy · Interactive philosophical inquiry",
@@ -213,7 +226,7 @@
       "scroll": "Scroll"
     },
     "graph": {
-      "sectionLabel": "§ 05 — Interactive visualisation",
+      "sectionLabel": "§ 05e — The complete epistemic device",
       "title": "Dynamic Modal<br>Epistemic Graph",
       "hint": "Touch or drag nodes to explore. Click a node to see its card.",
       "filterAll": "All edges",
@@ -362,7 +375,16 @@
       "w2Desc": "<strong>Mystery w₂:</strong> There is no formal or physical access to this world (violet blocked edge). Unknowability is structural.",
       "clickPrompt": "Click the nodes to explore their modal relationship...",
       "distinctionTitle": "Visualization of Secret vs. Mystery (Kripke)",
-      "playgroundTitle": "Dynamic Accessibility Relationship"
+      "playgroundTitle": "Dynamic Accessibility Relationship",
+      "topologyTitle": "Poles of the Modal Structure",
+      "topologyPrompt": "Click on a modal pole to explore its topology.",
+      "wTDesc": "<strong>Absolute Transparency (w<sub>T</sub>):</strong> The pole of complete cognition, where all secrecy dissolves into full knowledge.",
+      "wODesc": "<strong>Absolute Opacity (w<sub>O</sub>):</strong> The pole of unknowability, where incommunicability is total and nothing can be known.",
+      "wEDesc": "<strong>Epistemic Eternity (w<sub>E</sub>):</strong> The pole of static knowledge. There is no mystery or movement; all is immutable and already known.",
+      "wNDesc": "<strong>Non-duality (w<sub>N</sub>):</strong> The pole where the subject-object boundary dissolves. Without observer or observed, secrecy ceases to exist.",
+      "wFDesc": "<strong>Finite Cognition (w<sub>F</sub>):</strong> The pole of dynamic human learning. Every discovery regenerates and expands the frontier of the unknown.",
+      "temporalTitle": "Mobile Cognitive Frontiers",
+      "temporalPrompt": "Epistemic frontiers pulse, expanding uncertainty as knowledge advances."
     },
     "tours": {
       "title": "Guided Tours",
