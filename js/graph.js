@@ -131,16 +131,19 @@ export async function initGraph() {
 }
 
 export function changeDomain(domain) {
+  if (_activeTour) window.exitGuidedTour();
   _currentDomain = domain;
   _updateGraph();
 }
 
 export function changeVersion(version) {
+  if (_activeTour) window.exitGuidedTour();
   _currentVersion = version;
   _updateGraph();
 }
 
 export function filterEdge(type) {
+  if (_activeTour) window.exitGuidedTour();
   _currentEdgeFilter = type;
   _updateGraph();
 }
@@ -193,7 +196,10 @@ function _buildSVG() {
   });
 
   // Listen for layer changes
-  document.addEventListener('layerchange', () => _applyLayerVisibility());
+  document.addEventListener('layerchange', () => {
+    if (_activeTour) window.exitGuidedTour();
+    _applyLayerVisibility();
+  });
 
   // Resize handler
   window.addEventListener('resize', _onResize);
@@ -1234,10 +1240,16 @@ window.updateTourLanguageUI = function() {
   if (descEl) descEl.innerHTML = t(step.i18nKey);
   
   const prevEl = document.getElementById('btn-tour-prev');
-  if (prevEl) prevEl.textContent = t('tours.prev');
+  if (prevEl) {
+    prevEl.textContent = t('tours.prev');
+    prevEl.disabled = _activeTourStep === 0;
+  }
   
   const nextEl = document.getElementById('btn-tour-next');
-  if (nextEl) nextEl.textContent = t('tours.next');
+  if (nextEl) {
+    nextEl.textContent = t('tours.next');
+    nextEl.disabled = _activeTourStep === steps.length - 1;
+  }
   
   const exitEl = document.getElementById('btn-tour-exit');
   if (exitEl) exitEl.textContent = t('tours.exit');
@@ -1245,6 +1257,11 @@ window.updateTourLanguageUI = function() {
 
 function _renderTourStep() {
   if (!_activeTour) return;
+  
+  // Close standard node and edge details panels during transition to keep view clear
+  _hideNodePanel();
+  _hideEdgePanel();
+  
   const steps = TOURS_DATA[_activeTour];
   const step = steps[_activeTourStep];
   
