@@ -4,8 +4,9 @@
  */
 
 import { loadStrings, t, getLang, setLang } from './i18n.js';
-import { initGraph, changeDomain, filterEdge } from './graph.js';
+import { initGraph, changeDomain, filterEdge, changeVersion } from './graph.js';
 import layerSystem from './layers.js';
+import { initMicroGraphs, updatePlaygroundGraph } from './micro-graphs.js';
 
 // ─── LANGUAGE ─────────────────────────────────────────────────────────────────
 
@@ -16,12 +17,15 @@ async function bootstrap() {
   await loadStrings(savedLang);
   _applyStrings();
   await initGraph();
+  initMicroGraphs();
   _initLayerSelector();
   _initScrollAnimations();
   _initTooltips();
   _initRegenDemo();
   _initPlayground();
   _initLegendOverlay();
+  _initVersionSelector();
+  _initFullscreen();
 }
 
 function _applyStrings() {
@@ -281,6 +285,33 @@ function _applyStrings() {
 
   const btnTourExit = document.getElementById('btn-tour-exit');
   if (btnTourExit) btnTourExit.textContent = t('tours.exit');
+
+  // Version Selector translations
+  const versionSelectorLabel = document.getElementById('version-selector-label');
+  if (versionSelectorLabel) versionSelectorLabel.textContent = t('version.title');
+
+  const btnVersionFull = document.getElementById('btn-version-full');
+  if (btnVersionFull) btnVersionFull.textContent = t('version.full');
+
+  const btnVersionLite = document.getElementById('btn-version-lite');
+  if (btnVersionLite) btnVersionLite.textContent = t('version.lite');
+
+  const optVersionFull = document.getElementById('opt-version-full');
+  if (optVersionFull) optVersionFull.textContent = t('version.full');
+
+  const optVersionLite = document.getElementById('opt-version-lite');
+  if (optVersionLite) optVersionLite.textContent = t('version.lite');
+
+  // Fullscreen Button
+  const fullscreenBtn = document.getElementById('fullscreen-btn');
+  if (fullscreenBtn) {
+    const isCurrentlyFullscreen = document.querySelector('.graph-section')?.classList.contains('is-fullscreen');
+    if (isCurrentlyFullscreen) {
+      fullscreenBtn.textContent = getLang() === 'es' ? '✕ Salir' : '✕ Exit';
+    } else {
+      fullscreenBtn.textContent = getLang() === 'es' ? '⛶ Pantalla Completa' : '⛶ Fullscreen';
+    }
+  }
 
   _applyMuseumGrid();
 }
@@ -565,6 +596,32 @@ function _initPlayground() {
         formulaBox.classList.remove('secret-active', 'mystery-active');
       }
     }
+
+    // Sync Switch Dimming & Text overrides
+    const accessGroup = playAccess.closest('.control-switch-group');
+    if (accessGroup) {
+      const isDisabled = !C || K;
+      accessGroup.classList.toggle('disabled', isDisabled);
+      playAccess.disabled = isDisabled;
+
+      const accessDesc = document.getElementById('play-toggle-access-desc');
+      if (accessDesc) {
+        if (!C) {
+          accessDesc.textContent = getLang() === 'es' 
+            ? '🔒 Bloqueado: Inútil si el hecho es falso.' 
+            : '🔒 Locked: Irrelevant if the fact is false.';
+        } else if (K) {
+          accessDesc.textContent = getLang() === 'es' 
+            ? '🔒 Bloqueado: Inútil si ya se conoce.' 
+            : '🔒 Locked: Irrelevant if already known.';
+        } else {
+          accessDesc.textContent = t('playground.toggleAccessDesc');
+        }
+      }
+    }
+
+    // Call dynamic micro-graph update
+    updatePlaygroundGraph(C, K, Access);
   };
 
   playC.addEventListener('change', update);
@@ -642,6 +699,102 @@ window.toggleLegendOverlay = function(event) {
     toggleLegendBtn?.setAttribute('aria-expanded', 'true');
   }
 };
+
+// ─── VERSION SELECTOR ──────────────────────────────────────────────────────────
+
+function _initVersionSelector() {
+  const select = document.getElementById('mobile-version-select');
+  const buttons = document.querySelectorAll('#version-selector .ctrl-btn');
+
+  const updateUI = (version) => {
+    // Call graph.js changeVersion
+    changeVersion(version);
+
+    // Sync buttons
+    buttons.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.version === version);
+    });
+
+    // Sync mobile select
+    if (select) select.value = version;
+  };
+
+  // Listen to desktop buttons
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      updateUI(btn.dataset.version);
+    });
+  });
+
+  // Listen to mobile select
+  if (select) {
+    select.addEventListener('change', () => {
+      updateUI(select.value);
+    });
+  }
+
+  // Auto-switch to lite on mobile at load
+  const initialVersion = window.innerWidth < 600 ? 'lite' : 'full';
+  updateUI(initialVersion);
+}
+
+// ─── FULLSCREEN MODE ──────────────────────────────────────────────────────────
+
+function _initFullscreen() {
+  const btn = document.getElementById('fullscreen-btn');
+  const section = document.querySelector('.graph-section');
+  if (!btn || !section) return;
+
+  const toggleFullscreen = () => {
+    const isCurrentlyFullscreen = section.classList.contains('is-fullscreen');
+
+    if (!isCurrentlyFullscreen) {
+      // Enter fullscreen
+      section.classList.add('is-fullscreen');
+      btn.textContent = getLang() === 'es' ? '✕ Salir' : '✕ Exit';
+
+      // Try native fullscreen if available
+      if (section.requestFullscreen) {
+        section.requestFullscreen().catch(err => {
+          console.warn('Native fullscreen request rejected, using fallback:', err);
+        });
+      } else if (section.webkitRequestFullscreen) { /* Safari */
+        section.webkitRequestFullscreen();
+      } else if (section.msRequestFullscreen) { /* IE11 */
+        section.msRequestFullscreen();
+      }
+    } else {
+      // Exit fullscreen
+      section.classList.remove('is-fullscreen');
+      btn.textContent = getLang() === 'es' ? '⛶ Pantalla Completa' : '⛶ Fullscreen';
+
+      // Exit native fullscreen if active
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(err => {});
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
+  };
+
+  btn.addEventListener('click', toggleFullscreen);
+
+  // Listen for native escape/exit to sync classes
+  const onFullscreenChange = () => {
+    const nativeEl = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+    if (!nativeEl) {
+      // Native exited, ensure class is removed
+      section.classList.remove('is-fullscreen');
+      btn.textContent = getLang() === 'es' ? '⛶ Pantalla Completa' : '⛶ Fullscreen';
+    }
+  };
+
+  document.addEventListener('fullscreenchange', onFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+  document.addEventListener('msfullscreenchange', onFullscreenChange);
+}
 
 // ─── BOOT ─────────────────────────────────────────────────────────────────────
 

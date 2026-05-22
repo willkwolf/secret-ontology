@@ -1433,3 +1433,192 @@ p strong { color: var(--text); font-weight: 500; }
   fill: #d39eff;
   filter: drop-shadow(0 0 3px #d39eff);
 }
+
+/* ─── PROGRESSIVE MICRO-GRAPHS & FULLSCREEN CONTROLS ─────────── */
+
+/* Distinction & Playground Micro-Graph Containers */
+.micro-graph-section-wrapper {
+  margin: 32px 0;
+  background: rgba(15, 18, 25, 0.4);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.micro-graph-title {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  color: var(--gold);
+  margin-bottom: 16px;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.micro-graph-container {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  background: rgba(10, 12, 18, 0.6);
+  border: 1px solid rgba(197, 168, 107, 0.08);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6);
+}
+
+.micro-graph-desc-panel {
+  margin-top: 16px;
+  background: rgba(20, 24, 36, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px 18px;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: var(--silver);
+  transition: all 0.3s ease;
+}
+
+.micro-graph-desc-panel p {
+  margin: 0;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.click-prompt {
+  font-style: italic;
+  color: var(--text-dimmer);
+  font-size: 0.85rem;
+}
+
+/* Micro-Graph D3 styling */
+.micro-node {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.micro-node circle {
+  fill: var(--bg2);
+  stroke: var(--text-dimmer);
+  stroke-width: 1.5px;
+  transition: all 0.3s ease;
+}
+.micro-node:hover circle, .micro-node.active circle {
+  stroke: var(--gold);
+  filter: drop-shadow(0 0 6px rgba(197, 168, 107, 0.6));
+}
+.micro-node text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--text-dim);
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.micro-node:hover text, .micro-node.active text {
+  fill: var(--text);
+  font-weight: bold;
+}
+
+/* Edges */
+.micro-edge {
+  fill: none;
+  stroke-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.micro-edge.dashed-gold {
+  stroke: var(--gold);
+  stroke-dasharray: 4, 4;
+}
+
+.micro-edge.mystery-violet {
+  stroke: var(--mystery);
+}
+
+.micro-edge.thick-gold {
+  stroke: var(--gold);
+  stroke-width: 3.5px;
+}
+
+.micro-edge.broken-red {
+  stroke: var(--danger);
+  stroke-width: 1.5px;
+}
+
+/* Custom locked Switch styles */
+.control-switch-group.disabled {
+  opacity: 0.35;
+  pointer-events: none;
+  border-color: rgba(200, 190, 170, 0.04);
+  background: rgba(10, 12, 18, 0.2);
+}
+
+/* Fullscreen Styles */
+.fullscreen-btn {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 20;
+  pointer-events: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(10, 12, 18, 0.8);
+  border: 1px solid var(--border-gold);
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all var(--transition);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+.fullscreen-btn:hover {
+  background: rgba(197, 168, 107, 0.15);
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(197, 168, 107, 0.2);
+}
+
+/* Immersive native and fallback fullscreen rules */
+.graph-section.is-fullscreen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 99999 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--bg) !important;
+}
+
+.graph-section.is-fullscreen .graph-container {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0 !important;
+  border: none !important;
+  padding: 20px !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.graph-section.is-fullscreen .graph-relative-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.graph-section.is-fullscreen svg {
+  flex-grow: 1;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+}

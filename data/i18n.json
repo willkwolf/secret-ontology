@@ -138,7 +138,7 @@
     },
     "playground": {
       "title": "§ 03 — Simulador Epistémico",
-      "subtitle": "Parque Infantil de Lógica Modal",
+      "subtitle": "Modal Interactivo",
       "intro": "Experimenta en tiempo real con las condiciones lógicas de la ontología. Activa o desactiva las variables a continuación para ver cómo muta el estado de la fórmula.",
       "toggleC": "Hecho Verdadero (C)",
       "toggleCDesc": "¿Es el contenido real en este mundo?",
@@ -148,13 +148,26 @@
       "toggleAccessDesc": "¿Existe acceso a mundos alternativos?",
       "statusLabel": "Estado Epistémico Resultante:",
       "stateAbsurd": "Ocultamiento Absurdo",
-      "stateAbsurdDesc": "<strong>No hay secreto:</strong> No se puede ocultar o ignorar algo que es objetivamente falso. La verdad de C es la primera condición del secreto.",
+      "stateAbsurdDesc": "<strong>No hay secreto:</strong> No se puede ocultar o ignorar algo que es objetivamente falso. La verdad de C es la primera condición del secreto. <em>(El acceso modal ◇ es lógicamente irrelevante si el hecho es falso).</em>",
       "stateKnow": "Conocimiento Pleno",
-      "stateKnowDesc": "<strong>No hay secreto:</strong> El agente ha asimilado el hecho. La ignorancia se ha disipado y la relación de ocultamiento ya no existe.",
+      "stateKnowDesc": "<strong>No hay secreto:</strong> El agente ha asimilado el hecho. La ignorancia se ha disipado y la relación de ocultamiento ya no existe. <em>(El acceso modal ◇ es lógicamente irrelevante si el hecho ya se conoce).</em>",
       "stateRevealable": "Secreto Revelable (¬Kₐ(C) ∧ ◇Kₐ(C))",
       "stateRevealableDesc": "<strong>Secreto Activo:</strong> El agente ignora el contenido hoy, pero el acceso a otros mundos posibles (representado por el operador de posibilidad <em>◇</em>) garantiza que es cognoscible y revelable en principio.",
       "stateMystery": "Misterio Absoluto (¬Kₐ(C) ∧ □¬Kₐ(C))",
       "stateMysteryDesc": "<strong>Misterio Estructural:</strong> El agente no sabe, y la falta de acceso a otros estados (operador de necesidad de ignorancia <em>□¬Kₐ</em>) convierte la ignorancia en absoluta e insalvable."
+    },
+    "version": {
+      "title": "Complejidad",
+      "full": "Completa",
+      "lite": "Simplificada (Lite)"
+    },
+    "micro": {
+      "w0Desc": "<strong>Mundo Actual w₀:</strong> El estado inicial o de referencia del agente.",
+      "w1Desc": "<strong>Secreto w₁:</strong> Existe un camino posible hacia este mundo (arista punteada). Es cognoscible en principio, aunque el agente no lo conozca ahora.",
+      "w2Desc": "<strong>Misterio w₂:</strong> No hay acceso formal o físico a este mundo (arista bloqueada en violeta). La incognoscibilidad es estructural.",
+      "clickPrompt": "Haz clic en los nodos para explorar su relación modal...",
+      "distinctionTitle": "Visualización del Secreto vs. Misterio (Kripke)",
+      "playgroundTitle": "Relación Dinámica de Accesibilidad"
     },
     "tours": {
       "title": "Recorridos Guiados",
@@ -320,7 +333,7 @@
     },
     "playground": {
       "title": "§ 03 — Epistemic Simulator",
-      "subtitle": "Modal Logic Playground",
+      "subtitle": "Interactive Modal",
       "intro": "Experiment in real time with the logical conditions of the ontology. Toggle the variables below to watch the formula state mutate.",
       "toggleC": "Fact is True (C)",
       "toggleCDesc": "Is the content real in this world?",
@@ -330,13 +343,26 @@
       "toggleAccessDesc": "Is there access to alternative worlds?",
       "statusLabel": "Resulting Epistemic State:",
       "stateAbsurd": "Absurd Concealment",
-      "stateAbsurdDesc": "<strong>No secret exists:</strong> You cannot conceal or be ignorant of something that is objectively false. The truth of C is the primary condition of secrecy.",
+      "stateAbsurdDesc": "<strong>No secret exists:</strong> You cannot conceal or be ignorant of something that is objectively false. The truth of C is the primary condition of secrecy. <em>(Modal access ◇ is logically irrelevant if the fact is false).</em>",
       "stateKnow": "Full Knowledge",
-      "stateKnowDesc": "<strong>No secret exists:</strong> The agent has assimilated the fact. Ignorance has dissolved and the concealment relation no longer exists.",
+      "stateKnowDesc": "<strong>No secret exists:</strong> The agent has integrated the fact. Ignorance has dissolved and the concealment relation no longer exists. <em>(Modal access ◇ is logically irrelevant if the fact is already known).</em>",
       "stateRevealable": "Revealable Secret (¬Kₐ(C) ∧ ◇Kₐ(C))",
       "stateRevealableDesc": "<strong>Active Secret:</strong> The agent is ignorant of the content today, but access to alternative possible worlds (represented by the possibility operator <em>◇</em>) guarantees it is knowable and revealable in principle.",
       "stateMystery": "Absolute Mystery (¬Kₐ(C) ∧ □¬Kₐ(C))",
       "stateMysteryDesc": "<strong>Structural Mystery:</strong> The agent does not know, and the complete lack of access to other states (ignorance necessity operator <em>□¬Kₐ</em>) renders the ignorance absolute and inescapable."
+    },
+    "version": {
+      "title": "Complexity",
+      "full": "Full",
+      "lite": "Simplified (Lite)"
+    },
+    "micro": {
+      "w0Desc": "<strong>Current World w₀:</strong> The initial or reference state of the agent.",
+      "w1Desc": "<strong>Secret w₁:</strong> A possible path exists to this world (dashed edge). It is knowable in principle, even if the agent is unaware of it now.",
+      "w2Desc": "<strong>Mystery w₂:</strong> There is no formal or physical access to this world (violet blocked edge). Unknowability is structural.",
+      "clickPrompt": "Click the nodes to explore their modal relationship...",
+      "distinctionTitle": "Visualization of Secret vs. Mystery (Kripke)",
+      "playgroundTitle": "Dynamic Accessibility Relationship"
     },
     "tours": {
       "title": "Guided Tours",

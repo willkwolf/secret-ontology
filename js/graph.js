@@ -98,6 +98,8 @@ let _activeTour = null;
 let _activeTourStep = 0;
 let _currentDomain = 'all';
 let _currentEdgeFilter = 'all';
+let _currentVersion = 'full'; // 'full' or 'lite'
+const LITE_NODES = new Set(['w_T', 'w_O', 'w_N', 'w_E', 'w_F', 'secreto_estado', 'conciencia', 'mejor_secreto', 'incompletitud', 'misterio_cuantico']);
 let _edgePanelEl, _nodePanelEl;
 let _bridgeNodeIds = new Set();
 let _inaccessibleRegion = null;
@@ -130,6 +132,11 @@ export async function initGraph() {
 
 export function changeDomain(domain) {
   _currentDomain = domain;
+  _updateGraph();
+}
+
+export function changeVersion(version) {
+  _currentVersion = version;
   _updateGraph();
 }
 
@@ -285,6 +292,13 @@ function _getFilteredData() {
   let nodes = _graphData.nodes.slice();
   let edges = _graphData.edges.slice();
 
+  // Version filter (Lite Mode)
+  if (_currentVersion === 'lite') {
+    nodes = nodes.filter(n => LITE_NODES.has(n.id));
+    const nodeIds = new Set(nodes.map(n => n.id));
+    edges = edges.filter(e => nodeIds.has(e.source) && nodeIds.has(e.target));
+  }
+
   // Domain filter
   if (_currentDomain !== 'all') {
     const allowed = DOMAIN_MAP[_currentDomain];
@@ -344,11 +358,16 @@ function _updateGraph() {
     }
   });
 
+  const isMobile = window.innerWidth < 600;
+  const chargeStrength = isMobile ? -550 : -320;
+  const collideRadius = isMobile ? 50 : 40;
+  const distanceVal = isMobile ? 160 : 130;
+
   _simulation = d3.forceSimulation(nodes)
-    .force('link',      d3.forceLink(edges).id(d => d.id).distance(130).strength(0.45))
-    .force('charge',    d3.forceManyBody().strength(-320))
+    .force('link',      d3.forceLink(edges).id(d => d.id).distance(distanceVal).strength(0.45))
+    .force('charge',    d3.forceManyBody().strength(chargeStrength))
     .force('center',    d3.forceCenter(W / 2, H / 2))
-    .force('collision', d3.forceCollide(40))
+    .force('collision', d3.forceCollide(collideRadius))
     .force('cluster',   _buildClusterForce(nodes))
     .force('extreme',   _buildExtremeForce(nodes));
 
@@ -506,7 +525,7 @@ function _updateGraph() {
     .attr('text-anchor', 'middle')
     .attr('dy', '0.35em')
     .attr('font-family', "'JetBrains Mono', monospace")
-    .attr('font-size', '8px')
+    .attr('font-size', isMobile ? '9px' : '8px')
     .attr('fill', '#B8C4D4')
     .attr('pointer-events', 'none')
     .text(d => d.id);
@@ -514,9 +533,9 @@ function _updateGraph() {
   // Name label below
   nodeEnter.append('text')
     .attr('text-anchor', 'middle')
-    .attr('dy', d => _nodeRadius(d) + 14)
+    .attr('dy', d => _nodeRadius(d) + (isMobile ? 16 : 14))
     .attr('font-family', "'DM Sans', sans-serif")
-    .attr('font-size', '8px')
+    .attr('font-size', isMobile ? '9px' : '8px')
     .attr('fill', '#6A6864')
     .attr('pointer-events', 'none')
     .text(d => {

@@ -138,6 +138,15 @@
       </div>
       <p>Ejemplos concretos: que la NSA tenga registros de tus llamadas es un <em>secreto</em> — es cognoscible, hay investigaciones periodísticas que lo han revelado. Que la experiencia subjetiva del dolor "se sienta de cierta manera" es, para muchos filósofos, un <em>misterio</em> — ningún acceso físico al cerebro parece poder capturarlo desde fuera.</p>
       <p>En el grafo modal que sigue, las aristas punteadas representan secretos (acceso posible). Las aristas bloqueadas en violeta representan misterios (incognoscibilidad estructural).</p>
+      
+      <!-- Micro-Graph 1: Secreto vs Misterio -->
+      <div id="micro-graph-distinction-container" class="micro-graph-section-wrapper">
+        <h3 id="micro-distinction-title" class="micro-graph-title">Visualización del Secreto vs. Misterio (Kripke)</h3>
+        <div id="micro-graph-distinction" class="micro-graph-container"></div>
+        <div id="micro-graph-distinction-desc" class="micro-graph-desc-panel">
+          <p id="micro-distinction-prompt" class="click-prompt">Haz clic en los nodos para explorar su relación modal...</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -145,8 +154,8 @@
   <section aria-labelledby="s03-heading" class="formula-playground-section">
     <div class="fade-in">
       <div class="section-label" id="playground-label-section">§ 03 — Simulador Epistémico</div>
-      <h2 id="s03-heading">Parque Infantil de Lógica Modal</h2>
-      <p id="playground-intro-text">Experimenta en tiempo real con las condiciones lógicas de la ontología. Activa o desactiva las variables a continuación para ver cómo muta el estado de la fórmula.</p>
+      <h2 id="s03-heading">Modal Interactivo</h2>
+      <p id="playground-intro-text">Experimenta en tiempo real con las conditions lógicas de la ontología. Activa o desactiva las variables a continuación para ver cómo muta el estado de la fórmula.</p>
       
       <div class="playground-container">
         <!-- Interactive Controls -->
@@ -194,6 +203,12 @@
             <span class="play-symbol" id="sym-and">∧</span>
             <span class="play-symbol" id="sym-not">¬</span>
             <span class="play-symbol" id="sym-know">Kₐ(C, w)</span>
+          </div>
+
+          <!-- Micro-Graph 2: Relación Dinámica de Accesibilidad -->
+          <div id="micro-graph-playground-container" class="micro-graph-section-wrapper">
+            <h3 id="micro-playground-title" class="micro-graph-title">Relación Dinámica de Accesibilidad</h3>
+            <div id="micro-graph-playground" class="micro-graph-container"></div>
           </div>
 
           <div class="playground-status">
@@ -329,13 +344,33 @@
               <option value="computability" id="opt-tour-computability">Límite Computacional</option>
             </select>
           </div>
+
+          <!-- 4. Complexity Selector Group -->
+          <div class="graph-overlay-group version-overlay-group">
+            <div class="panel-label" id="version-selector-label">Complejidad</div>
+            
+            <!-- Desktop Buttons -->
+            <div class="desktop-only-controls graph-controls" id="version-selector" role="group" aria-label="Seleccionar versión">
+              <button class="ctrl-btn active" data-version="full" id="btn-version-full">Completa</button>
+              <button class="ctrl-btn" data-version="lite" id="btn-version-lite">Simplificada (Lite)</button>
+            </div>
+            
+            <!-- Mobile Selector -->
+            <select id="mobile-version-select" class="mobile-only-select overlay-select" aria-label="Seleccionar versión">
+              <option value="full" id="opt-version-full">Completa</option>
+              <option value="lite" id="opt-version-lite">Simplificada (Lite)</option>
+            </select>
+          </div>
         </div>
 
         <svg id="graph-svg" height="520"
              aria-label="Grafo epistémico modal dinámico interactivo"
              role="img"></svg>
 
-        <!-- Toggle Legend button at bottom-right of SVG container -->
+        <!-- Fullscreen and Legend Buttons -->
+        <button id="fullscreen-btn" class="fullscreen-btn" aria-label="Pantalla completa">
+          ⛶ Pantalla Completa
+        </button>
         <button id="toggle-legend-btn" class="toggle-legend-btn" aria-expanded="false" aria-controls="overlay-legend-card">
           Aristas & Leyenda ⇅
         </button>
