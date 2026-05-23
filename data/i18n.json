@@ -160,7 +160,7 @@
       "stateRevealable": "Secreto Revelable (¬Kₐ(C) ∧ ◇Kₐ(C))",
       "stateRevealableDesc": "<strong>Secreto Activo:</strong> El agente ignora el contenido hoy, pero el acceso a otros mundos posibles (representado por el operador de posibilidad <em>◇</em>) garantiza que es cognoscible y revelable en principio.",
       "stateMystery": "Misterio Absoluto (¬Kₐ(C) ∧ □¬Kₐ(C))",
-      "stateMysteryDesc": "<strong>Misterio Estructural:</strong> El agente no sabe, y la falta de acceso a otros estados (operador de necesidad de ignorancia <em>□¬Kₐ</em>) convierte la ignorancia en absoluta e insalvable."
+      "stateMysteryDesc": "<strong>Misterio Estructural:</strong> El agente no sabe, y la falta de acceso a otros estados (operador de necesidad de ignorancia <em>□¬Kₐ</em>) convierte la ignorancia en absoluta e insalvable. <br><br><small class='text-dim' style='display:block;margin-top:6px;border-top:1px solid rgba(197,168,107,0.15);padding-top:6px;'><em>En criptografía, si no existe acceso modal a un simulador, la prueba no es segura. Pero si es imposible demostrar esta falta de acceso, el sistema permanece efectivamente seguro. El misterio actúa como simulador virtual.</em></small>"
     },
     "version": {
       "title": "Complejidad",
@@ -373,7 +373,7 @@
       "stateRevealable": "Revealable Secret (¬Kₐ(C) ∧ ◇Kₐ(C))",
       "stateRevealableDesc": "<strong>Active Secret:</strong> The agent is ignorant of the content today, but access to alternative possible worlds (represented by the possibility operator <em>◇</em>) guarantees it is knowable and revealable in principle.",
       "stateMystery": "Absolute Mystery (¬Kₐ(C) ∧ □¬Kₐ(C))",
-      "stateMysteryDesc": "<strong>Structural Mystery:</strong> The agent does not know, and the complete lack of access to other states (ignorance necessity operator <em>□¬Kₐ</em>) renders the ignorance absolute and inescapable."
+      "stateMysteryDesc": "<strong>Structural Mystery:</strong> The agent does not know, and the complete lack of access to other states (ignorance necessity operator <em>□¬Kₐ</em>) renders the ignorance absolute and inescapable. <br><br><small class='text-dim' style='display:block;margin-top:6px;border-top:1px solid rgba(197,168,107,0.15);padding-top:6px;'><em>In cryptography, if there is no modal access to a simulator, the proof is not secure. But if it is impossible to prove this lack of access, the system remains effectively secure. The mystery acts as a virtual simulator.</em></small>"
     },
     "version": {
       "title": "Complexity",
