@@ -463,6 +463,7 @@ p strong { color: var(--text); font-weight: 500; }
   gap: 12px;
   pointer-events: none;
   z-index: 10;
+  flex-wrap: wrap;
 }
 
 .graph-overlay-group {
@@ -1706,6 +1707,13 @@ body.reading-mode .tour-narrative-content {
 .node, .link, .halo, .link-fusiona-2 {
   transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), stroke-width 0.35s ease, stroke-opacity 0.35s ease !important;
 }
+.link, .link-fusiona-2 {
+  pointer-events: none !important;
+}
+.link-overlay {
+  pointer-events: stroke !important;
+  cursor: pointer !important;
+}
 
 @media (max-width: 768px) {
   .options-toggle-btn {
@@ -1757,6 +1765,32 @@ body.reading-mode .tour-narrative-content {
     z-index: 100 !important;
     background: var(--bg2) !important;
     border: 1px solid var(--border-gold) !important;
+    max-height: 75vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+    padding: 16px !important;
+  }
+  .node-panel .panel-close {
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    z-index: 102 !important;
+  }
+  .node-panel .panel-header {
+    flex-shrink: 0 !important;
+    border-bottom: 1px solid rgba(197, 168, 107, 0.2) !important;
+    padding-bottom: 6px !important;
+    margin-bottom: 10px !important;
+    padding-right: 28px !important;
+  }
+  .node-panel .panel-scroll-content {
+    overflow-y: auto !important;
+    flex-grow: 1 !important;
+    padding-right: 4px !important;
+  }
+  .node-panel #panel-minimap {
+    display: none !important;
   }
 
   /* Ficha de Aristas en Bottom Sheet Móvil */
@@ -1775,7 +1809,22 @@ body.reading-mode .tour-narrative-content {
     background: var(--bg3) !important;
     border: 1px solid var(--border-gold) !important;
     pointer-events: auto !important;
-    padding-right: 32px !important;
+    max-height: 75vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+    padding: 16px !important;
+  }
+  .edge-panel .panel-close {
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    z-index: 102 !important;
+  }
+  .edge-panel .panel-scroll-content {
+    overflow-y: auto !important;
+    flex-grow: 1 !important;
+    padding-right: 4px !important;
   }
 }
 

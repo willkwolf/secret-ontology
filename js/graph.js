@@ -405,13 +405,7 @@ function _updateGraph() {
     .attr('fill', 'none')
     .attr('tabindex', '0')
     .attr('role', 'button')
-    .attr('aria-label', d => `${d.type}: ${d.label || ''}`)
-    .on('mouseenter', _onEdgeEnter)
-    .on('mouseleave', _onEdgeLeave)
-    .on('mousemove',  _onPanelMouseMove)
-    .on('focus',      _onEdgeEnter)
-    .on('blur',       _onEdgeLeave)
-    .on('click',      (e, d) => { e.stopPropagation(); _showEdgePanel(e, d); });
+    .attr('aria-label', d => `${d.type}: ${d.label || ''}`);
 
   const linkMerged = linkSel.merge(linkEnter);
   linkMerged
@@ -429,6 +423,31 @@ function _updateGraph() {
         .attr('marker-end',       `url(#${markerEndId})`)
         .attr('marker-start',     markerStartId ? `url(#${markerStartId})` : null);
     });
+
+  // Remove interactive overlays first to rebuild
+  _linkGroup.selectAll('path.link-overlay').remove();
+
+  const overlaySel = _linkGroup.selectAll('path.link-overlay')
+    .data(edges, d => `${d.source?.id || d.source}→${d.target?.id || d.target}:${d.type}-overlay`);
+
+  overlaySel.exit().remove();
+
+  const overlayEnter = overlaySel.enter().append('path')
+    .attr('class', 'link-overlay')
+    .attr('fill', 'none')
+    .attr('stroke', 'transparent')
+    .attr('stroke-width', 22)
+    .attr('tabindex', '0')
+    .attr('role', 'button')
+    .attr('aria-label', d => `${d.type}: ${d.label || ''}`)
+    .on('mouseenter', _onEdgeEnter)
+    .on('mouseleave', _onEdgeLeave)
+    .on('mousemove',  _onPanelMouseMove)
+    .on('focus',      _onEdgeEnter)
+    .on('blur',       _onEdgeLeave)
+    .on('click',      (e, d) => { e.stopPropagation(); _showEdgePanel(e, d); });
+
+  overlaySel.merge(overlayEnter);
 
   // ── Fusiona offset paths (second parallel line) ──
   // Remove stale fusiona-2 paths first
@@ -570,7 +589,8 @@ function _updateGraph() {
       }
     });
 
-    _linkGroup.selectAll('path.link:not(.link-fusiona-2)').attr('d', _edgePath);
+    _linkGroup.selectAll('path.link').attr('d', _edgePath);
+    _linkGroup.selectAll('path.link-overlay').attr('d', _edgePath);
     _linkGroup.selectAll('path.link-fusiona-2').attr('d', d => _edgePathOffset(d, 4));
     _nodeGroup.selectAll('g.node').attr('transform', d => `translate(${d.x},${d.y})`);
 
@@ -1011,6 +1031,13 @@ function _showNodePanel(e, d) {
     metalogicEl.textContent = ruleKey ? t(ruleKey) : '—';
   }
 
+  // Dynamic formula mapping
+  const formulaObj = _getNodeModalFormula(d.id);
+  const formulaEl = panel.querySelector('#panel-formula');
+  const formulaCastellanoEl = panel.querySelector('#panel-formula-castellano');
+  if (formulaEl) formulaEl.textContent = formulaObj.formula;
+  if (formulaCastellanoEl) formulaCastellanoEl.textContent = formulaObj.castellano;
+
   // Structural limit note
   const structLimitEl = panel.querySelector('#panel-structural-limit');
   if (structLimitEl) {
@@ -1258,15 +1285,19 @@ function _onEdgeEnter(e, d) {
   const type = EDGE_ALIAS[d.type] || d.type;
   const style = EDGE_STYLE[type] || EDGE_STYLE['revelación'];
 
-  // Highlight hovered edge
-  d3.select(this)
+  // Find the corresponding visible link
+  const visibleLink = _linkGroup.selectAll('path.link')
+    .filter(l => (l.source?.id || l.source) === (d.source?.id || d.source) && (l.target?.id || l.target) === (d.target?.id || d.target) && l.type === d.type);
+
+  // Highlight hovered visible edge
+  visibleLink
     .transition().duration(250)
     .attr('stroke-opacity', 1)
     .attr('stroke-width', Math.max(1, Math.min(5, style.strokeWidth * 1.6)));
 
   // Dim other edges
   _linkGroup.selectAll('path.link')
-    .filter(function() { return this !== e.currentTarget; })
+    .filter(l => !((l.source?.id || l.source) === (d.source?.id || d.source) && (l.target?.id || l.target) === (d.target?.id || d.target) && l.type === d.type))
     .transition().duration(250)
     .attr('opacity', 0.08);
 
@@ -1290,8 +1321,12 @@ function _onEdgeLeave(e, d) {
   const type = EDGE_ALIAS[d.type] || d.type;
   const style = EDGE_STYLE[type] || EDGE_STYLE['revelación'];
 
+  // Find the corresponding visible link
+  const visibleLink = _linkGroup.selectAll('path.link')
+    .filter(l => (l.source?.id || l.source) === (d.source?.id || d.source) && (l.target?.id || l.target) === (d.target?.id || d.target) && l.type === d.type);
+
   // Restore hovered edge stroke/width
-  d3.select(this)
+  visibleLink
     .transition().duration(250)
     .attr('stroke-opacity', style.opacity)
     .attr('stroke-width', Math.max(1, Math.min(5, style.strokeWidth * (d.weight || 0.7))));
@@ -1322,6 +1357,68 @@ window.closeEdgePanel = function(e) {
   if (e) e.stopPropagation();
   _hideEdgePanel();
 };
+
+function _getNodeModalFormula(id) {
+  const formulas = {
+    w_T: {
+      formula: "Kₐ(C, w) ≡ True  ∀C",
+      castellano: "Conocimiento absoluto de toda verdad sin excepciones. Transparencia total."
+    },
+    w_O: {
+      formula: "□¬Kₐ(C, w)  ∀C",
+      castellano: "Opacidad estructural insuperable. Ninguna verdad es cognoscible en este estado."
+    },
+    w_E: {
+      formula: "□Kₐ(C, w)  ∀C_necesario",
+      castellano: "Toda verdad necesaria es conocida desde siempre y para siempre por el intelecto."
+    },
+    w_N: {
+      formula: "C ∧ □¬Kₐ(C, w)",
+      castellano: "El absoluto silencio existencial: el misterio incondicional de la inexistencia."
+    },
+    w_F: {
+      formula: "¬Kₐ(C) ∧ ◊Kₐ(C)",
+      castellano: "Cognición finita evolutiva: la ignorancia es una frontera móvil que retrocede."
+    },
+    incompletitud: {
+      formula: "True(C) ∧ ¬Provable(C)",
+      castellano: "Hay proposiciones matemáticas verdaderas cuya demostración formal dentro del sistema es imposible."
+    },
+    indecidibilidad: {
+      formula: "¬∃ Algoritmo(C, w)",
+      castellano: "Imposibilidad de que una máquina de Turing determine la verdad del sistema en pasos finitos."
+    },
+    zkp_clase: {
+      formula: "K_v(True(C)) ∧ ¬K_v(C)",
+      castellano: "El verificador se convence de la verdad de C, pero adquiere cero conocimiento sobre el secreto mismo."
+    },
+    nizkp_imposible: {
+      formula: "NIZKP(C) ⟹ Simulador_Standard ≡ ∅",
+      castellano: "Imposibilidad de simular una prueba no interactiva en un solo canal de una vía."
+    },
+    zkp_efectivo: {
+      formula: "Proof(C) ∧ ¬Provable(Simulador = ∅)",
+      castellano: "La prueba es segura porque demostrar que carece de simulador es lógicamente indemostrable."
+    },
+    mejor_secreto: {
+      formula: "Secret(C) ∧ max ΔH",
+      castellano: "Aquel secreto óptimo cuya revelación maximiza la reconfiguración y salto epistémico del agente."
+    },
+    conciencia: {
+      formula: "Qualia(w) ∧ □¬K_a(Qualia, físico)",
+      castellano: "La experiencia subjetiva o qualia como el límite absoluto e insuperable de la descripción material."
+    },
+    secreto_estado: {
+      formula: "Secret(C, a, w) ∧ (filtración ⟹ crisis)",
+      castellano: "Información sensible protegida para custodiar la soberanía y la seguridad colectiva."
+    }
+  };
+
+  return formulas[id] || {
+    formula: "¬Kₐ(C, w) ∧ ◊Kₐ(C, w)",
+    castellano: "Secreto estándar: ignorado circunstancialmente, pero cognoscible en principio."
+  };
+}
 
 
 // ─── GUIDED TOURS SEMANTICS ───────────────────────────────────────────────────

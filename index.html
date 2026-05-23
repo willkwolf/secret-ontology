@@ -456,6 +456,24 @@
               <option value="lite" id="opt-version-lite">Simplificada (Lite)</option>
             </select>
           </div>
+
+          <!-- 5. Edge Selector Group -->
+          <div class="graph-overlay-group edge-overlay-group">
+            <div class="panel-label" id="edge-filter-label">Filtrar aristas</div>
+            <select id="mobile-edge-filter" class="overlay-select" aria-label="Filtrar por tipo de arista">
+              <option value="all">Todas las aristas</option>
+              <option value="revelación">Revelación</option>
+              <option value="ocultamiento">Ocultamiento</option>
+              <option value="emergencia">Emergencia</option>
+              <option value="compresión">Compresión</option>
+              <option value="bifurcación">Bifurcación</option>
+              <option value="degrada">Degrada</option>
+              <option value="imposibilita">Imposibilita</option>
+              <option value="restringe_termo">Restringe (termo)</option>
+              <option value="fusiona">Fusiona</option>
+              <option value="colapsa">Colapsa</option>
+            </select>
+          </div>
         </div>
 
         <svg id="graph-svg" height="520"
@@ -473,22 +491,6 @@
         <!-- Collapsible overlay Legend + Edge Filters card -->
         <div id="overlay-legend-card" class="overlay-legend-card" role="region" aria-label="Leyenda y Filtro de Aristas">
           <div class="overlay-legend-title" id="legend-overlay-title">Aristas & Leyenda</div>
-          
-          <div class="mobile-edge-filter-container">
-            <select id="mobile-edge-filter" class="overlay-select" aria-label="Filtrar por tipo de arista">
-              <option value="all">Todas las aristas</option>
-              <option value="revelación">Revelación</option>
-              <option value="ocultamiento">Ocultamiento</option>
-              <option value="emergencia">Emergencia</option>
-              <option value="compresión">Compresión</option>
-              <option value="bifurcación">Bifurcación</option>
-              <option value="degrada">Degrada</option>
-              <option value="imposibilita">Imposibilita</option>
-              <option value="restringe_termo">Restringe (termo)</option>
-              <option value="fusiona">Fusiona</option>
-              <option value="colapsa">Colapsa</option>
-            </select>
-          </div>
 
           <div class="compact-legend-list">
             <div class="legend-item" data-type="Revelation">
@@ -555,39 +557,49 @@
              aria-modal="false" aria-labelledby="panel-name">
           <button class="panel-close" onclick="closePanel()"
                   aria-label="Cerrar panel">✕</button>
-          <h4 id="panel-name"></h4>
-          <div class="world-id" id="panel-id"></div>
-          <div class="panel-section">
-            <div class="panel-label" id="panel-label-agents">Agentes</div>
-            <div class="panel-content" id="panel-agents"></div>
+          <div class="panel-header">
+            <h4 id="panel-name"></h4>
+            <div class="world-id" id="panel-id"></div>
           </div>
-          <div class="panel-section">
-            <div class="panel-label" id="panel-label-contents">Contenidos accesibles</div>
-            <div class="panel-content" id="panel-contents"></div>
-          </div>
-          <div class="panel-section">
-            <div class="panel-label" id="panel-label-horizon">Horizonte epistémico</div>
-            <div class="horizon-rings" id="panel-horizon"></div>
-          </div>
-          <div class="panel-section">
-            <div class="panel-label" id="panel-label-refs">Referencias</div>
-            <div class="panel-content" id="panel-refs" style="font-size:0.78rem; font-style:italic;"></div>
-          </div>
-          <div class="panel-section" aria-label="Capas del nodo">
-            <div class="panel-label" id="panel-label-layers">Capas</div>
-            <div class="panel-content" id="panel-layers"></div>
-          </div>
-          <div class="panel-section" aria-label="Reglas metalógicas">
-            <div class="panel-label" id="panel-label-metalogic">Reglas metalógicas</div>
-            <div class="panel-content" id="panel-metalogic" style="font-size:0.78rem; font-style:italic;"></div>
-          </div>
-          <div class="panel-section" id="panel-structural-limit-section" style="display:none;" aria-label="Límite estructural">
-            <div class="panel-content" id="panel-structural-limit" style="font-size:0.78rem; color:#FF6B35; font-style:italic;">
-              Límite estructural no-antropocéntrico
+          <div class="panel-scroll-content">
+            <div class="panel-section">
+              <div class="panel-label" id="panel-label-agents">Agentes</div>
+              <div class="panel-content" id="panel-agents"></div>
             </div>
+            <div class="panel-section">
+              <div class="panel-label" id="panel-label-contents">Contenidos accesibles</div>
+              <div class="panel-content" id="panel-contents"></div>
+            </div>
+            <div class="panel-section">
+              <div class="panel-label" id="panel-label-horizon">Horizonte epistémico</div>
+              <div class="horizon-rings" id="panel-horizon"></div>
+            </div>
+            <div class="panel-section">
+              <div class="panel-label" id="panel-label-refs">Referencias</div>
+              <div class="panel-content" id="panel-refs" style="font-size:0.78rem; font-style:italic;"></div>
+            </div>
+            <div class="panel-section" aria-label="Capas del nodo">
+              <div class="panel-label" id="panel-label-layers">Capas</div>
+              <div class="panel-content" id="panel-layers"></div>
+            </div>
+            <div class="panel-section" aria-label="Reglas metalógicas">
+              <div class="panel-label" id="panel-label-metalogic">Reglas metalógicas</div>
+              <div class="panel-content" id="panel-metalogic" style="font-size:0.78rem; font-style:italic;"></div>
+            </div>
+            <!-- Dynamic Modal Formula Section -->
+            <div class="panel-section" id="panel-formula-section" aria-label="Fórmula modal del nodo">
+              <div class="panel-label" id="panel-label-formula">Fórmula modal</div>
+              <div class="panel-content" id="panel-formula" style="font-family: 'JetBrains Mono', monospace; font-size:0.82rem; color:var(--gold); margin-bottom: 6px; font-weight: 500;"></div>
+              <div class="panel-content" id="panel-formula-castellano" style="font-size:0.78rem; font-style:italic; color:var(--text-dim);"></div>
+            </div>
+            <div class="panel-section" id="panel-structural-limit-section" style="display:none;" aria-label="Límite estructural">
+              <div class="panel-content" id="panel-structural-limit" style="font-size:0.78rem; color:#FF6B35; font-style:italic;">
+                Límite estructural no-antropocéntrico
+              </div>
+            </div>
+            <svg class="minimap" id="panel-minimap" width="120" height="80"
+                 role="img" aria-label="Posición en la topología"></svg>
           </div>
-          <svg class="minimap" id="panel-minimap" width="120" height="80"
-               role="img" aria-label="Posición en la topología"></svg>
         </div>
       </div>
 

@@ -54,6 +54,8 @@ function _applyStrings() {
   // Domain selector
   const domainLabel = document.getElementById('domain-selector-label');
   if (domainLabel) domainLabel.textContent = t('domainLabel');
+  const edgeFilterLabel = document.getElementById('edge-filter-label');
+  if (edgeFilterLabel) edgeFilterLabel.textContent = getLang() === 'es' ? 'Filtrar aristas' : 'Filter edges';
   document.querySelectorAll('#domain-filters .ctrl-btn').forEach(btn => {
     const domain = btn.dataset.domain;
     if (domain) btn.textContent = t(`nav.${domain}`);
@@ -176,6 +178,8 @@ function _applyStrings() {
   if (panelLayersLabel) panelLayersLabel.textContent = t('panel.layers');
   const panelMetalogicLabel = document.getElementById('panel-label-metalogic');
   if (panelMetalogicLabel) panelMetalogicLabel.textContent = t('panel.metalogic');
+  const panelFormulaLabel = document.getElementById('panel-label-formula');
+  if (panelFormulaLabel) panelFormulaLabel.textContent = getLang() === 'es' ? 'Fórmula modal' : 'Modal formula';
 
   // Mobile showing label
   const showingEl = document.getElementById('layer-showing');
