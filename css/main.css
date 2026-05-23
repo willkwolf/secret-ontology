@@ -1679,3 +1679,103 @@ body.reading-mode .tour-narrative-content {
   line-height: 1.6;
 }
 
+/* ─── KAIZEN UX/UI: MOBILE CONTROLS & BOTTOM SHEETS ───────────────── */
+
+.options-toggle-btn {
+  display: none;
+  pointer-events: auto;
+  font-size: 16px;
+  background: var(--overlay-bg);
+  border: 1px solid var(--border-gold);
+  border-radius: 4px;
+  padding: 8px 12px;
+  color: var(--gold);
+  cursor: pointer;
+  z-index: 30;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--overlay-shadow);
+  transition: all var(--transition);
+}
+.options-toggle-btn:hover {
+  background: rgba(197, 168, 107, 0.15);
+  border-color: var(--gold);
+}
+
+/* Transición suave para atenuación (Dimming) en Desktop */
+.node, .link, .halo, .link-fusiona-2 {
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), stroke-width 0.35s ease, stroke-opacity 0.35s ease !important;
+}
+
+@media (max-width: 768px) {
+  .options-toggle-btn {
+    display: block !important;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  .graph-overlay-header {
+    pointer-events: none;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    display: flex !important;
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+  
+  /* Estado colapsado: oculta todos los grupos HUD, muestra solo el toggle */
+  .graph-overlay-header.collapsed .graph-overlay-group {
+    display: none !important;
+  }
+  .graph-overlay-header:not(.collapsed) .graph-overlay-group {
+    display: flex !important;
+  }
+  
+  /* El botón de toggle se alinea arriba cuando está abierto */
+  .graph-overlay-header:not(.collapsed) .options-toggle-btn {
+    position: static;
+    align-self: flex-end;
+    width: max-content;
+    margin-bottom: 4px;
+  }
+
+  /* Ficha de Nodos en Bottom Sheet Móvil */
+  .node-panel {
+    position: absolute !important;
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 12px !important;
+    top: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: none !important;
+    border-radius: 8px !important;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.45) !important;
+    z-index: 100 !important;
+    background: var(--bg2) !important;
+    border: 1px solid var(--border-gold) !important;
+  }
+
+  /* Ficha de Aristas en Bottom Sheet Móvil */
+  .edge-panel {
+    position: absolute !important;
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 12px !important;
+    top: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: none !important;
+    border-radius: 8px !important;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.45) !important;
+    z-index: 100 !important;
+    background: var(--bg3) !important;
+    border: 1px solid var(--border-gold) !important;
+    pointer-events: auto !important;
+    padding-right: 32px !important;
+  }
+}
+

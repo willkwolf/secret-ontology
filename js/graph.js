@@ -193,6 +193,9 @@ function _buildSVG() {
   _svg.on('click', () => {
     _hideNodePanel();
     _hideEdgePanel();
+    if (window.innerWidth <= 768) {
+      document.querySelector('.graph-overlay-header')?.classList.add('collapsed');
+    }
   });
 
   // Listen for layer changes
@@ -405,6 +408,7 @@ function _updateGraph() {
     .attr('aria-label', d => `${d.type}: ${d.label || ''}`)
     .on('mouseenter', _onEdgeEnter)
     .on('mouseleave', _onEdgeLeave)
+    .on('mousemove',  _onPanelMouseMove)
     .on('focus',      _onEdgeEnter)
     .on('blur',       _onEdgeLeave)
     .on('click',      (e, d) => { e.stopPropagation(); _showEdgePanel(e, d); });
@@ -460,6 +464,11 @@ function _updateGraph() {
         .on('drag',  _dragged)
         .on('end',   _dragEnd)
     )
+    .on('mouseenter', _onNodeEnter)
+    .on('mouseleave', _onNodeLeave)
+    .on('mousemove',  _onPanelMouseMove)
+    .on('focus',      _onNodeEnter)
+    .on('blur',       _onNodeLeave)
     .on('click',   (e, d) => { e.stopPropagation(); _showNodePanel(e, d); })
     .on('keydown', (e, d) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); _showNodePanel(e, d); } });
 
@@ -1077,6 +1086,138 @@ function _renderMinimap(svgEl, selectedNode) {
     .attr('stroke-width', 1.5);
 }
 
+// ─── SEMANTIC INTERPRETER ──────────────────────────────────────────────────────
+
+function _generateSemanticInterpretation(d) {
+  const sourceId = d.source?.id || d.source;
+  const targetId = d.target?.id || d.target;
+  const sourceLabel = d.source?.label || sourceId;
+  const targetLabel = d.target?.label || targetId;
+  const type = EDGE_ALIAS[d.type] || d.type;
+
+  // Custom Overrides (Transitions)
+  if (sourceId === 'pre_adn' && targetId === 'post_adn') {
+    return "Esta arista representa la transición histórica y conceptual desde el misterio del código de la vida pre-ADN hasta el descubrimiento de la Doble Hélice biológica, donde la información hereditaria emerge como un código legible y estructurado de manera física.";
+  }
+  if (sourceId === 'incompletitud' && targetId === 'zkp_efectivo') {
+    return "Representa el puente conceptual que utiliza los límites de Gödel (la incompletitud matemática) para fundamentar un ZKP (Zero-Knowledge Proof) efectivo, permitiendo demostrar que una afirmación matemática es verdadera sin revelar absolutamente nada de su contenido original.";
+  }
+  if (sourceId === 'nizkp_imposible' && targetId === 'zkp_efectivo') {
+    return "Esta arista muestra cómo la criptografía moderna logra un 'bypass' al teorema de Goldreich-Oren, superando la aparente imposibilidad de los NIZKPs (pruebas no interactivas de conocimiento cero) mediante el uso de parámetros compartidos de manera segura.";
+  }
+  if (sourceId === 'mejor_secreto' && targetId === 'conciencia') {
+    return "Señala la relación directa entre el misterio existencial último y la conciencia humana. El 'problema duro' de los qualia sugiere que la experiencia subjetiva podría ser, en esencia, el mejor secreto posible de la naturaleza.";
+  }
+  if (sourceId === 'incompletitud' && targetId === 'indecidibilidad') {
+    return "Representa el salto fundamental que dio Alan Turing a partir de los teoremas de Kurt Gödel: la traducción directa de la incompletitud aritmética en la indecidibilidad algorítmica, definiendo para siempre los límites insuperables de la computabilidad física.";
+  }
+
+  // Fallback edge types
+  switch (type) {
+    case 'revelación':
+      return `Este flujo revela información oculta desde <strong>${sourceLabel}</strong> hacia <strong>${targetLabel}</strong>, expandiendo el horizonte de lo conocido.`;
+    case 'ocultamiento':
+      return `Esta conexión representa el ocultamiento activo de <strong>${sourceLabel}</strong> hacia <strong>${targetLabel}</strong>, impidiendo que el agente acceda a su verdad interna.`;
+    case 'emergencia':
+      return `Aquí emerge un nuevo nivel conceptual en <strong>${targetLabel}</strong> a partir de las bases epistemológicas de <strong>${sourceLabel}</strong>.`;
+    case 'compresión':
+      return `Esta relación condensa o simplifica la complejidad de <strong>${sourceLabel}</strong> en el modelo más denso de <strong>${targetLabel}</strong>.`;
+    case 'bifurcación':
+      return `Este enlace representa una divergencia o bifurcación conceptual, donde <strong>${sourceLabel}</strong> se divide en caminos alternativos hacia <strong>${targetLabel}</strong>.`;
+    case 'degrada':
+      return `Esta arista indica que la interacción o paso de <strong>${sourceLabel}</strong> degrada la certidumbre o coherencia conceptual de <strong>${targetLabel}</strong>.`;
+    case 'imposibilita':
+      return `Esta barrera lógica o física en <strong>${sourceLabel}</strong> imposibilita completamente la existencia, validez o verificación de <strong>${targetLabel}</strong>.`;
+    case 'restringe_termo':
+      return `Esta limitación termodinámica o de entropía restringe físicamente la transferencia de información de <strong>${sourceLabel}</strong> hacia <strong>${targetLabel}</strong>.`;
+    case 'fusiona':
+      return `Esta arista une o fusiona dos ámbitos epistemológicos antes separados (<strong>${sourceLabel}</strong> y <strong>${targetLabel}</strong>) en un marco conceptual unificado.`;
+    case 'colapsa':
+      return `Esta interacción causa que <strong>${sourceLabel}</strong> colapse el estado epistémico de <strong>${targetLabel}</strong>, reduciendo sus múltiples posibilidades a una única realidad observable.`;
+    default:
+      return `Vincula conceptualmente <strong>${sourceLabel}</strong> con <strong>${targetLabel}</strong> mediante una relación de tipo <em>${type}</em>.`;
+  }
+}
+
+// ─── HOVER PREVIEWS & INTERACTIVITY (DESKTOP) ──────────────────────────────────
+
+function _showNodeHoverPreview(e, d) {
+  const panel = _edgePanelEl;
+  if (!panel) return;
+
+  const hz = d.horizon ? [
+    Math.round((d.horizon.conocido || 0) * 100),
+    Math.round((d.horizon.desconocido || 0) * 100),
+    Math.round((d.horizon.incognoscible || 0) * 100)
+  ] : [33, 33, 34];
+
+  const domainName = t('nav.' + d.domain) || d.domain;
+
+  panel.innerHTML = `
+    <strong>${d.label || d.id}</strong>
+    <div class="ep-type" style="color: var(--gold-dim); font-size: 0.72rem; text-transform: uppercase; margin-bottom: 4px;">
+      ${domainName}
+    </div>
+    <div class="ep-narrative" style="margin-bottom: 8px; color: var(--text-dim);">${d.contents || ''}</div>
+    <div style="font-size: 0.75rem; border-top: 1px solid rgba(197, 168, 107, 0.2); padding-top: 6px; display: flex; gap: 10px;">
+      <span style="color: var(--blue-light);">● ${hz[0]}% K</span>
+      <span style="color: var(--text-dimmer);">● ${hz[1]}% U</span>
+      <span style="color: var(--mystery);">● ${hz[2]}% I</span>
+    </div>
+  `;
+  panel.classList.add('visible');
+
+  if (window.innerWidth <= 768) {
+    panel.style.left = '';
+    panel.style.top = '';
+  } else {
+    panel.style.left = (e.pageX + 14) + 'px';
+    panel.style.top  = (e.pageY + 14) + 'px';
+  }
+}
+
+function _onNodeEnter(e, d) {
+  if (window.innerWidth <= 768) return;
+
+  // Dim other nodes
+  _nodeGroup.selectAll('g.node')
+    .transition().duration(250)
+    .attr('opacity', n => n.id === d.id ? 1.0 : 0.15);
+
+  // Dim links not connected to this node
+  _linkGroup.selectAll('path.link')
+    .transition().duration(250)
+    .attr('opacity', l => {
+      const sid = l.source?.id || l.source;
+      const tid = l.target?.id || l.target;
+      return (sid === d.id || tid === d.id) ? 1.0 : 0.08;
+    });
+
+  _linkGroup.selectAll('path.link-fusiona-2')
+    .transition().duration(250)
+    .attr('opacity', l => {
+      const sid = l.source?.id || l.source;
+      const tid = l.target?.id || l.target;
+      return (sid === d.id || tid === d.id) ? 0.8 : 0.05;
+    });
+
+  _showNodeHoverPreview(e, d);
+}
+
+function _onNodeLeave(e, d) {
+  if (window.innerWidth <= 768) return;
+  _applyLayerVisibility();
+  _hideEdgePanel();
+}
+
+function _onPanelMouseMove(e) {
+  if (window.innerWidth <= 768) return;
+  if (_edgePanelEl && _edgePanelEl.classList.contains('visible')) {
+    _edgePanelEl.style.left = (e.pageX + 14) + 'px';
+    _edgePanelEl.style.top  = (e.pageY + 14) + 'px';
+  }
+}
+
 // ─── EDGE PANEL ───────────────────────────────────────────────────────────────
 
 function _showEdgePanel(e, d) {
@@ -1084,15 +1225,27 @@ function _showEdgePanel(e, d) {
   if (!panel) return;
 
   const type = EDGE_ALIAS[d.type] || d.type;
+  const semanticExplanation = _generateSemanticInterpretation(d);
+
   panel.innerHTML = `
+    <button class="panel-close" onclick="closeEdgePanel(event)" aria-label="${t('panel.close') || 'Cerrar'}">✕</button>
     <strong>${d.label || type}</strong>
-    <div class="ep-type">${t('panel.edgeType')}: ${type}</div>
-    ${d.cost     ? `<div class="ep-cost">${t('panel.edgeCost')}: ${d.cost}</div>` : ''}
-    ${d.narrative ? `<div class="ep-narrative">${d.narrative}</div>` : ''}
+    <div class="ep-type">${t('panel.edgeType') || 'Tipo'}: ${type}</div>
+    ${d.cost ? `<div class="ep-cost">${t('panel.edgeCost') || 'Costo'}: ${d.cost}</div>` : ''}
+    <div class="ep-narrative" style="margin-top: 8px;">
+      ${d.narrative ? `<p style="margin-bottom: 8px;">${d.narrative}</p>` : ''}
+      <p style="font-weight: 500; border-top: 1px solid rgba(197, 168, 107, 0.2); padding-top: 8px; font-style: normal; color: var(--gold);">${semanticExplanation}</p>
+    </div>
   `;
   panel.classList.add('visible');
-  panel.style.left = (e.pageX + 14) + 'px';
-  panel.style.top  = (e.pageY + 14) + 'px';
+
+  if (window.innerWidth <= 768) {
+    panel.style.left = '';
+    panel.style.top = '';
+  } else {
+    panel.style.left = (e.pageX + 14) + 'px';
+    panel.style.top  = (e.pageY + 14) + 'px';
+  }
 }
 
 function _hideEdgePanel() {
@@ -1100,25 +1253,61 @@ function _hideEdgePanel() {
 }
 
 function _onEdgeEnter(e, d) {
+  if (window.innerWidth <= 768) return;
+
   const type = EDGE_ALIAS[d.type] || d.type;
   const style = EDGE_STYLE[type] || EDGE_STYLE['revelación'];
+
+  // Highlight hovered edge
   d3.select(this)
+    .transition().duration(250)
     .attr('stroke-opacity', 1)
     .attr('stroke-width', Math.max(1, Math.min(5, style.strokeWidth * 1.6)));
+
+  // Dim other edges
+  _linkGroup.selectAll('path.link')
+    .filter(function() { return this !== e.currentTarget; })
+    .transition().duration(250)
+    .attr('opacity', 0.08);
+
+  _linkGroup.selectAll('path.link-fusiona-2')
+    .transition().duration(250)
+    .attr('opacity', 0.05);
+
+  // Dim nodes not connected to this edge
+  const sourceId = d.source?.id || d.source;
+  const targetId = d.target?.id || d.target;
+  _nodeGroup.selectAll('g.node')
+    .transition().duration(250)
+    .attr('opacity', n => (n.id === sourceId || n.id === targetId) ? 1.0 : 0.15);
+
   _showEdgePanel(e, d);
 }
+
 function _onEdgeLeave(e, d) {
+  if (window.innerWidth <= 768) return;
+
   const type = EDGE_ALIAS[d.type] || d.type;
   const style = EDGE_STYLE[type] || EDGE_STYLE['revelación'];
+
+  // Restore hovered edge stroke/width
   d3.select(this)
+    .transition().duration(250)
     .attr('stroke-opacity', style.opacity)
-    .attr('stroke-width',   Math.max(1, Math.min(5, style.strokeWidth * (d.weight || 0.7))));
+    .attr('stroke-width', Math.max(1, Math.min(5, style.strokeWidth * (d.weight || 0.7))));
+
+  _applyLayerVisibility();
   _hideEdgePanel();
 }
 
 // ─── PANEL POSITIONING ────────────────────────────────────────────────────────
 
 function _positionPanel(panel, e) {
+  if (window.innerWidth <= 768) {
+    panel.style.left = '';
+    panel.style.top = '';
+    return;
+  }
   const svgRect = document.getElementById('graph-svg').getBoundingClientRect();
   let px = e.clientX - svgRect.left + 16;
   let py = e.clientY - svgRect.top  + 16;
@@ -1128,6 +1317,11 @@ function _positionPanel(panel, e) {
   panel.style.left = px + 'px';
   panel.style.top  = py + 'px';
 }
+
+window.closeEdgePanel = function(e) {
+  if (e) e.stopPropagation();
+  _hideEdgePanel();
+};
 
 
 // ─── GUIDED TOURS SEMANTICS ───────────────────────────────────────────────────

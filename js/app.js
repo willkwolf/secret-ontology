@@ -33,6 +33,10 @@ async function bootstrap() {
   _initLegendOverlay();
   _initVersionSelector();
   _initFullscreen();
+
+  if (window.innerWidth <= 768) {
+    document.querySelector('.graph-overlay-header')?.classList.add('collapsed');
+  }
 }
 
 function _applyStrings() {
@@ -721,6 +725,14 @@ window.toggleLegendOverlay = function(event) {
   } else {
     overlayCard.classList.add('visible');
     toggleLegendBtn?.setAttribute('aria-expanded', 'true');
+  }
+};
+
+window.toggleOptionsHeader = function(event) {
+  if (event) event.stopPropagation();
+  const header = document.querySelector('.graph-overlay-header');
+  if (header) {
+    header.classList.toggle('collapsed');
   }
 };
 
