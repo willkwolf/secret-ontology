@@ -85,7 +85,7 @@ const DOMAIN_MAP = {
   science:    new Set(['w_F','pre_adn','post_adn','emerg_epigen','incertidumbre_cosmologica','relatividad_general','misterio_cuantico','copenhague','muchos_mundos','bohm','incompletitud','indecidibilidad','w_T','w_O']),
   political:  new Set(['secreto_estado','filtracion','secreto_reforzado','w_F','w_T']),
   existential:new Set(['conciencia','w_F','w_N','w_O','mejor_secreto']),
-  math:       new Set(['incompletitud','indecidibilidad','w_F','w_T','w_O']),
+  math:       new Set(['incompletitud','indecidibilidad','w_F','w_T','w_O','zkp_clase','nizkp_imposible','proof_complexity','zkp_efectivo']),
 };
 
 // ─── MODULE STATE ─────────────────────────────────────────────────────────────
@@ -1145,7 +1145,10 @@ const TOURS_DATA = {
   computability: [
     { nodeId: 'w_F', i18nKey: 'tours.computability.step1' },
     { nodeId: 'incompletitud', i18nKey: 'tours.computability.step2' },
-    { nodeId: 'indecidibilidad', i18nKey: 'tours.computability.step3' }
+    { nodeId: 'indecidibilidad', i18nKey: 'tours.computability.step3' },
+    { nodeId: 'zkp_clase', i18nKey: 'tours.computability.step4' },
+    { nodeId: 'nizkp_imposible', i18nKey: 'tours.computability.step5' },
+    { nodeId: 'zkp_efectivo', i18nKey: 'tours.computability.step6' }
   ]
 };
 

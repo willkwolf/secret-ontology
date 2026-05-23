@@ -75,7 +75,11 @@
       "límite_turing": "Límite de Turing",
       "horizonte_caótico": "Horizonte Caótico",
       "indeterminación_cuántica": "Indeterminación Cuántica",
-      "flecha_termodinámica": "Flecha Termodinámica"
+      "flecha_termodinámica": "Flecha Termodinámica",
+      "zkp_clase": "ZKP Interactivo",
+      "nizkp_imposible": "Imposibilidad NIZKP",
+      "proof_complexity": "Complejidad de Prueba",
+      "zkp_efectivo": "ZKP Efectivo"
     },
     "layers": {
       "selectorLabel": "Capas",
@@ -201,7 +205,10 @@
       "computability": {
         "step1": "<strong>Paso 1: Cognición finita regenerativa (w<sub>F</sub>)</strong> - El reino de las verdades lógicas y computables. Todo parece deducible mediante reglas estrictas.",
         "step2": "<strong>Paso 2: Límite de Gödel (Incompletitud)</strong> - Nos topamos con verdades matemáticas indemostrables. El sistema formal no puede auto-explicarse por completo.",
-        "step3": "<strong>Paso 3: Límite de Turing (Incomputabilidad)</strong> - Hay problemas de decisión que ninguna máquina puede resolver. Un límite matemático insalvable que nos separa de la omnisciencia."
+        "step3": "<strong>Paso 3: Límite de Turing (Incomputabilidad)</strong> - Hay problemas de decisión que ninguna máquina puede resolver. Un límite matemático insalvable que nos separa de la omnisciencia.",
+        "step4": "<strong>Paso 4: ZKP Interactivo (1985)</strong> - Descubrimiento de que es posible certificar la posesión de un secreto interactuando con un verificador, sin transferir jamás la información del secreto.",
+        "step5": "<strong>Paso 5: Muro de Goldreich-Oren (1994)</strong> - Se demuestra matemáticamente que sin interactividad es imposible lograr zero-knowledge clásico. La falta de diálogo bloquea la simulación.",
+        "step6": "<strong>Paso 6: ZKP Efectivo (Ilango 2025)</strong> - La evasión genial: la prueba es segura porque demostrar que carece de simulador requeriría demostrar la inconsistencia matemática (que es estructuralmente indemostrable)."
       }
     }
   },
@@ -281,7 +288,11 @@
       "límite_turing": "Turing's Limit",
       "horizonte_caótico": "Chaotic Horizon",
       "indeterminación_cuántica": "Quantum Indeterminacy",
-      "flecha_termodinámica": "Thermodynamic Arrow"
+      "flecha_termodinámica": "Thermodynamic Arrow",
+      "zkp_clase": "Interactive ZKP",
+      "nizkp_imposible": "NIZKP Impossibility",
+      "proof_complexity": "Proof Complexity",
+      "zkp_efectivo": "Effective ZKP"
     },
     "layers": {
       "selectorLabel": "Layers",
@@ -407,7 +418,10 @@
       "computability": {
         "step1": "<strong>Step 1: Finite regenerative cognition (w<sub>F</sub>)</strong> - The realm of logical and computable truths. Everything seems deducible via strict mechanical rules.",
         "step2": "<strong>Step 2: Gödel's Limit (Incompleteness)</strong> - We hit unprovable mathematical truths. The formal system cannot completely self-explain.",
-        "step3": "<strong>Step 3: Turing's Limit (Incomputability)</strong> - There are decision problems that no machine can solve. An insurmountable mathematical boundary separating us from omniscience."
+        "step3": "<strong>Step 3: Turing's Limit (Incomputability)</strong> - There are decision problems that no machine can solve. An insurmountable mathematical boundary separating us from omniscience.",
+        "step4": "<strong>Step 4: Interactive ZKP (1985)</strong> - Discovering that one can prove possession of a secret by interacting with a verifier without ever transferring the secret's content.",
+        "step5": "<strong>Step 5: Goldreich-Oren Barrier (1994)</strong> - Mathematically proven that without interactiveness, classical zero-knowledge is impossible. Lack of dialogue blocks simulator construction.",
+        "step6": "<strong>Step 6: Effective ZKP (Ilango 2025)</strong> - The genius bypass: a proof is secure because proving it lacks a simulator would require proving mathematics is inconsistent (which is structurally unprovable)."
       }
     }
   }
