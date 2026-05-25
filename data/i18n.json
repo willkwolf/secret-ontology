@@ -135,15 +135,15 @@
       "yearVal": "2026",
       "current": "Corriente",
       "currentVal": "Arte + Ciencia + Dataísmo",
-      "methods": "Métodos",
-      "methodsVal": "Lógica modal (Kripke) · Teoría de grafos · Epistemología formal · Topología epistémica estratificada · Semántica de mundos posibles · Visualización de datos (D3.js) · Límites formales y computacionales · Termodinámica de la información",
       "refs": "Referencias",
       "refsVal": "Saul Kripke · G. W. Leibniz · Jaakko Hintikka · Edmund Gettier · David Chalmers · Kurt Gödel · Gregory Chaitin · Werner Heisenberg · Edward Lorenz · Ludwig Boltzmann · Alan Turing",
-      "code": "Repositorio",
-      "codeVal": "<a href='https://github.com/willkwolf/secret-ontology' target='_blank' rel='noopener noreferrer' style='color:var(--gold); text-decoration:underline;'>github.com/willkwolf/secret-ontology</a>",
+      "cite": "Cómo citar",
+      "citeVal": "Artunduaga Viana, W. C. (2026). Grafo Epistémico Modal Dinámico: Ontología del Secreto. Proyecto de Investigación en Epistemología Formal. github.com/willkwolf/secret-ontology",
+      "info": "Más información",
+      "infoVal": "Para detalles metodológicos, formalización y código fuente, visite directamente el proyecto en <a href='https://github.com/willkwolf/secret-ontology' target='_blank' rel='noopener noreferrer' style='color:var(--gold); text-decoration:underline;'>GitHub</a>.",
       "limitsLabel": "Limitaciones del modelo:",
       "limitsVal": "El grafo es una abstracción finita de fenómenos continuos; no captura la temporalidad subjetiva del agente ni la dimensión afectiva de lo oculto. La clasificación de aristas es estilizada y no agota todas las transformaciones epistémicas posibles. La representación de la incognoscibilidad es intrínsecamente paradójica al intentar visualizar lo que no puede ser delineado desde dentro del sistema.",
-      "license": "Creative Commons BY-SA 4.0 · Colectivo de Investigación"
+      "license": "Creative Commons BY-SA 4.0 · William Camilo Artunduaga Viana · 2026"
     },
     "domainLabel": "Dominio epistémico",
     "formula": {
@@ -374,15 +374,15 @@
       "yearVal": "2026",
       "current": "Movement",
       "currentVal": "Art + Science + Dataism",
-      "methods": "Methods",
-      "methodsVal": "Modal logic (Kripke) · Graph theory · Formal epistemology · Stratified epistemic topology · Possible-worlds semantics · Data visualisation (D3.js) · Formal and computational limits · Information thermodynamics",
       "refs": "Sources",
       "refsVal": "Saul Kripke · G. W. Leibniz · Jaakko Hintikka · Edmund Gettier · David Chalmers · Kurt Gödel · Gregory Chaitin · Werner Heisenberg · Edward Lorenz · Ludwig Boltzmann · Alan Turing",
-      "code": "Repository",
-      "codeVal": "<a href='https://github.com/willkwolf/secret-ontology' target='_blank' rel='noopener noreferrer' style='color:var(--gold); text-decoration:underline;'>github.com/willkwolf/secret-ontology</a>",
+      "cite": "How to cite",
+      "citeVal": "Artunduaga Viana, W. C. (2026). Dynamic Modal Epistemic Graph: Ontology of Secrecy. Research Project in Formal Epistemology. github.com/willkwolf/secret-ontology",
+      "info": "More information",
+      "infoVal": "For methodological details, formalization, and source code, visit the project directly on <a href='https://github.com/willkwolf/secret-ontology' target='_blank' rel='noopener noreferrer' style='color:var(--gold); text-decoration:underline;'>GitHub</a>.",
       "limitsLabel": "Structural limitations:",
       "limitsVal": "The graph is a finite abstraction of continuous phenomena; it does not capture the subjective temporality of the agent nor the affective dimension of concealment. Edge classification is stylised and does not exhaust all possible epistemic transformations. The representation of unknowability is intrinsically paradoxical when attempting to visualise what cannot be delineated from within the system.",
-      "license": "Creative Commons BY-SA 4.0 · Research Collective"
+      "license": "Creative Commons BY-SA 4.0 · William Camilo Artunduaga Viana · 2026"
     },
     "domainLabel": "Epistemic domain",
     "formula": {

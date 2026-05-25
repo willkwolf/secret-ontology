@@ -66,6 +66,6 @@ npx serve .
 
 Puedes reutilizar, adaptar y redistribuir este trabajo siempre que otorgues el crédito correspondiente y distribuyas las obras derivadas bajo la misma licencia.
 
-> *Ontología del Secreto — Grafo Epistémico Modal Dinámico* (2026-Presente).  
-> Colectivo de Investigación en Epistemología Formal.  
+> *Ontología del Secreto — Grafo Epistémico Modal Dinámico* (2026).  
+> William Camilo Artunduaga Viana.  
 > https://willkwolf.github.io/secret-ontology/

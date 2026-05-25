@@ -236,8 +236,8 @@
         <!-- Right: Synced Controls & Visual Legend -->
         <div class="playground-visual-details" style="display: flex; flex-direction: column; gap: 14px;">
           <!-- Compact Controls -->
-          <div class="playground-controls synced-controls" style="display: flex; flex-direction: row; gap: 6px; flex-wrap: wrap;">
-            <div class="control-switch-group compact" style="flex: 1; min-width: 100px; padding: 10px 14px; gap: 8px;">
+          <div class="playground-controls synced-controls" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; width: 100%; box-sizing: border-box;">
+            <div class="control-switch-group compact" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 4px; padding: 10px 4px; min-height: 72px; box-sizing: border-box;">
               <div>
                 <span class="switch-title" id="play-v-toggle-c-label" style="font-size: 0.82rem; margin-bottom: 0;">Fact (C)</span>
               </div>
@@ -247,7 +247,7 @@
               </label>
             </div>
 
-            <div class="control-switch-group compact" style="flex: 1; min-width: 100px; padding: 10px 14px; gap: 8px;">
+            <div class="control-switch-group compact" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 4px; padding: 10px 4px; min-height: 72px; box-sizing: border-box;">
               <div>
                 <span class="switch-title" id="play-v-toggle-k-label" style="font-size: 0.82rem; margin-bottom: 0;">Knows (Kₐ)</span>
               </div>
@@ -257,7 +257,7 @@
               </label>
             </div>
 
-            <div class="control-switch-group compact" style="flex: 1; min-width: 100px; padding: 10px 14px; gap: 8px;">
+            <div class="control-switch-group compact" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 4px; padding: 10px 4px; min-height: 72px; box-sizing: border-box;">
               <div>
                 <span class="switch-title" id="play-v-toggle-access-label" style="font-size: 0.82rem; margin-bottom: 0;">Access (◇)</span>
               </div>
@@ -569,9 +569,12 @@
              aria-label="Grafo epistémico modal dinámico interactivo"
              role="img"></svg>
 
-        <!-- Fullscreen and Legend Buttons -->
+        <!-- Fullscreen, Zoom Reset, and Legend Buttons -->
         <button id="fullscreen-btn" class="fullscreen-btn" aria-label="Pantalla completa">
           ⛶ Pantalla Completa
+        </button>
+        <button id="reset-zoom-btn" class="reset-zoom-btn" aria-label="Restablecer zoom" onclick="window.resetGraphZoom()">
+          >< Restablecer
         </button>
         <button id="toggle-legend-btn" class="toggle-legend-btn" aria-expanded="false" aria-controls="overlay-legend-card">
           Aristas & Leyenda ⇅
@@ -750,22 +753,19 @@
       <div class="museum-val">2026</div>
       <div class="museum-key">Corriente</div>
       <div class="museum-val">Arte + Ciencia + Dataísmo</div>
-      <div class="museum-key">Métodos</div>
-      <div class="museum-val">Lógica modal (Kripke) · Teoría de grafos · Epistemología formal · Topología epistémica estratificada · Semántica de mundos posibles · Visualización de datos (D3.js) · Límites formales y computacionales · Termodinámica de la información</div>
       <div class="museum-key">Referencias</div>
-      <div class="museum-val">Saul Kripke · G. W. Leibniz · Jaakko Hintikka · Edmund Gettier · David Chalmers · Kurt Gödel · Gregory Chaitin · Johan van Benthem · Alexandru Baltag · Luciano Floridi · Werner Heisenberg · Edward Lorenz · Ludwig Boltzmann · Alan Turing</div>
-      <div class="museum-key" id="footer-code-key">Repositorio</div>
-      <div class="museum-val" id="footer-code-val">
-        <a href="https://github.com/willkwolf/secret-ontology" target="_blank" rel="noopener noreferrer" style="color:var(--gold); text-decoration:underline;">github.com/willkwolf/secret-ontology</a>
-      </div>
+      <div class="museum-val">Saul Kripke · G. W. Leibniz · Jaakko Hintikka · Edmund Gettier · David Chalmers · Kurt Gödel · Gregory Chaitin · Werner Heisenberg · Edward Lorenz · Ludwig Boltzmann · Alan Turing</div>
+      <div class="museum-key">Cómo citar</div>
+      <div class="museum-val">Artunduaga Viana, W. C. (2026). Grafo Epistémico Modal Dinámico: Ontología del Secreto. Proyecto de Investigación en Epistemología Formal. github.com/willkwolf/secret-ontology</div>
+      <div class="museum-key">Más información</div>
+      <div class="museum-val">Para detalles metodológicos, formalización y código fuente, visite directamente el proyecto en <a href="https://github.com/willkwolf/secret-ontology" target="_blank" rel="noopener noreferrer" style="color:var(--gold); text-decoration:underline;">GitHub</a>.</div>
     </div>
     <div class="cc">
       <a href="https://creativecommons.org/licenses/by-sa/4.0/"
          target="_blank" rel="noopener noreferrer"
          style="color:inherit; text-decoration:underline dotted;">
-        Creative Commons BY-SA 4.0
+        Creative Commons BY-SA 4.0 · William Camilo Artunduaga Viana · 2026
       </a>
-      · Colectivo de Investigación · 2026
     </div>
   </div>
 </footer>

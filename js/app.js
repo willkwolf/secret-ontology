@@ -407,9 +407,9 @@ function _applyMuseumGrid() {
   const rows = [
     ['footer.year',    'footer.yearVal'],
     ['footer.current', 'footer.currentVal'],
-    ['footer.methods', 'footer.methodsVal'],
     ['footer.refs',    'footer.refsVal'],
-    ['footer.code',    'footer.codeVal'],
+    ['footer.cite',    'footer.citeVal'],
+    ['footer.info',    'footer.infoVal'],
   ];
   grid.innerHTML = rows.map(([k, v]) => `
     <div class="museum-key">${t(k)}</div>
@@ -417,7 +417,16 @@ function _applyMuseumGrid() {
   `).join('');
 
   const ccEl = document.querySelector('.cc');
-  if (ccEl) ccEl.textContent = t('footer.license');
+  if (ccEl) {
+    const licenseText = t('footer.license');
+    ccEl.innerHTML = `
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/"
+         target="_blank" rel="noopener noreferrer"
+         style="color:inherit; text-decoration:underline dotted;">
+        ${licenseText}
+      </a>
+    `;
+  }
 }
 
 // ─── READING MODE TOGGLE ──────────────────────────────────────────────────────

@@ -1740,3 +1740,12 @@ window.clearHighlightInGraph = function() {
       return (EDGE_STYLE[type]?.opacity || 0.7);
     });
 };
+
+window.resetGraphZoom = function() {
+  if (_svg && _zoom) {
+    _svg.transition().duration(800).call(
+      _zoom.transform,
+      d3.zoomIdentity
+    );
+  }
+};
