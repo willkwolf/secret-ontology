@@ -63,7 +63,7 @@
       <div class="section-label">§ 01 — Definición nuclear</div>
       <h2 id="s01-heading">El secreto no es<br>una <em>cosa</em>. Es una relación.</h2>
       <p>La intuición común trata el secreto como un objeto: algo que se guarda, que se esconde, que se pierde. Pero esta imagen es filosóficamente inadecuada. El secreto no existe en el vacío — existe siempre entre un <strong>contenido</strong>, un <strong>agente</strong> y un <strong>mundo epistémico</strong>.</p>
-      <p>Formalizado en lógica modal, el secreto es una relación triádica:</p>
+      <p>Formalizado en lógica modal, el secreto es una relación de tres partes (tres ingredientes indispensables):</p>
       <div class="formula-container">
         <div class="formula" role="math" aria-label="Fórmula: Secret de C, a, w es equivalente a C y no-K-sub-a de C, w">
           Secret(C, a, w) &nbsp;≡&nbsp; C &nbsp;∧&nbsp; ¬Kₐ(C, w)
@@ -109,12 +109,12 @@
       <div class="distinction">
         <div class="distinction-card secret">
           <h4 id="distinction-secret-title">Secreto</h4>
-          <p id="distinction-secret-desc">El agente no conoce C ahora, pero <em>podría</em> conocerlo. Existe al menos un mundo accesible donde el conocimiento ocurre.</p>
+          <p id="distinction-secret-desc">Es como un <strong>cofre cerrado con llave</strong>. El agente no conoce el hecho hoy, pero <em>existe una llave</em> y es posible en principio descubrirlo. Hay un camino accesible hacia el saber.</p>
           <div class="mono" aria-label="Fórmula: no-K-a-C y posiblemente K-a-C">¬Kₐ(C) &nbsp;∧&nbsp; ◇Kₐ(C)</div>
         </div>
         <div class="distinction-card mystery">
           <h4 id="distinction-mystery-title">Misterio</h4>
-          <p id="distinction-mystery-desc">No existe ningún mundo accesible donde el agente conozca C. La incognoscibilidad es <em>estructural</em>, no circunstancial.</p>
+          <p id="distinction-mystery-desc">Es como <strong>saber qué se siente estar dentro de un agujero negro</strong>. Las leyes físicas impiden extraer esa información de manera absoluta. No existe ninguna llave ni camino posible; la inaccesibilidad es <em>estructural</em>.</p>
           <div class="mono" aria-label="Fórmula: no-K-a-C y necesariamente no-K-a-C">¬Kₐ(C) &nbsp;∧&nbsp; □¬Kₐ(C)</div>
         </div>
       </div>
@@ -159,9 +159,10 @@
     <div class="fade-in">
       <div class="section-label" id="playground-label-section">§ 03 — Simulador Epistémico</div>
       <h2 id="s03-heading">Modal Interactivo</h2>
-      <p id="playground-intro-text">Experimenta en tiempo real con las conditions lógicas de la ontología. Activa o desactiva las variables a continuación para ver cómo muta el estado de la fórmula.</p>
+      <p id="playground-intro-text">Experimenta en tiempo real con las condiciones lógicas de la ontología. Activa o desactiva las variables a continuación para ver cómo muta el estado de la fórmula.</p>
       
-      <div class="playground-container">
+      <!-- PARTE A: Palabras y Concepto (Switches + Estado Epistémico en pantalla única) -->
+      <div class="playground-container text-playground">
         <!-- Interactive Controls -->
         <div class="playground-controls">
           <div class="control-switch-group">
@@ -209,17 +210,99 @@
             <span class="play-symbol" id="sym-know">Kₐ(C, w)</span>
           </div>
 
-          <!-- Micro-Graph 2: Relación Dinámica de Accesibilidad -->
-          <div id="micro-graph-playground-container" class="micro-graph-section-wrapper">
-            <h3 id="micro-playground-title" class="micro-graph-title">Relación Dinámica de Accesibilidad</h3>
-            <div id="micro-graph-playground" class="micro-graph-container"></div>
-          </div>
-
           <div class="playground-status">
             <div class="status-header" id="play-status-header">Estado Epistémico Resultante:</div>
             <div class="status-badge" id="play-status-badge">Secreto Revelable</div>
             <div class="status-explanation" id="play-status-explanation">
               <strong>Secreto Activo:</strong> El agente ignora el contenido hoy, pero el acceso a otros mundos posibles garantiza que es cognoscible en principio.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PARTE B: Relación Visual (Micro-grafo interactivo sincronizado + Leyenda visual) -->
+      <div class="playground-container visual-playground" id="visual-playground-section">
+        <div class="visual-explanation-header" style="grid-column: 1 / -1; margin-bottom: 8px;">
+          <h3 id="visual-playground-title" style="font-family: var(--font-title); font-size: 1.4rem; color: var(--silver); margin-bottom: 6px;">Traducción Visual de la Accesibilidad</h3>
+          <p id="visual-playground-intro" style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; font-weight: 300;">Para leer el gran mapa epistémico más abajo, es vital familiarizar tus ojos con cómo se dibuja la relación entre mundos posibles. Observa la conexión en el grafo interactivo mientras cambias las variables:</p>
+        </div>
+
+        <!-- Left: Micro-Graph -->
+        <div id="micro-graph-playground-container" class="micro-graph-section-wrapper" style="margin-top: 0;">
+          <h4 id="micro-playground-title" class="micro-graph-title" style="font-size: 0.85rem; font-family: var(--font-mono); letter-spacing: 0.05em; color: var(--gold-dim); margin-bottom: 12px;">Relación Dinámica de Accesibilidad (w₀ → w₁)</h4>
+          <div id="micro-graph-playground" class="micro-graph-container" style="background: var(--bg3); border-radius: 4px; border: 1px solid var(--border);"></div>
+        </div>
+
+        <!-- Right: Synced Controls & Visual Legend -->
+        <div class="playground-visual-details" style="display: flex; flex-direction: column; gap: 14px;">
+          <!-- Compact Controls -->
+          <div class="playground-controls synced-controls" style="display: flex; flex-direction: row; gap: 6px; flex-wrap: wrap;">
+            <div class="control-switch-group compact" style="flex: 1; min-width: 100px; padding: 10px 14px; gap: 8px;">
+              <div>
+                <span class="switch-title" id="play-v-toggle-c-label" style="font-size: 0.82rem; margin-bottom: 0;">Fact (C)</span>
+              </div>
+              <label class="switch" aria-label="Toggle Contenido C Visual" style="width: 36px; height: 20px;">
+                <input type="checkbox" id="play-v-c" checked>
+                <span class="slider" style="border-radius: 20px;"></span>
+              </label>
+            </div>
+
+            <div class="control-switch-group compact" style="flex: 1; min-width: 100px; padding: 10px 14px; gap: 8px;">
+              <div>
+                <span class="switch-title" id="play-v-toggle-k-label" style="font-size: 0.82rem; margin-bottom: 0;">Knows (Kₐ)</span>
+              </div>
+              <label class="switch" aria-label="Toggle Conocimiento K Visual" style="width: 36px; height: 20px;">
+                <input type="checkbox" id="play-v-k">
+                <span class="slider" style="border-radius: 20px;"></span>
+              </label>
+            </div>
+
+            <div class="control-switch-group compact" style="flex: 1; min-width: 100px; padding: 10px 14px; gap: 8px;">
+              <div>
+                <span class="switch-title" id="play-v-toggle-access-label" style="font-size: 0.82rem; margin-bottom: 0;">Access (◇)</span>
+              </div>
+              <label class="switch" aria-label="Toggle Acceso Modal Visual" style="width: 36px; height: 20px;">
+                <input type="checkbox" id="play-v-access" checked>
+                <span class="slider" style="border-radius: 20px;"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Compact Formula synced -->
+          <div class="playground-formula compact" id="play-v-formula-box" style="padding: 14px; min-height: auto; font-size: 0.95rem; display: flex; gap: 6px; justify-content: center; background: var(--bg3); border-radius: 4px; border: 1px solid var(--border);">
+            <span class="play-symbol v-sym" id="sym-v-secret" style="transition: all 0.3s ease;">Secret</span>
+            <span class="play-symbol v-sym" id="sym-v-equiv" style="transition: all 0.3s ease;">≡</span>
+            <span class="play-symbol v-sym" id="sym-v-c" style="transition: all 0.3s ease;">C</span>
+            <span class="play-symbol v-sym" id="sym-v-and" style="transition: all 0.3s ease;">∧</span>
+            <span class="play-symbol v-sym" id="sym-v-not" style="transition: all 0.3s ease;">¬</span>
+            <span class="play-symbol v-sym" id="sym-v-know" style="transition: all 0.3s ease;">Kₐ</span>
+          </div>
+
+          <!-- Visual Legend Explanation -->
+          <div class="visual-relation-legend" style="display: flex; flex-direction: column; gap: 10px; background: var(--bg3); padding: 16px; border-radius: 4px; border: 1px solid var(--border);">
+            <div class="legend-row" id="legend-row-direct" style="display: flex; gap: 12px; align-items: center; font-size: 0.8rem; line-height: 1.4; color: var(--text-dim);">
+              <span class="legend-visual" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-weight: bold; color: var(--text-dimmer); min-width: 60px;">
+                <span class="relation-line solid-gold" style="display: inline-block; width: 28px; height: 3.5px; background: var(--gold);"></span>➔
+              </span>
+              <span class="legend-text"><strong>Línea continua dorada:</strong> Conocimiento completo. La información fluye libremente entre mundos.</span>
+            </div>
+            <div class="legend-row" id="legend-row-dotted" style="display: flex; gap: 12px; align-items: center; font-size: 0.8rem; line-height: 1.4; color: var(--text-dim);">
+              <span class="legend-visual" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-weight: bold; color: var(--text-dimmer); min-width: 60px;">
+                <span class="relation-line dotted-gold" style="display: inline-block; width: 28px; height: 2px; border-top: 2px dashed var(--gold);"></span>➔
+              </span>
+              <span class="legend-text"><strong>Línea punteada dorada:</strong> Secreto descifrable. El puente modal (◇) está abierto: es posible conocer en w₁.</span>
+            </div>
+            <div class="legend-row" id="legend-row-barred" style="display: flex; gap: 12px; align-items: center; font-size: 0.8rem; line-height: 1.4; color: var(--text-dim);">
+              <span class="legend-visual" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-weight: bold; color: var(--text-dimmer); min-width: 60px;">
+                <span class="relation-line barred-violet" style="display: inline-block; width: 28px; height: 2px; background: var(--mystery);"></span>┫
+              </span>
+              <span class="legend-text"><strong>Arista violeta con barra:</strong> Misterio inalcanzable. El acceso modal está bloqueado por una barrera de necesidad (□).</span>
+            </div>
+            <div class="legend-row" id="legend-row-red-barred" style="display: flex; gap: 12px; align-items: center; font-size: 0.8rem; line-height: 1.4; color: var(--text-dim);">
+              <span class="legend-visual" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-weight: bold; color: var(--text-dimmer); min-width: 60px;">
+                <span class="relation-line barred-red" style="display: inline-block; width: 28px; height: 1.5px; background: var(--danger);"></span>┫
+              </span>
+              <span class="legend-text"><strong>Arista roja con barra:</strong> Inconsistencia o absurdo. El hecho básico (C) es falso, haciendo colapsar la lógica.</span>
             </div>
           </div>
         </div>
@@ -235,28 +318,28 @@
       <p>Para cartografiar el espacio del secreto, primero necesitamos sus fronteras. Los <span class="tip" data-tip="En la semántica de Kripke, los mundos posibles son situaciones completas — no universos físicos, sino estados totales de cosas, incluyendo qué se sabe y qué no.">mundos posibles</span> extremos definen los polos del grafo:</p>
       <div class="worlds-grid">
         <div class="world-card">
-          <div class="world-sym">w<sub>T</sub></div>
           <h4>Transparencia absoluta</h4>
+          <div class="world-sym">(w<sub>T</sub>)</div>
           <p>Todo contenido es conocido por todos los agentes. El secreto es imposible por definición.</p>
         </div>
         <div class="world-card">
-          <div class="world-sym">w<sub>O</sub></div>
           <h4>Opacidad absoluta</h4>
+          <div class="world-sym">(w<sub>O</sub>)</div>
           <p>Ningún contenido es cognoscible. El conocimiento mismo colapsa. No hay agentes epistémicos.</p>
         </div>
         <div class="world-card">
-          <div class="world-sym">w<sub>E</sub></div>
           <h4>Conocimiento eterno</h4>
+          <div class="world-sym">(w<sub>E</sub>)</div>
           <p>Toda verdad es conocida. No hay frontera dinámica, no hay emergencia de nuevas incertidumbres.</p>
         </div>
         <div class="world-card">
-          <div class="world-sym">w<sub>F</sub></div>
           <h4>Cognición finita regenerativa</h4>
+          <div class="world-sym">(w<sub>F</sub>)</div>
           <p>El conocimiento crece pero siempre emergen nuevas regiones de incertidumbre: horizonte móvil.</p>
         </div>
         <div class="world-card">
-          <div class="world-sym">w<sub>N</sub></div>
           <h4>No-dualidad epistémica</h4>
+          <div class="world-sym">(w<sub>N</sub>)</div>
           <p>La distinción sujeto-objeto colapsa. No hay secreto porque no hay agente separado del contenido.</p>
         </div>
       </div>
@@ -271,8 +354,8 @@
     <div class="fade-in">
       <div class="section-label">§ 05 — Principio dinámico</div>
       <h2 id="s05-heading">Conocer engendra<br>nueva <em>ignorancia</em></h2>
-      <p>Existe un prejuicio implícito en la idea de progreso epistémico: que revelar un secreto <em>reduce</em> la ignorancia total. Pero la evidencia histórica contradice esta intuición de manera sistemática.</p>
-      <p>El principio correcto no es conservación sino <strong>regeneración de fronteras epistémicas</strong>: en sistemas finitos, la expansión del conocimiento genera nuevos dominios de incertidumbre antes no planteados.</p>
+      <p>Existe un prejuicio implícito en la idea de progreso: que revelar un secreto <em>reduce</em> nuestra ignorancia total. Pero la historia de la ciencia contradice esta intuición de manera sistemática.</p>
+      <p><strong>La metáfora de la linterna:</strong> Imagina que estás en medio de un bosque oscuro con una linterna. El círculo de luz es tu conocimiento. Si aumentas la potencia de la linterna, tu círculo iluminado se agranda... pero la frontera exterior del círculo (el borde en contacto con la oscuridad de lo desconocido) también se expande inevitablemente. Conocer más no reduce la noche; agranda tu mapa de preguntas.</p>
       <div class="regen-demo">
         <h4>Demostración interactiva — Haz clic en "Revelar"</h4>
         <div class="regen-nodes" id="regen-nodes" aria-live="polite">
@@ -327,8 +410,14 @@
     <div class="fade-in">
       <div class="section-label">§ 05c — Límites estructurales</div>
       <h2 id="s05c-heading">Más allá del agente:<br><em>límites formales</em></h2>
-      <p>Hasta ahora hemos hablado de secretos relativos a agentes: lo que alguien no sabe pero podría saber. Pero existen barreras que no dependen de ningún agente — son límites formales, computacionales y físicos.</p>
-      <p>El <strong>Límite de Gödel</strong> imposibilita que cualquier sistema formal suficientemente expresivo sea completo. El <strong>Límite de Turing</strong> hace irresoluble el problema de la parada. La <strong>Indeterminación Cuántica</strong> establece un piso irreducible de incertidumbre. El <strong>Horizonte Caótico</strong> hace impredecible el largo plazo. La <strong>Flecha Termodinámica</strong> hace asimétrico el tiempo.</p>
+      <p>Hasta ahora hemos hablado de secretos de personas: lo que alguien no sabe hoy, pero podría saber. Pero el universo tiene sus propias barreras insuperables, secretos universales que no dependen de ningún ser humano: los <strong>límites formales y físicos</strong>.</p>
+      <p style="line-height: 1.8;">
+        <strong>¿Hay verdades que nunca podremos demostrar?</strong> El <strong>Límite de Gödel</strong> responde que sí: la matemática siempre tendrá verdades discretas e indemostrables.<br>
+        <strong>¿Puede una computadora resolver cualquier acertijo?</strong> El <strong>Límite de Turing</strong> demuestra que hay problemas que entran en bucles infinitos imposibles de resolver en tiempo finito.<br>
+        <strong>¿La realidad oculta información o es borrosa por naturaleza?</strong> La <strong>Indeterminación Cuántica</strong> establece que en el mundo subatómico, medir un dato destruye otro de forma física e irreducible.<br>
+        <strong>¿Se puede predecir el futuro a largo plazo?</strong> El <strong>Horizonte Caótico</strong> (el aleteo de la mariposa) muestra que pequeños cambios invisibles hacen imposible calcular el mañana distante.<br>
+        <strong>¿Podemos recordar el pasado a la perfección?</strong> La <strong>Flecha Termodinámica</strong> disipa la energía en forma de calor, borrando las huellas del ayer molecular de forma irreversible.
+      </p>
       <p>Estos no son secretos — son misterios estructurales. Activa la capa <strong>Metalógica</strong> para verlos en el grafo.</p>
     </div>
   </section>

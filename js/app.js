@@ -277,6 +277,65 @@ function _applyStrings() {
   const playStatusHeader = document.getElementById('play-status-header');
   if (playStatusHeader) playStatusHeader.textContent = t('playground.statusLabel');
 
+  // TRADUCCIONES PARTE B (VISUAL PLAYGROUND)
+  const visualPlaygroundTitle = document.getElementById('visual-playground-title');
+  if (visualPlaygroundTitle) {
+    visualPlaygroundTitle.textContent = getLang() === 'es'
+      ? 'Traducción Visual de la Accesibilidad'
+      : 'Visual Translation of Accessibility';
+  }
+
+  const visualPlaygroundIntro = document.getElementById('visual-playground-intro');
+  if (visualPlaygroundIntro) {
+    visualPlaygroundIntro.textContent = getLang() === 'es'
+      ? 'Para leer el gran mapa epistémico más abajo, es vital familiarizar tus ojos con cómo se dibuja la relación entre mundos posibles. Observa la conexión en el grafo interactivo mientras cambias las variables:'
+      : 'To read the main epistemic map below, it is vital to familiarize your eyes with how relationships between possible worlds are drawn. Observe the connection in the interactive graph as you toggle variables:';
+  }
+
+  const playVToggleCLabel = document.getElementById('play-v-toggle-c-label');
+  if (playVToggleCLabel) playVToggleCLabel.textContent = getLang() === 'es' ? 'Hecho (C)' : 'Fact (C)';
+  
+  const playVToggleKLabel = document.getElementById('play-v-toggle-k-label');
+  if (playVToggleKLabel) playVToggleKLabel.textContent = getLang() === 'es' ? 'Sabe (Kₐ)' : 'Knows (Kₐ)';
+  
+  const playVToggleAccessLabel = document.getElementById('play-v-toggle-access-label');
+  if (playVToggleAccessLabel) playVToggleAccessLabel.textContent = getLang() === 'es' ? 'Acceso (◇)' : 'Access (◇)';
+
+  const microPlaygroundTitle = document.getElementById('micro-playground-title');
+  if (microPlaygroundTitle) {
+    microPlaygroundTitle.textContent = getLang() === 'es'
+      ? 'Relación Dinámica de Accesibilidad (w₀ → w₁)'
+      : 'Dynamic Accessibility Relation (w₀ → w₁)';
+  }
+
+  const legendRowDirect = document.querySelector('#legend-row-direct .legend-text');
+  if (legendRowDirect) {
+    legendRowDirect.innerHTML = getLang() === 'es'
+      ? '<strong>Línea continua dorada:</strong> Conocimiento completo. La información fluye libremente entre mundos.'
+      : '<strong>Solid gold line:</strong> Complete knowledge. Information flows freely between worlds.';
+  }
+
+  const legendRowDotted = document.querySelector('#legend-row-dotted .legend-text');
+  if (legendRowDotted) {
+    legendRowDotted.innerHTML = getLang() === 'es'
+      ? '<strong>Línea punteada dorada:</strong> Secreto descifrable. El puente modal (◇) está abierto: es posible conocer en w₁.'
+      : '<strong>Dotted gold line:</strong> Decipherable secret. Modal bridge (◇) is open: it is possible to know in w₁.';
+  }
+
+  const legendRowBarred = document.querySelector('#legend-row-barred .legend-text');
+  if (legendRowBarred) {
+    legendRowBarred.innerHTML = getLang() === 'es'
+      ? '<strong>Arista violeta con barra:</strong> Misterio inalcanzable. El acceso modal está bloqueado por una barrera de necesidad (□).'
+      : '<strong>Violet barred edge:</strong> Unreachable mystery. Modal access is blocked by a necessity barrier (□).';
+  }
+
+  const legendRowRedBarred = document.querySelector('#legend-row-red-barred .legend-text');
+  if (legendRowRedBarred) {
+    legendRowRedBarred.innerHTML = getLang() === 'es'
+      ? '<strong>Arista roja con barra:</strong> Inconsistencia o absurdo. El hecho básico (C) es falso, haciendo colapsar la lógica.'
+      : '<strong>Red barred edge:</strong> Inconsistency or absurdity. The basic fact (C) is false, causing the logic to collapse.';
+  }
+
   if (window.updatePlaygroundUI) {
     window.updatePlaygroundUI();
   }
@@ -550,6 +609,9 @@ function _initPlayground() {
   const playC = document.getElementById('play-c');
   const playK = document.getElementById('play-k');
   const playAccess = document.getElementById('play-access');
+  const playVC = document.getElementById('play-v-c');
+  const playVK = document.getElementById('play-v-k');
+  const playVAccess = document.getElementById('play-v-access');
 
   if (!playC || !playK || !playAccess) return;
 
@@ -588,6 +650,13 @@ function _initPlayground() {
     const symNot = document.getElementById('sym-not');
     const symKnow = document.getElementById('sym-know');
 
+    const symVSecret = document.getElementById('sym-v-secret');
+    const symVEquiv = document.getElementById('sym-v-equiv');
+    const symVC = document.getElementById('sym-v-c');
+    const symVAnd = document.getElementById('sym-v-and');
+    const symVNot = document.getElementById('sym-v-not');
+    const symVKnow = document.getElementById('sym-v-know');
+
     const hasSecretRelation = C && !K;
 
     if (symSecret) {
@@ -615,6 +684,31 @@ function _initPlayground() {
       symKnow.classList.toggle('disabled', !K);
     }
 
+    if (symVSecret) {
+      symVSecret.classList.toggle('active', hasSecretRelation);
+      symVSecret.classList.toggle('disabled', !hasSecretRelation);
+    }
+    if (symVEquiv) {
+      symVEquiv.classList.toggle('active', C);
+      symVEquiv.classList.toggle('disabled', !C);
+    }
+    if (symVC) {
+      symVC.classList.toggle('active', C);
+      symVC.classList.toggle('disabled', !C);
+    }
+    if (symVAnd) {
+      symVAnd.classList.toggle('active', C);
+      symVAnd.classList.toggle('disabled', !C);
+    }
+    if (symVNot) {
+      symVNot.classList.toggle('active', !K);
+      symVNot.classList.toggle('disabled', K);
+    }
+    if (symVKnow) {
+      symVKnow.classList.toggle('active', K);
+      symVKnow.classList.toggle('disabled', !K);
+    }
+
     const formulaBox = document.getElementById('play-formula-box');
     if (formulaBox) {
       if (hasSecretRelation) {
@@ -629,10 +723,26 @@ function _initPlayground() {
       }
     }
 
+    const vFormulaBox = document.getElementById('play-v-formula-box');
+    if (vFormulaBox) {
+      if (hasSecretRelation) {
+        vFormulaBox.classList.add('secret-active');
+        if (stateKey === 'stateMystery') {
+          vFormulaBox.classList.add('mystery-active');
+        } else {
+          vFormulaBox.classList.remove('mystery-active');
+        }
+      } else {
+        vFormulaBox.classList.remove('secret-active', 'mystery-active');
+      }
+    }
+
     // Sync Switch Dimming & Text overrides
     const accessGroup = playAccess.closest('.control-switch-group');
+    const vAccessGroup = playVAccess ? playVAccess.closest('.control-switch-group') : null;
+    const isDisabled = !C || K;
+
     if (accessGroup) {
-      const isDisabled = !C || K;
       accessGroup.classList.toggle('disabled', isDisabled);
       playAccess.disabled = isDisabled;
 
@@ -652,13 +762,47 @@ function _initPlayground() {
       }
     }
 
+    if (vAccessGroup && playVAccess) {
+      vAccessGroup.classList.toggle('disabled', isDisabled);
+      playVAccess.disabled = isDisabled;
+    }
+
     // Call dynamic micro-graph update
     updatePlaygroundGraph(C, K, Access);
   };
 
-  playC.addEventListener('change', update);
-  playK.addEventListener('change', update);
-  playAccess.addEventListener('change', update);
+  playC.addEventListener('change', () => {
+    if (playVC) playVC.checked = playC.checked;
+    update();
+  });
+  if (playVC) {
+    playVC.addEventListener('change', () => {
+      playC.checked = playVC.checked;
+      update();
+    });
+  }
+
+  playK.addEventListener('change', () => {
+    if (playVK) playVK.checked = playK.checked;
+    update();
+  });
+  if (playVK) {
+    playVK.addEventListener('change', () => {
+      playK.checked = playVK.checked;
+      update();
+    });
+  }
+
+  playAccess.addEventListener('change', () => {
+    if (playVAccess) playVAccess.checked = playAccess.checked;
+    update();
+  });
+  if (playVAccess) {
+    playVAccess.addEventListener('change', () => {
+      playAccess.checked = playVAccess.checked;
+      update();
+    });
+  }
 
   window.updatePlaygroundUI = update;
   update();

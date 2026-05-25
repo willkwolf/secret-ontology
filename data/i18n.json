@@ -116,51 +116,48 @@
       "code": "Repositorio",
       "codeVal": "<a href='https://github.com/willkwolf/secret-ontology' target='_blank' rel='noopener noreferrer' style='color:var(--gold); text-decoration:underline;'>github.com/willkwolf/secret-ontology</a>",
       "limitsLabel": "Limitaciones del modelo:",
-      "limitsVal": "El grafo es una abstracción finita de fenómenos continuos; no captura la temporalidad subjetiva del agente ni la dimensión afectiva de lo oculto. La clasificación de aristas es estilizada y no agota todas las transformaciones epistémicas posibles. La representación de la incognoscibilidad es intrínsecamente paradójica al intentar visualizar lo que no puede ser delineado desde dentro del sistema. El sistema de capas es una aproximación finita de estratos ontológicos continuos. La capa temporal anima pero no simula dinámicas epistémicas reales.",
-      "license": "Creative Commons BY-SA 4.0 · Colectivo de Investigación"
-    },
-    "domainLabel": "Dominio epistémico",
+      "limitsVal": "El grafo es una abstracción finita de fenómenos continuos; no captura la temporalidad subjetiva del agente ni la dimensión afectiva de lo oculto. La clasificación de aristas es estilizada y no agota todas las transformaciones epistémicas posibles. La representación de la incognoscibilidad es intrínsecamente paradójica al intentar visualizar lo que no puede ser delineado desde dentro del sistema. El sistema de capas es una aproximación finita de estratos ontológicos continuos. La capa temporal anima pero no simula dinámicas ep    "domainLabel": "Dominio epistémico",
     "formula": {
       "legendTitle": "Guía de Lectura Rápida",
-      "secretDef": "<strong>El Secreto:</strong> La relación en la que algo permanece oculto para un agente en un mundo específico.",
-      "equivDef": "<strong>Equivale a:</strong> Significa que se definen y cumplen exactamente las condiciones a la derecha.",
+      "secretDef": "<strong>El Secreto (Secret):</strong> La situación o relación en la que algo permanece oculto para una persona (un agente) en un contexto o mundo específico.",
+      "equivDef": "<strong>Equivale a (≡):</strong> Significa que la definición exige que se cumplan exactamente las condiciones de la derecha.",
       "contentDef": "<strong>Contenido (C):</strong> La información o hecho real en cuestión (debe ser verdadero en el mundo actual).",
-      "andDef": "<strong>Y (Conjunción):</strong> Conector que exige que ambas partes de la fórmula se cumplan a la vez.",
-      "notDef": "<strong>No (Negación):</strong> Indica que lo que sigue es falso o que el agente no tiene acceso a ello.",
-      "knowDef": "<strong>Operador de Conocimiento (K):</strong> Lo que el agente <em>a</em> sabe o tiene incorporado en su marco epistémico.",
-      "worldDef": "<strong>(C, w):</strong> El contenido C dentro del contexto del mundo posible <em>w</em> en el que se sitúa la relación.",
-      "nuclearExplanation": "Leído en español: <strong>hay secreto cuando un contenido C es verdadero en un mundo w, pero el agente a no lo conoce en ese mundo.</strong> No hay secreto sin alguien para quien sea secreto."
+      "andDef": "<strong>Y (∧):</strong> Conector que exige que ambas partes de la fórmula se cumplan al mismo tiempo.",
+      "notDef": "<strong>No (¬):</strong> Indica que lo que sigue es falso o que el agente no tiene acceso a ello.",
+      "knowDef": "<strong>Indicador de lo conocido (K):</strong> Lo que la persona <em>a</em> sabe o tiene incorporado en su conocimiento.",
+      "worldDef": "<strong>Contexto (C, w):</strong> El contenido C dentro del contexto del mundo posible <em>w</em> en el que se sitúa la relación.",
+      "nuclearExplanation": "Leído de forma sencilla: <strong>hay un secreto cuando un hecho es real en un mundo w, pero la persona no lo conoce en ese mundo.</strong> No hay secreto sin alguien para quien sea secreto."
     },
     "distinction": {
       "secretTitle": "Secreto",
-      "secretDesc": "El agente no conoce C ahora, pero <em>podría</em> conocerlo. Existe al menos un mundo accesible donde el conocimiento ocurre.",
+      "secretDesc": "Es como un <strong>cofre cerrado con llave</strong>. El agente no conoce el hecho hoy, pero <em>existe una llave</em> y es posible en principio descubrirlo. Hay un camino accesible hacia el saber.",
       "mysteryTitle": "Misterio",
-      "mysteryDesc": "No existe ningún mundo accesible donde el agente conozca C. La incognoscibilidad es <em>estructural</em>, no circunstancial."
+      "mysteryDesc": "Es como <strong>saber qué se siente estar dentro de un agujero negro</strong>. Las leyes físicas impiden extraer esa información de manera absoluta. No existe ninguna llave ni camino posible; la inaccesibilidad es <em>estructural</em>."
     },
     "explanation": {
-      "modalTitle": "Desglose de los Operadores Modales",
-      "modalSecret": "<strong>Secreto Revelable:</strong> El agente no conoce C hoy <em>(¬Kₐ(C))</em>, <strong>Y</strong> es factible o posible que llegue a conocerlo en el futuro <em>(◇Kₐ(C))</em>.<br><small class='text-dim'>El rombo (<strong>◇</strong>) representa <strong>posibilidad modal</strong>: significa que existe al menos un mundo accesible donde la barrera de ignorancia cae.</small>",
-      "modalMystery": "<strong>Misterio Absoluto:</strong> El agente no conoce C hoy <em>(¬Kₐ(C))</em>, <strong>Y</strong> es estrictamente necesario que nunca pueda conocerlo <em>(□¬Kₐ(C))</em>.<br><small class='text-dim'>El cuadrado (<strong>□</strong>) representa <strong>necesidad modal</strong>: indica que en todos los universos o mundos posibles de la estructura, la incognoscibilidad es absoluta.</small>"
+      "modalTitle": "Desglose de los Símbolos Modales",
+      "modalSecret": "<strong>Secreto Descifrable:</strong> El agente no conoce C hoy <em>(¬Kₐ(C))</em>, <strong>Y</strong> la puerta de lo posible está abierta para que llegue a conocerlo en el futuro <em>(◇Kₐ(C))</em>.<br><small class='text-dim'>El rombo (<strong>◇</strong>) representa <strong>La Puerta de lo Posible</strong>: significa que existe al menos un camino accesible hacia un mundo donde la ignorancia cae.</small>",
+      "modalMystery": "<strong>Misterio Inalcanzable:</strong> El agente no conoce C hoy <em>(¬Kₐ(C))</em>, <strong>Y</strong> es inevitable que nunca pueda conocerlo <em>(□¬Kₐ(C))</em>.<br><small class='text-dim'>El cuadrado (<strong>□</strong>) representa <strong>La Ley de lo Inevitable</strong>: indica que en todos los mundos posibles de la estructura, la barrera de ignorancia es absoluta.</small>"
     },
     "playground": {
       "title": "§ 03 — Simulador Epistémico",
       "subtitle": "Modal Interactivo",
-      "intro": "Experimenta en tiempo real con las condiciones lógicas de la ontología. Activa o desactiva las variables a continuación para ver cómo muta el estado de la fórmula.",
-      "toggleC": "Hecho Verdadero (C)",
-      "toggleCDesc": "¿Es el contenido real en este mundo?",
-      "toggleK": "Agente Sabe (Kₐ)",
-      "toggleKDesc": "¿El agente tiene el conocimiento?",
-      "toggleAccess": "Acceso Modal (◇)",
-      "toggleAccessDesc": "¿Existe acceso a mundos alternativos?",
-      "statusLabel": "Estado Epistémico Resultante:",
-      "stateAbsurd": "Ocultamiento Absurdo",
-      "stateAbsurdDesc": "<strong>No hay secreto:</strong> No se puede ocultar o ignorar algo que es objetivamente falso. La verdad de C es la primera condición del secreto. <em>(El acceso modal ◇ es lógicamente irrelevante si el hecho es falso).</em>",
-      "stateKnow": "Conocimiento Pleno",
-      "stateKnowDesc": "<strong>No hay secreto:</strong> El agente ha asimilado el hecho. La ignorancia se ha disipado y la relación de ocultamiento ya no existe. <em>(El acceso modal ◇ es lógicamente irrelevante si el hecho ya se conoce).</em>",
-      "stateRevealable": "Secreto Revelable (¬Kₐ(C) ∧ ◇Kₐ(C))",
-      "stateRevealableDesc": "<strong>Secreto Activo:</strong> El agente ignora el contenido hoy, pero el acceso a otros mundos posibles (representado por el operador de posibilidad <em>◇</em>) garantiza que es cognoscible y revelable en principio.",
-      "stateMystery": "Misterio Absoluto (¬Kₐ(C) ∧ □¬Kₐ(C))",
-      "stateMysteryDesc": "<strong>Misterio Estructural:</strong> El agente no sabe, y la falta de acceso a otros estados (operador de necesidad de ignorancia <em>□¬Kₐ</em>) convierte la ignorancia en absoluta e insalvable. <br><br><small class='text-dim' style='display:block;margin-top:6px;border-top:1px solid rgba(197,168,107,0.15);padding-top:6px;'><em>En criptografía, si no existe acceso modal a un simulador, la prueba no es segura. Pero si es imposible demostrar esta falta de acceso, el sistema permanece efectivamente seguro. El misterio actúa como simulador virtual.</em></small>"
+      "intro": "Experimenta en tiempo real con las condiciones lógicas del secreto. Activa o desactiva las variables a continuación para ver cómo muta el estado del conocimiento.",
+      "toggleC": "¿El hecho es real? (C)",
+      "toggleCDesc": "¿Es el contenido verdadero en este mundo?",
+      "toggleK": "¿Alguien lo conoce? (Kₐ)",
+      "toggleKDesc": "¿Tiene el agente este conocimiento?",
+      "toggleAccess": "¿Hay conexión a otros mundos? (◇)",
+      "toggleAccessDesc": "¿Existe acceso a otros estados de posibilidad?",
+      "statusLabel": "Resultado de lo que se puede saber:",
+      "stateAbsurd": "Inconsistencia (No hay hecho)",
+      "stateAbsurdDesc": "<strong>No hay secreto:</strong> Es imposible ocultar o ignorar algo que es objetivamente falso. La verdad de C es la primera condición del secreto. <em>(La conexión modal ◇ es irrelevante si el hecho es falso).</em>",
+      "stateKnow": "Verdad Revelada (Sin Secreto)",
+      "stateKnowDesc": "<strong>No hay secreto:</strong> La persona ha asimilado el hecho. La ignorancia se ha disipado y la relación de ocultamiento ya no existe. <em>(La conexión modal ◇ es irrelevante si el hecho ya se conoce).</em>",
+      "stateRevealable": "Secreto Descifrable (¬Kₐ(C) ∧ ◇Kₐ(C))",
+      "stateRevealableDesc": "<strong>Secreto Activo:</strong> El agente ignora el contenido hoy, pero la puerta de lo posible (el operador de posibilidad <em>◇</em>) garantiza que es descifrable y cognoscible en principio.",
+      "stateMystery": "Misterio Inalcanzable (¬Kₐ(C) ∧ □¬Kₐ(C))",
+      "stateMysteryDesc": "<strong>Misterio Estructural:</strong> La persona no sabe hoy, y la falta de acceso a otros estados (ley de ignorancia inevitable <em>□¬Kₐ</em>) convierte la ignorancia en absoluta y permanente."
     },
     "version": {
       "title": "Complejidad",
@@ -168,21 +165,21 @@
       "lite": "Simplificada (Lite)"
     },
     "micro": {
-      "w0Desc": "<strong>Mundo Actual w₀:</strong> El estado inicial o de referencia del agente.",
-      "w1Desc": "<strong>Secreto w₁:</strong> Existe un camino posible hacia este mundo (arista punteada). Es cognoscible en principio, aunque el agente no lo conozca ahora.",
-      "w2Desc": "<strong>Misterio w₂:</strong> No hay acceso formal o físico a este mundo (arista bloqueada en violeta). La incognoscibilidad es estructural.",
-      "clickPrompt": "Haz clic en los nodos para explorar su relación modal...",
+      "w0Desc": "<strong>Mundo Actual w₀:</strong> El estado inicial o de referencia de la persona.",
+      "w1Desc": "<strong>Secreto w₁:</strong> Existe un camino posible hacia este mundo (arista punteada). Es descifrable en principio, aunque la persona lo ignore ahora.",
+      "w2Desc": "<strong>Misterio w₂:</strong> No hay acceso formal o físico a este mundo (arista bloqueada en violeta). La barrera es estructural.",
+      "clickPrompt": "Haz clic en los nodos para explorar su relación de posibilidad...",
       "distinctionTitle": "Visualización del Secreto vs. Misterio (Kripke)",
       "playgroundTitle": "Relación Dinámica de Accesibilidad",
       "topologyTitle": "Polos de la Estructura Modal",
-      "topologyPrompt": "Haz clic en un polo modal para explorar su topología.",
-      "wTDesc": "<strong>Transparencia absoluta (w<sub>T</sub>):</strong> El polo del conocimiento total, donde todo secreto se disuelve en conocimiento pleno.",
-      "wODesc": "<strong>Opacidad absoluta (w<sub>O</sub>):</strong> El polo de la incognoscibilidad, donde la incomunicabilidad es total y nada puede ser conocido.",
-      "wEDesc": "<strong>Eternidad epistémica (w<sub>E</sub>):</strong> El polo del conocimiento estático. No hay misterio ni movimiento, todo es inmutable y ya conocido.",
-      "wNDesc": "<strong>No-dualidad (w<sub>N</sub>):</strong> El polo donde la separación sujeto-objeto se disuelve. Sin observador ni observado, el secreto deja de existir.",
-      "wFDesc": "<strong>Cognición finita (w<sub>F</sub>):</strong> El polo del dinamismo y el aprendizaje humano. Cada descubrimiento regenera y expande la frontera de lo desconocido.",
+      "topologyPrompt": "Haz clic en un polo para explorar su topología.",
+      "wTDesc": "<strong>Transparencia absoluta (w<sub>T</sub>):</strong> El mundo del cristal. Todo es evidente para todos; el secreto es imposible.",
+      "wODesc": "<strong>Opacidad absoluta (w<sub>O</sub>):</strong> El mundo del abismo ciego. Nadie puede saber nada, ni siquiera que no sabe nada.",
+      "wEDesc": "<strong>Conocimiento eterno (w<sub>E</sub>):</strong> El mundo del archivo estático. Toda verdad necesaria es ya conocida; no hay sorpresas ni preguntas nuevas.",
+      "wNDesc": "<strong>No-dualidad epistémica (w<sub>N</sub>):</strong> El Silencio del Todo. La distinción entre sujeto y objeto se disuelve; sin observador, el secreto deja de existir.",
+      "wFDesc": "<strong>Cognición finita (w<sub>F</sub>):</strong> Nuestro mundo real (El Horizonte Móvil). El conocimiento crece, pero cada respuesta alumbra un territorio de preguntas más grandes.",
       "temporalTitle": "Fronteras Cognitivas Móviles",
-      "temporalPrompt": "Las fronteras epistémicas pulsan, expandiendo la incertidumbre a medida que el conocimiento avanza."
+      "temporalPrompt": "Los horizontes epistémicos pulsan, expandiendo la incertidumbre a medida que el conocimiento avanza."
     },
     "tours": {
       "title": "Recorridos Guiados",
@@ -194,21 +191,21 @@
       "exit": "Salir del Tour",
       "step": "Paso",
       "reveal": {
-        "step1": "<strong>Paso 1: Conocimiento eterno (w<sub>E</sub>)</strong> - El agente existe en un estado de ignorancia inicial. Hay secretos, pero la arista discontinua representa un puente de posibilidad hacia el saber.",
-        "step2": "<strong>Paso 2: No-dualidad epistémica (w<sub>N</sub>)</strong> - El secreto se decodifica y transfiere. Las aristas de revelación fluyen y comprimen la incertidumbre.",
+        "step1": "<strong>Paso 1: Conocimiento eterno (w<sub>E</sub>)</strong> - El agente empieza en ignorancia. Hay secretos, pero la arista discontinua representa un puente abierto de posibilidad hacia el saber.",
+        "step2": "<strong>Paso 2: No-dualidad epistémica (w<sub>N</sub>)</strong> - El secreto se decodifica y transfiere, comprimiendo la incertidumbre del sistema.",
         "step3": "<strong>Paso 3: Transparencia absoluta (w<sub>T</sub>)</strong> - Conocimiento total. El agente ha asimilado la información y el secreto se ha disipado por completo."
       },
       "mystery": {
-        "step1": "<strong>Paso 1: Opacidad absoluta (w<sub>O</sub>)</strong> - La estructura del ser y las leyes de mundos posibles. El misterio se define aquí por la imposibilidad de comunicación con ciertos estratos.",
-        "step2": "<strong>Paso 2: Experiencia Subjetiva (Misterio Duro)</strong> - El nodo existencial representa lo que Chalmers llama el problema difícil. Ningún acceso en tercera persona puede capturar la cualidad de la experiencia."
+        "step1": "<strong>Paso 1: Opacidad absoluta (w<sub>O</sub>)</strong> - La estructura del ser y las leyes físicas. El misterio se define aquí por la imposibilidad de comunicación entre ciertos estratos.",
+        "step2": "<strong>Paso 2: Experiencia Subjetiva (Misterio Duro)</strong> - El nodo existencial representa el 'problema duro' de la conciencia: ningún acceso científico externo puede capturar la cualidad subjetiva del sentir."
       },
       "computability": {
-        "step1": "<strong>Paso 1: Cognición finita regenerativa (w<sub>F</sub>)</strong> - El reino de las verdades lógicas y computables. Todo parece deducible mediante reglas estrictas.",
+        "step1": "<strong>Paso 1: Cognición finita (w<sub>F</sub>)</strong> - El reino de las verdades lógicas y computables. Todo parece deducible mediante reglas y algoritmos estrictos.",
         "step2": "<strong>Paso 2: Límite de Gödel (Incompletitud)</strong> - Nos topamos con verdades matemáticas indemostrables. El sistema formal no puede auto-explicarse por completo.",
-        "step3": "<strong>Paso 3: Límite de Turing (Incomputabilidad)</strong> - Hay problemas de decisión que ninguna máquina puede resolver. Un límite matemático insalvable que nos separa de la omnisciencia.",
-        "step4": "<strong>Paso 4: ZKP Interactivo (1985)</strong> - Descubrimiento de que es posible certificar la posesión de un secreto interactuando con un verificador, sin transferir jamás la información del secreto.",
-        "step5": "<strong>Paso 5: Muro de Goldreich-Oren (1994)</strong> - Se demuestra matemáticamente que sin interactividad es imposible lograr zero-knowledge clásico. La falta de diálogo bloquea la simulación.",
-        "step6": "<strong>Paso 6: ZKP Efectivo (Ilango 2025)</strong> - La evasión genial: la prueba es segura porque demostrar que carece de simulador requeriría demostrar la inconsistencia matemática (que es estructuralmente indemostrable)."
+        "step3": "<strong>Paso 3: Límite de Turing (Incomputabilidad)</strong> - Hay problemas de decisión que ninguna máquina puede resolver. Un límite que nos separa de la omnisciencia matemática.",
+        "step4": "<strong>Paso 4: ZKP Interactivo (1985)</strong> - Descubrimiento de que es posible demostrar que posees un secreto interactuando con un verificador, sin revelarle jamás la información.",
+        "step5": "<strong>Paso 5: Muro de Goldreich-Oren (1994)</strong> - Se demuestra matemáticamente que sin diálogo interactivo es imposible lograr zero-knowledge clásico.",
+        "step6": "<strong>Paso 6: ZKP Efectivo (Ilango 2025)</strong> - Evasión genial: la prueba es segura porque demostrar que carece de simulador requeriría demostrar la inconsistencia matemática (que es estructuralmente indemostrable)."
       }
     }
   },
@@ -324,56 +321,56 @@
       "currentVal": "Art + Science + Dataism",
       "methods": "Methods",
       "methodsVal": "Modal logic (Kripke) · Graph theory · Formal epistemology · Stratified epistemic topology · Possible-worlds semantics · Data visualisation (D3.js) · Formal and computational limits · Information thermodynamics",
-      "refs": "References",
+      "refs": "Sources",
       "refsVal": "Saul Kripke · G. W. Leibniz · Jaakko Hintikka · Edmund Gettier · David Chalmers · Kurt Gödel · Gregory Chaitin · Werner Heisenberg · Edward Lorenz · Ludwig Boltzmann · Alan Turing",
       "code": "Repository",
       "codeVal": "<a href='https://github.com/willkwolf/secret-ontology' target='_blank' rel='noopener noreferrer' style='color:var(--gold); text-decoration:underline;'>github.com/willkwolf/secret-ontology</a>",
-      "limitsLabel": "Model limitations:",
-      "limitsVal": "The graph is a finite abstraction of continuous phenomena; it does not capture the subjective temporality of the agent nor the affective dimension of concealment. Edge classification is stylised and does not exhaust all possible epistemic transformations. The representation of unknowability is intrinsically paradoxical when attempting to visualise what cannot be delineated from within the system. The layer system is a finite approximation of continuous ontological strata. The temporal layer animates but does not simulate actual epistemic dynamics.",
+      "limitsLabel": "Structural limitations:",
+      "limitsVal": "The graph is a finite abstraction of continuous phenomena; it does not capture the subjective temporality of the agent nor the affective dimension of concealment. Edge classification is stylised and does not exhaust all possible epistemic transformations. The representation of unknowability is intrinsically paradoxical when attempting to visualise what cannot be delineated from within the system.",
       "license": "Creative Commons BY-SA 4.0 · Research Collective"
     },
     "domainLabel": "Epistemic domain",
     "formula": {
       "legendTitle": "Quick Reading Guide",
-      "secretDef": "<strong>The Secret:</strong> The relation in which something remains hidden from an agent in a specific world.",
-      "equivDef": "<strong>Is equivalent to:</strong> Means that the conditions on the right are precisely met.",
+      "secretDef": "<strong>The Secret:</strong> The relation in which something remains hidden from an agent in a specific world (like a <em>locked safe</em>).",
+      "equivDef": "<strong>Is equivalent to (≡):</strong> Means that the conditions on the right are precisely met.",
       "contentDef": "<strong>Content (C):</strong> The information or actual fact in question (must be true in the current world).",
-      "andDef": "<strong>And (Conjunction):</strong> Logical connector requiring both parts of the formula to hold simultaneously.",
-      "notDef": "<strong>Not (Negation):</strong> Indicates that the following is false or that the agent lacks access to it.",
+      "andDef": "<strong>And (∧):</strong> Logical connector requiring both parts of the formula to hold simultaneously.",
+      "notDef": "<strong>Not (¬):</strong> Indicates that the following is false or that the agent lacks access to it.",
       "knowDef": "<strong>Knowledge Operator (K):</strong> What agent <em>a</em> knows or has integrated into their epistemic framework.",
       "worldDef": "<strong>(C, w):</strong> Content C within the context of the possible world <em>w</em> in which the relation is situated.",
       "nuclearExplanation": "Read in English: <strong>there is a secret when a content C is true in a world w, but agent a does not know it in that world.</strong> There is no secret without someone for whom it is a secret."
     },
     "distinction": {
       "secretTitle": "Secret",
-      "secretDesc": "The agent does not know C now, but <em>could</em> know it. There is at least one accessible world where the knowledge occurs.",
+      "secretDesc": "It is like a <strong>locked safe with a key</strong>. The agent does not know C now, but <em>could</em> know it. There is at least one accessible world where the knowledge occurs.",
       "mysteryTitle": "Mystery",
-      "mysteryDesc": "There is no accessible world where the agent knows C. Unknowability is <em>structural</em>, not circumstantial."
+      "mysteryDesc": "It is like <strong>knowing what it feels like inside a black hole</strong>. Unknowability is <em>structural</em>; there is no possible key or path."
     },
     "explanation": {
       "modalTitle": "Breakdown of Modal Operators",
-      "modalSecret": "<strong>Revealable Secret:</strong> Agent does not know C today <em>(¬Kₐ(C))</em>, <strong>AND</strong> it is feasible or possible that they will know it in the future <em>(◇Kₐ(C))</em>.<br><small class='text-dim'>The diamond (<strong>◇</strong>) represents <strong>modal possibility</strong>: meaning at least one accessible world exists where the barrier of ignorance falls.</small>",
-      "modalMystery": "<strong>Absolute Mystery:</strong> Agent does not know C today <em>(¬Kₐ(C))</em>, <strong>AND</strong> it is strictly necessary that they can never know it <em>(□¬Kₐ(C))</em>.<br><small class='text-dim'>The box (<strong>□</strong>) represents <strong>modal necessity</strong>: indicating that in all possible worlds of the structure, unknowability is absolute.</small>"
+      "modalSecret": "<strong>Decipherable Secret:</strong> Agent does not know C today <em>(¬Kₐ(C))</em>, <strong>AND</strong> the <em>Door of Possibility</em> is open <em>(◇Kₐ(C))</em>.<br><small class='text-dim'>The diamond (<strong>◇</strong>) represents possibility: meaning at least one accessible world exists where the barrier of ignorance falls.</small>",
+      "modalMystery": "<strong>Absolute Mystery:</strong> Agent does not know C today <em>(¬Kₐ(C))</em>, <strong>AND</strong> it is <em>inevitably locked</em> <em>(□¬Kₐ(C))</em>.<br><small class='text-dim'>The box (<strong>□</strong>) represents the <em>Law of the Inevitable</em>: indicating that in all possible worlds, unknowability is absolute.</small>"
     },
     "playground": {
       "title": "§ 03 — Epistemic Simulator",
       "subtitle": "Interactive Modal",
       "intro": "Experiment in real time with the logical conditions of the ontology. Toggle the variables below to watch the formula state mutate.",
-      "toggleC": "Fact is True (C)",
-      "toggleCDesc": "Is the content real in this world?",
-      "toggleK": "Agent Knows (Kₐ)",
+      "toggleC": "Is the fact real? (C)",
+      "toggleCDesc": "Is the content true in this world?",
+      "toggleK": "Does someone know it? (Kₐ)",
       "toggleKDesc": "Has the agent integrated the knowledge?",
-      "toggleAccess": "Modal Access (◇)",
+      "toggleAccess": "Is there a door of possibility? (◇)",
       "toggleAccessDesc": "Is there access to alternative worlds?",
       "statusLabel": "Resulting Epistemic State:",
       "stateAbsurd": "Absurd Concealment",
-      "stateAbsurdDesc": "<strong>No secret exists:</strong> You cannot conceal or be ignorant of something that is objectively false. The truth of C is the primary condition of secrecy. <em>(Modal access ◇ is logically irrelevant if the fact is false).</em>",
+      "stateAbsurdDesc": "<strong>No secret exists:</strong> You cannot conceal or be ignorant of something that is objectively false. Truth is the primary condition of secrecy.",
       "stateKnow": "Full Knowledge",
-      "stateKnowDesc": "<strong>No secret exists:</strong> The agent has integrated the fact. Ignorance has dissolved and the concealment relation no longer exists. <em>(Modal access ◇ is logically irrelevant if the fact is already known).</em>",
-      "stateRevealable": "Revealable Secret (¬Kₐ(C) ∧ ◇Kₐ(C))",
-      "stateRevealableDesc": "<strong>Active Secret:</strong> The agent is ignorant of the content today, but access to alternative possible worlds (represented by the possibility operator <em>◇</em>) guarantees it is knowable and revealable in principle.",
+      "stateKnowDesc": "<strong>No secret exists:</strong> The agent has integrated the fact. Ignorance has dissolved and the concealment relation no longer exists.",
+      "stateRevealable": "Decipherable Secret (¬Kₐ(C) ∧ ◇Kₐ(C))",
+      "stateRevealableDesc": "<strong>Active Secret:</strong> The agent is ignorant of the content today, but the <em>Door of Possibility</em> guarantees it is knowable in principle.",
       "stateMystery": "Absolute Mystery (¬Kₐ(C) ∧ □¬Kₐ(C))",
-      "stateMysteryDesc": "<strong>Structural Mystery:</strong> The agent does not know, and the complete lack of access to other states (ignorance necessity operator <em>□¬Kₐ</em>) renders the ignorance absolute and inescapable. <br><br><small class='text-dim' style='display:block;margin-top:6px;border-top:1px solid rgba(197,168,107,0.15);padding-top:6px;'><em>In cryptography, if there is no modal access to a simulator, the proof is not secure. But if it is impossible to prove this lack of access, the system remains effectively secure. The mystery acts as a virtual simulator.</em></small>"
+      "stateMysteryDesc": "<strong>Structural Mystery:</strong> The agent does not know, and the <em>Law of the Inevitable</em> renders the ignorance absolute and inescapable."
     },
     "version": {
       "title": "Complexity",
@@ -390,8 +387,8 @@
       "topologyTitle": "Poles of the Modal Structure",
       "topologyPrompt": "Click on a modal pole to explore its topology.",
       "wTDesc": "<strong>Absolute Transparency (w<sub>T</sub>):</strong> The pole of complete cognition, where all secrecy dissolves into full knowledge.",
-      "wODesc": "<strong>Absolute Opacity (w<sub>O</sub>):</strong> The pole of unknowability, where incommunicability is total and nothing can be known.",
-      "wEDesc": "<strong>Epistemic Eternity (w<sub>E</sub>):</strong> The pole of static knowledge. There is no mystery or movement; all is immutable and already known.",
+      "wODesc": "<strong>Absolute Opacity (w<sub>O</sub>):</strong> The pole of unknowability, where incommunicability is total.",
+      "wEDesc": "<strong>Epistemic Eternity (w<sub>E</sub>):</strong> The pole of static knowledge. There is no mystery or movement; all is immutable.",
       "wNDesc": "<strong>Non-duality (w<sub>N</sub>):</strong> The pole where the subject-object boundary dissolves. Without observer or observed, secrecy ceases to exist.",
       "wFDesc": "<strong>Finite Cognition (w<sub>F</sub>):</strong> The pole of dynamic human learning. Every discovery regenerates and expands the frontier of the unknown.",
       "temporalTitle": "Mobile Cognitive Frontiers",
@@ -407,21 +404,21 @@
       "exit": "Exit Tour",
       "step": "Step",
       "reveal": {
-        "step1": "<strong>Step 1: Eternal knowledge (w<sub>E</sub>)</strong> - The agent starts in a state of initial ignorance. Secrets exist, but the dashed edge represents a bridge of possibility towards knowing.",
-        "step2": "<strong>Step 2: Epistemic non-duality (w<sub>N</sub>)</strong> - The secret is decoded and transferred. Revelation edges flow and compress uncertainty.",
-        "step3": "<strong>Step 3: Absolute transparency (w<sub>T</sub>)</strong> - Total knowledge. The agent has assimilated the information and the secret has completely dissolved."
+        "step1": "<strong>Step 1: Eternal knowledge (w<sub>E</sub>)</strong> - Initial ignorance. Secrets exist, but a bridge of possibility leads towards knowing.",
+        "step2": "<strong>Step 2: Epistemic non-duality (w<sub>N</sub>)</strong> - The secret is decoded and transferred, compressing uncertainty.",
+        "step3": "<strong>Step 3: Absolute transparency (w<sub>T</sub>)</strong> - Total knowledge. The secret has completely dissolved."
       },
       "mystery": {
-        "step1": "<strong>Step 1: Absolute opacity (w<sub>O</sub>)</strong> - The structure of being and possible worlds laws. Mystery is defined here by the impossibility of communicating with certain strata.",
-        "step2": "<strong>Step 2: Subjective Experience (Hard Mystery)</strong> - The existential node represents what Chalmers calls the hard problem. No third-person access can capture the raw feel of subjective experience."
+        "step1": "<strong>Step 1: Absolute opacity (w<sub>O</sub>)</strong> - The structure of being and possible worlds. Mystery defined by the impossibility of communication.",
+        "step2": "<strong>Step 2: Subjective Experience (Hard Mystery)</strong> - The existential node representing the hard problem of consciousness; no external access can capture the raw feeling."
       },
       "computability": {
-        "step1": "<strong>Step 1: Finite regenerative cognition (w<sub>F</sub>)</strong> - The realm of logical and computable truths. Everything seems deducible via strict mechanical rules.",
-        "step2": "<strong>Step 2: Gödel's Limit (Incompleteness)</strong> - We hit unprovable mathematical truths. The formal system cannot completely self-explain.",
-        "step3": "<strong>Step 3: Turing's Limit (Incomputability)</strong> - There are decision problems that no machine can solve. An insurmountable mathematical boundary separating us from omniscience.",
-        "step4": "<strong>Step 4: Interactive ZKP (1985)</strong> - Discovering that one can prove possession of a secret by interacting with a verifier without ever transferring the secret's content.",
-        "step5": "<strong>Step 5: Goldreich-Oren Barrier (1994)</strong> - Mathematically proven that without interactiveness, classical zero-knowledge is impossible. Lack of dialogue blocks simulator construction.",
-        "step6": "<strong>Step 6: Effective ZKP (Ilango 2025)</strong> - The genius bypass: a proof is secure because proving it lacks a simulator would require proving mathematics is inconsistent (which is structurally unprovable)."
+        "step1": "<strong>Step 1: Finite regenerative cognition (w<sub>F</sub>)</strong> - The realm of logical and computable truths.",
+        "step2": "<strong>Step 2: Gödel's Limit (Incompleteness)</strong> - Unprovable mathematical truths. The formal system cannot self-explain.",
+        "step3": "<strong>Step 3: Turing's Limit (Incomputability)</strong> - Decision problems that no machine can solve. A boundary separating us from omniscience.",
+        "step4": "<strong>Step 4: Interactive ZKP (1985)</strong> - Proving possession of a secret by interacting with a verifier without transferring content.",
+        "step5": "<strong>Step 5: Goldreich-Oren Barrier (1994)</strong> - Mathematically proven that without interactiveness, classical zero-knowledge is impossible.",
+        "step6": "<strong>Step 6: Effective ZKP (Ilango 2025)</strong> - The genius bypass: a proof is secure because proving it lacks a simulator would require proving mathematics is inconsistent."
       }
     }
   }
