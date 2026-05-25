@@ -3,7 +3,7 @@
     {
       "id": "w_T",
       "label": "Transparencia absoluta",
-      "description": "Mundo donde todo contenido es conocido por todos los agentes. No existen secretos ni ignorancia.",
+      "description": "El ideal de la honestidad y la luz perfecta: un estado donde el conocimiento es compartido de forma universal, haciendo que el secreto y la mentira sean imposibles por la naturaleza misma del sistema.",
       "type": "extremo",
       "domain": "ontologico",
       "agents": ["Omnisciente colectivo"],
@@ -18,7 +18,7 @@
     {
       "id": "w_O",
       "label": "Opacidad absoluta",
-      "description": "Mundo radicalmente cerrado al conocimiento. Ninguna proposición verdadera es accesible para agente alguno.",
+      "description": "El silencio total y el abismo del entendimiento: un estado donde la realidad está completamente sellada, representando el límite último donde nada puede ser revelado ni comprendido.",
       "type": "extremo",
       "domain": "ontologico",
       "agents": ["Ninguno con capacidad epistémica"],
@@ -33,7 +33,7 @@
     {
       "id": "w_E",
       "label": "Conocimiento eterno",
-      "description": "Toda verdad es conocida desde siempre y para siempre. No hay dinámica epistémica ni frontera temporal.",
+      "description": "El archivo definitivo del saber: un estado estático y completo donde todas las verdades posibles ya han sido descubiertas y no quedan preguntas por formular.",
       "type": "extremo",
       "domain": "ontologico",
       "agents": ["Intelecto agente eterno (Aristóteles)"],
@@ -48,7 +48,7 @@
     {
       "id": "w_F",
       "label": "Cognición finita regenerativa",
-      "description": "Mundo basal: el conocimiento crece, pero siempre emergen nuevas incógnitas. Refleja la ciencia y la experiencia humana.",
+      "description": "El horizonte dinámico del aprendizaje humano: nuestro estado real de exploración, donde cada respuesta que encontramos ilumina el camino pero abre de inmediato diez nuevas preguntas fascinantes.",
       "type": "extremo",
       "domain": "ontologico",
       "agents": ["Comunidad científica", "Individuo racional"],
@@ -63,7 +63,7 @@
     {
       "id": "w_N",
       "label": "No‑dualidad epistémica",
-      "description": "Colapso de la distinción sujeto‑objeto; no hay secreto ni misterio porque la separación cognoscente-conocido desaparece.",
+      "description": "La disolución del observador y lo observado: un estado contemplativo donde el secreto desaparece porque ya no existe una separación entre quien conoce y la verdad misma.",
       "type": "extremo",
       "domain": "ontologico",
       "agents": ["Conciencia no dual"],
@@ -78,7 +78,7 @@
     {
       "id": "pre_adn",
       "label": "Biología pre‑1953",
-      "description": "Estado de la biología antes del descubrimiento de la estructura del ADN. La herencia era un misterio estructural.",
+      "description": "La vida antes de conocer su código: una época donde sabíamos que las características biológicas se heredaban, pero el mecanismo físico que lo hacía posible era un misterio invisible.",
       "type": "contextual",
       "domain": "cientifico",
       "agents": ["Genetistas clásicos", "Bioquímicos"],
@@ -93,7 +93,7 @@
     {
       "id": "post_adn",
       "label": "Biología molecular (post‑ADN)",
-      "description": "Tras la doble hélice, se abrió la era de la biología molecular. El acceso a la información genética se disparó, pero emergieron nuevas fronteras.",
+      "description": "El lenguaje de la vida al descubierto: el hito histórico donde la estructura del ADN se volvió legible, permitiéndonos editar y comprender la base molecular de nuestra propia existencia.",
       "type": "contextual",
       "domain": "cientifico",
       "agents": ["Watson y Crick", "Biólogos moleculares"],
@@ -108,7 +108,7 @@
     {
       "id": "emerg_epigen",
       "label": "Emergencia epigenética",
-      "description": "Nuevo dominio de incertidumbre abierto por el conocimiento del genoma: regulación epigenética y complejidad no codificante.",
+      "description": "La melodía que interpreta nuestro genoma: el descubrimiento de que el entorno y nuestras experiencias encienden o apagan genes, revelando que el destino biológico no es fijo ni predeterminado.",
       "type": "contextual",
       "domain": "cientifico",
       "agents": ["Epigenetistas"],
@@ -123,7 +123,7 @@
     {
       "id": "conciencia",
       "label": "Misterio duro de la conciencia",
-      "description": "El problema de la experiencia subjetiva (qualia). Incognoscibilidad estructural desde la perspectiva de tercera persona.",
+      "description": "El enigma del sentir íntimo: la pregunta fundamental de por qué y cómo la materia física del cerebro genera sensaciones subjetivas conscientes como el dolor, el amor o la belleza.",
       "type": "contextual",
       "domain": "existencial",
       "agents": ["Filósofos de la mente", "Neurocientíficos"],
@@ -138,7 +138,7 @@
     {
       "id": "secreto_estado",
       "label": "Secreto de Estado clásico",
-      "description": "Documentos clasificados, conocimiento restringido por razones de seguridad nacional. Potencialmente cognoscible pero protegido.",
+      "description": "El equilibrio entre la seguridad y el control: información clasificada por instituciones públicas para proteger la estabilidad colectiva, operando bajo decisiones del poder político.",
       "type": "contextual",
       "domain": "politico",
       "agents": ["Gobierno", "Agencias de inteligencia"],
@@ -153,7 +153,7 @@
     {
       "id": "filtracion",
       "label": "Filtración (revelación pública)",
-      "description": "El acto de revelación no autorizada transforma el secreto en conocimiento público, pero reconfigura el sistema de protección.",
+      "description": "El contrapoder de la verdad pública: el acto disruptivo y valiente que expone verdades ocultas al debate social, forzando la rendición de cuentas y la transparencia institucional.",
       "type": "contextual",
       "domain": "politico",
       "agents": ["Whistleblowers", "Medios"],
@@ -168,7 +168,7 @@
     {
       "id": "secreto_reforzado",
       "label": "Secreto reforzado reactivamente",
-      "description": "Tras una filtración, el sistema responde con mayor opacidad. Nuevos contenidos se vuelven secretos.",
+      "description": "La muralla que se eleva ante la amenaza: la reacción automática y sistémica por la cual el poder aumenta la vigilancia y endurece sus barreras de ocultamiento tras verse expuesto.",
       "type": "contextual",
       "domain": "politico",
       "agents": ["Agencias reformadas"],
@@ -183,7 +183,8 @@
     {
       "id": "incompletitud",
       "label": "Incompletitud (Gödel)",
-      "description": "En sistemas formales suficientemente ricos, existen proposiciones indecidibles. Un límite estructural a la cognoscibilidad.",
+      "description": "La frontera indomable de la matemática: el hallazgo lógico de Gödel que demuestra que en todo sistema de reglas ordenadas siempre habrá verdades reales imposibles de demostrar.",
+
       "type": "contextual",
       "domain": "matematico",
       "agents": ["Lógicos"],
@@ -198,7 +199,7 @@
     {
       "id": "indecidibilidad",
       "label": "Indecidibilidad (Turing)",
-      "description": "Problemas formalmente irresolubles por cualquier algoritmo. La parada de la computación como límite infranqueable.",
+      "description": "El callejón sin salida del software: el límite de computabilidad de Turing que demuestra que existen problemas de lógica que ningún programa informático, por potente que sea, podrá calcular jamás.",
       "type": "contextual",
       "domain": "matematico",
       "agents": ["Científicos de la computación"],
@@ -213,7 +214,7 @@
     {
       "id": "misterio_cuantico",
       "label": "Misterio de la medición cuántica",
-      "description": "El problema del colapso de la función de onda genera múltiples interpretaciones sin consenso. Contenido incognoscible en su núcleo interpretativo.",
+      "description": "La física frente al espejo de la observación: el misterio de por qué la materia subatómica se comporta como ondas de posibilidad hasta que un instrumento físico la mide y define su estado.",
       "type": "contextual",
       "domain": "cuantico",
       "agents": ["Físicos teóricos"],
@@ -228,7 +229,7 @@
     {
       "id": "copenhague",
       "label": "Interpretación de Copenhague",
-      "description": "El observador clásico provoca el colapso. La función de onda no es realista; el conocimiento del resultado define la realidad.",
+      "description": "La realidad creada por el acto de medir: la hipótesis clásica de que el universo cuántico no posee propiedades físicas definidas hasta que un observador decide registrar su estado.",
       "type": "contextual",
       "domain": "cuantico",
       "agents": ["Bohr", "Heisenberg"],
@@ -243,7 +244,7 @@
     {
       "id": "muchos_mundos",
       "label": "Interpretación de Muchos Mundos",
-      "description": "La función de onda nunca colapsa; todos los resultados posibles se realizan en ramas divergentes del universo.",
+      "description": "El infinito abanico de las realidades paralelas: la audaz propuesta de que cada evento o medición cuántica divide físicamente el universo en ramas donde ocurre cada opción posible.",
       "type": "contextual",
       "domain": "cuantico",
       "agents": ["Everett"],
@@ -258,7 +259,7 @@
     {
       "id": "bohm",
       "label": "Interpretación de De Broglie‑Bohm",
-      "description": "Variables ocultas deterministas. La partícula tiene trayectorias definidas; la ignorancia es epistémica, no ontológica.",
+      "description": "El orden oculto bajo las olas cuánticas: la teoría de que las partículas tienen trayectorias reales y precisas guiadas por una onda piloto invisible, donde la incertidumbre es solo falta de instrumentos.",
       "type": "contextual",
       "domain": "cuantico",
       "agents": ["De Broglie", "Bohm"],
@@ -273,7 +274,7 @@
     {
       "id": "incertidumbre_cosmologica",
       "label": "Cosmología pre‑relatividad",
-      "description": "Antes de Einstein, la naturaleza del espacio‑tiempo y la gravedad era un dominio de gran incertidumbre y parches teóricos.",
+      "description": "El cosmos de la gravedad inexplicable: la astronomía clásica antes de la relatividad, donde la gravedad se entendía como una misteriosa fuerza instantánea a distancia sin explicación física clara.",
       "type": "contextual",
       "domain": "cientifico",
       "agents": ["Físicos newtonianos", "Astrónomos"],
@@ -288,7 +289,7 @@
     {
       "id": "relatividad_general",
       "label": "Relatividad General",
-      "description": "La teoría redujo drásticamente la incertidumbre sobre la gravedad, unificando espacio‑tiempo y materia. Compresión epistémica paradigmática.",
+      "description": "El tejido elástico del espacio-tiempo: la genial teoría de Einstein que demuestra que la gravedad no es una fuerza invisible, sino la curvatura del espacio bajo el peso de las estrellas.",
       "type": "contextual",
       "domain": "cientifico",
       "agents": ["Einstein"],
@@ -303,7 +304,7 @@
     {
       "id": "mejor_secreto",
       "label": "¿El mejor secreto posible?",
-      "description": "Nodo central de la investigación. Un secreto tan perfecto que su revelación podría transformar el mundo, o tal vez su belleza resida en permanecer siempre potencial.",
+      "description": "La joya oculta del conocimiento: el enigma poético de si existe un secreto tan absoluto que, incluso al revelar todos sus datos lógicos, conserva su misterio profundo intacto.",
       "type": "meta",
       "domain": "meta",
       "agents": ["Investigador filosófico"],
@@ -320,7 +321,7 @@
       "label": "Límite de Gödel",
       "type": "structural_limit",
       "domain": "matematico",
-      "description": "Límite formal de la demostrabilidad: en todo sistema axiomático suficientemente expresivo, existen verdades que no pueden ser demostradas desde dentro del sistema.",
+      "description": "La barrera automática de la lógica: una ley matemática inevitable que dicta que todo sistema de reglas ordenadas siempre contendrá verdades reales que no puede demostrar por sí mismo.",
       "horizon": { "conocido": 0.3, "desconocido": 0.1, "incognoscible": 0.6 },
       "references": ["Gödel 1931", "Primer teorema de incompletitud"],
       "style": { "color": "#FF6B35", "size": 18, "shape": "hexagon" },
@@ -333,7 +334,7 @@
       "label": "Límite de Turing",
       "type": "structural_limit",
       "domain": "matematico",
-      "description": "Límite computacional absoluto: el problema de la parada es formalmente irresoluble por cualquier máquina de Turing.",
+      "description": "El límite absoluto del procesamiento: el principio mecánico que demuestra de forma matemática la existencia de preguntas lógicas que ningún algoritmo o procesador podrá calcular jamás.",
       "horizon": { "conocido": 0.3, "desconocido": 0.1, "incognoscible": 0.6 },
       "references": ["Turing 1936", "Problema de la parada"],
       "style": { "color": "#FF6B35", "size": 18, "shape": "hexagon" },
@@ -346,7 +347,7 @@
       "label": "Horizonte Caótico",
       "type": "structural_limit",
       "domain": "cientifico",
-      "description": "Límite predictivo del caos determinista: la sensibilidad exponencial a condiciones iniciales hace imposible la predicción a largo plazo.",
+      "description": "La amplificación automática de la incertidumbre: la ley física que hace que pequeñas e imperceptibles diferencias en el presente (efecto mariposa) destruyan la predictibilidad a largo plazo.",
       "horizon": { "conocido": 0.4, "desconocido": 0.4, "incognoscible": 0.2 },
       "references": ["Lorenz 1963", "Teoría del caos"],
       "style": { "color": "#FF6B35", "size": 18, "shape": "hexagon" },
@@ -359,7 +360,7 @@
       "label": "Indeterminación Cuántica",
       "type": "structural_limit",
       "domain": "cuantico",
-      "description": "Principio de indeterminación de Heisenberg: existe un límite fundamental e irreducible a la precisión con que pueden conocerse simultáneamente pares de variables conjugadas.",
+      "description": "El límite físico de la observación subatómica: una ley natural indestructible que determina que conocer con total precisión dónde está una partícula borra automáticamente la información de su velocidad.",
       "horizon": { "conocido": 0.5, "desconocido": 0.2, "incognoscible": 0.3 },
       "references": ["Heisenberg 1927", "Principio de incertidumbre"],
       "style": { "color": "#FF6B35", "size": 18, "shape": "hexagon" },
@@ -372,7 +373,7 @@
       "label": "Flecha Termodinámica",
       "type": "structural_limit",
       "domain": "cientifico",
-      "description": "La irreversibilidad termodinámica impone una dirección al tiempo: el pasado es cognoscible en principio, el futuro no.",
+      "description": "El flujo irreversible del universo: la ley energética que opera automáticamente desordenando el cosmos y dictando que el tiempo avance en una sola dirección hacia lo desconocido.",
       "horizon": { "conocido": 0.4, "desconocido": 0.4, "incognoscible": 0.2 },
       "references": ["Boltzmann", "Segunda ley de la termodinámica"],
       "style": { "color": "#FF6B35", "size": 18, "shape": "hexagon" },
@@ -383,7 +384,7 @@
     {
       "id": "zkp_clase",
       "label": "ZKP Interactivo (1985)",
-      "description": "Pruebas de conocimiento-cero clásicas. Permiten convencer a un verificador de que se posee un secreto mediante interactividad, sin transferir jamás la información.",
+      "description": "Demostración sin revelación de datos: un protocolo matemático interactivo que permite convencer a un tercero de que posees una verdad secreta sin entregarle jamás el menor dato de ella.",
       "type": "contextual",
       "domain": "matematico",
       "agents": ["Goldwasser", "Micali", "Rackoff", "Probador", "Verificador"],
@@ -398,7 +399,7 @@
     {
       "id": "nizkp_imposible",
       "label": "Imposibilidad NIZKP (1994)",
-      "description": "El teorema de Goldreich y Oren que demostró que es imposible realizar pruebas no-interactivas que sean puramente zero-knowledge bajo la definición de simulador estándar.",
+      "description": "El límite del canal unidireccional: la ley criptográfica que demuestra que, sin un diálogo interactivo de ida y vuelta, es mecánicamente imposible realizar una prueba de honestidad sin dar pistas.",
       "type": "contextual",
       "domain": "matematico",
       "agents": ["Goldreich", "Oren"],
@@ -413,7 +414,7 @@
     {
       "id": "proof_complexity",
       "label": "Complejidad de Prueba",
-      "description": "Subcampo que estudia la longitud mínima y el esfuerzo computacional para escribir demostraciones. Hay enunciados verdaderos cuyas pruebas son demasiado largas para el universo físico.",
+      "description": "El muro físico de la deducción matemática: el principio de que ciertas verdades lógicas tienen demostraciones tan inmensas que plasmarlas requeriría más materia y pasos que átomos en el universo.",
       "type": "contextual",
       "domain": "matematico",
       "agents": ["Complejistas de prueba", "Rahul Ilango"],
@@ -428,7 +429,7 @@
     {
       "id": "zkp_efectivo",
       "label": "ZKP Efectivo (Ilango 2025)",
-      "description": "Evasión del muro de imposibilidad: una prueba es segura si es imposible probar que carece de simulador. Convierte la imposistencia matemática de Gödel en materia prima criptográfica.",
+      "description": "La criptografía protegida por la incompletitud: una ingeniosa técnica de seguridad donde romper una clave obligaría al atacante a resolver primero una paradoja matemática insoluble del universo.",
       "type": "contextual",
       "domain": "matematico",
       "agents": ["Rahul Ilango", "IAS Princeton"],

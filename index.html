@@ -656,45 +656,65 @@
           <div class="panel-header">
             <h4 id="panel-name"></h4>
             <div class="world-id" id="panel-id"></div>
+            <p id="panel-description" style="font-size: 0.82rem; color: var(--text-dim); line-height: 1.45; margin-top: 8px; margin-bottom: 4px; font-style: italic; border-bottom: 1px solid rgba(197, 168, 107, 0.15); padding-bottom: 8px;"></p>
           </div>
           <div class="panel-scroll-content">
-            <div class="panel-section">
-              <div class="panel-label" id="panel-label-agents">Agentes</div>
-              <div class="panel-content" id="panel-agents"></div>
+            <!-- Technical Specs Grid (Secondary Metadata consolidated) -->
+            <div class="panel-section technical-grid">
+              <div class="tech-row">
+                <span class="tech-lbl">Agente</span>
+                <span class="tech-val" id="panel-agents"></span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-lbl">Capas</span>
+                <span class="tech-val" id="panel-layers"></span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-lbl">Lógica</span>
+                <span class="tech-val" id="panel-metalogic"></span>
+              </div>
             </div>
+
+            <!-- Dynamic Modal Formula Block (Primary Analytical Hero) -->
+            <div class="panel-section formula-block" id="panel-formula-section">
+              <div class="tech-lbl" style="margin-bottom: 4px;" id="panel-label-formula">Fórmula modal</div>
+              <div class="formula-text" id="panel-formula"></div>
+              <div class="formula-translation" id="panel-formula-castellano"></div>
+            </div>
+
+            <!-- Epistemic Horizon (Consolidated Sparkbar Visualization) -->
+            <div class="panel-section">
+              <div class="panel-label" id="panel-label-horizon">Horizonte epistémico</div>
+              <div class="horizon-sparkbar-container">
+                <div class="horizon-sparkbar" id="panel-horizon-bar">
+                  <div class="spark-segment known" id="spark-known"></div>
+                  <div class="spark-segment unknown" id="spark-unknown"></div>
+                  <div class="spark-segment incog" id="spark-incog"></div>
+                </div>
+                <div class="horizon-labels">
+                  <span class="hl-known">● <span id="lbl-known">0%</span> K</span>
+                  <span class="hl-unknown">● <span id="lbl-unknown">0%</span> U</span>
+                  <span class="hl-incog">● <span id="lbl-incog">0%</span> I</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dynamic Content & References -->
             <div class="panel-section">
               <div class="panel-label" id="panel-label-contents">Contenidos accesibles</div>
               <div class="panel-content" id="panel-contents"></div>
             </div>
-            <div class="panel-section">
-              <div class="panel-label" id="panel-label-horizon">Horizonte epistémico</div>
-              <div class="horizon-rings" id="panel-horizon"></div>
-            </div>
+
             <div class="panel-section">
               <div class="panel-label" id="panel-label-refs">Referencias</div>
-              <div class="panel-content" id="panel-refs" style="font-size:0.78rem; font-style:italic;"></div>
+              <div class="panel-content" id="panel-refs" style="font-size:0.75rem; font-style:italic;"></div>
             </div>
-            <div class="panel-section" aria-label="Capas del nodo">
-              <div class="panel-label" id="panel-label-layers">Capas</div>
-              <div class="panel-content" id="panel-layers"></div>
-            </div>
-            <div class="panel-section" aria-label="Reglas metalógicas">
-              <div class="panel-label" id="panel-label-metalogic">Reglas metalógicas</div>
-              <div class="panel-content" id="panel-metalogic" style="font-size:0.78rem; font-style:italic;"></div>
-            </div>
-            <!-- Dynamic Modal Formula Section -->
-            <div class="panel-section" id="panel-formula-section" aria-label="Fórmula modal del nodo">
-              <div class="panel-label" id="panel-label-formula">Fórmula modal</div>
-              <div class="panel-content" id="panel-formula" style="font-family: 'JetBrains Mono', monospace; font-size:0.82rem; color:var(--gold); margin-bottom: 6px; font-weight: 500;"></div>
-              <div class="panel-content" id="panel-formula-castellano" style="font-size:0.78rem; font-style:italic; color:var(--text-dim);"></div>
-            </div>
+
             <div class="panel-section" id="panel-structural-limit-section" style="display:none;" aria-label="Límite estructural">
-              <div class="panel-content" id="panel-structural-limit" style="font-size:0.78rem; color:#FF6B35; font-style:italic;">
+              <div class="panel-content" id="panel-structural-limit" style="font-size:0.78rem; color:#FF6B35; font-style:italic; font-weight: 500;">
                 Límite estructural no-antropocéntrico
               </div>
             </div>
-            <svg class="minimap" id="panel-minimap" width="120" height="80"
-                 role="img" aria-label="Posición en la topología"></svg>
           </div>
         </div>
       </div>

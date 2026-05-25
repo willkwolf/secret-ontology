@@ -193,9 +193,7 @@ function _buildSVG() {
   _svg.on('click', () => {
     _hideNodePanel();
     _hideEdgePanel();
-    if (window.innerWidth <= 768) {
-      document.querySelector('.graph-overlay-header')?.classList.add('collapsed');
-    }
+    document.querySelector('.graph-overlay-header')?.classList.add('collapsed');
   });
 
   // Listen for layer changes
@@ -1008,6 +1006,12 @@ function _showNodePanel(e, d) {
   panel.querySelector('#panel-name').textContent = d.label || d.id;
   panel.querySelector('#panel-id').textContent   = d.id;
 
+  const descEl = panel.querySelector('#panel-description');
+  if (descEl) {
+    const translatedDesc = t('descriptions.' + d.id);
+    descEl.textContent = (translatedDesc !== 'descriptions.' + d.id) ? translatedDesc : (d.description || '—');
+  }
+
   const agents   = Array.isArray(d.agents)   ? d.agents.join(', ')   : (d.agents   || '—');
   const contents = Array.isArray(d.contents) ? d.contents.join(', ') : (d.contents || '—');
   const refs     = Array.isArray(d.references) ? d.references.join(' · ') : (d.references || d.refs || '—');
@@ -1024,20 +1028,28 @@ function _showNodePanel(e, d) {
       ]
     : [33, 33, 34];
 
-  panel.querySelector('#panel-horizon').innerHTML = `
-    <div class="ring known">
-      <div class="ring-dot"></div>
-      <span>${hz[0]}% ${t('panel.known')}</span>
-    </div>
-    <div class="ring unknown">
-      <div class="ring-dot"></div>
-      <span>${hz[1]}% ${t('panel.unknown')}</span>
-    </div>
-    <div class="ring incog">
-      <div class="ring-dot"></div>
-      <span>${hz[2]}% ${t('panel.incognoscible')}</span>
-    </div>
-  `;
+  // Set sparkbar segments
+  const sparkKnown = panel.querySelector('#spark-known');
+  const sparkUnknown = panel.querySelector('#spark-unknown');
+  const sparkIncog = panel.querySelector('#spark-incog');
+  if (sparkKnown) sparkKnown.style.width = `${hz[0]}%`;
+  if (sparkUnknown) sparkUnknown.style.width = `${hz[1]}%`;
+  if (sparkIncog) sparkIncog.style.width = `${hz[2]}%`;
+
+  // Set localized numeric labels
+  const lblKnown = panel.querySelector('#lbl-known');
+  const lblUnknown = panel.querySelector('#lbl-unknown');
+  const lblIncog = panel.querySelector('#lbl-incog');
+  
+  if (lblKnown) {
+    lblKnown.parentElement.innerHTML = `● <strong>${hz[0]}%</strong> ${t('panel.known') || 'Conocido'}`;
+  }
+  if (lblUnknown) {
+    lblUnknown.parentElement.innerHTML = `● <strong>${hz[1]}%</strong> ${t('panel.unknown') || 'Desconocido'}`;
+  }
+  if (lblIncog) {
+    lblIncog.parentElement.innerHTML = `● <strong>${hz[2]}%</strong> ${t('panel.incognoscible') || 'Incognoscible'}`;
+  }
 
   // Layers section
   const layersContainer = panel.querySelector('#panel-layers');
@@ -1069,12 +1081,6 @@ function _showNodePanel(e, d) {
     structLimitEl.style.display = d.type === 'structural_limit' ? 'block' : 'none';
   }
 
-  // Minimap SVG inset
-  const minimapEl = panel.querySelector('#panel-minimap');
-  if (minimapEl && _graphData) {
-    _renderMinimap(minimapEl, d);
-  }
-
   panel.classList.add('visible');
   _positionPanel(panel, e);
 }
@@ -1084,55 +1090,7 @@ function _hideNodePanel() {
   _currentPanelNode = null;
 }
 
-// ─── MINIMAP ──────────────────────────────────────────────────────────────────
 
-function _renderMinimap(svgEl, selectedNode) {
-  const W = 120, H = 80;
-  const extremeNodes = _graphData.nodes.filter(n => n.type === 'extremo');
-
-  // Scale: map initialX/initialY to minimap dimensions
-  const allX = extremeNodes.map(n => n.initialX || 350);
-  const allY = extremeNodes.map(n => n.initialY || 260);
-  const minX = Math.min(...allX), maxX = Math.max(...allX);
-  const minY = Math.min(...allY), maxY = Math.max(...allY);
-  const scaleX = (x) => ((x - minX) / (maxX - minX + 1)) * (W - 20) + 10;
-  const scaleY = (y) => ((y - minY) / (maxY - minY + 1)) * (H - 20) + 10;
-
-  // Clear and rebuild
-  const svg = d3.select(svgEl);
-  svg.selectAll('*').remove();
-
-  // ARIA attributes
-  svg.attr('role', 'img').attr('aria-label', t('panel.minimap') || 'Posición en la topología');
-
-  // Draw extreme nodes as small circles
-  extremeNodes.forEach(n => {
-    svg.append('circle')
-      .attr('cx', scaleX(n.initialX || 350))
-      .attr('cy', scaleY(n.initialY || 260))
-      .attr('r', 4)
-      .attr('fill', '#4A7BC8')
-      .attr('opacity', 0.7);
-    svg.append('text')
-      .attr('x', scaleX(n.initialX || 350))
-      .attr('y', scaleY(n.initialY || 260) - 6)
-      .attr('text-anchor', 'middle')
-      .attr('font-size', '6px')
-      .attr('fill', '#6A8AB8')
-      .text(n.id);
-  });
-
-  // Draw selected node
-  const sx = selectedNode.initialX || selectedNode.x || 350;
-  const sy = selectedNode.initialY || selectedNode.y || 260;
-  svg.append('circle')
-    .attr('cx', scaleX(sx))
-    .attr('cy', scaleY(sy))
-    .attr('r', 5)
-    .attr('fill', '#C5A86B')
-    .attr('stroke', '#FFD700')
-    .attr('stroke-width', 1.5);
-}
 
 // ─── SEMANTIC INTERPRETER ──────────────────────────────────────────────────────
 
@@ -1359,19 +1317,8 @@ function _onEdgeLeave(e, d) {
 // ─── PANEL POSITIONING ────────────────────────────────────────────────────────
 
 function _positionPanel(panel, e) {
-  if (window.innerWidth <= 768) {
-    panel.style.left = '';
-    panel.style.top = '';
-    return;
-  }
-  const svgRect = document.getElementById('graph-svg').getBoundingClientRect();
-  let px = e.clientX - svgRect.left + 16;
-  let py = e.clientY - svgRect.top  + 16;
-  const pw = 280, ph = 320;
-  if (px + pw > svgRect.width)  px = e.clientX - svgRect.left - pw - 8;
-  if (py + ph > svgRect.height) py = Math.max(0, e.clientY - svgRect.top - ph);
-  panel.style.left = px + 'px';
-  panel.style.top  = py + 'px';
+  panel.style.left = '';
+  panel.style.top = '';
 }
 
 window.closeEdgePanel = function(e) {
