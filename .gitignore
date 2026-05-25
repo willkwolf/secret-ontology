@@ -9,5 +9,15 @@ Thumbs.db
 # Logs
 *.log
 
-# Node (if ever used for tooling)
+# Node & Testing
 node_modules/
+test-results/
+playwright-report/
+
+# Local Prompt Workspace
+.kiro/
+Prompt_original.md
+kaizen1.md
+kaizen2.md
+scratch/
+unknowable_math_cryptography_summary.md
