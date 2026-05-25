@@ -457,13 +457,16 @@ p strong { color: var(--text); font-weight: 500; }
   position: absolute;
   top: 12px;
   left: 12px;
-  right: 12px;
+  right: 60px; /* Space for floating settings cog on desktop */
   display: flex;
   justify-content: space-between;
   gap: 12px;
   pointer-events: none;
   z-index: 10;
   flex-wrap: wrap;
+}
+.graph-overlay-header.collapsed .graph-overlay-group {
+  display: none !important;
 }
 
 .graph-overlay-group {
@@ -1746,7 +1749,10 @@ body.reading-mode .tour-narrative-content {
 /* ─── KAIZEN UX/UI: MOBILE CONTROLS & BOTTOM SHEETS ───────────────── */
 
 .options-toggle-btn {
-  display: none;
+  display: block;
+  position: absolute;
+  top: 12px;
+  right: 12px;
   pointer-events: auto;
   font-size: 16px;
   background: var(--overlay-bg);
@@ -1764,6 +1770,7 @@ body.reading-mode .tour-narrative-content {
 .options-toggle-btn:hover {
   background: rgba(197, 168, 107, 0.15);
   border-color: var(--gold);
+  transform: rotate(30deg);
 }
 
 /* Transición suave para atenuación (Dimming) en Desktop */
