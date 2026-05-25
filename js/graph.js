@@ -16,7 +16,7 @@
  * - Halo animations, bridge nodes, inaccessible regions, collapse zones
  */
 
-import { t } from './i18n.js';
+import { t, getLang } from './i18n.js';
 import layerSystem from './layers.js';
 
 // ─── META-LOGIC RULES MAP ─────────────────────────────────────────────────────
@@ -322,11 +322,30 @@ function _getFilteredData() {
 
   // Edge type filter
   if (_currentEdgeFilter !== 'all') {
-    const canonical = EDGE_ALIAS[_currentEdgeFilter] || _currentEdgeFilter;
-    edges = edges.filter(e => {
-      const et = EDGE_ALIAS[e.type] || e.type;
-      return et === canonical;
-    });
+    if (_currentEdgeFilter === 'revelacion') {
+      const allowed = new Set(['revelación', 'emergencia', 'compresión', 'fusiona']);
+      edges = edges.filter(e => {
+        const et = EDGE_ALIAS[e.type] || e.type;
+        return allowed.has(et);
+      });
+    } else if (_currentEdgeFilter === 'restriccion') {
+      const allowed = new Set(['ocultamiento', 'degrada', 'imposibilita', 'restringe_termo', 'colapsa']);
+      edges = edges.filter(e => {
+        const et = EDGE_ALIAS[e.type] || e.type;
+        return allowed.has(et);
+      });
+    } else if (_currentEdgeFilter === 'bifurcacion') {
+      edges = edges.filter(e => {
+        const et = EDGE_ALIAS[e.type] || e.type;
+        return et === 'bifurcación';
+      });
+    } else {
+      const canonical = EDGE_ALIAS[_currentEdgeFilter] || _currentEdgeFilter;
+      edges = edges.filter(e => {
+        const et = EDGE_ALIAS[e.type] || e.type;
+        return et === canonical;
+      });
+    }
   }
 
   // Deep-copy to avoid D3 mutating original objects
@@ -1016,9 +1035,14 @@ function _showNodePanel(e, d) {
   const contents = Array.isArray(d.contents) ? d.contents.join(', ') : (d.contents || '—');
   const refs     = Array.isArray(d.references) ? d.references.join(' · ') : (d.references || d.refs || '—');
 
-  panel.querySelector('#panel-agents').textContent   = agents;
-  panel.querySelector('#panel-contents').textContent = contents;
-  panel.querySelector('#panel-refs').textContent     = refs;
+  const agentsEl = panel.querySelector('#panel-agents');
+  if (agentsEl) agentsEl.textContent = agents;
+
+  const contentsEl = panel.querySelector('#panel-contents');
+  if (contentsEl) contentsEl.textContent = contents;
+
+  const refsEl = panel.querySelector('#panel-refs');
+  if (refsEl) refsEl.textContent = refs;
 
   const hz = d.horizon
     ? [
@@ -1327,64 +1351,93 @@ window.closeEdgePanel = function(e) {
 };
 
 function _getNodeModalFormula(id) {
+  const isEs = getLang() === 'es';
   const formulas = {
     w_T: {
-      formula: "Kₐ(C, w) ≡ True  ∀C",
-      castellano: "Conocimiento absoluto de toda verdad sin excepciones. Transparencia total."
+      formula: isEs ? "Kₐ(C, w) ≡ Verdad  ∀C" : "Kₐ(C, w) ≡ True  ∀C",
+      castellano: isEs
+        ? "Conocimiento absoluto de toda verdad sin excepciones. Transparencia total."
+        : "Absolute knowledge of all truth without exceptions. Total transparency."
     },
     w_O: {
       formula: "□¬Kₐ(C, w)  ∀C",
-      castellano: "Opacidad estructural insuperable. Ninguna verdad es cognoscible en este estado."
+      castellano: isEs
+        ? "Opacidad estructural insuperable. Ninguna verdad es cognoscible en este estado."
+        : "Insuperable structural opacity. No truth is knowable in this state."
     },
     w_E: {
-      formula: "□Kₐ(C, w)  ∀C_necesario",
-      castellano: "Toda verdad necesaria es conocida desde siempre y para siempre por el intelecto."
+      formula: isEs ? "□Kₐ(C, w)  ∀C_necesaria" : "□Kₐ(C, w)  ∀C_necessary",
+      castellano: isEs
+        ? "Toda verdad necesaria es conocida desde siempre y para siempre por el intelecto."
+        : "Every necessary truth is known always and forever by the intellect."
     },
     w_N: {
       formula: "C ∧ □¬Kₐ(C, w)",
-      castellano: "El absoluto silencio existencial: el misterio incondicional de la inexistencia."
+      castellano: isEs
+        ? "El absoluto silencio existencial: el misterio incondicional de la inexistencia."
+        : "The absolute existential silence: the unconditional mystery of nonexistence."
     },
     w_F: {
       formula: "¬Kₐ(C) ∧ ◊Kₐ(C)",
-      castellano: "Cognición finita evolutiva: la ignorancia es una frontera móvil que retrocede."
+      castellano: isEs
+        ? "Cognición finita evolutiva: la ignorancia es una frontera móvil que retrocede."
+        : "Finite evolutionary cognition: ignorance is a receding mobile frontier."
     },
     incompletitud: {
-      formula: "True(C) ∧ ¬Provable(C)",
-      castellano: "Hay proposiciones matemáticas verdaderas cuya demostración formal dentro del sistema es imposible."
+      formula: isEs ? "Verdadero(C) ∧ ¬Demostrable(C)" : "True(C) ∧ ¬Provable(C)",
+      castellano: isEs
+        ? "Hay proposiciones matemáticas verdaderas cuya demostración formal dentro del sistema es imposible."
+        : "There are true mathematical statements whose formal proof within the system is impossible."
     },
     indecidibilidad: {
-      formula: "¬∃ Algoritmo(C, w)",
-      castellano: "Imposibilidad de que una máquina de Turing determine la verdad del sistema en pasos finitos."
+      formula: isEs ? "¬∃ Algoritmo(C, w)" : "¬∃ Algorithm(C, w)",
+      castellano: isEs
+        ? "Imposibilidad de que una máquina de Turing determine la verdad del sistema en pasos finitos."
+        : "Impossibility for a Turing machine to determine the truth of the system in finite steps."
     },
     zkp_clase: {
-      formula: "K_v(True(C)) ∧ ¬K_v(C)",
-      castellano: "El verificador se convence de la verdad de C, pero adquiere cero conocimiento sobre el secreto mismo."
+      formula: isEs ? "K_v(Verdad(C)) ∧ ¬K_v(C)" : "K_v(True(C)) ∧ ¬K_v(C)",
+      castellano: isEs
+        ? "El verificador se convence de la verdad de C, pero adquiere cero conocimiento sobre el secreto mismo."
+        : "The verifier is convinced of the truth of C, but gains zero knowledge of the secret itself."
     },
     nizkp_imposible: {
-      formula: "NIZKP(C) ⟹ Simulador_Standard ≡ ∅",
-      castellano: "Imposibilidad de simular una prueba no interactiva en un solo canal de una vía."
+      formula: isEs ? "NIZKP(C) ⟹ Simulador_Estándar ≡ ∅" : "NIZKP(C) ⟹ Standard_Simulator ≡ ∅",
+      castellano: isEs
+        ? "Imposibilidad de simular una prueba no interactiva en un solo canal de una vía."
+        : "Impossibility of simulating a non-interactive proof in a single one-way channel."
     },
     zkp_efectivo: {
-      formula: "Proof(C) ∧ ¬Provable(Simulador = ∅)",
-      castellano: "La prueba es segura porque demostrar que carece de simulador es lógicamente indemostrable."
+      formula: isEs ? "Prueba(C) ∧ ¬Demostrable(Simulador = ∅)" : "Proof(C) ∧ ¬Provable(Simulator = ∅)",
+      castellano: isEs
+        ? "La prueba es segura porque demostrar que carece de simulador es lógicamente indemostrable."
+        : "The proof is secure because proving it lacks a simulator is logically unprovable."
     },
     mejor_secreto: {
-      formula: "Secret(C) ∧ max ΔH",
-      castellano: "Aquel secreto óptimo cuya revelación maximiza la reconfiguración y salto epistémico del agente."
+      formula: isEs ? "Secreto(C) ∧ max ΔH" : "Secret(C) ∧ max ΔH",
+      castellano: isEs
+        ? "Aquel secreto óptimo cuya revelación maximiza la reconfiguración y salto epistémico del agente."
+        : "That optimal secret whose revelation maximizes the epistemic shift and reconfiguration of the agent."
     },
     conciencia: {
-      formula: "Qualia(w) ∧ □¬K_a(Qualia, físico)",
-      castellano: "La experiencia subjetiva o qualia como el límite absoluto e insuperable de la descripción material."
+      formula: isEs ? "Qualia(w) ∧ □¬K_a(Qualia, físico)" : "Qualia(w) ∧ □¬K_a(Qualia, physical)",
+      castellano: isEs
+        ? "La experiencia subjetiva o qualia como el límite absoluto e insuperable de la descripción material."
+        : "The subjective experience or qualia as the absolute and insuperable limit of material description."
     },
     secreto_estado: {
-      formula: "Secret(C, a, w) ∧ (filtración ⟹ crisis)",
-      castellano: "Información sensible protegida para custodiar la soberanía y la seguridad colectiva."
+      formula: isEs ? "Secreto(C, a, w) ∧ (filtración ⟹ crisis)" : "Secret(C, a, w) ∧ (leak ⟹ crisis)",
+      castellano: isEs
+        ? "Información sensible protegida para custodiar la soberanía y la seguridad colectiva."
+        : "Sensitive information protected to guard sovereignty and collective security."
     }
   };
 
   return formulas[id] || {
     formula: "¬Kₐ(C, w) ∧ ◊Kₐ(C, w)",
-    castellano: "Secreto estándar: ignorado circunstancialmente, pero cognoscible en principio."
+    castellano: isEs
+      ? "Secreto estándar: ignorado circunstancialmente, pero cognoscible en principio."
+      : "Standard secret: circumstantially ignored, but knowable in principle."
   };
 }
 

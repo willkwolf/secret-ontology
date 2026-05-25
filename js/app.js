@@ -822,16 +822,9 @@ function _capitalize(s) {
 function _getI18nEdgeKey(filterKey) {
   const map = {
     'all': 'All',
-    'revelación': 'Revelation',
-    'ocultamiento': 'Concealment',
-    'emergencia': 'Emergence',
-    'compresión': 'Compression',
-    'bifurcación': 'Bifurcation',
-    'degrada': 'Degrada',
-    'imposibilita': 'Imposibilita',
-    'restringe_termo': 'Restringe_termo',
-    'fusiona': 'Fusiona',
-    'colapsa': 'Colapsa'
+    'revelacion': 'Revelacion',
+    'restriccion': 'Restriccion',
+    'bifurcacion': 'Bifurcacion'
   };
   return map[filterKey] || filterKey;
 }
