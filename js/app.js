@@ -33,6 +33,7 @@ async function bootstrap() {
   _initLegendOverlay();
   _initVersionSelector();
   _initFullscreen();
+  _initHUDHoverHighlights();
 
   if (window.innerWidth <= 768) {
     document.querySelector('.graph-overlay-header')?.classList.add('collapsed');
@@ -54,6 +55,10 @@ function _applyStrings() {
   // Domain selector
   const domainLabel = document.getElementById('domain-selector-label');
   if (domainLabel) domainLabel.textContent = t('domainLabel');
+  
+  const layersSelectorLabel = document.getElementById('layers-selector-label');
+  if (layersSelectorLabel) layersSelectorLabel.textContent = t('layers.selectorLabel');
+
   const edgeFilterLabel = document.getElementById('edge-filter-label');
   if (edgeFilterLabel) edgeFilterLabel.textContent = getLang() === 'es' ? 'Filtrar aristas' : 'Filter edges';
   document.querySelectorAll('#domain-filters .ctrl-btn').forEach(btn => {
@@ -978,6 +983,49 @@ function _initFullscreen() {
   document.addEventListener('fullscreenchange', onFullscreenChange);
   document.addEventListener('webkitfullscreenchange', onFullscreenChange);
   document.addEventListener('msfullscreenchange', onFullscreenChange);
+}
+
+// ─── HUD HOVER HIGHLIGHTS (HUD ⇄ GRAFO) ───────────────────────────────────────
+
+function _initHUDHoverHighlights() {
+  // Domain Filters Hover
+  document.querySelectorAll('#domain-filters .ctrl-btn').forEach(btn => {
+    const domain = btn.dataset.domain;
+    if (domain) {
+      btn.addEventListener('mouseenter', () => {
+        if (window.highlightDomainInGraph) window.highlightDomainInGraph(domain);
+      });
+      btn.addEventListener('mouseleave', () => {
+        if (window.clearHighlightInGraph) window.clearHighlightInGraph();
+      });
+    }
+  });
+
+  // Layer Panel Hover
+  document.querySelectorAll('.layer-btn').forEach(btn => {
+    const layer = btn.dataset.layer;
+    if (layer) {
+      btn.addEventListener('mouseenter', () => {
+        if (window.highlightLayerInGraph) window.highlightLayerInGraph(layer);
+      });
+      btn.addEventListener('mouseleave', () => {
+        if (window.clearHighlightInGraph) window.clearHighlightInGraph();
+      });
+    }
+  });
+
+  // Tour Selector Hover
+  document.querySelectorAll('#tour-selector .ctrl-btn').forEach(btn => {
+    const tour = btn.dataset.tour;
+    if (tour) {
+      btn.addEventListener('mouseenter', () => {
+        if (window.highlightTourInGraph) window.highlightTourInGraph(tour);
+      });
+      btn.addEventListener('mouseleave', () => {
+        if (window.clearHighlightInGraph) window.clearHighlightInGraph();
+      });
+    }
+  });
 }
 
 // ─── BOOT ─────────────────────────────────────────────────────────────────────

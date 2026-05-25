@@ -324,26 +324,133 @@ p strong { color: var(--text); font-weight: 500; }
   align-items: center;
 }
 .ctrl-btn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-mono);
   font-size: 10px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-dimmer);
   background: transparent;
   border: 1px solid var(--border);
-  padding: 5px 10px;
+  padding: 6px 12px;
   border-radius: var(--radius);
   cursor: pointer;
   transition: all var(--transition);
+  position: relative;
 }
-.ctrl-btn:hover, .ctrl-btn.active,
+.ctrl-btn::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+.ctrl-btn:hover {
+  color: #FFF !important;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.03);
+}
+.ctrl-btn.active,
 .ctrl-btn:focus-visible {
-  color: var(--gold);
-  border-color: var(--border-gold);
-  background: rgba(197,168,107,0.05);
+  color: #FFF !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
   outline: none;
 }
-.ctrl-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.ctrl-btn:active {
+  transform: scale(0.95);
+}
+
+/* ─── KAIZEN THEMATIC LED GLOWING DOTS ─── */
+
+/* Domain LEDs */
+.ctrl-btn[data-domain="all"].active::before {
+  background: #C5A86B;
+  box-shadow: 0 0 8px #C5A86B, 0 0 12px rgba(197, 168, 107, 0.6);
+  animation: led-pulse 2s infinite ease-in-out;
+}
+.ctrl-btn[data-domain="science"].active::before {
+  background: #4A90E2;
+  box-shadow: 0 0 8px #4A90E2, 0 0 12px rgba(74, 144, 226, 0.6);
+  animation: led-pulse 2s infinite ease-in-out;
+}
+.ctrl-btn[data-domain="political"].active::before {
+  background: #E74C3C;
+  box-shadow: 0 0 8px #E74C3C, 0 0 12px rgba(231, 76, 60, 0.6);
+  animation: led-pulse 2s infinite ease-in-out;
+}
+.ctrl-btn[data-domain="existential"].active::before {
+  background: #C0392B;
+  box-shadow: 0 0 8px #C0392B, 0 0 12px rgba(192, 57, 43, 0.6);
+  animation: led-pulse 2s infinite ease-in-out;
+}
+.ctrl-btn[data-domain="math"].active::before {
+  background: #8E44AD;
+  box-shadow: 0 0 8px #8E44AD, 0 0 12px rgba(142, 68, 173, 0.6);
+  animation: led-pulse 2s infinite ease-in-out;
+}
+
+/* Layer LEDs */
+.ctrl-btn[data-layer="topology"].active::before {
+  background: #E6D5B8;
+  box-shadow: 0 0 8px #E6D5B8, 0 0 12px rgba(230, 213, 184, 0.6);
+}
+.ctrl-btn[data-layer="epistemic"].active::before {
+  background: #4A7BC8;
+  box-shadow: 0 0 8px #4A7BC8, 0 0 12px rgba(74, 123, 200, 0.6);
+}
+.ctrl-btn[data-layer="temporal"].active::before {
+  background: #FF6B35;
+  box-shadow: 0 0 8px #FF6B35, 0 0 12px rgba(255, 107, 53, 0.6);
+}
+.ctrl-btn[data-layer="metalogic"].active::before {
+  background: #16A085;
+  box-shadow: 0 0 8px #16A085, 0 0 12px rgba(22, 160, 133, 0.6);
+}
+.ctrl-btn[data-layer="narrative"].active::before {
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold), 0 0 12px rgba(197, 168, 107, 0.6);
+}
+
+/* Guided Tour LEDs */
+.ctrl-btn[data-tour="reveal"].active::before {
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold), 0 0 12px rgba(197, 168, 107, 0.6);
+  animation: led-pulse 1.5s infinite ease-in-out;
+}
+.ctrl-btn[data-tour="mystery"].active::before {
+  background: var(--mystery);
+  box-shadow: 0 0 8px var(--mystery), 0 0 12px rgba(142, 68, 173, 0.6);
+  animation: led-pulse 1.5s infinite ease-in-out;
+}
+.ctrl-btn[data-tour="computability"].active::before {
+  background: #FF6B35;
+  box-shadow: 0 0 8px #FF6B35, 0 0 12px rgba(255, 107, 53, 0.6);
+  animation: led-pulse 1.5s infinite ease-in-out;
+}
+
+/* Complexity LEDs */
+.ctrl-btn[data-version="full"].active::before {
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold), 0 0 12px rgba(197, 168, 107, 0.6);
+}
+.ctrl-btn[data-version="lite"].active::before {
+  background: #1ABC9C;
+  box-shadow: 0 0 8px #1ABC9C, 0 0 12px rgba(26, 188, 156, 0.6);
+}
+
+@keyframes led-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
 .ctrl-btn:disabled {
   opacity: 0.35;
   cursor: not-allowed;
@@ -485,10 +592,26 @@ p strong { color: var(--text); font-weight: 500; }
 }
 
 .graph-overlay-group .panel-label {
-  font-size: 8px;
-  letter-spacing: 0.1em;
-  margin-bottom: 2px;
-  color: var(--gold-dim);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-bottom: 4px;
+  color: var(--gold);
+  opacity: 0.85;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-transform: uppercase;
+}
+.graph-overlay-group .panel-label::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--gold);
+  flex-shrink: 0;
 }
 
 .desktop-only-controls {
@@ -505,19 +628,24 @@ p strong { color: var(--text); font-weight: 500; }
   background: var(--bg2);
   color: var(--text);
   border: 1px solid rgba(197, 168, 107, 0.25);
-  border-radius: 3px;
-  padding: 6px 10px;
+  border-radius: 4px;
+  padding: 6px 12px;
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.05em;
   cursor: pointer;
   width: 100%;
   outline: none;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition: all var(--transition);
+  box-shadow: var(--overlay-shadow);
+}
+.overlay-select:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 8px rgba(197, 168, 107, 0.25);
 }
 .overlay-select:focus {
   border-color: var(--gold);
-  box-shadow: 0 0 8px rgba(197, 168, 107, 0.2);
+  box-shadow: 0 0 12px rgba(197, 168, 107, 0.4);
 }
 .overlay-select option {
   background: var(--bg2);

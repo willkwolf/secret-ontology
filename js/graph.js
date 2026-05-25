@@ -1659,3 +1659,84 @@ function _initTourEvents() {
     });
   }
 }
+
+// ─── KAIZEN HOVER HIGHLIGHTS (HUD ⇄ GRAFO) ─────────────────────────────────────
+
+window.highlightDomainInGraph = function(domain) {
+  if (!_nodeGroup || !_linkGroup) return;
+  _nodeGroup.selectAll('g.node')
+    .transition().duration(250)
+    .style('opacity', d => {
+      if (!layerSystem.isNodeVisible(d)) return 0;
+      return (domain === 'all' || d.domain === domain) ? 1 : 0.15;
+    });
+
+  _linkGroup.selectAll('path.link')
+    .transition().duration(250)
+    .style('opacity', d => {
+      if (!layerSystem.isEdgeVisible(d)) return 0;
+      const type = EDGE_ALIAS[d.type] || d.type;
+      const baseOpacity = EDGE_STYLE[type]?.opacity || 0.7;
+      return (domain === 'all' || d.domain === domain) ? baseOpacity : 0.05;
+    });
+};
+
+window.highlightLayerInGraph = function(layer) {
+  if (!_nodeGroup || !_linkGroup) return;
+  _nodeGroup.selectAll('g.node')
+    .transition().duration(250)
+    .style('opacity', d => {
+      if (!layerSystem.isNodeVisible(d)) return 0;
+      return (d.layers && d.layers.includes(layer)) ? 1 : 0.15;
+    });
+
+  _linkGroup.selectAll('path.link')
+    .transition().duration(250)
+    .style('opacity', d => {
+      if (!layerSystem.isEdgeVisible(d)) return 0;
+      const type = EDGE_ALIAS[d.type] || d.type;
+      const baseOpacity = EDGE_STYLE[type]?.opacity || 0.7;
+      return (d.layers && d.layers.includes(layer)) ? baseOpacity : 0.05;
+    });
+};
+
+window.highlightTourInGraph = function(tourId) {
+  if (!_nodeGroup || !_linkGroup) return;
+  const TOURS_NODES = {
+    reveal: ['w_E', 'w_N', 'w_T'],
+    mystery: ['w_O', 'mejor_secreto'],
+    computability: ['w_F', 'incompletitud', 'indecidibilidad', 'zkp_clase', 'nizkp_imposible', 'zkp_efectivo']
+  };
+  const tourNodes = TOURS_NODES[tourId] || [];
+  _nodeGroup.selectAll('g.node')
+    .transition().duration(250)
+    .style('opacity', d => {
+      if (!layerSystem.isNodeVisible(d)) return 0;
+      return tourNodes.includes(d.id) ? 1 : 0.15;
+    });
+
+  _linkGroup.selectAll('path.link')
+    .transition().duration(250)
+    .style('opacity', d => {
+      if (!layerSystem.isEdgeVisible(d)) return 0;
+      const type = EDGE_ALIAS[d.type] || d.type;
+      const baseOpacity = EDGE_STYLE[type]?.opacity || 0.7;
+      const isTourLink = tourNodes.includes(d.source?.id || d.source) && tourNodes.includes(d.target?.id || d.target);
+      return isTourLink ? baseOpacity : 0.05;
+    });
+};
+
+window.clearHighlightInGraph = function() {
+  if (!_nodeGroup || !_linkGroup) return;
+  _nodeGroup.selectAll('g.node')
+    .transition().duration(250)
+    .style('opacity', d => layerSystem.isNodeVisible(d) ? 1 : 0);
+
+  _linkGroup.selectAll('path.link')
+    .transition().duration(250)
+    .style('opacity', d => {
+      if (!layerSystem.isEdgeVisible(d)) return 0;
+      const type = EDGE_ALIAS[d.type] || d.type;
+      return (EDGE_STYLE[type]?.opacity || 0.7);
+    });
+};
