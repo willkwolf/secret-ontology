@@ -459,8 +459,7 @@
       <div class="graph-relative-wrapper">
         <!-- Floating HUD Header Overlay -->
         <div class="graph-overlay-header collapsed">
-          <!-- Mobile Menu Toggle Button -->
-          <button class="options-toggle-btn" id="options-toggle-btn" aria-label="Alternar Opciones" onclick="toggleOptionsHeader(event)">⚙️</button>
+          <div class="mobile-hud-title" id="mobile-hud-title">Ajustes del Grafo</div>
           
           <!-- 1. Domain Selector Group -->
           <div class="graph-overlay-group domain-overlay-group">
@@ -564,6 +563,14 @@
             </select>
           </div>
         </div>
+
+        <!-- Standalone Options Toggle Gear -->
+        <button class="options-toggle-btn" id="options-toggle-btn" aria-label="Alternar Opciones" onclick="toggleOptionsHeader(event)">
+          <svg class="cog-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 18px; height: 18px; display: block; pointer-events: none;">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
 
         <svg id="graph-svg" height="520"
              aria-label="Grafo epistémico modal dinámico interactivo"

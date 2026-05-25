@@ -1749,16 +1749,19 @@ body.reading-mode .tour-narrative-content {
 /* ─── KAIZEN UX/UI: MOBILE CONTROLS & BOTTOM SHEETS ───────────────── */
 
 .options-toggle-btn {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 12px;
   right: 12px;
   pointer-events: auto;
-  font-size: 16px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
   background: var(--overlay-bg);
   border: 1px solid var(--border-gold);
-  border-radius: 4px;
-  padding: 8px 12px;
+  border-radius: 50%;
   color: var(--gold);
   cursor: pointer;
   z-index: 30;
@@ -1770,7 +1773,11 @@ body.reading-mode .tour-narrative-content {
 .options-toggle-btn:hover {
   background: rgba(197, 168, 107, 0.15);
   border-color: var(--gold);
-  transform: rotate(30deg);
+  transform: rotate(45deg);
+  box-shadow: 0 0 12px rgba(197, 168, 107, 0.4);
+}
+.mobile-hud-title {
+  display: none;
 }
 
 /* Transición suave para atenuación (Dimming) en Desktop */
@@ -1787,10 +1794,30 @@ body.reading-mode .tour-narrative-content {
 
 @media (max-width: 768px) {
   .options-toggle-btn {
-    display: block !important;
+    display: flex !important;
     position: absolute;
     top: 8px;
     right: 8px;
+    width: 36px;
+    height: 36px;
+  }
+  .mobile-hud-title {
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    right: 56px;
+    height: 36px;
+    line-height: 36px;
+    font-family: var(--font-title);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(197, 168, 107, 0.2);
+    pointer-events: none;
+    z-index: 25;
   }
   .graph-overlay-header {
     pointer-events: none;
@@ -1802,22 +1829,19 @@ body.reading-mode .tour-narrative-content {
     flex-direction: column;
     gap: 8px;
     align-items: stretch;
+    transition: padding 0.3s ease;
   }
   
   /* Estado colapsado: oculta todos los grupos HUD, muestra solo el toggle */
-  .graph-overlay-header.collapsed .graph-overlay-group {
+  .graph-overlay-header.collapsed .graph-overlay-group,
+  .graph-overlay-header.collapsed .mobile-hud-title {
     display: none !important;
   }
   .graph-overlay-header:not(.collapsed) .graph-overlay-group {
     display: flex !important;
   }
-  
-  /* El botón de toggle se alinea arriba cuando está abierto */
-  .graph-overlay-header:not(.collapsed) .options-toggle-btn {
-    position: static;
-    align-self: flex-end;
-    width: max-content;
-    margin-bottom: 4px;
+  .graph-overlay-header:not(.collapsed) {
+    padding-top: 52px;
   }
 
   /* Ocultar fichas en móvil si no están activas */

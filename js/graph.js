@@ -156,7 +156,7 @@ function _buildSVG() {
   const H = parseInt(container.getAttribute('height')) || 520;
 
   _zoom = d3.zoom()
-    .scaleExtent([0.25, 4])
+    .scaleExtent([0.6, 2.5])
     .on('zoom', e => _g.attr('transform', e.transform));
 
   _svg = d3.select('#graph-svg')
@@ -224,6 +224,7 @@ function _buildMarkers() {
       .attr('markerWidth', 7)
       .attr('markerHeight', 7)
       .attr('orient', 'auto')
+      .attr('markerUnits', 'userSpaceOnUse')
       .append('path')
         .attr('d', 'M0,-5L10,0L0,5')
         .attr('fill', style.stroke)
@@ -252,7 +253,8 @@ function _buildMarkers() {
     .attr('viewBox', '-2 -6 4 12')
     .attr('refX', 22).attr('refY', 0)
     .attr('markerWidth', 6).attr('markerHeight', 10)
-    .attr('orient', 'auto');
+    .attr('orient', 'auto')
+    .attr('markerUnits', 'userSpaceOnUse');
   barMarker.append('line')
     .attr('x1', 0).attr('y1', -6).attr('x2', 0).attr('y2', 6)
     .attr('stroke', 'var(--danger)').attr('stroke-width', 2.5);
@@ -263,7 +265,8 @@ function _buildMarkers() {
     .attr('viewBox', '-8 -8 16 16')
     .attr('refX', 22).attr('refY', 0)
     .attr('markerWidth', 8).attr('markerHeight', 8)
-    .attr('orient', 'auto');
+    .attr('orient', 'auto')
+    .attr('markerUnits', 'userSpaceOnUse');
   stopMarker.append('circle')
     .attr('cx', 0).attr('cy', 0).attr('r', 6)
     .attr('fill', 'none').attr('stroke', 'var(--danger)').attr('stroke-width', 2);
@@ -277,7 +280,8 @@ function _buildMarkers() {
     .attr('viewBox', '-6 -6 12 12')
     .attr('refX', -18).attr('refY', 0)
     .attr('markerWidth', 8).attr('markerHeight', 8)
-    .attr('orient', 'auto');
+    .attr('orient', 'auto')
+    .attr('markerUnits', 'userSpaceOnUse');
   xMarker.append('line')
     .attr('x1', -4).attr('y1', -4).attr('x2', 4).attr('y2', 4)
     .attr('stroke', 'var(--danger)').attr('stroke-width', 2);
@@ -491,15 +495,18 @@ function _updateGraph() {
     .on('click',   (e, d) => { e.stopPropagation(); _showNodePanel(e, d); })
     .on('keydown', (e, d) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); _showNodePanel(e, d); } });
 
-  // ── Halo for Extreme_Nodes (appended BEFORE circle so it renders behind) ──
-  nodeEnter.filter(d => d.type === 'extremo')
-    .append('circle')
+  // ── Halo for Nodos (appended BEFORE circle so it renders behind) ──
+  nodeEnter.append('circle')
     .attr('class', 'halo')
-    .attr('r', d => _nodeRadius(d) + 12)
+    .attr('r', d => _nodeRadius(d) + (d.type === 'extremo' ? 12 : 6))
     .attr('fill', 'none')
-    .attr('stroke', d => NODE_STROKE[d.type] || '#4A7BC8')
-    .attr('stroke-width', 1)
-    .attr('stroke-opacity', 0.3)
+    .attr('stroke', d => {
+      if (d.type === 'extremo') return 'var(--gold)';
+      if (d.type === 'meta') return 'var(--mystery)';
+      return 'var(--gold)';
+    })
+    .attr('stroke-width', d => d.type === 'extremo' ? 1 : 2)
+    .attr('stroke-opacity', d => d.type === 'extremo' ? 0.3 : 0)
     .attr('pointer-events', 'none');
 
   // ── Main circle ──
@@ -542,16 +549,18 @@ function _updateGraph() {
   // ── Halo hover/focus handlers ──
   nodeEnter
     .on('mouseenter.halo', function(e, d) {
-      if (d.type === 'extremo') {
-        d3.select(this).select('.halo')
-          .attr('r', _nodeRadius(d) + 20);
-      }
+      const scale = d.type === 'extremo' ? 20 : 12;
+      const opacity = d.type === 'extremo' ? 0.45 : 0.25;
+      d3.select(this).select('.halo')
+        .attr('r', _nodeRadius(d) + scale)
+        .attr('stroke-opacity', opacity);
     })
     .on('mouseleave.halo', function(e, d) {
-      if (d.type === 'extremo') {
-        d3.select(this).select('.halo')
-          .attr('r', _nodeRadius(d) + 12);
-      }
+      const scale = d.type === 'extremo' ? 12 : 6;
+      const opacity = d.type === 'extremo' ? 0.3 : 0;
+      d3.select(this).select('.halo')
+        .attr('r', _nodeRadius(d) + scale)
+        .attr('stroke-opacity', opacity);
     });
 
   // Symbol label inside
@@ -967,7 +976,19 @@ function _dragStart(e, d) {
   if (!e.active) _simulation.alphaTarget(0.3).restart();
   d.fx = d.x; d.fy = d.y;
 }
-function _dragged(e, d) { d.fx = e.x; d.fy = e.y; }
+function _dragged(e, d) {
+  const container = document.getElementById('graph-svg');
+  if (container) {
+    const W = container.clientWidth || 700;
+    const H = parseInt(container.getAttribute('height')) || 520;
+    const padding = 20;
+    d.fx = Math.max(padding, Math.min(W - padding, e.x));
+    d.fy = Math.max(padding, Math.min(H - padding, e.y));
+  } else {
+    d.fx = e.x;
+    d.fy = e.y;
+  }
+}
 function _dragEnd(e, d) {
   if (!e.active) _simulation.alphaTarget(0);
   const EXTREME_IDS = new Set(['w_T', 'w_O', 'w_N', 'w_E', 'w_F']);
