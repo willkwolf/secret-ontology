@@ -1514,6 +1514,11 @@ p strong { color: var(--text); font-weight: 500; }
   border-color: var(--border-gold);
   background: rgba(197,168,107,0.02);
 }
+.control-switch-group > div:first-child {
+  flex: 1;
+  min-width: 0;
+  padding-right: 12px;
+}
 .switch-title {
   display: block;
   font-family: var(--font-title);
@@ -2195,7 +2200,7 @@ body.reading-mode .tour-narrative-content {
 
   /* Playground Formula responsive adjustments to prevent wrapping and height changes */
   .playground-formula {
-    font-size: 0.88rem !important;
+    font-size: 0.8rem !important;
     padding: 12px 16px !important;
     gap: 4px 6px !important;
     height: 56px !important;
@@ -2214,6 +2219,16 @@ body.reading-mode .tour-narrative-content {
   /* Playground Status responsive adjustments to prevent height shifts during transitions */
   .playground-status {
     height: 270px !important;
+  }
+  /* Playground Status Badge mobile optimization to prevent horizontal stretching and shifts */
+  .status-badge {
+    font-size: 0.8rem !important;
+    white-space: normal !important;
+    width: 100% !important;
+    text-align: center !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    max-width: 100% !important;
   }
 }
 
