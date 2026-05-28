@@ -20,6 +20,8 @@
       "scroll": "Desplazar"
     },
     "graph": {
+      "resetZoom": ">< Restablecer",
+      "resetZoomAria": "Restablecer zoom",
       "sectionLabel": "§ 05e — El dispositivo epistémico completo",
       "title": "Grafo Epistémico<br>Modal Dinámico",
       "hint": "Toca o arrastra los nodos para explorar. Haz clic en un nodo para ver su ficha.",
@@ -662,6 +664,8 @@
       "scroll": "Scroll"
     },
     "graph": {
+      "resetZoom": ">< Reset",
+      "resetZoomAria": "Reset zoom",
       "sectionLabel": "§ 05e — The complete epistemic device",
       "title": "Dynamic Modal<br>Epistemic Graph",
       "hint": "Touch or drag nodes to explore. Click a node to see its card.",

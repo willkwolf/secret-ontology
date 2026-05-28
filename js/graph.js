@@ -1656,12 +1656,7 @@ window.exitGuidedTour = function() {
   _nodeGroup.selectAll('g.node circle').classed('tour-highlight', false);
   
   // Restore zoom transform back to center
-  if (_svg && _zoom) {
-    _svg.transition().duration(800).call(
-      _zoom.transform,
-      d3.zoomIdentity
-    );
-  }
+  window.resetGraphZoom();
 };
 
 window.updateTourLanguageUI = function() {
@@ -1875,10 +1870,45 @@ window.clearHighlightInGraph = function() {
 };
 
 window.resetGraphZoom = function() {
-  if (_svg && _zoom) {
+  if (_svg && _zoom && _nodeGroup) {
+    const nodes = _nodeGroup.selectAll('g.node').data();
+    if (nodes.length === 0) return;
+
+    const vb = (_svg.attr('viewBox') || '0 0 700 520').split(' ');
+    const W = +vb[2] || 700;
+    const H = +vb[3] || 520;
+
+    let minX = Infinity, maxX = -Infinity;
+    let minY = Infinity, maxY = -Infinity;
+
+    nodes.forEach(d => {
+      const r = _nodeRadius(d) + 30; // Radius + safety margin for centered text labels
+      if (d.x - r < minX) minX = d.x - r;
+      if (d.x + r > maxX) maxX = d.x + r;
+      if (d.y - r < minY) minY = d.y - r;
+      if (d.y + r > maxY) maxY = d.y + r;
+    });
+
+    const graphW = maxX - minX;
+    const graphH = maxY - minY;
+    const centerX = (minX + maxX) / 2;
+    const centerY = (minY + maxY) / 2;
+
+    const scaleX = W / graphW;
+    const scaleY = H / graphH;
+    let scale = Math.min(scaleX, scaleY) * 0.95;
+
+    // Clamp zoom scale to [0.6, 2.5]
+    scale = Math.max(0.6, Math.min(2.5, scale));
+
+    const transform = d3.zoomIdentity
+      .translate(W / 2, H / 2)
+      .scale(scale)
+      .translate(-centerX, -centerY);
+
     _svg.transition().duration(800).call(
       _zoom.transform,
-      d3.zoomIdentity
+      transform
     );
   }
 };

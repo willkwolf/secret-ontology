@@ -501,6 +501,15 @@ function _applyStrings() {
       : 'Dynamic Accessibility Relation (w₀ → w₁)';
   }
 
+  const microDistinctionTitle = document.getElementById('micro-distinction-title');
+  if (microDistinctionTitle) microDistinctionTitle.textContent = t('micro.distinctionTitle');
+
+  const microTopologyTitle = document.getElementById('micro-topology-title');
+  if (microTopologyTitle) microTopologyTitle.textContent = t('micro.topologyTitle');
+
+  const microTemporalTitle = document.getElementById('micro-temporal-title');
+  if (microTemporalTitle) microTemporalTitle.textContent = t('micro.temporalTitle');
+
   const legendRowDirect = document.querySelector('#legend-row-direct .legend-text');
   if (legendRowDirect) {
     legendRowDirect.innerHTML = getLang() === 'es'
@@ -584,6 +593,12 @@ function _applyStrings() {
     } else {
       fullscreenBtn.textContent = getLang() === 'es' ? '⛶ Pantalla Completa' : '⛶ Fullscreen';
     }
+  }
+
+  const resetZoomBtn = document.getElementById('reset-zoom-btn');
+  if (resetZoomBtn) {
+    resetZoomBtn.innerHTML = t('graph.resetZoom');
+    resetZoomBtn.setAttribute('aria-label', t('graph.resetZoomAria'));
   }
 
   updateGraphLabels();

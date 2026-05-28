@@ -1490,6 +1490,12 @@ p strong { color: var(--text); font-weight: 500; }
     gap: 36px;
     padding: 36px;
   }
+  .control-switch-group {
+    height: 92px;
+  }
+  .playground-status {
+    height: 180px;
+  }
 }
 
 .playground-controls {
