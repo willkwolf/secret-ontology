@@ -4,7 +4,7 @@
  */
 
 import { loadStrings, t, getLang, setLang } from './i18n.js';
-import { initGraph, changeDomain, filterEdge, changeVersion } from './graph.js';
+import { initGraph, changeDomain, filterEdge, changeVersion, updateGraphLabels } from './graph.js';
 import layerSystem from './layers.js';
 import { initMicroGraphs, updatePlaygroundGraph } from './micro-graphs.js';
 
@@ -250,6 +250,194 @@ function _applyStrings() {
 
   const explanationModalMystery = document.getElementById('explanation-modal-mystery');
   if (explanationModalMystery) explanationModalMystery.innerHTML = t('explanation.modalMystery');
+  // a11y Skip Link
+  const skipLink = document.getElementById('skip-link');
+  if (skipLink) skipLink.textContent = t('sections.skipLink');
+
+  // Section §01
+  const s01Label = document.getElementById('s01-label');
+  if (s01Label) s01Label.textContent = t('sections.s01.label');
+  const s01Heading = document.getElementById('s01-heading');
+  if (s01Heading) s01Heading.innerHTML = t('sections.s01.heading');
+  const s01p1 = document.getElementById('s01-p1');
+  if (s01p1) s01p1.innerHTML = t('sections.s01.p1');
+  const s01p2 = document.getElementById('s01-p2');
+  if (s01p2) s01p2.innerHTML = t('sections.s01.p2');
+  const s01p3 = document.getElementById('s01-p3');
+  if (s01p3) s01p3.innerHTML = t('sections.s01.p3');
+
+  // Section §02
+  const s02Label = document.getElementById('s02-label');
+  if (s02Label) s02Label.textContent = t('sections.s02.label');
+  const s02Heading = document.getElementById('s02-heading');
+  if (s02Heading) s02Heading.innerHTML = t('sections.s02.heading');
+  const s02p1 = document.getElementById('s02-p1');
+  if (s02p1) s02p1.innerHTML = t('sections.s02.p1');
+  const s02p2 = document.getElementById('s02-p2');
+  if (s02p2) s02p2.innerHTML = t('sections.s02.p2');
+  const s02p3 = document.getElementById('s02-p3');
+  if (s02p3) s02p3.innerHTML = t('sections.s02.p3');
+  const s02p4 = document.getElementById('s02-p4');
+  if (s02p4) s02p4.innerHTML = t('sections.s02.p4');
+
+  // Section §04
+  const s04Label = document.getElementById('s04-label');
+  if (s04Label) s04Label.textContent = t('sections.s04.label');
+  const s04Heading = document.getElementById('s04-heading');
+  if (s04Heading) s04Heading.innerHTML = t('sections.s04.heading');
+  const s04p1 = document.getElementById('s04-p1');
+  if (s04p1) s04p1.innerHTML = t('sections.s04.p1');
+  const s04p2 = document.getElementById('s04-p2');
+  if (s04p2) s04p2.innerHTML = t('sections.s04.p2');
+
+  const s04wTTitle = document.getElementById('s04-wT-title');
+  if (s04wTTitle) s04wTTitle.textContent = t('sections.s04.wTTitle');
+  const s04wTDesc = document.getElementById('s04-wT-desc');
+  if (s04wTDesc) s04wTDesc.textContent = t('sections.s04.wTDesc');
+
+  const s04wOTitle = document.getElementById('s04-wO-title');
+  if (s04wOTitle) s04wOTitle.textContent = t('sections.s04.wOTitle');
+  const s04wODesc = document.getElementById('s04-wO-desc');
+  if (s04wODesc) s04wODesc.textContent = t('sections.s04.wODesc');
+
+  const s04wETitle = document.getElementById('s04-wE-title');
+  if (s04wETitle) s04wETitle.textContent = t('sections.s04.wETitle');
+  const s04wEDesc = document.getElementById('s04-wE-desc');
+  if (s04wEDesc) s04wEDesc.textContent = t('sections.s04.wEDesc');
+
+  const s04wFTitle = document.getElementById('s04-wF-title');
+  if (s04wFTitle) s04wFTitle.textContent = t('sections.s04.wFTitle');
+  const s04wFDesc = document.getElementById('s04-wF-desc');
+  if (s04wFDesc) s04wFDesc.textContent = t('sections.s04.wFDesc');
+
+  const s04wNTitle = document.getElementById('s04-wN-title');
+  if (s04wNTitle) s04wNTitle.textContent = t('sections.s04.wNTitle');
+  const s04wNDesc = document.getElementById('s04-wN-desc');
+  if (s04wNDesc) s04wNDesc.textContent = t('sections.s04.wNDesc');
+
+  // Section §05
+  const s05Label = document.getElementById('s05-label');
+  if (s05Label) s05Label.textContent = t('sections.s05.label');
+  const s05Heading = document.getElementById('s05-heading');
+  if (s05Heading) s05Heading.innerHTML = t('sections.s05.heading');
+  const s05p1 = document.getElementById('s05-p1');
+  if (s05p1) s05p1.innerHTML = t('sections.s05.p1');
+  const s05p2 = document.getElementById('s05-p2');
+  if (s05p2) s05p2.innerHTML = t('sections.s05.p2');
+  const s05p3 = document.getElementById('s05-p3');
+  if (s05p3) s05p3.innerHTML = t('sections.s05.p3');
+  const s05p4 = document.getElementById('s05-p4');
+  if (s05p4) s05p4.innerHTML = t('sections.s05.p4');
+
+  const s05DemoTitle = document.getElementById('s05-demo-title');
+  if (s05DemoTitle) s05DemoTitle.textContent = t('sections.s05.demoTitle');
+  const s05DemoCaption = document.getElementById('s05-demo-caption');
+  if (s05DemoCaption) s05DemoCaption.textContent = t('sections.s05.demoCaption');
+
+  // Translate regen nodes dynamically
+  const isEn = getLang() === 'en';
+  const rn = document.getElementById('regen-nodes');
+  if (rn) {
+    const nodes = rn.querySelectorAll('.regen-node');
+    if (nodes.length >= 2) {
+      nodes[0].textContent = isEn ? 'DNA Structure' : 'Estructura del ADN';
+      nodes[1].textContent = isEn ? 'Epigenome' : 'Epigenoma';
+    }
+  }
+  const rn2 = document.getElementById('regen-nodes-2');
+  if (rn2) {
+    const nodes = rn2.querySelectorAll('.regen-node');
+    if (nodes.length >= 5) {
+      nodes[0].textContent = isEn ? 'DNA Structure ✓' : 'Estructura del ADN ✓';
+      nodes[1].textContent = isEn ? 'Epigenome ✓' : 'Epigenoma ✓';
+      nodes[2].textContent = isEn ? 'Social epigenetics' : 'Epigenética social';
+      nodes[3].textContent = isEn ? 'Non-Mendelian inheritance' : 'Herencia no-mendeliana';
+      nodes[4].textContent = isEn ? '??? (new frontier)' : '??? (nueva frontera)';
+    }
+  }
+  const regenBtn = document.getElementById('regen-btn');
+  if (regenBtn) {
+    const isTriggered = document.getElementById('regen-nodes-2')?.style.display === 'flex';
+    regenBtn.textContent = isTriggered
+      ? (isEn ? 'Reset ↺' : 'Reiniciar ↺')
+      : (isEn ? 'Reveal →' : 'Revelar →');
+  }
+
+  // Section §05b
+  const s05bLabel = document.getElementById('s05b-label');
+  if (s05bLabel) s05bLabel.textContent = t('sections.s05b.label');
+  const s05bHeading = document.getElementById('s05b-heading');
+  if (s05bHeading) s05bHeading.innerHTML = t('sections.s05b.heading');
+  const s05bp1 = document.getElementById('s05b-p1');
+  if (s05bp1) s05bp1.innerHTML = t('sections.s05b.p1');
+  const s05bp2 = document.getElementById('s05b-p2');
+  if (s05bp2) s05bp2.innerHTML = t('sections.s05b.p2');
+  const s05bp3 = document.getElementById('s05b-p3');
+  if (s05bp3) s05bp3.innerHTML = t('sections.s05b.p3');
+
+  // Section §05c
+  const s05cLabel = document.getElementById('s05c-label');
+  if (s05cLabel) s05cLabel.textContent = t('sections.s05c.label');
+  const s05cHeading = document.getElementById('s05c-heading');
+  if (s05cHeading) s05cHeading.innerHTML = t('sections.s05c.heading');
+  const s05cp1 = document.getElementById('s05c-p1');
+  if (s05cp1) s05cp1.innerHTML = t('sections.s05c.p1');
+  const s05cp2 = document.getElementById('s05c-p2');
+  if (s05cp2) s05cp2.innerHTML = t('sections.s05c.p2');
+  const s05cp3 = document.getElementById('s05c-p3');
+  if (s05cp3) s05cp3.innerHTML = t('sections.s05c.p3');
+
+  // Section §05d
+  const s05dLabel = document.getElementById('s05d-label');
+  if (s05dLabel) s05dLabel.textContent = t('sections.s05d.label');
+  const s05dHeading = document.getElementById('s05d-heading');
+  if (s05dHeading) s05dHeading.innerHTML = t('sections.s05d.heading');
+  const s05dp1 = document.getElementById('s05d-p1');
+  if (s05dp1) s05dp1.innerHTML = t('sections.s05d.p1');
+  const s05dp2 = document.getElementById('s05d-p2');
+  if (s05dp2) s05dp2.innerHTML = t('sections.s05d.p2');
+  const s05dp3 = document.getElementById('s05d-p3');
+  if (s05dp3) s05dp3.innerHTML = t('sections.s05d.p3');
+
+  // Section §06
+  const s06Label = document.getElementById('s06-label');
+  if (s06Label) s06Label.textContent = t('sections.s06.label');
+  const s06Heading = document.getElementById('s06-heading');
+  if (s06Heading) s06Heading.innerHTML = t('sections.s06.heading');
+  const s06p1 = document.getElementById('s06-p1');
+  if (s06p1) s06p1.innerHTML = t('sections.s06.p1');
+  const s06p2 = document.getElementById('s06-p2');
+  if (s06p2) s06p2.innerHTML = t('sections.s06.p2');
+  const s06p3 = document.getElementById('s06-p3');
+  if (s06p3) s06p3.innerHTML = t('sections.s06.p3');
+  const s06p4 = document.getElementById('s06-p4');
+  if (s06p4) s06p4.innerHTML = t('sections.s06.p4');
+  const s06Formula = document.getElementById('s06-formula');
+  if (s06Formula) s06Formula.innerHTML = t('sections.s06.formula');
+
+  // Section §07
+  const s07Label = document.getElementById('s07-label');
+  if (s07Label) s07Label.textContent = t('sections.s07.label');
+  const s07Heading = document.getElementById('s07-heading');
+  if (s07Heading) s07Heading.innerHTML = t('sections.s07.heading');
+  const s07p1 = document.getElementById('s07-p1');
+  if (s07p1) s07p1.innerHTML = t('sections.s07.p1');
+  const s07Quote = document.getElementById('s07-quote');
+  if (s07Quote) s07Quote.textContent = t('sections.s07.quote');
+  const s07p2 = document.getElementById('s07-p2');
+  if (s07p2) s07p2.innerHTML = t('sections.s07.p2');
+  const s07p3 = document.getElementById('s07-p3');
+  if (s07p3) s07p3.innerHTML = t('sections.s07.p3');
+
+  // Inline tooltips
+  const tipKripke = document.getElementById('tip-kripke');
+  if (tipKripke) tipKripke.setAttribute('data-tip', t('tips.kripke'));
+  const tipGodel = document.getElementById('tip-godel');
+  if (tipGodel) tipGodel.setAttribute('data-tip', t('tips.godel'));
+  const tipChaitin = document.getElementById('tip-chaitin');
+  if (tipChaitin) tipChaitin.setAttribute('data-tip', t('tips.chaitin'));
+  const tipSingularity = document.getElementById('tip-singularity');
+  if (tipSingularity) tipSingularity.setAttribute('data-tip', t('tips.singularity'));
 
   // Playground Static Text
   const playLabelSec = document.getElementById('playground-label-section');
@@ -398,6 +586,7 @@ function _applyStrings() {
     }
   }
 
+  updateGraphLabels();
   _applyMuseumGrid();
 }
 
@@ -613,7 +802,10 @@ function _initRegenDemo() {
     triggered = !triggered;
     document.getElementById('regen-nodes').style.display   = triggered ? 'none' : 'flex';
     document.getElementById('regen-nodes-2').style.display = triggered ? 'flex' : 'none';
-    btn.textContent = triggered ? 'Reiniciar ↺' : 'Revelar →';
+    const isEn = getLang() === 'en';
+    btn.textContent = triggered 
+      ? (isEn ? 'Reset ↺' : 'Reiniciar ↺') 
+      : (isEn ? 'Reveal →' : 'Revelar →');
   });
 }
 

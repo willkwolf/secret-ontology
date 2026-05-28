@@ -64,19 +64,334 @@
       "structuralLimit": "Límite estructural no-antropocéntrico"
     },
     "nodes": {
+      "w_T": "Transparencia absoluta",
+      "w_O": "Opacidad absoluta",
+      "w_E": "Conocimiento eterno",
+      "w_F": "Cognición finita regenerativa",
+      "w_N": "No‑dualidad epistémica",
+      "pre_adn": "Biología pre‑1953",
+      "post_adn": "Biología molecular (post‑ADN)",
+      "emerg_epigen": "Emergencia epigenética",
+      "conciencia": "Misterio duro de la conciencia",
+      "secreto_estado": "Secreto de Estado clásico",
+      "filtracion": "Filtración (revelación pública)",
+      "secreto_reforzado": "Secreto reforzado reactivamente",
+      "incompletitud": "Incompletitud (Gödel)",
+      "indecidibilidad": "Indecidibilidad (Turing)",
+      "misterio_cuantico": "Misterio de la medición cuántica",
+      "copenhague": "Interpretación de Copenhague",
+      "muchos_mundos": "Interpretación de Muchos Mundos",
+      "bohm": "Interpretación de De Broglie‑Bohm",
+      "incertidumbre_cosmologica": "Cosmología pre‑relatividad",
+      "relatividad_general": "Relatividad General",
+      "mejor_secreto": "¿El mejor secreto posible?",
       "límite_gödel": "Límite de Gödel",
       "límite_turing": "Límite de Turing",
       "horizonte_caótico": "Horizonte Caótico",
       "indeterminación_cuántica": "Indeterminación Cuántica",
       "flecha_termodinámica": "Flecha Termodinámica",
-      "zkp_clase": "ZKP Interactivo",
-      "nizkp_imposible": "Imposibilidad NIZKP",
+      "zkp_clase": "ZKP Interactivo (1985)",
+      "nizkp_imposible": "Imposibilidad NIZKP (1994)",
       "proof_complexity": "Complejidad de Prueba",
-      "zkp_efectivo": "ZKP Efectivo"
+      "zkp_efectivo": "ZKP Efectivo (Ilango 2025)"
+    },
+    "nodes_metadata": {
+      "w_T": {
+        "agents": "Omnisciente colectivo",
+        "contents": "Todas las proposiciones verdaderas",
+        "references": "Leibniz (Dios calculador) · Realismo absoluto"
+      },
+      "w_O": {
+        "agents": "Ninguno con capacidad epistémica",
+        "contents": "—",
+        "references": "Escepticismo radical · Nihilismo epistémico"
+      },
+      "w_E": {
+        "agents": "Intelecto agente eterno (Aristóteles)",
+        "contents": "Conjunto completo de verdades necesarias",
+        "references": "Tomás de Aquino · Teología racional"
+      },
+      "w_F": {
+        "agents": "Comunidad científica, Individuo racional",
+        "contents": "Leyes físicas conocidas, Datos empíricos acumulados",
+        "references": "Gödel (incompletitud) · Chaitin (complejidad) · Popper (falsacionismo)"
+      },
+      "w_N": {
+        "agents": "Conciencia no dual",
+        "contents": "Unidad indiferenciada",
+        "references": "Advaita Vedanta · Misticismo filosófico (Plotino, Eckhart)"
+      },
+      "pre_adn": {
+        "agents": "Genetistas clásicos, Bioquímicos",
+        "contents": "Leyes de Mendel, Cromosomas observados",
+        "references": "Morgan · Avery"
+      },
+      "post_adn": {
+        "agents": "Watson y Crick, Biólogos moleculares",
+        "contents": "Estructura del ADN, Código genético",
+        "references": "Watson & Crick 1953 · Dogma central"
+      },
+      "emerg_epigen": {
+        "agents": "Epigenetistas",
+        "contents": "Marcas epigenéticas, ARN no codificante",
+        "references": "Waddington · Allis"
+      },
+      "conciencia": {
+        "agents": "Filósofos de la mente, Neurocientíficos",
+        "contents": "Correlatos neurales, Funciones cognitivas",
+        "references": "Chalmers (hard problem) · Nagel (What is it like?)"
+      },
+      "secreto_estado": {
+        "agents": "Gobierno, Agencias de inteligencia",
+        "contents": "Planes militares, Información clasificada",
+        "references": "Filosofía política del secreto (Simmel) · Transparencia vs. seguridad"
+      },
+      "filtracion": {
+        "agents": "Whistleblowers, Medios",
+        "contents": "Documentos filtrados, Debate público",
+        "references": "WikiLeaks · Snowden"
+      },
+      "secreto_reforzado": {
+        "agents": "Agencias reformadas",
+        "contents": "Información previamente pública ahora restringida",
+        "references": "Ley de secreto post‑Snowden · Paradoja de la transparencia"
+      },
+      "incompletitud": {
+        "agents": "Lógicos",
+        "contents": "Sentencias indecidibles",
+        "references": "Gödel 1931 · Teoremas de incompletitud"
+      },
+      "indecidibilidad": {
+        "agents": "Científicos de la computación",
+        "contents": "Máquinas de Turing, Problemas NP‑completos",
+        "references": "Turing 1936 · Teoría de la computabilidad"
+      },
+      "misterio_cuantico": {
+        "agents": "Físicos teóricos",
+        "contents": "Formalismo cuántico, Superposición",
+        "references": "Bohr · Everett · Bell"
+      },
+      "copenhague": {
+        "agents": "Bohr, Heisenberg",
+        "contents": "Colapso, Principio de complementariedad",
+        "references": "Interpretación ortodoxa"
+      },
+      "muchos_mundos": {
+        "agents": "Everett",
+        "contents": "Decoherencia, Universalidad cuántica",
+        "references": "Everett 1957"
+      },
+      "bohm": {
+        "agents": "De Broglie, Bohm",
+        "contents": "Onda piloto, Potencial cuántico",
+        "references": "Teorías de variables ocultas"
+      },
+      "incertidumbre_cosmologica": {
+        "agents": "Físicos newtonianos, Astrónomos",
+        "contents": "Mecánica celeste, Éter luminífero",
+        "references": "Newton · Maxwell"
+      },
+      "relatividad_general": {
+        "agents": "Einstein",
+        "contents": "Curvatura del espacio‑tiempo, Ondas gravitacionales",
+        "references": "Einstein 1915"
+      },
+      "mejor_secreto": {
+        "agents": "Investigador filosófico",
+        "contents": "Ninguno definido aún, Pregunta abierta",
+        "references": "Arte conceptual · Paradoja epistémica"
+      },
+      "límite_gödel": {
+        "agents": "Lógicos",
+        "contents": "Consistencia matemática indemostrable",
+        "references": "Gödel 1931 · Primer teorema de incompletitud"
+      },
+      "límite_turing": {
+        "agents": "Científicos de la computación",
+        "contents": "Problemas lógicamente incomputables",
+        "references": "Turing 1936 · Problema de la parada"
+      },
+      "horizonte_caótico": {
+        "agents": "Físicos, Meteorólogos",
+        "contents": "Sistemas dinámicos no lineales, Atractores extraños",
+        "references": "Lorenz 1963 · Teoría del caos"
+      },
+      "indeterminación_cuántica": {
+        "agents": "Físicos cuánticos",
+        "contents": "Variables físicas conjugadas",
+        "references": "Heisenberg 1927 · Principio de incertidumbre"
+      },
+      "flecha_termodinámica": {
+        "agents": "Físicos",
+        "contents": "Entropía universal, Estados de desorden",
+        "references": "Boltzmann · Segunda ley de la termodinámica"
+      },
+      "zkp_clase": {
+        "agents": "Goldwasser, Micali, Rackoff, Probador, Verificador",
+        "contents": "Existencia de conocimiento sin transferencia, Protocolos interactivos",
+        "references": "GMR 1985 · Criptografía interactiva"
+      },
+      "nizkp_imposible": {
+        "agents": "Goldreich, Oren",
+        "contents": "Inexistencia de simuladores universales en canales de una vía",
+        "references": "Goldreich & Oren 1994 · Límites criptográficos"
+      },
+      "proof_complexity": {
+        "agents": "Complejistas de prueba, Rahul Ilango",
+        "contents": "Longitud de pruebas en sistemas axiomáticos, Improbabilidad práctica",
+        "references": "Cook-Reckhow 1979 · Aaronson"
+      },
+      "zkp_efectivo": {
+        "agents": "Rahul Ilango, IAS Princeton",
+        "contents": "Consistencia matemática unida a la prueba, Simulabilidad indetectable",
+        "references": "Ilango 2025 · Quanta Magazine 2026"
+      }
+    },
+    "edges": {
+      "e_rev_adn": {
+        "label": "Descubrimiento de la doble hélice",
+        "cost": "Décadas de investigación, competencia científica intensa",
+        "narrative": "En 1953, Watson y Crick reveló la estructura del ADN, haciendo cognoscible el mecanismo molecular de la herencia. El secreto de la vida se volvió accesible."
+      },
+      "e_emerg_epigen": {
+        "label": "Apertura del paisaje epigenético",
+        "cost": "Conceptual: redefinición de la regulación génica",
+        "narrative": "Al conocer el genoma, emergieron incógnitas sobre cómo se regula la expresión génica. El secreto del ADN dio a luz nuevos continentes de ignorancia."
+      },
+      "e_ocult_filtracion": {
+        "label": "Reacción restrictiva del Estado",
+        "cost": "Alto: legislación de emergencia, re‑clasificación masiva",
+        "narrative": "Tras la revelación de secretos, el sistema político incrementa la opacidad: nuevos documentos pasan a ser clasificados. La transparencia momentánea genera más sombras."
+      },
+      "e_rev_filtracion": {
+        "label": "Filtración masiva de documentos",
+        "cost": "Riesgo personal extremo, controversia global",
+        "narrative": "Un whistleblower hace público un conjunto de documentos clasificados. El secreto gubernamental se convierte en conocimiento distribuido. La potencialidad se actualiza."
+      },
+      "e_compres_cosmo": {
+        "label": "Unificación espacio‑temporal (1915)",
+        "cost": "Revolución conceptual: abandonar el espacio y tiempo absolutos",
+        "narrative": "La Relatividad General redujo drásticamente la incertidumbre fundamental en cosmología: la gravedad se explicó como geometría. La ignorancia se comprimió, aunque nuevas preguntas (singularidades, energía oscura) permanecieron."
+      },
+      "e_bif_copenhague": {
+        "label": "Interpretación del colapso",
+        "cost": "Elección filosófica: aceptar la indeterminación fundamental",
+        "narrative": "Ante el misterio de la medición, surge una rama interpretativa: la conciencia o el aparato clásico colapsan la función de onda. Un mismo enigma, múltiples lecturas."
+      },
+      "e_bif_mundos": {
+        "label": "Interpretación de universos paralelos",
+        "cost": "Compromiso ontológico radical con realidades múltiples",
+        "narrative": "Otra vía: negar el colapso. Cada posibilidad se realiza en un mundo separado. La ignorancia es solo aparente desde nuestra rama particular."
+      },
+      "e_bif_bohm": {
+        "label": "Interpretación de variables ocultas",
+        "cost": "Postular entidades no locales y trayectorias deterministas",
+        "narrative": "Una tercera rama: hay realidad determinista bajo el velo cuántico, con partículas guiadas por una onda piloto. El misterio se desplaza a las variables ocultas."
+      },
+      "e_transparencia_utopica": {
+        "label": "Anhelo de transparencia total",
+        "cost": "Inalcanzable: requeriría capacidad computacional infinita",
+        "narrative": "La cognición finita aspira a un mundo sin ignorancia, pero la transparencia absoluta es un límite ideal, una singularidad epistémica fuera del alcance."
+      },
+      "e_opacidad_utopica": {
+        "label": "Pesadilla de la ignorancia total",
+        "cost": "Contrafáctico extremo: pérdida de toda cognición",
+        "narrative": "La opacidad absoluta es el reverso inalcanzable. Un mundo sin ningún conocimiento no puede sostener agentes, es una abstracción límite."
+      },
+      "e_mejor_secreto_explora": {
+        "label": "Exploración del mejor secreto",
+        "cost": "Reflexión filosófica permanente",
+        "narrative": "La pregunta por el mejor secreto posible rebota hacia lo finito: quizá resida en la capacidad regenerativa de la ignorancia, o en un contenido que se autoprotege al ser conocido."
+      },
+      "e_mejor_secreto_misterio": {
+        "label": "Paradoja del candidato a mejor secreto",
+        "cost": "Definición de lo indecible",
+        "narrative": "Un secreto perfecto podría ser aquel que, incluso al ser revelado, sigue siendo inaccesible: la experiencia subjetiva ajena. Nunca se vuelve completamente público."
+      },
+      "e_godel_incompletitud": {
+        "label": "Descubrimiento de los límites formales",
+        "cost": "Revolución en los fundamentos de las matemáticas",
+        "narrative": "El teorema de Gödel hizo emerger la incognoscibilidad estructural dentro de cualquier sistema axiomático: hay verdades que nunca serán demostrables."
+      },
+      "e_turing_indecidibilidad": {
+        "label": "De Gödel a la computabilidad",
+        "cost": "Traducción del límite lógico al algorítmico",
+        "narrative": "Turing formalizó la indecidibilidad, mostrando que hay problemas que ninguna máquina puede resolver. El secreto de la parada es un misterio computacional permanente."
+      },
+      "e_no_dualidad": {
+        "label": "Disolución del sujeto epistémico",
+        "cost": "Salto fuera del marco racional-discursivo",
+        "narrative": "La no‑dualidad no oculta contenido, sino que elimina la estructura misma del secreto al disolver la dualidad cognoscente-conocido. Límite experiencial, no formal."
+      },
+      "e_godel_limit": {
+        "label": "Límite formal de la demostrabilidad",
+        "cost": "Irreducible: ningún sistema puede demostrar su propia consistencia",
+        "narrative": "El límite de Gödel imposibilita que cualquier sistema formal suficientemente expresivo sea a la vez completo y consistente."
+      },
+      "e_turing_limit": {
+        "label": "Límite computacional absoluto",
+        "cost": "Irreducible: ningún algoritmo puede resolver el problema de la parada",
+        "narrative": "El límite de Turing imposibilita la resolución algorítmica del problema de la parada."
+      },
+      "e_caos_cosmo": {
+        "label": "Horizonte predictivo del caos",
+        "cost": "Sensibilidad exponencial a condiciones iniciales",
+        "narrative": "El horizonte caótico restringe la predictibilidad cosmológica: pequeñas variaciones en condiciones iniciales producen divergencias exponenciales."
+      },
+      "e_cuantico_misterio": {
+        "label": "Indeterminación fundamental",
+        "cost": "Límite ontológico, no epistémico",
+        "narrative": "La indeterminación cuántica restringe el conocimiento simultáneo de posición y momento: no es ignorancia sino límite estructural."
+      },
+      "e_termo_flecha": {
+        "label": "Flecha del tiempo termodinámica",
+        "cost": "Asimetría temporal irreversible",
+        "narrative": "La flecha termodinámica y la relatividad general se fusionan en la descripción del tiempo cósmico: la entropía define la dirección del tiempo."
+      },
+      "e_godel_mejor": {
+        "label": "El secreto de la incompletitud",
+        "cost": "Paradoja autorreferencial",
+        "narrative": "El límite de Gödel colapsa hacia la pregunta por el mejor secreto: ¿puede un sistema conocer su propio límite?"
+      },
+      "e_caos_emerg": {
+        "label": "Degradación caótica de la predictibilidad",
+        "cost": "Pérdida de determinismo en sistemas complejos",
+        "narrative": "El horizonte caótico degrada la predictibilidad de los sistemas epigenéticos: la complejidad no-lineal hace imposible la predicción a largo plazo."
+      },
+      "e_cuantico_conciencia": {
+        "label": "Indeterminación y conciencia",
+        "cost": "Relación especulativa pero filosóficamente relevante",
+        "narrative": "La indeterminación cuántica degrada la posibilidad de una explicación determinista de la conciencia."
+      },
+      "e_wF_zkp": {
+        "label": "Emergencia de la asimetría interactiva",
+        "cost": "Abandono de la noción estática de transmisión de información",
+        "narrative": "En 1985, se inventan las ZKP, demostrando que es posible certificar la posesión de un secreto sin revelar su contenido mediante desafíos interactivos."
+      },
+      "e_zkp_imposible": {
+        "label": "Teorema de Goldreich-Oren (1994)",
+        "cost": "Demostración matemática rigurosa basada en teoría de simuladores",
+        "narrative": "Se demuestra que sin interactividad es lógicamente imposible lograr zero-knowledge clásico. La falta de diálogo bloquea la simulación y erige un muro criptográfico."
+      },
+      "e_godel_complexity": {
+        "label": "De la indecidibilidad a la longitud de prueba",
+        "cost": "Estudio de límites prácticos en lugar de límites abstractos",
+        "narrative": "La incompletitud de Gödel abre la puerta a estudiar no solo qué es demostrable, sino qué enunciados verdaderos requieren pruebas tan largas que son físicamente imposibles de escribir."
+      },
+      "e_complexity_efectivo": {
+        "label": "La unprovabilidad como recurso",
+        "cost": "Diseño de enunciados autorreferenciales en criptografía",
+        "narrative": "Ilango utiliza enunciados cuya prueba es inalcanzable (la consistencia matemática) para construir una estructura donde la vulnerabilidad es imposible de demostrar."
+      },
+      "e_imposible_efectivo": {
+        "label": "Bypass criptográfico",
+        "cost": "Evadir la barrera interactiva clásica",
+        "narrative": "Muestra cómo el ZKP Efectivo elude la imposibilidad NIZKP al unir la seguridad de la prueba a la propia consistencia lógica del sistema."
+      }
     },
     "descriptions": {
       "w_T": "El ideal de la honestidad y la luz perfecta: un estado donde el conocimiento es compartido de forma universal, haciendo que el secreto y la mentira sean imposibles por la naturaleza misma del sistema.",
-      "w_O": "El silencio total y el abismo del entendimiento: un estado donde la realidad está completamente sellada, representando el límite último donde nada puede ser revelado ni comprendido.",
+      "w_O": "El silencio total y el abismo del entendimiento: un estado donde la reality está completamente sellada, representando el límite último donde nada puede ser revelado ni comprendido.",
       "w_E": "El archivo definitivo del saber: un estado estático y completo donde todas las verdades posibles ya han sido descubiertas y no quedan preguntas por formular.",
       "w_F": "El horizonte dinámico del aprendizaje humano: nuestro estado real de exploración, donde cada respuesta que encontramos ilumina el camino pero abre de inmediato diez nuevas preguntas fascinantes.",
       "w_N": "La disolución del observador y lo observado: un estado contemplativo donde el secreto desaparece porque ya no existe una separación entre quien conoce y la verdad misma.",
@@ -99,7 +414,7 @@
       "mejor_secreto": "La joya oculta del conocimiento: el enigma poético de si existe un secreto tan absoluto que, incluso al revelar todos sus datos lógicos, conserva su misterio profundo intacto.",
       "límite_gödel": "La barrera automática de la lógica: una ley matemática inevitable que dicta que todo sistema de reglas ordenadas siempre contendrá verdades reales que no puede demostrar por sí mismo.",
       "límite_turing": "El límite absoluto del procesamiento: el principio mecánico que demuestra de forma matemática la existencia de preguntas lógicas que ningún algoritmo o procesador podrá calcular jamás.",
-      "horizonte_caótico": "La amplificación automática de la incertidumbre: la ley física que hace que pequeñas e imperceptibles diferencias en el presente (efecto mariposa) destruyan la predictibilidad a largo plazo.",
+      "horizonte_caótico": "La amplificación automática de la incertidumbre: la ley física que hace que pequeñas e imperceptibles diferencias en el presente (efecto mariposa) destruyen la predictibilidad a largo plazo.",
       "indeterminación_cuántica": "El límite físico de la observación subatómica: una ley natural indestructible que determina que conocer con total precisión dónde está una partícula borra automáticamente la información de su velocidad.",
       "flecha_termodinámica": "El flujo irreversible del universo: la ley energética que opera automáticamente desordenando el cosmos y dictando que el tiempo avance en una sola dirección hacia lo desconocido.",
       "zkp_clase": "Demostración sin revelación de datos: un protocolo matemático interactivo que permite convencer a un tercero de que posees una verdad secreta sin entregarle jamás el menor dato de ella.",
@@ -236,6 +551,94 @@
         "step5": "<strong>Paso 5: Muro de Goldreich-Oren (1994)</strong> - Se demuestra matemáticamente que sin diálogo interactivo es imposible lograr zero-knowledge clásico.",
         "step6": "<strong>Paso 6: ZKP Efectivo (Ilango 2025)</strong> - Evasión genial: la prueba es segura porque demostrar que carece de simulador requeriría demostrar la inconsistencia matemática (que es estructuralmente indemostrable)."
       }
+    },
+    "sections": {
+      "skipLink": "Saltar al contenido principal",
+      "s01": {
+        "label": "§ 01 — Definición nuclear",
+        "heading": "El secreto no es<br>una <em>cosa</em>. Es una relación.",
+        "p1": "La intuición común trata el secreto como un objeto: algo que se guarda, que se esconde, que se pierde. Pero esta imagen es filosóficamente inadecuada. El secreto no existe en el vacío — existe siempre entre un <strong>contenido</strong>, un <strong>agente</strong> y un <strong>mundo epistémico</strong>.",
+        "p2": "Formalizado en lógica modal, el secreto es una relación de tres partes (tres ingredientes indispensables):",
+        "p3": "Esta definición tiene consecuencias inmediatas: cambiar el agente, el mundo, o el contenido transforma — y puede eliminar — el secreto. Lo que es un misterio para un agente puede ser conocimiento rutinario para otro, en el mismo mundo."
+      },
+      "s02": {
+        "label": "§ 02 — Distinción crítica",
+        "heading": "Secreto vs. <em>Misterio</em>",
+        "p1": "La filosofía popular confunde constantemente dos categorías que exigen separación rigurosa. Un secreto es cognoscible en principio. Un misterio, no.",
+        "p2": "Ejemplos concretos: que la NSA tenga registros de tus llamadas es un <em>secreto</em> — es cognoscible, hay investigaciones periodísticas que lo han revelado. Que la experiencia subjetiva del dolor \"se sienta de cierta manera\" es, para muchos filósofos, un <em>misterio</em> — ningún acceso físico al cerebro parece poder capturarlo desde fuera.",
+        "p3": "La criptografía contemporánea (Rahul Ilango, 2025) ha descubierto una tercera vía: el <strong>Secreto Criptográfico Efectivo</strong>. No es enteramente un secreto revelable clásico ni enteramente un misterio absoluto; es un secreto práctico cuya seguridad está blindada porque su vulneración exigiría resolver un misterio estructural (la consistencia interna de la matemática). El secreto y el misterio se fusionan en las fronteras de la demostrabilidad formal.",
+        "p4": "En el grafo modal que sigue, las aristas punteadas representan secretos (acceso posible). Las aristas bloqueadas en violeta representan misterios (incognoscibilidad estructural)."
+      },
+      "s04": {
+        "label": "§ 04 — Mundos epistémicos extremos",
+        "heading": "Los cinco mundos<br>en los <em>límites</em>",
+        "p1": "Para cartografiar el espacio del secreto, primero necesitamos sus fronteras. Los mundos posibles extremos definen los polos del grafo:",
+        "p2": "Nuestro mundo — el universo tal como lo habitamos — es una variación de <strong>Cognición finita regenerativa (w<sub>F</sub>)</strong>: conocimiento real pero finito, con un horizonte que se desplaza pero nunca desaparece.",
+        "wTTitle": "Transparencia absoluta",
+        "wTDesc": "Todo contenido es conocido por todos los agentes. El secreto es imposible por definición.",
+        "wOTitle": "Opacidad absoluta",
+        "wODesc": "Ningún contenido es cognoscible. El conocimiento mismo colapsa. No hay agentes epistémicos.",
+        "wETitle": "Conocimiento eterno",
+        "wEDesc": "Toda verdad es conocida. No hay frontera dinámica, no hay emergencia de nuevas incertidumbres.",
+        "wFTitle": "Cognición finita regenerativa",
+        "wFDesc": "El conocimiento crece pero siempre emergen nuevas regiones de incertidumbre: horizonte móvil.",
+        "wNTitle": "No-dualidad epistémica",
+        "wNDesc": "La distinción sujeto-objeto colapsa. No hay secreto porque no hay agente separado del contenido."
+      },
+      "s05": {
+        "label": "§ 05 — Principio dinámico",
+        "heading": "Conocer engendra<br>nueva <em>ignorancia</em>",
+        "p1": "Existe un prejuicio implícito en la idea de progreso: que revelar un secreto <em>reduce</em> nuestra ignorancia total. Pero la historia de la ciencia contradice esta intuición de manera sistemática.",
+        "p2": "<strong>La metáfora de la linterna:</strong> Imagina que estás en medio de un bosque oscuro con una linterna. El círculo de luz es tu conocimiento. Si aumentas la potencia de la linterna, tu círculo iluminado se agranda... pero la frontera exterior del círculo (el borde en contacto con la oscuridad de lo desconocido) también se expande inevitablemente. Conocer más no reduce la noche; agranda tu mapa de preguntas.",
+        "p3": "Este principio conecta con el Teorema de Incompletitud de Gödel, con la complejidad algorítmica de Chaitin y con la práctica científica real: cada modelo que se confirma abre diez preguntas nuevas.",
+        "p4": "No hay \"conservación del secreto\": hay transformación perpetua de las fronteras entre lo conocido, lo desconocido y lo incognoscible.",
+        "demoTitle": "Demostración interactiva — Haz clic en \"Revelar\"",
+        "demoCaption": "Cada revelación redistribuye la accesibilidad epistémica. El horizonte no retrocede — se transforma."
+      },
+      "s05b": {
+        "label": "§ 05b — Topología epistémica",
+        "heading": "Los cinco mundos<br>como <em>polos modales</em>",
+        "p1": "La topología del grafo no es arbitraria. Los cinco mundos extremos — Transparencia, Opacidad, Eternidad, No-dualidad y Cognición Finita — actúan como polos que estructuran el espacio de todos los mundos posibles.",
+        "p2": "Cada nodo del grafo ocupa una posición determinada por su distancia relativa a estos polos. Un mundo con alto conocimiento se acerca a <strong>Transparencia absoluta (w<sub>T</sub>)</strong>; uno con alta incognoscibilidad se acerca a <strong>Opacidad absoluta (w<sub>O</sub>)</strong>. La topología es la geometría del secreto.",
+        "p3": "Activa la capa de <strong>Topología</strong> en el selector para ver los nodos de límite estructural y los polos modales en su posición relativa."
+      },
+      "s05c": {
+        "label": "§ 05c — Límites estructurales",
+        "heading": "Más allá del agente:<br><em>límites formales</em>",
+        "p1": "Hasta ahora hemos hablado de secretos de personas: lo que alguien no sabe hoy, pero podría saber. Pero el universo tiene sus propias barreras insuperables, secretos universales que no dependen de ningún ser humano: los <strong>límites formales y físicos</strong>.",
+        "p2": "<strong>¿Hay verdades que nunca podremos demostrar?</strong> El <strong>Límite de Gödel</strong> responde que sí: la matemática siempre tendrá verdades discretas e indemostrables.<br><strong>¿Puede una computadora resolver cualquier acertijo?</strong> El <strong>Límite de Turing</strong> demuestra que hay problemas que entran en bucles infinitos imposibles de resolver en tiempo finito.<br><strong>¿La realidad oculta información o es borrosa por naturaleza?</strong> La <strong>Indeterminación Cuántica</strong> establece que en el mundo subatómico, medir un dato destruye otro de forma física e irreducible.<br><strong>¿Se puede predecir el futuro a largo plazo?</strong> El <strong>Horizonte Caótico</strong> (el aleteo de la mariposa) muestra que pequeños cambios invisibles hacen imposible calcular el mañana distante.<br><strong>¿Podemos recordar el pasado a la perfección?</strong> La <strong>Flecha Termodinámica</strong> disipa la energía en forma de calor, borrando las huellas del ayer molecular de forma irreversible.",
+        "p3": "Estos no son secretos — son misterios estructurales. Activa la capa <strong>Metalógica</strong> para verlos en el grafo."
+      },
+      "s05d": {
+        "label": "§ 05d — Dinámica temporal",
+        "heading": "Las fronteras<br><em>se mueven</em>",
+        "p1": "El conocimiento no es estático. Las fronteras epistémicas se expanden y comprimen con el tiempo: nuevos descubrimientos amplían lo conocido, pero también revelan nuevas regiones de ignorancia.",
+        "p2": "La capa <strong>Temporal</strong> del grafo captura esta dinámica: los nodos con alto horizonte de desconocido pulsan hacia afuera, los de alto conocido se comprimen. La <strong>Cognición finita regenerativa (w<sub>F</sub>)</strong> es el motor de esta dinámica perpetua.",
+        "p3": "Activa la capa <strong>Temporal</strong> para observar la animación de las fronteras cognitivas."
+      },
+      "s06": {
+        "label": "§ 06 — La pregunta central",
+        "heading": "¿Cuál es el <em>mejor</em><br>secreto posible?",
+        "p1": "Retomamos la pregunta inicial con el aparato conceptual y modal que hemos construido. ¿Qué condición haría que un secreto fuera verdaderamente \"mejor\" u óptimo? Podemos formalizar tres candidatos a partir de la estructura del grafo:",
+        "p2": "La tercera y la cuarta opción resultan las más fecundas filosófica y conceptualmente: el <strong>mejor secreto</strong> no sería el más hermético ni el más inaccesible, sino aquel que, al ser finalmente revelado, <em>reconfigura todo nuestro horizonte de conocimiento</em> (ΔH) o aquel cuya seguridad está <em>blindada por la consistencia misma de la verdad matemática</em>.",
+        "p3": "Un secreto con este poder actúa como una singularidad epistémica: al atravesarlo, el agente no solo adquiere un dato frío, sino que gana un territorio completamente nuevo de preguntas y posibilidades antes inimaginables.",
+        "p4": "Explora el grafo interactivo arriba. Las aristas de Emergencia (azul punteado) señalan exactamente estas singularidades: transiciones dinámicas donde revelar un nodo hace aparecer nuevos nodos desconocidos, expandiendo el universo de lo que ignoramos.",
+        "formula": "Candidato 1: Secret(C, a, w) maximizando ◇Kₐ(C)<br><span class=\"comment\">El secreto más revelable: hoy permanece oculto, pero la posibilidad (◇) de que el agente llegue a conocerlo (K) es máxima. Un umbral de descubrimiento inminente.</span><br><br>Candidato 2: Secret(C, a, w) tal que □¬Kₐ(C)<br><span class=\"comment\">El misterio absoluto: es estrictamente necesario (□) que el agente nunca conozca (¬K) este hecho. Es una barrera estructural de la realidad. ¿Tiene sentido llamarlo \"secreto\"?</span><br><br>Candidato 3: Secret(C, a, w) donde revelar C genera maximal ΔH<br><span class=\"comment\">La singularidad epistémica: el secreto cuya revelación produce el mayor cambio posible (Δ) en el horizonte de conocimiento (H), reconfigurando por completo todo el mapa y abriendo preguntas insospechadas.</span><br><br>Candidato 4: Secret(C, a, w) tal que Kₐ(Vulnerabilidad, w) ≡ □¬Kₐ(ConsistenciaMatemática, w)<br><span class=\"comment\">El secreto autoprotegido por incompletitud: un secreto cuya inseguridad o ruptura es equivalente a demostrar que las matemáticas son inconsistentes. Dado que esta consistencia es formalmente indemostrable desde dentro del propio sistema, la seguridad es absoluta.</span>"
+      },
+      "s07": {
+        "label": "§ 07 — Desenlace abierto",
+        "heading": "El secreto que no<br><em>termina</em> al revelarse",
+        "p1": "La investigación nos deja sin respuesta unívoca, y esto no es una falla — es el resultado correcto. La ontología del secreto revela que el conocimiento no es una cantidad que se acumula hacia un límite, sino una estructura dinámica con fronteras que se desplazan, bifurcan y regeneran.",
+        "quote": "\"El mejor secreto posible quizá sea aquel que, al ser finalmente conocido, nos enseña que nunca habíamos formulado las preguntas correctas.\"",
+        "p2": "El grafo modal dinámico no es una respuesta. Es una herramienta para habitar la pregunta con más precisión. Cada nodo que exploras no cierra el mapa — lo extiende. Cada arista que filtras no simplifica el sistema — te muestra una dimensión que antes era invisible.",
+        "p3": "Quizás esto sea lo que la filosofía siempre ha hecho: construir mejores secretos a partir de los que ya tenemos."
+      }
+    },
+    "tips": {
+      "kripke": "En la semántica de Kripke, los mundos posibles son situaciones completas — no universos físicos, sino estados totales de cosas, incluyendo qué se sabe y qué no.",
+      "godel": "Gödel demostró que en cualquier sistema formal suficientemente expresivo, existen verdades que el sistema no puede demostrar desde dentro de sí mismo.",
+      "chaitin": "Chaitin mostró que la complejidad algorítmica genera inevitablemente verdades matemáticas que son irreducibles — no derivables de axiomas finitos.",
+      "singularity": "En física teórica, una singularidad es un punto donde las ecuaciones del modelo dejan de tener solución bien definida. Epistemológicamente, una singularidad epistémica es un punto donde el marco de conocimiento se rompe al contacto con el nuevo contenido."
     }
   },
   "en": {
@@ -253,7 +656,7 @@
       "standardMode": "Standard Mode"
     },
     "hero": {
-      "overline": "Ontology of Secrecy · Interactive philosophical inquiry",
+      "overline": "Ontology of Secrecy · Interactive Philosophical Inquiry",
       "title": "Ontology of <em>secrecy</em>",
       "subtitle": "A modal exploration of knowledge, concealment, and the horizons of the unknowable",
       "scroll": "Scroll"
@@ -264,7 +667,7 @@
       "hint": "Touch or drag nodes to explore. Click a node to see its card.",
       "filterAll": "All Edges",
       "filterRevelacion": "Expansion & Revelation",
-      "filterRestriccion": "Restriction & Barriers",
+      "filterRestriccion": "Restriction & Limits",
       "filterBifurcacion": "Bifurcation & Interpretation",
       "legendRevelation": "Revelation",
       "legendConcealment": "Concealment",
@@ -273,7 +676,7 @@
       "legendBifurcation": "Bifurcation",
       "legendCompression": "Compression",
       "legendDegrada": "Degrades",
-      "legendImposibilita": "Impossibilates",
+      "legendImposibilita": "Precludes",
       "legendRestringe_termo": "Restricts (thermo)",
       "legendFusiona": "Fuses",
       "legendColapsa": "Collapses",
@@ -303,42 +706,357 @@
       "structuralLimit": "Non-anthropocentric structural limit"
     },
     "nodes": {
+      "w_T": "Absolute Transparency",
+      "w_O": "Absolute Opacity",
+      "w_E": "Eternal Knowledge",
+      "w_F": "Finite Regenerative Cognition",
+      "w_N": "Epistemic Non-duality",
+      "pre_adn": "Pre-1953 Biology",
+      "post_adn": "Molecular Biology (post-DNA)",
+      "emerg_epigen": "Epigenetic Emergence",
+      "conciencia": "Hard Problem of Consciousness",
+      "secreto_estado": "Classical State Secret",
+      "filtracion": "Leak (Public Revelation)",
+      "secreto_reforzado": "Reactively Reinforced Secrecy",
+      "incompletitud": "Incompleteness (Gödel)",
+      "indecidibilidad": "Undecidability (Turing)",
+      "misterio_cuantico": "Quantum Measurement Mystery",
+      "copenhague": "Copenhagen Interpretation",
+      "muchos_mundos": "Many-Worlds Interpretation",
+      "bohm": "De Broglie‑Bohm Interpretation",
+      "incertidumbre_cosmologica": "Pre-Relativity Cosmology",
+      "relatividad_general": "General Relativity",
+      "mejor_secreto": "The Best Possible Secret?",
       "límite_gödel": "Gödel's Limit",
       "límite_turing": "Turing's Limit",
       "horizonte_caótico": "Chaotic Horizon",
       "indeterminación_cuántica": "Quantum Indeterminacy",
       "flecha_termodinámica": "Thermodynamic Arrow",
-      "zkp_clase": "Interactive ZKP",
-      "nizkp_imposible": "NIZKP Impossibility",
+      "zkp_clase": "Interactive ZKP (1985)",
+      "nizkp_imposible": "NIZKP Impossibility (1994)",
       "proof_complexity": "Proof Complexity",
-      "zkp_efectivo": "Effective ZKP"
+      "zkp_efectivo": "Effective ZKP (Ilango 2025)"
+    },
+    "nodes_metadata": {
+      "w_T": {
+        "agents": "Collective omniscient",
+        "contents": "All true propositions",
+        "references": "Leibniz (Calculating God) · Absolute Realism"
+      },
+      "w_O": {
+        "agents": "None with epistemic capacity",
+        "contents": "—",
+        "references": "Radical Skepticism · Epistemic Nihilism"
+      },
+      "w_E": {
+        "agents": "Eternal active intellect (Aristotle)",
+        "contents": "Complete set of necessary truths",
+        "references": "Thomas Aquinas · Rational Theology"
+      },
+      "w_F": {
+        "agents": "Scientific community, Rational individual",
+        "contents": "Known physical laws, Accumulated empirical data",
+        "references": "Gödel (incompleteness) · Chaitin (complexity) · Popper (falsificationism)"
+      },
+      "w_N": {
+        "agents": "Non-dual consciousness",
+        "contents": "Undifferentiated unity",
+        "references": "Advaita Vedanta · Philosophical mysticism (Plotinus, Eckhart)"
+      },
+      "pre_adn": {
+        "agents": "Classical geneticists, Biochemists",
+        "contents": "Mendel's laws, Observed chromosomes",
+        "references": "Morgan · Avery"
+      },
+      "post_adn": {
+        "agents": "Watson and Crick, Molecular biologists",
+        "contents": "DNA structure, Genetic code",
+        "references": "Watson & Crick 1953 · Central dogma"
+      },
+      "emerg_epigen": {
+        "agents": "Epigeneticists",
+        "contents": "Epigenetic marks, Non-coding RNA",
+        "references": "Waddington · Allis"
+      },
+      "conciencia": {
+        "agents": "Philosophers of mind, Neuroscientists",
+        "contents": "Neural correlates, Cognitive functions",
+        "references": "Chalmers (hard problem) · Nagel (What is it like?)"
+      },
+      "secreto_estado": {
+        "agents": "Government, Intelligence agencies",
+        "contents": "Military plans, Classified information",
+        "references": "Political philosophy of secrecy (Simmel) · Transparency vs. security"
+      },
+      "filtracion": {
+        "agents": "Whistleblowers, Media",
+        "contents": "Leaked documents, Public debate",
+        "references": "WikiLeaks · Snowden"
+      },
+      "secreto_reforzado": {
+        "agents": "Reformed agencies",
+        "contents": "Previously public information now restricted",
+        "references": "Post-Snowden secrecy law · Transparency paradox"
+      },
+      "incompletitud": {
+        "agents": "Logicians",
+        "contents": "Undecidable statements",
+        "references": "Gödel 1931 · Incompleteness theorems"
+      },
+      "indecidibilidad": {
+        "agents": "Computer scientists",
+        "contents": "Turing machines, NP-complete problems",
+        "references": "Turing 1936 · Computability theory"
+      },
+      "misterio_cuantico": {
+        "agents": "Theoretical physicists",
+        "contents": "Quantum formalism, Superposition",
+        "references": "Bohr · Everett · Bell"
+      },
+      "copenhague": {
+        "agents": "Bohr, Heisenberg",
+        "contents": "Collapse, Complementarity principle",
+        "references": "Orthodox interpretation"
+      },
+      "muchos_mundos": {
+        "agents": "Everett",
+        "contents": "Decoherence, Quantum universality",
+        "references": "Everett 1957"
+      },
+      "bohm": {
+        "agents": "De Broglie, Bohm",
+        "contents": "Pilot wave, Quantum potential",
+        "references": "Hidden variables theories"
+      },
+      "incertidumbre_cosmologica": {
+        "agents": "Newtonian physicists, Astronomers",
+        "contents": "Celestial mechanics, Luminiferous aether",
+        "references": "Newton · Maxwell"
+      },
+      "relatividad_general": {
+        "agents": "Einstein",
+        "contents": "Curvature of space-time, Gravitational waves",
+        "references": "Einstein 1915"
+      },
+      "mejor_secreto": {
+        "agents": "Philosophical researcher",
+        "contents": "None defined yet, Open question",
+        "references": "Conceptual art · Epistemic paradox"
+      },
+      "límite_gödel": {
+        "agents": "Logicians",
+        "contents": "Unprovable mathematical consistency",
+        "references": "Gödel 1931 · First incompleteness theorem"
+      },
+      "límite_turing": {
+        "agents": "Computer scientists",
+        "contents": "Logically uncomputable problems",
+        "references": "Turing 1936 · Halting problem"
+      },
+      "horizonte_caótico": {
+        "agents": "Physicists, Meteorologists",
+        "contents": "Nonlinear dynamical systems, Strange attractors",
+        "references": "Lorenz 1963 · Chaos theory"
+      },
+      "indeterminación_cuántica": {
+        "agents": "Quantum physicists",
+        "contents": "Conjugate physical variables",
+        "references": "Heisenberg 1927 · Uncertainty principle"
+      },
+      "flecha_termodinámica": {
+        "agents": "Physicists",
+        "contents": "Universal entropy, Disorder states",
+        "references": "Boltzmann · Second law of thermodynamics"
+      },
+      "zkp_clase": {
+        "agents": "Goldwasser, Micali, Rackoff, Prover, Verifier",
+        "contents": "Existence of knowledge without transfer, Interactive protocols",
+        "references": "GMR 1985 · Interactive cryptography"
+      },
+      "nizkp_imposible": {
+        "agents": "Goldreich, Oren",
+        "contents": "Inexistence of universal simulators in one-way channels",
+        "references": "Goldreich & Oren 1994 · Cryptographic limits"
+      },
+      "proof_complexity": {
+        "agents": "Proof complexity researchers, Rahul Ilango",
+        "contents": "Proof length in axiomatic systems, Practical unprovability",
+        "references": "Cook-Reckhow 1979 · Aaronson"
+      },
+      "zkp_efectivo": {
+        "agents": "Rahul Ilango, IAS Princeton",
+        "contents": "Mathematical consistency tied to proof, Undetectable simulability",
+        "references": "Ilango 2025 · Quanta Magazine 2026"
+      }
+    },
+    "edges": {
+      "e_rev_adn": {
+        "label": "Discovery of the double helix",
+        "cost": "Decades of research, intense scientific competition",
+        "narrative": "In 1953, Watson and Crick revealed the structure of DNA, making the molecular mechanism of inheritance knowable. The secret of life became accessible."
+      },
+      "e_emerg_epigen": {
+        "label": "Opening of the epigenetic landscape",
+        "cost": "Conceptual: redefinition of gene regulation",
+        "narrative": "Upon knowing the genome, questions emerged about how gene expression is regulated. The secret of DNA gave birth to new continents of ignorance."
+      },
+      "e_ocult_filtracion": {
+        "label": "Restrictive reaction of the State",
+        "cost": "High: emergency legislation, massive re-classification",
+        "narrative": "Following the revelation of secrets, the political system increases opacity: new documents are classified. Momentary transparency generates more shadows."
+      },
+      "e_rev_filtracion": {
+        "label": "Massive leak of documents",
+        "cost": "Extreme personal risk, global controversy",
+        "narrative": "A whistleblower makes public a set of classified documents. Government secrecy becomes distributed knowledge. Potentiality is actualized."
+      },
+      "e_compres_cosmo": {
+        "label": "Space-time unification (1915)",
+        "cost": "Conceptual revolution: abandoning absolute space and time",
+        "narrative": "General Relativity drastically reduced fundamental uncertainty in cosmology: gravity was explained as geometry. Ignorance was compressed, though new questions (singularities, dark energy) remained."
+      },
+      "e_bif_copenhague": {
+        "label": "Collapse interpretation",
+        "cost": "Philosophical choice: accepting fundamental indeterminacy",
+        "narrative": "Faced with the mystery of measurement, an interpretive branch arises: consciousness or classical apparatus collapses the wave function. The same enigma, multiple readings."
+      },
+      "e_bif_mundos": {
+        "label": "Parallel universes interpretation",
+        "cost": "Radical ontological commitment to multiple realities",
+        "narrative": "Another path: denying collapse. Each possibility is realized in a separate world. Ignorance is only apparent from our particular branch."
+      },
+      "e_bif_bohm": {
+        "label": "Hidden variables interpretation",
+        "cost": "Postulating non-local entities and deterministic trajectories",
+        "narrative": "A third branch: there is deterministic reality under the quantum veil, with particles guided by a pilot wave. The mystery shifts to hidden variables."
+      },
+      "e_transparencia_utopica": {
+        "label": "Yearning for total transparency",
+        "cost": "Unattainable: would require infinite computational capacity",
+        "narrative": "Finite cognition aspires to a world without ignorance, but absolute transparency is an ideal limit, an epistemic singularity out of reach."
+      },
+      "e_opacidad_utopica": {
+        "label": "Nightmare of total ignorance",
+        "cost": "Extreme counterfactual: loss of all cognition",
+        "narrative": "Absolute opacity is the unattainable reverse. A world without any knowledge cannot sustain agents; it is a limiting abstraction."
+      },
+      "e_mejor_secreto_explora": {
+        "label": "Exploration of the best secret",
+        "cost": "Permanent philosophical reflection",
+        "narrative": "The question of the best possible secret bounces back toward the finite: perhaps it lies in the regenerative capacity of ignorance, or in a content that self-protects upon being known."
+      },
+      "e_mejor_secreto_misterio": {
+        "label": "Paradox of the best secret candidate",
+        "cost": "Definition of the unspeakable",
+        "narrative": "A perfect secret might be one that, even when revealed, remains inaccessible: the subjective experience of another. It never becomes completely public."
+      },
+      "e_godel_incompletitud": {
+        "label": "Discovery of formal limits",
+        "cost": "Revolution in the foundations of mathematics",
+        "narrative": "Gödel's theorem brought to light structural unknowability within any axiomatic system: there are truths that will never be provable."
+      },
+      "e_turing_indecidibilidad": {
+        "label": "From Gödel to computability",
+        "cost": "Translation from logical to algorithmic limit",
+        "narrative": "Turing formalized undecidability, showing that there are problems no machine can solve. The halting secret is a permanent computational mystery."
+      },
+      "e_no_dualidad": {
+        "label": "Dissolution of the epistemic subject",
+        "cost": "Leap outside the rational-discursive framework",
+        "narrative": "Non-duality does not hide content, but rather eliminates the very structure of the secret by dissolving the knower-known duality. Experiential, not formal, limit."
+      },
+      "e_godel_limit": {
+        "label": "Formal limit of provability",
+        "cost": "Irreducible: no system can prove its own consistency",
+        "narrative": "Gödel's limit precludes any sufficiently expressive formal system from being both complete and consistent."
+      },
+      "e_turing_limit": {
+        "label": "Absolute computational limit",
+        "cost": "Irreducible: no algorithm can solve the halting problem",
+        "narrative": "Turing's limit precludes the algorithmic resolution of the halting problem."
+      },
+      "e_caos_cosmo": {
+        "label": "Predictive horizon of chaos",
+        "cost": "Exponential sensitivity to initial conditions",
+        "narrative": "The chaotic horizon restricts cosmological predictability: tiny variations in initial conditions produce exponential divergences."
+      },
+      "e_cuantico_misterio": {
+        "label": "Fundamental indeterminacy",
+        "cost": "Ontological limit, not epistemic",
+        "narrative": "Quantum indeterminacy restricts the simultaneous knowledge of position and momentum: it is not ignorance but a structural limit."
+      },
+      "e_termo_flecha": {
+        "label": "Thermodynamic arrow of time",
+        "cost": "Irreversible temporal asymmetry",
+        "narrative": "The thermodynamic arrow and general relativity fuse in the description of cosmic time: entropy defines the direction of time."
+      },
+      "e_godel_mejor": {
+        "label": "The secret of incompleteness",
+        "cost": "Self-referential paradox",
+        "narrative": "Gödel's limit collapses toward the question of the best secret: can a system know its own limit?"
+      },
+      "e_caos_emerg": {
+        "label": "Chaotic degradation of predictability",
+        "cost": "Loss of determinism in complex systems",
+        "narrative": "The chaotic horizon degrades the predictability of epigenetic systems: nonlinear complexity makes long-term prediction impossible."
+      },
+      "e_cuantico_conciencia": {
+        "label": "Indeterminacy and consciousness",
+        "cost": "Speculative but philosophically relevant relationship",
+        "narrative": "Quantum indeterminacy degrades the possibility of a deterministic explanation of consciousness."
+      },
+      "e_wF_zkp": {
+        "label": "Emergence of interactive asymmetry",
+        "cost": "Abandoning the static notion of information transmission",
+        "narrative": "In 1985, ZKPs are invented, proving that it is possible to certify the possession of a secret without revealing its content through interactive challenges."
+      },
+      "e_zkp_imposible": {
+        "label": "Goldreich-Oren Theorem (1994)",
+        "cost": "Rigorous mathematical proof based on simulator theory",
+        "narrative": "It is proven that without interactivity, classical zero-knowledge is logically impossible. The lack of dialogue blocks the simulation and erects a cryptographic wall."
+      },
+      "e_godel_complexity": {
+        "label": "From undecidability to proof length",
+        "cost": "Studying practical limits instead of abstract boundaries",
+        "narrative": "Gödel's incompleteness opens the door to studying not only what is provable, but which true statements require proofs so long that they are physically impossible to write."
+      },
+      "e_complexity_efectivo": {
+        "label": "Unprovability as a resource",
+        "cost": "Designing self-referential statements in cryptography",
+        "narrative": "Ilango uses statements whose proof is unattainable (mathematical consistency) to build a structure where vulnerability is impossible to prove."
+      },
+      "e_imposible_efectivo": {
+        "label": "Cryptographic bypass",
+        "cost": "Evading the classical interactive barrier",
+        "narrative": "Shows how the Effective ZKP bypasses the NIZKP impossibility by tying the proof's security to the logical consistency of the system itself."
+      }
     },
     "descriptions": {
       "w_T": "The ideal of perfect clarity and honesty: a state where knowledge is universally shared, making secrecy and deceit impossible by the very nature of the system.",
       "w_O": "Complete silence and the abyss of understanding: a state where reality is completely sealed, representing the ultimate limit where nothing can be revealed or comprehended.",
       "w_E": "The ultimate archive of wisdom: a static, complete state where all possible truths have already been uncovered, leaving no more questions to be asked.",
-      "w_F": "The dynamic frontier of human learning: our actual state of exploration, where every answer we discover lights the path but immediately opens ten new fascinating questions.",
+      "w_F": "The dynamic horizon of human learning: our actual state of exploration, where every answer we discover lights the path but immediately opens ten new fascinating questions.",
       "w_N": "The dissolution of observer and observed: a contemplative state where secrecy disappears because there is no longer any separation between the knower and the truth itself.",
-      "pre_adn": "Life before its code was deciphered: an era when we knew traits were biological and inherited, but the physical mechanism behind it remained a completely hidden mystery.",
-      "post_adn": "The language of life laid bare: the historic milestone when the structure of DNA became readable, enabling us to edit and understand the molecular blueprint of our existence.",
-      "emerg_epigen": "The melody played by our genome: the discovery that our environment and life experiences switch genes on or off, showing that biological destiny is not fixed or pre-written.",
+      "pre_adn": "Life before knowing its code: an era where we knew that biological characteristics were inherited, but the physical mechanism that made it possible was an invisible mystery.",
+      "post_adn": "The language of life laid bare: the historic milestone when the structure of DNA became readable, enabling us to edit and understand the molecular basis of our own existence.",
+      "emerg_epigen": "The melody played by our genome: the discovery that the environment and our experiences switch genes on or off, showing that biological destiny is not fixed or predetermined.",
       "conciencia": "The enigma of inner feeling: the fundamental question of why and how the physical matter of the brain generates conscious subjective experiences like pain, love, or beauty.",
       "secreto_state": "The balance between security and control: strategic information restricted by public institutions to protect collective stability, operating under decisions of political power.",
-      "secreto_estado": "The balance between security and control: strategic information restricted by public institutions to protect collective stability, operating under decisions of political power.",
-      "filtracion": "The counter-weight of public truth: the courageous or disruptive act that brings hidden truths to light in public debate, forcing institutional accountability and transparency.",
-      "secreto_reforzado": "The wall built in response to exposure: the automatic and systematic response where power increases surveillance and tightens concealment barriers after being exposed.",
-      "incompletitud": "The untamable frontier of mathematics: Gödel's logical discovery proving that within any ordered system of rules, there will always be true statements that cannot be proven.",
-      "indecidibilidad": "The ultimate dead-end for software: Turing's limit proving that there are logical problems that no computer algorithm, no matter how powerful, can ever calculate or solve.",
-      "misterio_cuantico": "Physics facing the mirror of observation: the mystery of why subatomic matter behaves as waves of possibility until a physical instrument measures it, fixing its state.",
-      "copenhague": "Reality created by the act of measurement: the classical hypothesis that the quantum universe possesses no real, definite properties until an observer registers its state.",
-      "muchos_mundos": "The infinite canvas of parallel realities: the bold proposal that every quantum event or measurement physically splits the universe into branches where every option occurs.",
-      "bohm": "The hidden order beneath quantum waves: the theory that particles follow precise, real paths guided by an invisible pilot wave, where uncertainty is just a lack of instruments.",
-      "incertidumbre_cosmologica": "The cosmos of unexplained gravity: astronomy before relativity, when gravity was understood as a mysterious instantaneous action at a distance with no clear physical explanation.",
-      "relatividad_general": "The elastic fabric of space-time: Einstein's brilliant theory showing that gravity is not an invisible force, but rather the bending of space under the weight of stars.",
-      "mejor_secreto": "The hidden jewel of knowledge: the poetic riddle of whether a secret can be so absolute that, even when its logical data is exposed, its deep mystery remains intact.",
+      "secreto_estado": "Strategic information classified by public institutions to protect collective stability, operating under decisions of political power.",
+      "filtracion": "The counter-power of public truth: the disruptive and courageous act that exposes hidden truths to social debate, forcing institutional accountability and transparency.",
+      "secreto_reforzado": "The wall that rises before the threat: the automatic and systemic reaction by which power increases surveillance and tightens its concealment barriers after being exposed.",
+      "incompletitud": "The untamable frontier of mathematics: Gödel's logical discovery proving that within any ordered system of rules there will always be real truths that are impossible to prove.",
+      "indecidibilidad": "The dead end of software: Turing's computability limit proving that logical problems exist that no computer program, no matter how powerful, can ever calculate.",
+      "misterio_cuantico": "Physics facing the mirror of observation: the mystery of why subatomic matter behaves as waves of possibility until a physical instrument measures it and defines its state.",
+      "copenhague": "Reality created by the act of measurement: the classical hypothesis that the quantum universe does not possess defined physical properties until an observer decides to register its state.",
+      "muchos_mundos": "The infinite range of parallel realities: the bold proposal that each quantum event or measurement physically splits the universe into branches where each possible option occurs.",
+      "bohm": "The hidden order beneath quantum waves: the theory that particles have real and precise trajectories guided by an invisible pilot wave, where uncertainty is only a lack of instruments.",
+      "incertidumbre_cosmologica": "The cosmos of unexplained gravity: classical astronomy before relativity, where gravity was understood as a mysterious instantaneous action at a distance without a clear physical explanation.",
+      "relatividad_general": "The elastic fabric of space-time: Einstein's brilliant theory showing that gravity is not an invisible force, but rather the curvature of space-time under the weight of stars.",
+      "mejor_secreto": "The hidden jewel of knowledge: the poetic riddle of whether a secret can be so absolute that, even when all its logical data is revealed, its deep mystery remains intact.",
       "límite_gödel": "The automatic boundary of logic: an inescapable mathematical law dictating that any ordered system of rules will always contain real truths it cannot prove by itself.",
       "límite_turing": "The absolute limit of processing: the mechanical principle mathematically proving the existence of logical questions that no algorithm or processor can ever calculate.",
-      "horizonte_caótico": "The automatic amplification of uncertainty: the physical law causing complex systems (like weather) to destroy predictability through the butterfly effect.",
+      "horizonte_caótico": "The automatic amplification of uncertainty: the physical law causing small and imperceptible differences in the present (butterfly effect) to destroy long-term predictability.",
       "indeterminación_cuántica": "The physical limit of subatomic observation: an indestructible natural law determining that knowing with total precision where a particle is automatically erases its velocity information.",
       "flecha_termodinámica": "The irreversible flow of the universe: the energy law operating automatically by disordering the cosmos and dictating that time moves in a single direction towards the unknown.",
       "zkp_clase": "Proof without data exposure: an interactive mathematical protocol that convinces a verifier that you possess a secret truth without ever sharing the slightest detail of it.",
@@ -381,7 +1099,7 @@
       "info": "More information",
       "infoVal": "For methodological details, formalization, and source code, visit the project directly on <a href='https://github.com/willkwolf/secret-ontology' target='_blank' rel='noopener noreferrer' style='color:var(--gold); text-decoration:underline;'>GitHub</a>.",
       "limitsLabel": "Structural limitations:",
-      "limitsVal": "The graph is a finite abstraction of continuous phenomena; it does not capture the subjective temporality of the agent nor the affective dimension of concealment. Edge classification is stylised and does not exhaust all possible epistemic transformations. The representation of unknowability is intrinsically paradoxical when attempting to visualise what cannot be delineated from within the system.",
+      "limitsVal": "The graph is a finite abstraction of continuous phenomena; it does not capture the subjective temporality of the agent nor the affective dimension of the hidden. Edge classification is stylized and does not exhaust all possible epistemic transformations. The representation of unknowability is intrinsically paradoxical when attempting to visualize what cannot be delineated from within the system.",
       "license": "Creative Commons BY-SA 4.0 · William Camilo Artunduaga Viana · 2026"
     },
     "domainLabel": "Epistemic domain",
@@ -394,7 +1112,7 @@
       "notDef": "<strong>Not (¬):</strong> Indicates that the following is false or that the agent lacks access to it.",
       "knowDef": "<strong>Knowledge Operator (K):</strong> What agent <em>a</em> knows or has integrated into their epistemic framework.",
       "worldDef": "<strong>(C, w):</strong> Content C within the context of the possible world <em>w</em> in which the relation is situated.",
-      "nuclearExplanation": "Read in English: <strong>there is a secret when a content C is true in a world w, but agent a does not know it in that world.</strong> There is no secret without someone for whom it is a secret."
+      "nuclearExplanation": "Read simply: <strong>there is a secret when a content C is true in a world w, but agent a does not know it in that world.</strong> There is no secret without someone for whom it is a secret."
     },
     "distinction": {
       "secretTitle": "Secret",
@@ -418,14 +1136,14 @@
       "toggleAccess": "Is there a door of possibility? (◇)",
       "toggleAccessDesc": "Is there access to alternative worlds?",
       "statusLabel": "Resulting Epistemic State:",
-      "stateAbsurd": "Absurd Concealment",
-      "stateAbsurdDesc": "<strong>No secret exists:</strong> You cannot conceal or be ignorant of something that is objectively false. Truth is the primary condition of secrecy.",
-      "stateKnow": "Full Knowledge",
-      "stateKnowDesc": "<strong>No secret exists:</strong> The agent has integrated the fact. Ignorance has dissolved and the concealment relation no longer exists.",
+      "stateAbsurd": "Inconsistency (No Fact)",
+      "stateAbsurdDesc": "<strong>No secret exists:</strong> You cannot conceal or be ignorant of something that is objectively false. Truth is the primary condition of secrecy. <em>(The modal connection ◇ is irrelevant if the fact is false).</em>",
+      "stateKnow": "Revealed Truth (No Secret)",
+      "stateKnowDesc": "<strong>No secret exists:</strong> The agent has integrated the fact. Ignorance has dissolved and the concealment relation no longer exists. <em>(The modal connection ◇ is irrelevant if the fact is already known).</em>",
       "stateRevealable": "Decipherable Secret (¬Kₐ(C) ∧ ◇Kₐ(C))",
-      "stateRevealableDesc": "<strong>Active Secret:</strong> The agent is ignorant of the content today, but the <em>Door of Possibility</em> guarantees it is knowable in principle.",
+      "stateRevealableDesc": "<strong>Active Secret:</strong> The agent is ignorant of the content today, but the <em>Door of Possibility</em> (the possibility operator <em>◇</em>) guarantees that it is decipherable and knowable in principle.",
       "stateMystery": "Absolute Mystery (¬Kₐ(C) ∧ □¬Kₐ(C))",
-      "stateMysteryDesc": "<strong>Structural Mystery:</strong> The agent does not know, and the <em>Law of the Inevitable</em> renders the ignorance absolute and inescapable."
+      "stateMysteryDesc": "<strong>Structural Mystery:</strong> The person does not know today, and the lack of access to other states (law of inevitable ignorance <em>□¬Kₐ</em>) makes the ignorance absolute and permanent."
     },
     "version": {
       "title": "Complexity",
@@ -434,18 +1152,18 @@
     },
     "micro": {
       "w0Desc": "<strong>Current World w₀:</strong> The initial or reference state of the agent.",
-      "w1Desc": "<strong>Secret w₁:</strong> A possible path exists to this world (dashed edge). It is knowable in principle, even if the agent is unaware of it now.",
-      "w2Desc": "<strong>Mystery w₂:</strong> There is no formal or physical access to this world (violet blocked edge). Unknowability is structural.",
+      "w1Desc": "<strong>Secret w₁:</strong> A possible path exists to this world (dashed edge). It is decipherable in principle, even if the agent is unaware of it now.",
+      "w2Desc": "<strong>Mystery w₂:</strong> There is no formal or physical access to this world (violet blocked edge). The barrier is structural.",
       "clickPrompt": "Click the nodes to explore their modal relationship...",
       "distinctionTitle": "Visualization of Secret vs. Mystery (Kripke)",
       "playgroundTitle": "Dynamic Accessibility Relationship",
       "topologyTitle": "Poles of the Modal Structure",
       "topologyPrompt": "Click on a modal pole to explore its topology.",
-      "wTDesc": "<strong>Absolute Transparency (w<sub>T</sub>):</strong> The pole of complete cognition, where all secrecy dissolves into full knowledge.",
-      "wODesc": "<strong>Absolute Opacity (w<sub>O</sub>):</strong> The pole of unknowability, where incommunicability is total.",
-      "wEDesc": "<strong>Epistemic Eternity (w<sub>E</sub>):</strong> The pole of static knowledge. There is no mystery or movement; all is immutable.",
-      "wNDesc": "<strong>Non-duality (w<sub>N</sub>):</strong> The pole where the subject-object boundary dissolves. Without observer or observed, secrecy ceases to exist.",
-      "wFDesc": "<strong>Finite Cognition (w<sub>F</sub>):</strong> The pole of dynamic human learning. Every discovery regenerates and expands the frontier of the unknown.",
+      "wTDesc": "<strong>Absolute Transparency (w<sub>T</sub>):</strong> The world of crystal. Everything is evident to everyone; secrecy is impossible.",
+      "wODesc": "<strong>Absolute Opacity (w<sub>O</sub>):</strong> The world of the blind abyss. No one can know anything, not even that they know nothing.",
+      "wEDesc": "<strong>Eternal Knowledge (w<sub>E</sub>):</strong> The world of the static archive. Every necessary truth is already known; there are no surprises or new questions.",
+      "wNDesc": "<strong>Epistemic Non-duality (w<sub>N</sub>):</strong> The Silence of the Whole. The distinction between subject and object dissolves; without an observer, secrecy ceases to exist.",
+      "wFDesc": "<strong>Finite Cognition (w<sub>F</sub>):</strong> Our real world (The Moving Horizon). Knowledge grows, but each answer illuminates a territory of larger questions.",
       "temporalTitle": "Mobile Cognitive Frontiers",
       "temporalPrompt": "Epistemic frontiers pulse, expanding uncertainty as knowledge advances."
     },
@@ -459,22 +1177,110 @@
       "exit": "Exit Tour",
       "step": "Step",
       "reveal": {
-        "step1": "<strong>Step 1: Eternal knowledge (w<sub>E</sub>)</strong> - Initial ignorance. Secrets exist, but a bridge of possibility leads towards knowing.",
-        "step2": "<strong>Step 2: Epistemic non-duality (w<sub>N</sub>)</strong> - The secret is decoded and transferred, compressing uncertainty.",
-        "step3": "<strong>Step 3: Absolute transparency (w<sub>T</sub>)</strong> - Total knowledge. The secret has completely dissolved."
+        "step1": "<strong>Step 1: Eternal Knowledge (w<sub>E</sub>)</strong> - The agent begins in ignorance. Secrets exist, but the dashed edge represents an open bridge of possibility toward knowledge.",
+        "step2": "<strong>Step 2: Epistemic Non-duality (w<sub>N</sub>)</strong> - The secret is decoded and transferred, compressing the uncertainty of the system.",
+        "step3": "<strong>Step 3: Absolute Transparency (w<sub>T</sub>)</strong> - Total knowledge. The agent has assimilated the information and the secret has completely dissolved."
       },
       "mystery": {
-        "step1": "<strong>Step 1: Absolute opacity (w<sub>O</sub>)</strong> - The structure of being and possible worlds. Mystery defined by the impossibility of communication.",
-        "step2": "<strong>Step 2: Subjective Experience (Hard Mystery)</strong> - The existential node representing the hard problem of consciousness; no external access can capture the raw feeling."
+        "step1": "<strong>Step 1: Absolute Opacity (w<sub>O</sub>)</strong> - The structure of being and physical laws. Mystery is defined here by the impossibility of communication between certain strata.",
+        "step2": "<strong>Step 2: Subjective Experience (Hard Mystery)</strong> - The existential node representing the 'hard problem' of consciousness: no external scientific access can capture the subjective quality of sentience."
       },
       "computability": {
-        "step1": "<strong>Step 1: Finite regenerative cognition (w<sub>F</sub>)</strong> - The realm of logical and computable truths.",
-        "step2": "<strong>Step 2: Gödel's Limit (Incompleteness)</strong> - Unprovable mathematical truths. The formal system cannot self-explain.",
-        "step3": "<strong>Step 3: Turing's Limit (Incomputability)</strong> - Decision problems that no machine can solve. A boundary separating us from omniscience.",
-        "step4": "<strong>Step 4: Interactive ZKP (1985)</strong> - Proving possession of a secret by interacting with a verifier without transferring content.",
-        "step5": "<strong>Step 5: Goldreich-Oren Barrier (1994)</strong> - Mathematically proven that without interactiveness, classical zero-knowledge is impossible.",
-        "step6": "<strong>Step 6: Effective ZKP (Ilango 2025)</strong> - The genius bypass: a proof is secure because proving it lacks a simulator would require proving mathematics is inconsistent."
+        "step1": "<strong>Step 1: Finite Cognition (w<sub>F</sub>)</strong> - The realm of logical and computable truths. Everything seems deducible through strict rules and algorithms.",
+        "step2": "<strong>Step 2: Gödel's Limit (Incompleteness)</strong> - We run into unprovable mathematical truths. The formal system cannot completely explain itself.",
+        "step3": "<strong>Step 3: Turing's Limit (Incomputability)</strong> - There are decision problems that no machine can solve. A limit that separates us from mathematical omniscience.",
+        "step4": "<strong>Step 4: Interactive ZKP (1985)</strong> - Discovering that it is possible to prove that you possess a secret by interacting with a verifier, without ever revealing the information to them.",
+        "step5": "<strong>Step 5: Goldreich-Oren Barrier (1994)</strong> - It is mathematically proven that without interactive dialogue, achieving classical zero-knowledge is impossible.",
+        "step6": "<strong>Step 6: Effective ZKP (Ilango 2025)</strong> - The genius bypass: a proof is secure because proving it lacks a simulator would require proving mathematics is inconsistent (which is structurally unprovable)."
       }
+    },
+    "sections": {
+      "skipLink": "Skip to main content",
+      "s01": {
+        "label": "§ 01 — Nuclear definition",
+        "heading": "Secrecy is not<br>a <em>thing</em>. It is a relation.",
+        "p1": "Common intuition treats secrecy as an object: something that is kept, hidden, or lost. But this image is philosophically inadequate. Secrecy does not exist in a vacuum — it always exists between a <strong>content</strong>, an <strong>agent</strong>, and an <strong>epistemic world</strong>.",
+        "p2": "Formalized in modal logic, secrecy is a three-part relation (three indispensable ingredients):",
+        "p3": "This definition has immediate consequences: changing the agent, the world, or the content transforms — and can eliminate — the secret. What is a mystery to one agent may be routine knowledge to another, in the very same world."
+      },
+      "s02": {
+        "label": "§ 02 — Critical distinction",
+        "heading": "Secret vs. <em>Mystery</em>",
+        "p1": "Popular philosophy constantly confuses two categories that demand a rigorous separation. A secret is knowable in principle. A mystery is not.",
+        "p2": "Concrete examples: that the NSA holds records of your phone calls is a <em>secret</em> — it is knowable, and journalistic investigations have revealed it. That subjective experience \"feels a certain way\" is, for many philosophers, a <em>mystery</em> — no physical access to the brain seems capable of capturing it from the outside.",
+        "p3": "Contemporary cryptography (Rahul Ilango, 2025) has discovered a third path: the <strong>Effective Cryptographic Secret</strong>. It is not entirely a classical decipherable secret, nor entirely an absolute mystery; it is a practical secret whose security is armored because breaching it would require resolving a structural mystery (the internal consistency of mathematics). Secret and mystery fuse at the frontiers of formal provability.",
+        "p4": "In the modal graph below, dashed edges represent secrets (accessible paths). Violet barred edges represent mysteries (structural unknowability)."
+      },
+      "s04": {
+        "label": "§ 04 — Extreme epistemic worlds",
+        "heading": "The five worlds<br>at the <em>limits</em>",
+        "p1": "To map the space of secrecy, we first need its boundaries. Extreme possible worlds define the poles of the graph:",
+        "p2": "Our world — the universe as we inhabit it — is a variation of <strong>Finite Regenerative Cognition (w<sub>F</sub>)</strong>: real but finite knowledge, with a horizon that shifts but never disappears.",
+        "wTTitle": "Absolute Transparency",
+        "wTDesc": "All content is known by all agents. Secrecy is impossible by definition.",
+        "wOTitle": "Absolute Opacity",
+        "wODesc": "No content is knowable. Knowledge itself collapses. There are no epistemic agents.",
+        "wETitle": "Eternal Knowledge",
+        "wEDesc": "All truth is known. There is no dynamic frontier, no emergence of new uncertainties.",
+        "wFTitle": "Finite Regenerative Cognition",
+        "wFDesc": "Knowledge grows, but new regions of uncertainty constantly emerge: a shifting horizon.",
+        "wNTitle": "Epistemic Non-duality",
+        "wNDesc": "The subject-object distinction collapses. There is no secret because there is no agent separate from the content."
+      },
+      "s05": {
+        "label": "§ 05 — Dynamic principle",
+        "heading": "Knowing generates<br>new <em>ignorance</em>",
+        "p1": "There is an implicit bias in the idea of progress: that revealing a secret <em>reduces</em> our total ignorance. But the history of science systematically contradicts this intuition.",
+        "p2": "<strong>The lantern metaphor:</strong> Imagine you are in the middle of a dark forest with a flashlight. The circle of light is your knowledge. If you increase the power of the flashlight, your illuminated circle expands... but the outer boundary of the circle (the edge in contact with the darkness of the unknown) also inevitably expands. Knowing more does not shrink the night; it expands your map of questions.",
+        "p3": "This principle connects with Gödel's Incompleteness Theorem, Chaitin's algorithmic complexity, and actual scientific practice: every confirmed model opens ten new questions.",
+        "p4": "There is no \"conservation of secrecy\": there is a perpetual transformation of the boundaries between the known, the unknown, and the unknowable.",
+        "demoTitle": "Interactive demonstration — Click \"Reveal\"",
+        "demoCaption": "Each revelation redistributes epistemic accessibility. The horizon does not recede — it transforms."
+      },
+      "s05b": {
+        "label": "§ 05b — Epistemic topology",
+        "heading": "The five worlds<br>as <em>modal poles</em>",
+        "p1": "The topology of the graph is not arbitrary. The five extreme worlds — Transparency, Opacity, Eternity, Non-duality, and Finite Cognition — act as poles that structure the space of all possible worlds.",
+        "p2": "Each node in the graph occupies a position determined by its relative distance to these poles. A world with high knowledge approaches <strong>Absolute Transparency (w<sub>T</sub>)</strong>; one with high unknowability approaches <strong>Absolute Opacity (w<sub>O</sub>)</strong>. Topology is the geometry of secrecy.",
+        "p3": "Activate the <strong>Topology</strong> layer in the selector to see the structural boundary nodes and modal poles in their relative positions."
+      },
+      "s05c": {
+        "label": "§ 05c — Structural limits",
+        "heading": "Beyond the agent:<br><em>formal limits</em>",
+        "p1": "So far we have spoken of the secrets of people: what someone does not know today, but could know. But the universe has its own insurmountable barriers, universal secrets that do not depend on any human being: <strong>formal and physical limits</strong>.",
+        "p2": "<strong>Are there truths we can never prove?</strong> The <strong>Gödel Limit</strong> answers yes: mathematics will always have discrete, unprovable truths.<br><strong>Can a computer solve any riddle?</strong> The <strong>Turing Limit</strong> proves there are problems that enter infinite loops, impossible to solve in finite time.<br><strong>Does reality hide information or is it blurry by nature?</strong> <strong>Quantum Indeterminacy</strong> establishes that in the subatomic world, measuring one piece of data physically and irreducibly destroys another.<br><strong>Can the long-term future be predicted?</strong> The <strong>Chaotic Horizon</strong> (the butterfly effect) shows that tiny, invisible changes make calculating the distant tomorrow impossible.<br><strong>Can we remember the past perfectly?</strong> The <strong>Thermodynamic Arrow</strong> dissipates energy as heat, irreversibly erasing the traces of molecular yesterday.",
+        "p3": "These are not secrets — they are structural mysteries. Activate the <strong>Metalogic</strong> layer to view them in the graph."
+      },
+      "s05d": {
+        "label": "§ 05d — Temporal dynamics",
+        "heading": "The frontiers<br><em>are moving</em>",
+        "p1": "Knowledge is not static. Epistemic frontiers expand and compress over time: new discoveries expand the known, but also reveal new regions of ignorance.",
+        "p2": "The <strong>Temporal</strong> layer of the graph captures this dynamic: nodes with a high horizon of the unknown pulse outward, while those with high known values compress. <strong>Finite Regenerative Cognition (w<sub>F</sub>)</strong> is the engine of this perpetual dynamic.",
+        "p3": "Activate the <strong>Temporal</strong> layer to observe the animation of cognitive frontiers."
+      },
+      "s06": {
+        "label": "§ 06 — The central question",
+        "heading": "What is the <em>best</em><br>possible secret?",
+        "p1": "We return to the initial question with the conceptual and modal apparatus we have built. What condition would make a secret truly \"best\" or optimal? We can formalize four candidates from the structure of the graph:",
+        "p2": "The third and fourth options prove to be the most philosophically and conceptually fruitful: the <strong>best secret</strong> would not be the most hermetic or inaccessible, but rather the one that, when finally revealed, <em>completely reconfigures our horizon of knowledge</em> (ΔH), or the one whose security is <em>armored by the very consistency of mathematical truth</em>.",
+        "p3": "A secret with this power acts as an epistemic singularity: in crossing it, the agent does not merely acquire cold data, but gains a completely new territory of questions and possibilities previously unimaginable.",
+        "p4": "Explore the interactive graph above. Emergence edges (dashed blue) point precisely to these singularities: dynamic transitions where revealing a node causes new, unknown nodes to appear, expanding the universe of what we ignore.",
+        "formula": "Candidate 1: Secret(C, a, w) maximizing ◇Kₐ(C)<br><span class=\"comment\">The most revealable secret: today it remains hidden, but the possibility (◇) of the agent coming to know it (K) is maximal. A threshold of imminent discovery.</span><br><br>Candidate 2: Secret(C, a, w) such that □¬Kₐ(C)<br><span class=\"comment\">The absolute mystery: it is strictly necessary (□) that the agent never knows (¬K) this fact. It is a structural barrier of reality. Does it make sense to call it a \"secret\"?</span><br><br>Candidate 3: Secret(C, a, w) where revealing C generates maximal ΔH<br><span class=\"comment\">The epistemic singularity: the secret whose revelation produces the greatest possible change (Δ) in the knowledge horizon (H), completely reconfiguring the entire map and opening unsuspected questions.</span><br><br>Candidate 4: Secret(C, a, w) such that Kₐ(Vulnerability, w) ≡ □¬Kₐ(MathematicalConsistency, w)<br><span class=\"comment\">The secret self-protected by incompleteness: a secret whose insecurity or breach is equivalent to proving that mathematics is inconsistent. Since this consistency is formally unprovable from within the system itself, the security is absolute.</span>"
+      },
+      "s07": {
+        "label": "§ 07 — Open ending",
+        "heading": "The secret that does not<br><em>end</em> when revealed",
+        "p1": "The inquiry leaves us without a unique answer, and this is not a failure — it is the correct result. The ontology of secrecy reveals that knowledge is not a quantity accumulated toward a limit, but a dynamic structure with frontiers that shift, bifurcate, and regenerate.",
+        "quote": "\"The best possible secret is perhaps the one that, when finally known, teaches us that we had never formulated the correct questions.\"",
+        "p2": "The dynamic modal graph is not an answer. It is a tool for inhabiting the question with greater precision. Each node you explore does not close the map — it extends it. Each edge you filter does not simplify the system — it shows you a dimension that was previously invisible.",
+        "p3": "Perhaps this is what philosophy has always done: building better secrets out of those we already have."
+      }
+    },
+    "tips": {
+      "kripke": "In Kripke semantics, possible worlds are complete situations — not physical universes, but total states of affairs, including what is known and what is not.",
+      "godel": "Gödel proved that in any sufficiently expressive formal system, there are truths that the system cannot prove from within itself.",
+      "chaitin": "Chaitin showed that algorithmic complexity inevitably generates mathematical truths that are irreducible — not derivable from finite axioms.",
+      "singularity": "In theoretical physics, a singularity is a point where the equations of the model cease to have a well-defined solution. Epistemologically, an epistemic singularity is a point where the framework of knowledge breaks down upon contact with new content."
     }
   }
 }

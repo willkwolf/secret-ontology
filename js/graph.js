@@ -148,6 +148,31 @@ export function filterEdge(type) {
   _updateGraph();
 }
 
+export function updateGraphLabels() {
+  if (!_nodeGroup) return;
+  _nodeGroup.selectAll('g.node').selectAll('text')
+    .filter(function() {
+      return d3.select(this).attr('font-family') === "'DM Sans', sans-serif";
+    })
+    .text(d => {
+      const translatedName = t('nodes.' + d.id);
+      const name = (translatedName !== 'nodes.' + d.id) ? translatedName : (d.label || d.id);
+      return name.length > 22 ? name.slice(0, 20) + '…' : name;
+    });
+
+  // Also translate the node aria-label
+  _nodeGroup.selectAll('g.node')
+    .attr('aria-label', d => {
+      const translatedName = t('nodes.' + d.id);
+      return (translatedName !== 'nodes.' + d.id) ? translatedName : (d.label || d.id);
+    });
+
+  // Also update the active panels if they are open!
+  if (_nodePanelEl && _nodePanelEl.classList.contains('visible') && _currentPanelNode) {
+    _showNodePanel(null, _currentPanelNode);
+  }
+}
+
 // ─── SVG SETUP ────────────────────────────────────────────────────────────────
 
 function _buildSVG() {
@@ -496,7 +521,10 @@ function _updateGraph() {
     .attr('class', 'node')
     .attr('tabindex', '0')
     .attr('role', 'button')
-    .attr('aria-label', d => d.label || d.id)
+    .attr('aria-label', d => {
+      const translatedName = t('nodes.' + d.id);
+      return (translatedName !== 'nodes.' + d.id) ? translatedName : (d.label || d.id);
+    })
     .style('cursor', 'pointer')
     .call(
       d3.drag()
@@ -599,7 +627,8 @@ function _updateGraph() {
     .attr('fill', '#6A6864')
     .attr('pointer-events', 'none')
     .text(d => {
-      const name = d.label || d.id;
+      const translatedName = t('nodes.' + d.id);
+      const name = (translatedName !== 'nodes.' + d.id) ? translatedName : (d.label || d.id);
       return name.length > 22 ? name.slice(0, 20) + '…' : name;
     });
 
@@ -1022,7 +1051,8 @@ function _showNodePanel(e, d) {
 
   _currentPanelNode = d;
 
-  panel.querySelector('#panel-name').textContent = d.label || d.id;
+  const translatedName = t('nodes.' + d.id);
+  panel.querySelector('#panel-name').textContent = (translatedName !== 'nodes.' + d.id) ? translatedName : (d.label || d.id);
   panel.querySelector('#panel-id').textContent   = d.id;
 
   const descEl = panel.querySelector('#panel-description');
@@ -1031,9 +1061,14 @@ function _showNodePanel(e, d) {
     descEl.textContent = (translatedDesc !== 'descriptions.' + d.id) ? translatedDesc : (d.description || '—');
   }
 
-  const agents   = Array.isArray(d.agents)   ? d.agents.join(', ')   : (d.agents   || '—');
-  const contents = Array.isArray(d.contents) ? d.contents.join(', ') : (d.contents || '—');
-  const refs     = Array.isArray(d.references) ? d.references.join(' · ') : (d.references || d.refs || '—');
+  const metadataAgents = t('nodes_metadata.' + d.id + '.agents');
+  const agents = (metadataAgents !== 'nodes_metadata.' + d.id + '.agents') ? metadataAgents : (Array.isArray(d.agents) ? d.agents.join(', ') : (d.agents || '—'));
+
+  const metadataContents = t('nodes_metadata.' + d.id + '.contents');
+  const contents = (metadataContents !== 'nodes_metadata.' + d.id + '.contents') ? metadataContents : (Array.isArray(d.contents) ? d.contents.join(', ') : (d.contents || '—'));
+
+  const metadataRefs = t('nodes_metadata.' + d.id + '.references');
+  const refs = (metadataRefs !== 'nodes_metadata.' + d.id + '.references') ? metadataRefs : (Array.isArray(d.references) ? d.references.join(' · ') : (d.references || d.refs || '—'));
 
   const agentsEl = panel.querySelector('#panel-agents');
   if (agentsEl) agentsEl.textContent = agents;
@@ -1125,47 +1160,104 @@ function _generateSemanticInterpretation(d) {
   const targetLabel = d.target?.label || targetId;
   const type = EDGE_ALIAS[d.type] || d.type;
 
-  // Custom Overrides (Transitions)
-  if (sourceId === 'pre_adn' && targetId === 'post_adn') {
-    return "Esta arista representa la transición histórica y conceptual desde el misterio del código de la vida pre-ADN hasta el descubrimiento de la Doble Hélice biológica, donde la información hereditaria emerge como un código legible y estructurado de manera física.";
-  }
-  if (sourceId === 'incompletitud' && targetId === 'zkp_efectivo') {
-    return "Representa el puente conceptual que utiliza los límites de Gödel (la incompletitud matemática) para fundamentar un ZKP (Zero-Knowledge Proof) efectivo, permitiendo demostrar que una afirmación matemática es verdadera sin revelar absolutamente nada de su contenido original.";
-  }
-  if (sourceId === 'nizkp_imposible' && targetId === 'zkp_efectivo') {
-    return "Esta arista muestra cómo la criptografía moderna logra un 'bypass' al teorema de Goldreich-Oren, superando la aparente imposibilidad de los NIZKPs (pruebas no interactivas de conocimiento cero) mediante el uso de parámetros compartidos de manera segura.";
-  }
-  if (sourceId === 'mejor_secreto' && targetId === 'conciencia') {
-    return "Señala la relación directa entre el misterio existencial último y la conciencia humana. El 'problema duro' de los qualia sugiere que la experiencia subjetiva podría ser, en esencia, el mejor secreto posible de la naturaleza.";
-  }
-  if (sourceId === 'incompletitud' && targetId === 'indecidibilidad') {
-    return "Representa el salto fundamental que dio Alan Turing a partir de los teoremas de Kurt Gödel: la traducción directa de la incompletitud aritmética en la indecidibilidad algorítmica, definiendo para siempre los límites insuperables de la computabilidad física.";
-  }
+  const sourceTranslated = t('nodes.' + sourceId);
+  const targetTranslated = t('nodes.' + targetId);
+  const sourceName = (sourceTranslated !== 'nodes.' + sourceId) ? sourceTranslated : sourceLabel;
+  const targetName = (targetTranslated !== 'nodes.' + targetId) ? targetTranslated : targetLabel;
 
-  // Fallback edge types
-  switch (type) {
-    case 'revelación':
-      return `Este flujo revela información oculta desde <strong>${sourceLabel}</strong> hacia <strong>${targetLabel}</strong>, expandiendo el horizonte de lo conocido.`;
-    case 'ocultamiento':
-      return `Esta conexión representa el ocultamiento activo de <strong>${sourceLabel}</strong> hacia <strong>${targetLabel}</strong>, impidiendo que el agente acceda a su verdad interna.`;
-    case 'emergencia':
-      return `Aquí emerge un nuevo nivel conceptual en <strong>${targetLabel}</strong> a partir de las bases epistemológicas de <strong>${sourceLabel}</strong>.`;
-    case 'compresión':
-      return `Esta relación condensa o simplifica la complejidad de <strong>${sourceLabel}</strong> en el modelo más denso de <strong>${targetLabel}</strong>.`;
-    case 'bifurcación':
-      return `Este enlace representa una divergencia o bifurcación conceptual, donde <strong>${sourceLabel}</strong> se divide en caminos alternativos hacia <strong>${targetLabel}</strong>.`;
-    case 'degrada':
-      return `Esta arista indica que la interacción o paso de <strong>${sourceLabel}</strong> degrada la certidumbre o coherencia conceptual de <strong>${targetLabel}</strong>.`;
-    case 'imposibilita':
-      return `Esta barrera lógica o física en <strong>${sourceLabel}</strong> imposibilita completamente la existencia, validez o verificación de <strong>${targetLabel}</strong>.`;
-    case 'restringe_termo':
-      return `Esta limitación termodinámica o de entropía restringe físicamente la transferencia de información de <strong>${sourceLabel}</strong> hacia <strong>${targetLabel}</strong>.`;
-    case 'fusiona':
-      return `Esta arista une o fusiona dos ámbitos epistemológicos antes separados (<strong>${sourceLabel}</strong> y <strong>${targetLabel}</strong>) en un marco conceptual unificado.`;
-    case 'colapsa':
-      return `Esta interacción causa que <strong>${sourceLabel}</strong> colapse el estado epistémico de <strong>${targetLabel}</strong>, reduciendo sus múltiples posibilidades a una única realidad observable.`;
-    default:
-      return `Vincula conceptualmente <strong>${sourceLabel}</strong> con <strong>${targetLabel}</strong> mediante una relación de tipo <em>${type}</em>.`;
+  const isEn = getLang() === 'en';
+  if (isEn) {
+    // Custom Overrides (Transitions) in English
+    if (sourceId === 'pre_adn' && targetId === 'post_adn') {
+      return "This edge represents the historical and conceptual transition from the mystery of the pre-DNA code of life to the discovery of the biological Double Helix, where hereditary information emerges as a readable and physically structured code.";
+    }
+    if (sourceId === 'incompletitud' && targetId === 'zkp_efectivo') {
+      return "It represents the conceptual bridge that uses Gödel's limits (mathematical incompleteness) to ground an effective ZKP (Zero-Knowledge Proof), allowing one to prove that a mathematical statement is true without revealing any of its original content.";
+    }
+    if (sourceId === 'nizkp_imposible' && targetId === 'zkp_efectivo') {
+      return "This edge shows how modern cryptography achieves a 'bypass' of the Goldreich-Oren theorem, overcoming the apparent impossibility of NIZKPs (non-interactive zero-knowledge proofs) through the secure use of shared parameters.";
+    }
+    if (sourceId === 'mejor_secreto' && targetId === 'conciencia') {
+      return "It points to the direct relationship between the ultimate existential mystery and human consciousness. The 'hard problem' of qualia suggests that subjective experience could be, in essence, nature's best possible secret.";
+    }
+    if (sourceId === 'incompletitud' && targetId === 'indecidibilidad') {
+      return "It represents the fundamental leap Alan Turing made from Kurt Gödel's theorems: the direct translation of arithmetic incompleteness into algorithmic undecidability, forever defining the insurmountable limits of physical computability.";
+    }
+
+    // Fallback edge types in English
+    switch (type) {
+      case 'revelación':
+      case 'revelacion':
+        return `This flow reveals hidden information from <strong>${sourceName}</strong> to <strong>${targetName}</strong>, expanding the horizon of the known.`;
+      case 'ocultamiento':
+        return `This connection represents the active concealment of <strong>${sourceName}</strong> from <strong>${targetName}</strong>, preventing the agent from accessing its internal truth.`;
+      case 'emergencia':
+        return `Here, a new conceptual level emerges in <strong>${targetName}</strong> from the epistemological foundations of <strong>${sourceName}</strong>.`;
+      case 'compresión':
+      case 'compresion':
+        return `This relationship condenses or compresses the complexity of <strong>${sourceName}</strong> into the denser model of <strong>${targetName}</strong>.`;
+      case 'bifurcación':
+      case 'bifurcacion':
+        return `This link represents a conceptual divergence or bifurcation, where <strong>${sourceName}</strong> splits into alternative paths toward <strong>${targetName}</strong>.`;
+      case 'degrada':
+        return `This edge indicates that the interaction or transition from <strong>${sourceName}</strong> degrades the certainty or conceptual coherence of <strong>${targetName}</strong>.`;
+      case 'imposibilita':
+        return `This logical or physical barrier in <strong>${sourceName}</strong> completely precludes the existence, validity, or verification of <strong>${targetName}</strong>.`;
+      case 'restringe_termo':
+        return `This thermodynamic or entropy limitation physically restricts the transfer of information from <strong>${sourceName}</strong> to <strong>${targetName}</strong>.`;
+      case 'fusiona':
+        return `This edge merges or fuses two previously separate epistemological domains (<strong>${sourceName}</strong> and <strong>${targetName}</strong>) into a unified conceptual framework.`;
+      case 'colapsa':
+        return `This interaction causes <strong>${sourceName}</strong> to collapse the epistemic state of <strong>${targetName}</strong>, reducing its multiple possibilities to a single observable reality.`;
+      default:
+        return `Conceptually links <strong>${sourceName}</strong> with <strong>${targetName}</strong> through a relation of type <em>${type}</em>.`;
+    }
+  } else {
+    // Custom Overrides (Transitions) in Spanish
+    if (sourceId === 'pre_adn' && targetId === 'post_adn') {
+      return "Esta arista representa la transición histórica y conceptual desde el misterio del código de la vida pre-ADN hasta el descubrimiento de la Doble Hélice biológica, donde la información hereditaria emerge como un código legible y estructurado de manera física.";
+    }
+    if (sourceId === 'incompletitud' && targetId === 'zkp_efectivo') {
+      return "Representa el puente conceptual que utiliza los límites de Gödel (la incompletitud matemática) para fundamentar un ZKP (Zero-Knowledge Proof) efectivo, permitiendo demostrar que una afirmación matemática es verdadera sin revelar absolutamente nada de su contenido original.";
+    }
+    if (sourceId === 'nizkp_imposible' && targetId === 'zkp_efectivo') {
+      return "Esta arista muestra cómo la criptografía moderna logra un 'bypass' al teorema de Goldreich-Oren, superando la aparente imposibilidad de los NIZKPs (pruebas no interactivas de conocimiento cero) mediante el uso de parámetros compartidos de manera segura.";
+    }
+    if (sourceId === 'mejor_secreto' && targetId === 'conciencia') {
+      return "Señala la relación directa entre el misterio existencial último y la conciencia humana. El 'problema duro' de los qualia sugiere que la experiencia subjetiva podría ser, en esencia, el mejor secreto posible de la naturaleza.";
+    }
+    if (sourceId === 'incompletitud' && targetId === 'indecidibilidad') {
+      return "Representa el salto fundamental que dio Alan Turing a partir de los teoremas de Kurt Gödel: la traducción directa de la incompletitud aritmética en la indecidibilidad algorítmica, definiendo para siempre los límites insuperables de la computabilidad física.";
+    }
+
+    // Fallback edge types in Spanish
+    switch (type) {
+      case 'revelación':
+      case 'revelacion':
+        return `Este flujo revela información oculta desde <strong>${sourceName}</strong> hacia <strong>${targetName}</strong>, expandiendo el horizonte de lo conocido.`;
+      case 'ocultamiento':
+        return `Esta conexión representa el ocultamiento activo de <strong>${sourceName}</strong> hacia <strong>${targetName}</strong>, impidiendo que el agente acceda a su verdad interna.`;
+      case 'emergencia':
+        return `Aquí emerge un nuevo nivel conceptual en <strong>${targetName}</strong> a partir de las bases epistemológicas de <strong>${sourceName}</strong>.`;
+      case 'compresión':
+      case 'compresion':
+        return `Esta relación condensa o simplifica la complejidad de <strong>${sourceName}</strong> en el modelo más denso de <strong>${targetName}</strong>.`;
+      case 'bifurcación':
+      case 'bifurcacion':
+        return `Este enlace representa una divergencia o bifurcación conceptual, donde <strong>${sourceName}</strong> se divide en caminos alternativos hacia <strong>${targetName}</strong>.`;
+      case 'degrada':
+        return `Esta arista indica que la interacción o paso de <strong>${sourceName}</strong> degrada la certidumbre o coherencia conceptual de <strong>${targetName}</strong>.`;
+      case 'imposibilita':
+        return `Esta barrera lógica o física en <strong>${sourceName}</strong> imposibilita completamente la existencia, validez o verificación de <strong>${targetName}</strong>.`;
+      case 'restringe_termo':
+        return `Esta limitación termodinámica o de entropía restringe físicamente la transferencia de información de <strong>${sourceName}</strong> hacia <strong>${targetName}</strong>.`;
+      case 'fusiona':
+        return `Esta arista une o fusiona dos ámbitos epistemológicos antes separados (<strong>${sourceName}</strong> y <strong>${targetName}</strong>) en un marco conceptual unificado.`;
+      case 'colapsa':
+        return `Esta interacción causa que <strong>${sourceName}</strong> colapse el estado epistémico de <strong>${targetName}</strong>, reduciendo sus múltiples posibilidades a una única realidad observable.`;
+      default:
+        return `Vincula conceptualmente <strong>${sourceName}</strong> con <strong>${targetName}</strong> mediante una relación de tipo <em>${type}</em>.`;
+    }
   }
 }
 
@@ -1183,12 +1275,18 @@ function _showNodeHoverPreview(e, d) {
 
   const domainName = t('nav.' + d.domain) || d.domain;
 
+  const translatedName = t('nodes.' + d.id);
+  const nodeName = (translatedName !== 'nodes.' + d.id) ? translatedName : (d.label || d.id);
+
+  const metadataContents = t('nodes_metadata.' + d.id + '.contents');
+  const nodeContents = (metadataContents !== 'nodes_metadata.' + d.id + '.contents') ? metadataContents : (d.contents || '');
+
   panel.innerHTML = `
-    <strong>${d.label || d.id}</strong>
+    <strong>${nodeName}</strong>
     <div class="ep-type" style="color: var(--gold-dim); font-size: 0.72rem; text-transform: uppercase; margin-bottom: 4px;">
       ${domainName}
     </div>
-    <div class="ep-narrative" style="margin-bottom: 8px; color: var(--text-dim);">${d.contents || ''}</div>
+    <div class="ep-narrative" style="margin-bottom: 8px; color: var(--text-dim);">${nodeContents}</div>
     <div style="font-size: 0.75rem; border-top: 1px solid rgba(197, 168, 107, 0.2); padding-top: 6px; display: flex; gap: 10px;">
       <span style="color: var(--blue-light);">● ${hz[0]}% K</span>
       <span style="color: var(--text-dimmer);">● ${hz[1]}% U</span>
@@ -1250,20 +1348,55 @@ function _onPanelMouseMove(e) {
 
 // ─── EDGE PANEL ───────────────────────────────────────────────────────────────
 
+function _translateEdgeType(rawType) {
+  const type = EDGE_ALIAS[rawType] || rawType;
+  const capitalized = type.charAt(0).toUpperCase() + type.slice(1);
+  const keyMap = {
+    'revelación': 'Revelation',
+    'revelacion': 'Revelation',
+    'ocultamiento': 'Concealment',
+    'emergencia': 'Emergence',
+    'misterio': 'Mystery',
+    'bifurcación': 'Bifurcation',
+    'bifurcacion': 'Bifurcation',
+    'compresión': 'Compression',
+    'compresion': 'Compression',
+    'degrada': 'Degrada',
+    'imposibilita': 'Imposibilita',
+    'restringe_termo': 'Restringe_termo',
+    'fusiona': 'Fusiona',
+    'colapsa': 'Colapsa'
+  };
+  const mapKey = keyMap[type] || capitalized;
+  const translated = t(`graph.legend${mapKey}`);
+  return (translated !== `graph.legend${mapKey}`) ? translated : type;
+}
+
 function _showEdgePanel(e, d) {
   const panel = _edgePanelEl;
   if (!panel) return;
 
   const type = EDGE_ALIAS[d.type] || d.type;
+  const translatedType = _translateEdgeType(d.type);
   const semanticExplanation = _generateSemanticInterpretation(d);
+
+  const edgeId = d.id;
+  const translatedLabel = t('edges.' + edgeId + '.label');
+  const label = (translatedLabel !== 'edges.' + edgeId + '.label') ? translatedLabel : (d.label || type);
+
+  const translatedCost = t('edges.' + edgeId + '.cost');
+  const cost = (translatedCost !== 'edges.' + edgeId + '.cost') ? translatedCost : d.cost;
+
+  const translatedNarrative = t('edges.' + edgeId + '.narrative');
+  const narrative = (translatedNarrative !== 'edges.' + edgeId + '.narrative') ? translatedNarrative : d.narrative;
 
   panel.innerHTML = `
     <button class="panel-close" onclick="closeEdgePanel(event)" aria-label="${t('panel.close') || 'Cerrar'}">✕</button>
-    <strong>${d.label || type}</strong>
-    <div class="ep-type">${t('panel.edgeType') || 'Tipo'}: ${type}</div>
-    ${d.cost ? `<div class="ep-cost">${t('panel.edgeCost') || 'Costo'}: ${d.cost}</div>` : ''}
+    <strong>${label}</strong>
+    <div class="ep-type">${t('panel.edgeType') || 'Tipo'}: ${translatedType}</div>
+    ${cost ? `<div class="ep-cost">${t('panel.edgeCost') || 'Costo'}: ${cost}</div>` : ''}
     <div class="ep-narrative" style="margin-top: 8px;">
-      ${d.narrative ? `<p style="margin-bottom: 8px;">${d.narrative}</p>` : ''}
+      ${narrative ? `<p style="margin-bottom: 8px;">${narrative}</p>` : ''}
       <p style="font-weight: 500; border-top: 1px solid rgba(197, 168, 107, 0.2); padding-top: 8px; font-style: normal; color: var(--gold);">${semanticExplanation}</p>
     </div>
   `;
