@@ -563,7 +563,9 @@
         "heading": "El secreto no es<br>una <em>cosa</em>. Es una relación.",
         "p1": "La intuición común trata el secreto como un objeto: algo que se guarda, que se esconde, que se pierde. Pero esta imagen es filosóficamente inadecuada. El secreto no existe en el vacío — existe siempre entre un <strong>contenido</strong>, un <strong>agente</strong> y un <strong>mundo epistémico</strong>.",
         "p2": "Formalizado en lógica modal, el secreto es una relación de tres partes (tres ingredientes indispensables):",
-        "p3": "Esta definición tiene consecuencias inmediatas: cambiar el agente, el mundo, o el contenido transforma — y puede eliminar — el secreto. Lo que es un misterio para un agente puede ser conocimiento rutinario para otro, en el mismo mundo."
+        "p3": "Esta definición tiene consecuencias inmediatas: cambiar el agente, el mundo, o el contenido transforma — y puede eliminar — el secreto. Lo que es un misterio para un agente puede ser conocimiento rutinario para otro, en el mismo mundo.",
+        "dialecticTitle": "La Dialéctica: El Secreto como Matriz de la Episteme",
+        "dialecticDesc": "La <strong>Episteme</strong> (el conocimiento científico comprobado) no existe en un vacío luminoso. Necesita del secreto y de la ignorancia no como enemigos a exterminar, sino como el horizonte fértil que despierta la curiosidad y genera la necesidad de investigar."
       },
       "s02": {
         "label": "§ 02 — Distinción crítica",
@@ -571,7 +573,16 @@
         "p1": "La filosofía popular confunde constantemente dos categorías que exigen separación rigurosa. Un secreto es cognoscible en principio. Un misterio, no.",
         "p2": "Ejemplos concretos: que la NSA tenga registros de tus llamadas es un <em>secreto</em> — es cognoscible, hay investigaciones periodísticas que lo han revelado. Que la experiencia subjetiva del dolor \"se sienta de cierta manera\" es, para muchos filósofos, un <em>misterio</em> — ningún acceso físico al cerebro parece poder capturarlo desde fuera.",
         "p3": "La criptografía contemporánea (Rahul Ilango, 2025) ha descubierto una tercera vía: el <strong>Secreto Criptográfico Efectivo</strong>. No es enteramente un secreto revelable clásico ni enteramente un misterio absoluto; es un secreto práctico cuya seguridad está blindada porque su vulneración exigiría resolver un misterio estructural (la consistencia interna de la matemática). El secreto y el misterio se fusionan en las fronteras de la demostrabilidad formal.",
-        "p4": "En el grafo modal que sigue, las aristas punteadas representan secretos (acceso posible). Las aristas bloqueadas en violeta representan misterios (incognoscibilidad estructural)."
+        "p4": "En el grafo modal que sigue, las aristas punteadas representan secretos (acceso posible). Las aristas bloqueadas en violeta representan misterios (incognoscibilidad estructural).",
+        "cryptoTag": "Frontera Criptográfica 2025",
+        "cryptoTitle": "Secreto Criptográfico Efectivo (ZKP)",
+        "cryptoDesc": "Rahul Ilango (2025) demostró la existencia de secretos cuya seguridad no depende de ocultar datos, sino de que romper la clave equivaldría a demostrar que las matemáticas son inconsistentes. El secreto y el misterio se fusionan en el límite de la demostrabilidad formal."
+      },
+      "s03": {
+        "challengesTitle": "Desafíos Epistémicos (Haz clic para probar):",
+        "btnChallenge1": "1. Secreto Descifrable",
+        "btnChallenge2": "2. Misterio Absoluto",
+        "btnChallenge3": "3. Colapso Lógico"
       },
       "s04": {
         "label": "§ 04 — Mundos epistémicos extremos",
@@ -611,7 +622,23 @@
         "heading": "Más allá del agente:<br><em>límites formales</em>",
         "p1": "Hasta ahora hemos hablado de secretos de personas: lo que alguien no sabe hoy, pero podría saber. Pero el universo tiene sus propias barreras insuperables, secretos universales que no dependen de ningún ser humano: los <strong>límites formales y físicos</strong>.",
         "p2": "<strong>¿Hay verdades que nunca podremos demostrar?</strong> El <strong>Límite de Gödel</strong> responde que sí: la matemática siempre tendrá verdades discretas e indemostrables.<br><strong>¿Puede una computadora resolver cualquier acertijo?</strong> El <strong>Límite de Turing</strong> demuestra que hay problemas que entran en bucles infinitos imposibles de resolver en tiempo finito.<br><strong>¿La realidad oculta información o es borrosa por naturaleza?</strong> La <strong>Indeterminación Cuántica</strong> establece que en el mundo subatómico, medir un dato destruye otro de forma física e irreducible.<br><strong>¿Se puede predecir el futuro a largo plazo?</strong> El <strong>Horizonte Caótico</strong> (el aleteo de la mariposa) muestra que pequeños cambios invisibles hacen imposible calcular el mañana distante.<br><strong>¿Podemos recordar el pasado a la perfección?</strong> La <strong>Flecha Termodinámica</strong> disipa la energía en forma de calor, borrando las huellas del ayer molecular de forma irreversible.",
-        "p3": "Estos no son secretos — son misterios estructurales. Activa la capa <strong>Metalógica</strong> para verlos en el grafo."
+        "p3": "Estos no son secretos — son misterios estructurales. Activa la capa <strong>Metalógica</strong> para verlos en el grafo.",
+        "limitsTitle": "Cinco Límites Estructurales del Universo",
+        "godelTag": "Lógica",
+        "godelTitle": "1. Límite de Gödel",
+        "godelDesc": "Existen verdades matemáticas verdaderas pero formalmente indemostrables.",
+        "turingTag": "Cómputo",
+        "turingTitle": "2. Límite de Turing",
+        "turingDesc": "Problemas de decisión atrapados en bucles infinitos incomputables.",
+        "quantumTag": "Física Subatómica",
+        "quantumTitle": "3. Indeterminación Cuántica",
+        "quantumDesc": "Medir una propiedad física destruye la certeza sobre otra de forma física e irreducible.",
+        "chaosTag": "Sistemas Complejos",
+        "chaosTitle": "4. Horizonte Caótico",
+        "chaosDesc": "El efecto mariposa impide predecir el estado futuro distante en sistemas dinámicos.",
+        "thermoTag": "Entropía",
+        "thermoTitle": "5. Flecha Termodinámica",
+        "thermoDesc": "La disipación de calor borra las huellas moleculares del pasado de forma irreversible."
       },
       "s05d": {
         "label": "§ 05d — Dinámica temporal",
@@ -1209,7 +1236,9 @@
         "heading": "Secrecy is not<br>a <em>thing</em>. It is a relation.",
         "p1": "Common intuition treats secrecy as an object: something that is kept, hidden, or lost. But this image is philosophically inadequate. Secrecy does not exist in a vacuum — it always exists between a <strong>content</strong>, an <strong>agent</strong>, and an <strong>epistemic world</strong>.",
         "p2": "Formalized in modal logic, secrecy is a three-part relation (three indispensable ingredients):",
-        "p3": "This definition has immediate consequences: changing the agent, the world, or the content transforms — and can eliminate — the secret. What is a mystery to one agent may be routine knowledge to another, in the very same world."
+        "p3": "This definition has immediate consequences: changing the agent, the world, or the content transforms — and can eliminate — the secret. What is a mystery to one agent may be routine knowledge to another, in the very same world.",
+        "dialecticTitle": "The Dialectic: Secrecy as the Matrix of Episteme",
+        "dialecticDesc": "<strong>Episteme</strong> (proven scientific knowledge) does not exist in a luminous vacuum. It requires secrecy and ignorance not as enemies to exterminate, but as the fertile horizon that sparks curiosity and drives inquiry."
       },
       "s02": {
         "label": "§ 02 — Critical distinction",
@@ -1217,7 +1246,16 @@
         "p1": "Popular philosophy constantly confuses two categories that demand a rigorous separation. A secret is knowable in principle. A mystery is not.",
         "p2": "Concrete examples: that the NSA holds records of your phone calls is a <em>secret</em> — it is knowable, and journalistic investigations have revealed it. That subjective experience \"feels a certain way\" is, for many philosophers, a <em>mystery</em> — no physical access to the brain seems capable of capturing it from the outside.",
         "p3": "Contemporary cryptography (Rahul Ilango, 2025) has discovered a third path: the <strong>Effective Cryptographic Secret</strong>. It is not entirely a classical decipherable secret, nor entirely an absolute mystery; it is a practical secret whose security is armored because breaching it would require resolving a structural mystery (the internal consistency of mathematics). Secret and mystery fuse at the frontiers of formal provability.",
-        "p4": "In the modal graph below, dashed edges represent secrets (accessible paths). Violet barred edges represent mysteries (structural unknowability)."
+        "p4": "In the modal graph below, dashed edges represent secrets (accessible paths). Violet barred edges represent mysteries (structural unknowability).",
+        "cryptoTag": "Cryptographic Frontier 2025",
+        "cryptoTitle": "Effective Cryptographic Secret (ZKP)",
+        "cryptoDesc": "Rahul Ilango (2025) proved the existence of secrets whose security relies not on hiding data, but on the fact that breaking the key would require proving mathematics to be inconsistent. Secrecy and mystery merge at the boundary of formal provability."
+      },
+      "s03": {
+        "challengesTitle": "Epistemic Challenges (Click to test):",
+        "btnChallenge1": "1. Decipherable Secret",
+        "btnChallenge2": "2. Absolute Mystery",
+        "btnChallenge3": "3. Logical Collapse"
       },
       "s04": {
         "label": "§ 04 — Extreme epistemic worlds",
@@ -1257,7 +1295,23 @@
         "heading": "Beyond the agent:<br><em>formal limits</em>",
         "p1": "So far we have spoken of the secrets of people: what someone does not know today, but could know. But the universe has its own insurmountable barriers, universal secrets that do not depend on any human being: <strong>formal and physical limits</strong>.",
         "p2": "<strong>Are there truths we can never prove?</strong> The <strong>Gödel Limit</strong> answers yes: mathematics will always have discrete, unprovable truths.<br><strong>Can a computer solve any riddle?</strong> The <strong>Turing Limit</strong> proves there are problems that enter infinite loops, impossible to solve in finite time.<br><strong>Does reality hide information or is it blurry by nature?</strong> <strong>Quantum Indeterminacy</strong> establishes that in the subatomic world, measuring one piece of data physically and irreducibly destroys another.<br><strong>Can the long-term future be predicted?</strong> The <strong>Chaotic Horizon</strong> (the butterfly effect) shows that tiny, invisible changes make calculating the distant tomorrow impossible.<br><strong>Can we remember the past perfectly?</strong> The <strong>Thermodynamic Arrow</strong> dissipates energy as heat, irreversibly erasing the traces of molecular yesterday.",
-        "p3": "These are not secrets — they are structural mysteries. Activate the <strong>Metalogic</strong> layer to view them in the graph."
+        "p3": "These are not secrets — they are structural mysteries. Activate the <strong>Metalogic</strong> layer to view them in the graph.",
+        "limitsTitle": "Five Structural Limits of the Universe",
+        "godelTag": "Logic",
+        "godelTitle": "1. Gödel's Limit",
+        "godelDesc": "There are true mathematical statements that are formally unprovable.",
+        "turingTag": "Computation",
+        "turingTitle": "2. Turing's Limit",
+        "turingDesc": "Decision problems trapped in uncomputable infinite loops.",
+        "quantumTag": "Subatomic Physics",
+        "quantumTitle": "3. Quantum Uncertainty",
+        "quantumDesc": "Measuring one physical property irreversibly destroys certainty about another.",
+        "chaosTag": "Complex Systems",
+        "chaosTitle": "4. Chaotic Horizon",
+        "chaosDesc": "The butterfly effect makes long-term prediction impossible in dynamic systems.",
+        "thermoTag": "Entropy",
+        "thermoTitle": "5. Thermodynamic Arrow",
+        "thermoDesc": "Heat dissipation irreversibly erases molecular traces of the past."
       },
       "s05d": {
         "label": "§ 05d — Temporal dynamics",

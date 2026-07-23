@@ -2558,3 +2558,140 @@ body.reading-mode .tour-narrative-content {
 /* Utility visibility helper */
 .hidden { display: none; }
 
+/* ─── PHASE 2 PEDAGOGICAL KAIZEN COMPONENTS ──────────────────────────── */
+
+/* Dialectic Callout Card (§01) */
+.dialectic-card {
+  background: var(--bg2);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin: 28px 0 20px;
+}
+.dialectic-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  color: var(--gold-dim);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.dialectic-desc {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Cryptographic Frontier Card (§02) */
+.crypto-frontier-card {
+  background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: 4px;
+  padding: 20px;
+  margin: 28px 0;
+  position: relative;
+  overflow: hidden;
+}
+.crypto-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(131, 98, 39, 0.1);
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+.crypto-title {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.crypto-desc {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Epistemic Challenges in Simulator (§03) */
+.challenges-container {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.challenges-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+}
+.challenge-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.challenge-btn {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  padding: 6px 12px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.challenge-btn:hover, .challenge-btn:focus-visible {
+  border-color: var(--border-gold);
+  color: var(--gold);
+  background: rgba(131, 98, 39, 0.08);
+  outline: none;
+}
+
+/* Structural Limit Micro-Cards Grid (§05c) */
+.limit-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+.limit-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 16px;
+  transition: all var(--transition);
+}
+.limit-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-2px);
+  box-shadow: var(--overlay-shadow);
+}
+.limit-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 6px;
+  display: block;
+}
+.limit-card-title {
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.limit-card-desc {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin: 0;
+}
+

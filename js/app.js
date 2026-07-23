@@ -290,6 +290,10 @@ function _applyStrings() {
   if (s01p2) s01p2.innerHTML = t('sections.s01.p2');
   const s01p3 = document.getElementById('s01-p3');
   if (s01p3) s01p3.innerHTML = t('sections.s01.p3');
+  const dialecticTitle = document.getElementById('dialectic-title');
+  if (dialecticTitle) dialecticTitle.textContent = t('sections.s01.dialecticTitle');
+  const dialecticDesc = document.getElementById('dialectic-desc');
+  if (dialecticDesc) dialecticDesc.innerHTML = t('sections.s01.dialecticDesc');
 
   // Section §02
   const s02Label = document.getElementById('s02-label');
@@ -304,6 +308,71 @@ function _applyStrings() {
   if (s02p3) s02p3.innerHTML = t('sections.s02.p3');
   const s02p4 = document.getElementById('s02-p4');
   if (s02p4) s02p4.innerHTML = t('sections.s02.p4');
+  const cryptoTag = document.getElementById('crypto-tag');
+  if (cryptoTag) cryptoTag.textContent = t('sections.s02.cryptoTag');
+  const cryptoTitle = document.getElementById('crypto-title');
+  if (cryptoTitle) cryptoTitle.textContent = t('sections.s02.cryptoTitle');
+  const cryptoDesc = document.getElementById('crypto-desc');
+  if (cryptoDesc) cryptoDesc.innerHTML = t('sections.s02.cryptoDesc');
+
+  // Section §03 Challenges
+  const challengesTitle = document.getElementById('challenges-title');
+  if (challengesTitle) challengesTitle.textContent = t('sections.s03.challengesTitle');
+  const btnCh1 = document.getElementById('btn-challenge-1');
+  if (btnCh1) btnCh1.textContent = t('sections.s03.btnChallenge1');
+  const btnCh2 = document.getElementById('btn-challenge-2');
+  if (btnCh2) btnCh2.textContent = t('sections.s03.btnChallenge2');
+  const btnCh3 = document.getElementById('btn-challenge-3');
+  if (btnCh3) btnCh3.textContent = t('sections.s03.btnChallenge3');
+
+  // Section §05c
+  const s05cLabel = document.getElementById('s05c-label');
+  if (s05cLabel) s05cLabel.textContent = t('sections.s05c.label');
+  const s05cHeading = document.getElementById('s05c-heading');
+  if (s05cHeading) s05cHeading.innerHTML = t('sections.s05c.heading');
+  const s05cp1 = document.getElementById('s05c-p1');
+  if (s05cp1) s05cp1.innerHTML = t('sections.s05c.p1');
+  const s05cp2 = document.getElementById('s05c-p2');
+  if (s05cp2) s05cp2.innerHTML = t('sections.s05c.p2');
+  const s05cp3 = document.getElementById('s05c-p3');
+  if (s05cp3) s05cp3.innerHTML = t('sections.s05c.p3');
+  const limitsTitle = document.getElementById('limits-title');
+  if (limitsTitle) limitsTitle.textContent = t('sections.s05c.limitsTitle');
+
+  const godelTag = document.getElementById('godel-tag');
+  if (godelTag) godelTag.textContent = t('sections.s05c.godelTag');
+  const godelTitle = document.getElementById('godel-title');
+  if (godelTitle) godelTitle.textContent = t('sections.s05c.godelTitle');
+  const godelDesc = document.getElementById('godel-desc');
+  if (godelDesc) godelDesc.textContent = t('sections.s05c.godelDesc');
+
+  const turingTag = document.getElementById('turing-tag');
+  if (turingTag) turingTag.textContent = t('sections.s05c.turingTag');
+  const turingTitle = document.getElementById('turing-title');
+  if (turingTitle) turingTitle.textContent = t('sections.s05c.turingTitle');
+  const turingDesc = document.getElementById('turing-desc');
+  if (turingDesc) turingDesc.textContent = t('sections.s05c.turingDesc');
+
+  const quantumTag = document.getElementById('quantum-tag');
+  if (quantumTag) quantumTag.textContent = t('sections.s05c.quantumTag');
+  const quantumTitle = document.getElementById('quantum-title');
+  if (quantumTitle) quantumTitle.textContent = t('sections.s05c.quantumTitle');
+  const quantumDesc = document.getElementById('quantum-desc');
+  if (quantumDesc) quantumDesc.textContent = t('sections.s05c.quantumDesc');
+
+  const chaosTag = document.getElementById('chaos-tag');
+  if (chaosTag) chaosTag.textContent = t('sections.s05c.chaosTag');
+  const chaosTitle = document.getElementById('chaos-title');
+  if (chaosTitle) chaosTitle.textContent = t('sections.s05c.chaosTitle');
+  const chaosDesc = document.getElementById('chaos-desc');
+  if (chaosDesc) chaosDesc.textContent = t('sections.s05c.chaosDesc');
+
+  const thermoTag = document.getElementById('thermo-tag');
+  if (thermoTag) thermoTag.textContent = t('sections.s05c.thermoTag');
+  const thermoTitle = document.getElementById('thermo-title');
+  if (thermoTitle) thermoTitle.textContent = t('sections.s05c.thermoTitle');
+  const thermoDesc = document.getElementById('thermo-desc');
+  if (thermoDesc) thermoDesc.textContent = t('sections.s05c.thermoDesc');
 
   // Section §04
   const s04Label = document.getElementById('s04-label');
@@ -873,6 +942,24 @@ function _initPlayground() {
   const playVAccess = document.getElementById('play-v-access');
 
   if (!playC || !playK || !playAccess) return;
+
+  const setControls = (cVal, kVal, aVal) => {
+    playC.checked = cVal;
+    playK.checked = kVal;
+    playAccess.checked = aVal;
+    if (playVC) playVC.checked = cVal;
+    if (playVK) playVK.checked = kVal;
+    if (playVAccess) playVAccess.checked = aVal;
+    update();
+  };
+
+  const btnCh1 = document.getElementById('btn-challenge-1');
+  const btnCh2 = document.getElementById('btn-challenge-2');
+  const btnCh3 = document.getElementById('btn-challenge-3');
+
+  if (btnCh1) btnCh1.addEventListener('click', () => setControls(true, false, true));
+  if (btnCh2) btnCh2.addEventListener('click', () => setControls(true, false, false));
+  if (btnCh3) btnCh3.addEventListener('click', () => setControls(false, false, true));
 
   const update = () => {
     const C = playC.checked;

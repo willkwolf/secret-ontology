@@ -100,6 +100,10 @@
       </figure>
       <p id="formula-nuclear-explanation">Leído en español: <strong>hay secreto cuando un contenido C es verdadero en un mundo w, pero el agente a no lo conoce en ese mundo.</strong> No hay secreto sin alguien para quien sea secreto.</p>
       <p id="s01-p3">Esta definición tiene consecuencias inmediatas: cambiar el agente, el mundo, o el contenido transforma — y puede eliminar — el secreto. Lo que es un misterio para un agente puede ser conocimiento rutinario para otro, en el mismo mundo.</p>
+      <aside class="dialectic-card">
+        <div class="dialectic-title" id="dialectic-title">La Dialéctica: El Secreto como Matriz de la Episteme</div>
+        <p class="dialectic-desc" id="dialectic-desc">La <strong>Episteme</strong> (el conocimiento científico comprobado) no existe en un vacío luminoso. Necesita del secreto y de la ignorancia no como enemigos a exterminar, sino como el horizonte fértil que despierta la curiosidad y genera la necesidad de investigar.</p>
+      </aside>
     </div>
   </section>
 
@@ -144,6 +148,13 @@
       </div>
       <p id="s02-p2">Ejemplos concretos: que la NSA tenga registros de tus llamadas es un <em>secreto</em> — es cognoscible, hay investigaciones periodísticas que lo han revelado. Que la experiencia subjetiva del dolor "se sienta de cierta manera" es, para muchos filósofos, un <em>misterio</em> — ningún acceso físico al cerebro parece poder capturarlo desde fuera.</p>
       <p id="s02-p3">La criptografía contemporánea (Rahul Ilango, 2025) ha descubierto una tercera vía: el <strong>Secreto Criptográfico Efectivo</strong>. No es enteramente un secreto revelable clásico ni enteramente un misterio absoluto; es un secreto práctico cuya seguridad está blindada porque su vulneración exigiría resolver un misterio estructural (la consistencia interna de la matemática). El secreto y el misterio se fusionan en las fronteras de la demostrabilidad formal.</p>
+      
+      <aside class="crypto-frontier-card">
+        <span class="crypto-tag" id="crypto-tag">Frontera Criptográfica 2025</span>
+        <h3 class="crypto-title" id="crypto-title">Secreto Criptográfico Efectivo (ZKP)</h3>
+        <p class="crypto-desc" id="crypto-desc">Rahul Ilango (2025) demostró la existencia de secretos cuya seguridad no depende de ocultar datos, sino de que romper la clave equivaldría a demostrar que las matemáticas son inconsistentes. El secreto y el misterio se fusionan en el límite de la demostrabilidad formal.</p>
+      </aside>
+
       <p id="s02-p4">En el grafo modal que sigue, las aristas punteadas representan secretos (acceso posible). Las aristas bloqueadas en violeta representan misterios (incognoscibilidad estructural).</p>
       
       <!-- Micro-Graph 1: Secreto vs Misterio -->
@@ -166,6 +177,15 @@
       
       <!-- PARTE A: Palabras y Concepto (Switches + Estado Epistémico en pantalla única) -->
       <div class="playground-container text-playground">
+        <div class="challenges-container">
+          <div class="challenges-title" id="challenges-title">Desafíos Epistémicos (Haz clic para probar):</div>
+          <div class="challenge-buttons">
+            <button class="challenge-btn" id="btn-challenge-1">1. Secreto Descifrable</button>
+            <button class="challenge-btn" id="btn-challenge-2">2. Misterio Absoluto</button>
+            <button class="challenge-btn" id="btn-challenge-3">3. Colapso Lógico</button>
+          </div>
+        </div>
+
         <!-- Interactive Controls -->
         <div class="playground-controls">
           <div class="control-switch-group">
@@ -412,13 +432,34 @@
       <div class="section-label" id="s05c-label">§ 05c — Límites estructurales</div>
       <h2 id="s05c-heading">Más allá del agente:<br><em>límites formales</em></h2>
       <p id="s05c-p1">Hasta ahora hemos hablado de secretos de personas: lo que alguien no sabe hoy, pero podría saber. Pero el universo tiene sus propias barreras insuperables, secretos universales que no dependen de ningún ser humano: los <strong>límites formales y físicos</strong>.</p>
-      <p id="s05c-p2" class="line-height-relaxed">
-        <strong>¿Hay verdades que nunca podremos demostrar?</strong> El <strong>Límite de Gödel</strong> responde que sí: la matemática siempre tendrá verdades discretas e indemostrables.<br>
-        <strong>¿Puede una computadora resolver cualquier acertijo?</strong> El <strong>Límite de Turing</strong> demuestra que hay problemas que entran en bucles infinitos imposibles de resolver en tiempo finito.<br>
-        <strong>¿La realidad oculta información o es borrosa por naturaleza?</strong> La <strong>Indeterminación Cuántica</strong> establece que en el mundo subatómico, medir un dato destruye otro de forma física e irreducible.<br>
-        <strong>¿Se puede predecir el futuro a largo plazo?</strong> El <strong>Horizonte Caótico</strong> (el aleteo de la mariposa) muestra que pequeños cambios invisibles hacen imposible calcular el mañana distante.<br>
-        <strong>¿Podemos recordar el pasado a la perfección?</strong> La <strong>Flecha Termodinámica</strong> disipa la energía en forma de calor, borrando las huellas del ayer molecular de forma irreversible.
-      </p>
+      <h3 id="limits-title" class="micro-graph-title-sm" style="margin-top: 20px;">Cinco Límites Estructurales del Universo</h3>
+      <div class="limit-card-grid">
+        <article class="limit-card">
+          <span class="limit-tag" id="godel-tag">Lógica</span>
+          <h4 class="limit-card-title" id="godel-title">1. Límite de Gödel</h4>
+          <p class="limit-card-desc" id="godel-desc">Existen verdades matemáticas verdaderas pero formalmente indemostrables.</p>
+        </article>
+        <article class="limit-card">
+          <span class="limit-tag" id="turing-tag">Cómputo</span>
+          <h4 class="limit-card-title" id="turing-title">2. Límite de Turing</h4>
+          <p class="limit-card-desc" id="turing-desc">Problemas de decisión atrapados en bucles infinitos incomputables.</p>
+        </article>
+        <article class="limit-card">
+          <span class="limit-tag" id="quantum-tag">Física Subatómica</span>
+          <h4 class="limit-card-title" id="quantum-title">3. Indeterminación Cuántica</h4>
+          <p class="limit-card-desc" id="quantum-desc">Medir una propiedad física destruye la certeza sobre otra de forma física e irreducible.</p>
+        </article>
+        <article class="limit-card">
+          <span class="limit-tag" id="chaos-tag">Sistemas Complejos</span>
+          <h4 class="limit-card-title" id="chaos-title">4. Horizonte Caótico</h4>
+          <p class="limit-card-desc" id="chaos-desc">El efecto mariposa impide predecir el estado futuro distante en sistemas dinámicos.</p>
+        </article>
+        <article class="limit-card">
+          <span class="limit-tag" id="thermo-tag">Entropía</span>
+          <h4 class="limit-card-title" id="thermo-title">5. Flecha Termodinámica</h4>
+          <p class="limit-card-desc" id="thermo-desc">La disipación de calor borra las huellas moleculares del pasado de forma irreversible.</p>
+        </article>
+      </div>
       <p id="s05c-p3">Estos no son secretos — son misterios estructurales. Activa la capa <strong>Metalógica</strong> para verlos en el grafo.</p>
     </div>
   </section>
