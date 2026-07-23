@@ -1283,11 +1283,15 @@ p strong { color: var(--text); font-weight: 500; }
   to   { opacity: 1; transform: translateY(0); }
 }
 .fade-in {
+  opacity: 1;
+  transform: none;
+}
+html.js-loaded .fade-in {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+html.js-loaded .fade-in.visible { opacity: 1; transform: translateY(0); }
 
 /* Inline tooltip trigger */
 .tip {

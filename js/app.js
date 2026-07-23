@@ -37,6 +37,7 @@ function _updateThemeButton() {
 }
 
 async function bootstrap() {
+  document.documentElement.classList.add('js-loaded');
   _initTheme();
   const savedLang = localStorage.getItem(STORAGE_KEY) || 'es';
   await loadStrings(savedLang);
@@ -470,17 +471,7 @@ function _applyStrings() {
   const s05bp3 = document.getElementById('s05b-p3');
   if (s05bp3) s05bp3.innerHTML = t('sections.s05b.p3');
 
-  // Section §05c
-  const s05cLabel = document.getElementById('s05c-label');
-  if (s05cLabel) s05cLabel.textContent = t('sections.s05c.label');
-  const s05cHeading = document.getElementById('s05c-heading');
-  if (s05cHeading) s05cHeading.innerHTML = t('sections.s05c.heading');
-  const s05cp1 = document.getElementById('s05c-p1');
-  if (s05cp1) s05cp1.innerHTML = t('sections.s05c.p1');
-  const s05cp2 = document.getElementById('s05c-p2');
-  if (s05cp2) s05cp2.innerHTML = t('sections.s05c.p2');
-  const s05cp3 = document.getElementById('s05c-p3');
-  if (s05cp3) s05cp3.innerHTML = t('sections.s05c.p3');
+
 
   // Section §05d
   const s05dLabel = document.getElementById('s05d-label');

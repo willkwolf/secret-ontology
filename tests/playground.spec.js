@@ -189,3 +189,54 @@ test.describe('Simulador Epistémico - Pruebas Defensivas de Estabilidad y Cero 
     }
   }
 });
+
+test.describe('Defensa contra Errores de JS y Pantalla en Blanco', () => {
+  test('No hay errores de sintaxis ni de ejecución en consola y todo el DOM es visible', async ({ page }) => {
+    const pageErrors = [];
+    const consoleErrors = [];
+
+    page.on('pageerror', err => pageErrors.push(err.toString()));
+    page.on('console', msg => {
+      if (msg.type() === 'error') consoleErrors.push(msg.text());
+    });
+
+    await page.goto('http://localhost:8080/');
+    await page.waitForTimeout(1000);
+
+    // 1. Assert NO JS errors occurred during parsing / execution
+    expect(pageErrors).toEqual([]);
+    expect(consoleErrors).toEqual([]);
+
+    // 2. Assert sections are rendered with content
+    const sectionsCount = await page.locator('section').count();
+    expect(sectionsCount).toBeGreaterThanOrEqual(8);
+
+    // 3. Scroll down step-by-step to trigger IntersectionObserver on all sections
+    await page.evaluate(async () => {
+      const scrollStep = 400;
+      const delay = 30;
+      while (window.scrollY + window.innerHeight < document.body.scrollHeight) {
+        window.scrollBy(0, scrollStep);
+        await new Promise(r => setTimeout(r, delay));
+      }
+    });
+    await page.waitForTimeout(300);
+
+    const invisibleSectionsCount = await page.evaluate(() => {
+      const list = document.querySelectorAll('.fade-in');
+      return Array.from(list).filter(el => {
+        const style = window.getComputedStyle(el);
+        return style.opacity === '0' || style.display === 'none';
+      }).length;
+    });
+
+    expect(invisibleSectionsCount).toBe(0);
+
+    // 4. Assert Phase 2 components are present and visible
+    await expect(page.locator('.dialectic-card')).toBeVisible();
+    await expect(page.locator('.crypto-frontier-card')).toBeVisible();
+    await expect(page.locator('.limit-card-grid')).toBeVisible();
+    await expect(page.locator('#btn-challenge-1')).toBeVisible();
+  });
+});
+
