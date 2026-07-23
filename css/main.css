@@ -2556,5 +2556,5 @@ body.reading-mode .tour-narrative-content {
 .legend-line-colapsa { border-top: 2px dashed var(--danger); }
 
 /* Utility visibility helper */
-.hidden { display: none !important; }
+.hidden { display: none; }
 

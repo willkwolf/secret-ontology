@@ -382,7 +382,8 @@ function _applyStrings() {
   }
   const regenBtn = document.getElementById('regen-btn');
   if (regenBtn) {
-    const isTriggered = document.getElementById('regen-nodes-2')?.style.display === 'flex';
+    const nodes2 = document.getElementById('regen-nodes-2');
+    const isTriggered = nodes2 && !nodes2.classList.contains('hidden') && nodes2.style.display !== 'none';
     regenBtn.textContent = isTriggered
       ? (isEn ? 'Reset ↺' : 'Reiniciar ↺')
       : (isEn ? 'Reveal →' : 'Revelar →');
@@ -836,12 +837,24 @@ function _initTooltips() {
 function _initRegenDemo() {
   let triggered = false;
   const btn = document.getElementById('regen-btn');
-  if (!btn) return;
+  const nodes1 = document.getElementById('regen-nodes');
+  const nodes2 = document.getElementById('regen-nodes-2');
+  if (!btn || !nodes1 || !nodes2) return;
 
   btn.addEventListener('click', () => {
     triggered = !triggered;
-    document.getElementById('regen-nodes').style.display   = triggered ? 'none' : 'flex';
-    document.getElementById('regen-nodes-2').style.display = triggered ? 'flex' : 'none';
+    if (triggered) {
+      nodes1.classList.add('hidden');
+      nodes1.style.display = 'none';
+      nodes2.classList.remove('hidden');
+      nodes2.style.display = 'flex';
+    } else {
+      nodes1.classList.remove('hidden');
+      nodes1.style.display = 'flex';
+      nodes2.classList.add('hidden');
+      nodes2.style.display = 'none';
+    }
+    btn.setAttribute('aria-pressed', triggered ? 'true' : 'false');
     const isEn = getLang() === 'en';
     btn.textContent = triggered 
       ? (isEn ? 'Reset ↺' : 'Reiniciar ↺') 
