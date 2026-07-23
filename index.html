@@ -16,7 +16,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/main.css">
@@ -30,6 +30,9 @@
 <nav aria-label="Navegación principal">
   <div class="nav-title">GEMD · 2026</div>
   <div class="nav-right">
+    <button class="nav-tab theme-btn" id="theme-btn"
+            aria-label="Cambiar tema / Switch theme"
+            onclick="toggleTheme()">🌙 MODO OSCURO</button>
     <button class="nav-tab" id="reading-mode-btn"
             aria-label="Alternar modo lectura / Toggle reading mode"
             onclick="toggleReadingMode()">📖 MODO LECTURA</button>
@@ -40,10 +43,10 @@
 </nav>
 
 <!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
-<div class="hero" role="banner">
+<header class="hero" role="banner">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-grid" aria-hidden="true"></div>
-  <div style="position:relative; z-index:1;">
+  <div class="hero-content-wrapper">
     <div class="hero-overline">Ontología del Secreto · Investigación filosófica interactiva</div>
     <h1 class="hero-title">¿Cuál es el <em>mejor</em><br>secreto posible?</h1>
     <p class="hero-subtitle">Una exploración modal del conocimiento, el ocultamiento<br>y los horizontes de lo incognoscible</p>
@@ -52,7 +55,7 @@
     <div class="scroll-line"></div>
     <span>Desplazar</span>
   </div>
-</div>
+</header>
 
 <!-- ─── MAIN CONTENT ─────────────────────────────────────────────────────── -->
 <main id="main-content">
@@ -64,12 +67,12 @@
       <h2 id="s01-heading">El secreto no es<br>una <em>cosa</em>. Es una relación.</h2>
       <p id="s01-p1">La intuición común trata el secreto como un objeto: algo que se guarda, que se esconde, que se pierde. Pero esta imagen es filosóficamente inadecuada. El secreto no existe en el vacío — existe siempre entre un <strong>contenido</strong>, un <strong>agente</strong> y un <strong>mundo epistémico</strong>.</p>
       <p id="s01-p2">Formalizado en lógica modal, el secreto es una relación de tres partes (tres ingredientes indispensables):</p>
-      <div class="formula-container">
-        <div class="formula" role="math" aria-label="Fórmula: Secret de C, a, w es equivalente a C y no-K-sub-a de C, w">
-          Secret(C, a, w) &nbsp;≡&nbsp; C &nbsp;∧&nbsp; ¬Kₐ(C, w)
+      <figure class="formula-container">
+        <div class="formula formula-calligraphy" role="math" aria-label="Fórmula: Secret de C, a, w es equivalente a C y no-K-sub-a de C, w">
+          Secret(C, a, w) &nbsp;<span class="modal-operator">≡</span>&nbsp; C &nbsp;<span class="modal-operator">∧</span>&nbsp; <span class="modal-operator">¬</span>Kₐ(C, w)
         </div>
         <!-- Guía de Lectura Rápida en español -->
-        <div class="formula-legend" aria-label="Leyenda de la fórmula nuclear">
+        <figcaption class="formula-legend" aria-label="Leyenda de la fórmula nuclear">
           <div class="legend-title" id="formula-legend-title">Guía de Lectura Rápida</div>
           <div class="legend-grid">
             <div class="legend-cell font-mono">Secret(C, a, w)</div>
@@ -93,8 +96,8 @@
             <div class="legend-cell font-mono">(C, w)</div>
             <div class="legend-cell" id="legend-world-def"><strong>(C, w):</strong> El contenido C dentro del contexto del mundo posible <em>w</em> en el que se sitúa la relación.</div>
           </div>
-        </div>
-      </div>
+        </figcaption>
+      </figure>
       <p id="formula-nuclear-explanation">Leído en español: <strong>hay secreto cuando un contenido C es verdadero en un mundo w, pero el agente a no lo conoce en ese mundo.</strong> No hay secreto sin alguien para quien sea secreto.</p>
       <p id="s01-p3">Esta definición tiene consecuencias inmediatas: cambiar el agente, el mundo, o el contenido transforma — y puede eliminar — el secreto. Lo que es un misterio para un agente puede ser conocimiento rutinario para otro, en el mismo mundo.</p>
     </div>
@@ -107,16 +110,16 @@
       <h2 id="s02-heading">Secreto vs. <em>Misterio</em></h2>
       <p id="s02-p1">La filosofía popular confunde constantemente dos categorías que exigen separación rigurosa. Un secreto es cognoscible en principio. Un misterio, no.</p>
       <div class="distinction">
-        <div class="distinction-card secret">
-          <h4 id="distinction-secret-title">Secreto</h4>
+        <article class="distinction-card secret">
+          <h3 id="distinction-secret-title">Secreto</h3>
           <p id="distinction-secret-desc">Es como un <strong>cofre cerrado con llave</strong>. El agente no conoce el hecho hoy, pero <em>existe una llave</em> y es posible en principio descubrirlo. Hay un camino accesible hacia el saber.</p>
-          <div class="mono" aria-label="Fórmula: no-K-a-C y posiblemente K-a-C">¬Kₐ(C) &nbsp;∧&nbsp; ◇Kₐ(C)</div>
-        </div>
-        <div class="distinction-card mystery">
-          <h4 id="distinction-mystery-title">Misterio</h4>
+          <div class="mono formula-calligraphy" aria-label="Fórmula: no-K-a-C y posiblemente K-a-C">¬Kₐ(C) &nbsp;<span class="modal-operator">∧</span>&nbsp; <span class="modal-operator">◇</span>Kₐ(C)</div>
+        </article>
+        <article class="distinction-card mystery">
+          <h3 id="distinction-mystery-title">Misterio</h3>
           <p id="distinction-mystery-desc">Es como <strong>saber qué se siente estar dentro de un agujero negro</strong>. Las leyes físicas impiden extraer esa información de manera absoluta. No existe ninguna llave ni camino posible; la inaccesibilidad es <em>estructural</em>.</p>
-          <div class="mono" aria-label="Fórmula: no-K-a-C y necesariamente no-K-a-C">¬Kₐ(C) &nbsp;∧&nbsp; □¬Kₐ(C)</div>
-        </div>
+          <div class="mono formula-calligraphy" aria-label="Fórmula: no-K-a-C y necesariamente no-K-a-C">¬Kₐ(C) &nbsp;<span class="modal-operator">∧</span>&nbsp; <span class="modal-operator">□</span>¬Kₐ(C)</div>
+        </article>
       </div>
       
       <!-- Desglose de símbolos lógicos de secreto vs. misterio -->
@@ -124,14 +127,14 @@
         <div class="explanation-title" id="explanation-modal-title">Desglose de los Operadores Modales</div>
         <ul class="explanation-list">
           <li>
-            <span class="symbol font-mono">¬Kₐ(C) &nbsp;∧&nbsp; ◇Kₐ(C)</span>
+            <span class="symbol font-mono formula-calligraphy">¬Kₐ(C) &nbsp;∧&nbsp; ◇Kₐ(C)</span>
             <span class="desc" id="explanation-modal-secret">
               <strong>Secreto Revelable:</strong> El agente no conoce C hoy <em>(¬Kₐ(C))</em>, <strong>Y</strong> es factible o posible que llegue a conocerlo en el futuro <em>(◇Kₐ(C))</em>.
               <br><small class="text-dim">El rombo (<strong>◇</strong>) representa <strong>posibilidad modal</strong>: significa que existe al menos un mundo accesible donde la barrera de ignorancia cae.</small>
             </span>
           </li>
           <li>
-            <span class="symbol font-mono">¬Kₐ(C) &nbsp;∧&nbsp; □¬Kₐ(C)</span>
+            <span class="symbol font-mono formula-calligraphy">¬Kₐ(C) &nbsp;∧&nbsp; □¬Kₐ(C)</span>
             <span class="desc" id="explanation-modal-mystery">
               <strong>Misterio Absoluto:</strong> El agente no conoce C hoy <em>(¬Kₐ(C))</em>, <strong>Y</strong> es estrictamente necesario que nunca pueda conocerlo <em>(□¬Kₐ(C))</em>.
               <br><small class="text-dim">El cuadrado (<strong>□</strong>) representa <strong>necesidad modal</strong>: indica que en todos los universos o mundos posibles de la estructura, la incognoscibilidad es absoluta.</small>
@@ -144,13 +147,13 @@
       <p id="s02-p4">En el grafo modal que sigue, las aristas punteadas representan secretos (acceso posible). Las aristas bloqueadas en violeta representan misterios (incognoscibilidad estructural).</p>
       
       <!-- Micro-Graph 1: Secreto vs Misterio -->
-      <div id="micro-graph-distinction-container" class="micro-graph-section-wrapper">
+      <figure id="micro-graph-distinction-container" class="micro-graph-section-wrapper">
         <h3 id="micro-distinction-title" class="micro-graph-title">Visualización del Secreto vs. Misterio (Kripke)</h3>
         <div id="micro-graph-distinction" class="micro-graph-container"></div>
-        <div id="micro-graph-distinction-desc" class="micro-graph-desc-panel">
+        <figcaption id="micro-graph-distinction-desc" class="micro-graph-desc-panel">
           <p id="micro-distinction-prompt" class="click-prompt">Haz clic en los nodos para explorar su relación modal...</p>
-        </div>
-      </div>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -201,12 +204,12 @@
 
         <!-- Formula and State Display -->
         <div class="playground-display">
-          <div class="playground-formula" id="play-formula-box">
+          <div class="playground-formula formula-calligraphy" id="play-formula-box">
             <span class="play-symbol" id="sym-secret">Secret(C, a, w)</span>
-            <span class="play-symbol" id="sym-equiv">≡</span>
+            <span class="play-symbol modal-operator" id="sym-equiv">≡</span>
             <span class="play-symbol" id="sym-c">C</span>
-            <span class="play-symbol" id="sym-and">∧</span>
-            <span class="play-symbol" id="sym-not">¬</span>
+            <span class="play-symbol modal-operator" id="sym-and">∧</span>
+            <span class="play-symbol modal-operator" id="sym-not">¬</span>
             <span class="play-symbol" id="sym-know">Kₐ(C, w)</span>
           </div>
 
@@ -222,85 +225,85 @@
 
       <!-- PARTE B: Relación Visual (Micro-grafo interactivo sincronizado + Leyenda visual) -->
       <div class="playground-container visual-playground" id="visual-playground-section">
-        <div class="visual-explanation-header" style="grid-column: 1 / -1; margin-bottom: 8px;">
-          <h3 id="visual-playground-title" style="font-family: var(--font-title); font-size: 1.4rem; color: var(--silver); margin-bottom: 6px;">Traducción Visual de la Accesibilidad</h3>
-          <p id="visual-playground-intro" style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 12px; font-weight: 300;">Para leer el gran mapa epistémico más abajo, es vital familiarizar tus ojos con cómo se dibuja la relación entre mundos posibles. Observa la conexión en el grafo interactivo mientras cambias las variables:</p>
+        <div class="visual-explanation-header">
+          <h3 id="visual-playground-title" class="visual-explanation-title">Traducción Visual de la Accesibilidad</h3>
+          <p id="visual-playground-intro" class="visual-explanation-intro">Para leer el gran mapa epistémico más abajo, es vital familiarizar tus ojos con cómo se dibuja la relación entre mundos posibles. Observa la conexión en el grafo interactivo mientras cambias las variables:</p>
         </div>
 
         <!-- Left: Micro-Graph -->
-        <div id="micro-graph-playground-container" class="micro-graph-section-wrapper" style="margin-top: 0;">
-          <h4 id="micro-playground-title" class="micro-graph-title" style="font-size: 0.85rem; font-family: var(--font-mono); letter-spacing: 0.05em; color: var(--gold-dim); margin-bottom: 12px;">Relación Dinámica de Accesibilidad (w₀ → w₁)</h4>
-          <div id="micro-graph-playground" class="micro-graph-container" style="background: var(--bg3); border-radius: 4px; border: 1px solid var(--border);"></div>
-        </div>
+        <figure id="micro-graph-playground-container" class="micro-graph-section-wrapper compact-top">
+          <h4 id="micro-playground-title" class="micro-graph-title-sm">Relación Dinámica de Accesibilidad (w₀ → w₁)</h4>
+          <div id="micro-graph-playground" class="micro-graph-container micro-graph-box"></div>
+        </figure>
 
         <!-- Right: Synced Controls & Visual Legend -->
-        <div class="playground-visual-details" style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="playground-visual-details">
           <!-- Compact Controls -->
-          <div class="playground-controls synced-controls" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; width: 100%; box-sizing: border-box;">
-            <div class="control-switch-group compact" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 4px; padding: 10px 4px; min-height: 72px; box-sizing: border-box;">
+          <div class="playground-controls synced-controls synced-controls-grid">
+            <div class="control-switch-group compact compact-centered">
               <div>
-                <span class="switch-title" id="play-v-toggle-c-label" style="font-size: 0.82rem; margin-bottom: 0;">Fact (C)</span>
+                <span class="switch-title compact-title" id="play-v-toggle-c-label">Fact (C)</span>
               </div>
-              <label class="switch" aria-label="Toggle Contenido C Visual" style="width: 36px; height: 20px;">
+              <label class="switch compact-switch" aria-label="Toggle Contenido C Visual">
                 <input type="checkbox" id="play-v-c" checked>
-                <span class="slider" style="border-radius: 20px;"></span>
+                <span class="slider round-slider"></span>
               </label>
             </div>
 
-            <div class="control-switch-group compact" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 4px; padding: 10px 4px; min-height: 72px; box-sizing: border-box;">
+            <div class="control-switch-group compact compact-centered">
               <div>
-                <span class="switch-title" id="play-v-toggle-k-label" style="font-size: 0.82rem; margin-bottom: 0;">Knows (Kₐ)</span>
+                <span class="switch-title compact-title" id="play-v-toggle-k-label">Knows (Kₐ)</span>
               </div>
-              <label class="switch" aria-label="Toggle Conocimiento K Visual" style="width: 36px; height: 20px;">
+              <label class="switch compact-switch" aria-label="Toggle Conocimiento K Visual">
                 <input type="checkbox" id="play-v-k">
-                <span class="slider" style="border-radius: 20px;"></span>
+                <span class="slider round-slider"></span>
               </label>
             </div>
 
-            <div class="control-switch-group compact" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 4px; padding: 10px 4px; min-height: 72px; box-sizing: border-box;">
+            <div class="control-switch-group compact compact-centered">
               <div>
-                <span class="switch-title" id="play-v-toggle-access-label" style="font-size: 0.82rem; margin-bottom: 0;">Access (◇)</span>
+                <span class="switch-title compact-title" id="play-v-toggle-access-label">Access (◇)</span>
               </div>
-              <label class="switch" aria-label="Toggle Acceso Modal Visual" style="width: 36px; height: 20px;">
+              <label class="switch compact-switch" aria-label="Toggle Acceso Modal Visual">
                 <input type="checkbox" id="play-v-access" checked>
-                <span class="slider" style="border-radius: 20px;"></span>
+                <span class="slider round-slider"></span>
               </label>
             </div>
           </div>
 
           <!-- Compact Formula synced -->
-          <div class="playground-formula compact" id="play-v-formula-box" style="padding: 14px; min-height: auto; font-size: 0.95rem; display: flex; gap: 6px; justify-content: center; background: var(--bg3); border-radius: 4px; border: 1px solid var(--border);">
-            <span class="play-symbol v-sym" id="sym-v-secret" style="transition: all 0.3s ease;">Secret</span>
-            <span class="play-symbol v-sym" id="sym-v-equiv" style="transition: all 0.3s ease;">≡</span>
-            <span class="play-symbol v-sym" id="sym-v-c" style="transition: all 0.3s ease;">C</span>
-            <span class="play-symbol v-sym" id="sym-v-and" style="transition: all 0.3s ease;">∧</span>
-            <span class="play-symbol v-sym" id="sym-v-not" style="transition: all 0.3s ease;">¬</span>
-            <span class="play-symbol v-sym" id="sym-v-know" style="transition: all 0.3s ease;">Kₐ</span>
+          <div class="playground-formula compact compact-formula formula-calligraphy" id="play-v-formula-box">
+            <span class="play-symbol v-sym" id="sym-v-secret">Secret</span>
+            <span class="play-symbol v-sym modal-operator" id="sym-v-equiv">≡</span>
+            <span class="play-symbol v-sym" id="sym-v-c">C</span>
+            <span class="play-symbol v-sym modal-operator" id="sym-v-and">∧</span>
+            <span class="play-symbol v-sym modal-operator" id="sym-v-not">¬</span>
+            <span class="play-symbol v-sym" id="sym-v-know">Kₐ</span>
           </div>
 
           <!-- Visual Legend Explanation -->
-          <div class="visual-relation-legend" style="display: flex; flex-direction: column; gap: 10px; background: var(--bg3); padding: 16px; border-radius: 4px; border: 1px solid var(--border);">
-            <div class="legend-row" id="legend-row-direct" style="display: flex; gap: 12px; align-items: center; font-size: 0.8rem; line-height: 1.4; color: var(--text-dim);">
-              <span class="legend-visual" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-weight: bold; color: var(--text-dimmer); min-width: 60px;">
-                <span class="relation-line solid-gold" style="display: inline-block; width: 28px; height: 3.5px; background: var(--gold);"></span>➔
+          <div class="visual-relation-legend">
+            <div class="legend-row legend-row-item" id="legend-row-direct">
+              <span class="legend-visual legend-visual-tag">
+                <span class="relation-line solid-gold"></span>➔
               </span>
               <span class="legend-text"><strong>Línea continua dorada:</strong> Conocimiento completo. La información fluye libremente entre mundos.</span>
             </div>
-            <div class="legend-row" id="legend-row-dotted" style="display: flex; gap: 12px; align-items: center; font-size: 0.8rem; line-height: 1.4; color: var(--text-dim);">
-              <span class="legend-visual" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-weight: bold; color: var(--text-dimmer); min-width: 60px;">
-                <span class="relation-line dotted-gold" style="display: inline-block; width: 28px; height: 2px; border-top: 2px dashed var(--gold);"></span>➔
+            <div class="legend-row legend-row-item" id="legend-row-dotted">
+              <span class="legend-visual legend-visual-tag">
+                <span class="relation-line dotted-gold"></span>➔
               </span>
               <span class="legend-text"><strong>Línea punteada dorada:</strong> Secreto descifrable. El puente modal (◇) está abierto: es posible conocer en w₁.</span>
             </div>
-            <div class="legend-row" id="legend-row-barred" style="display: flex; gap: 12px; align-items: center; font-size: 0.8rem; line-height: 1.4; color: var(--text-dim);">
-              <span class="legend-visual" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-weight: bold; color: var(--text-dimmer); min-width: 60px;">
-                <span class="relation-line barred-violet" style="display: inline-block; width: 28px; height: 2px; background: var(--mystery);"></span>┫
+            <div class="legend-row legend-row-item" id="legend-row-barred">
+              <span class="legend-visual legend-visual-tag">
+                <span class="relation-line barred-violet"></span>┫
               </span>
               <span class="legend-text"><strong>Arista violeta con barra:</strong> Misterio inalcanzable. El acceso modal está bloqueado por una barrera de necesidad (□).</span>
             </div>
-            <div class="legend-row" id="legend-row-red-barred" style="display: flex; gap: 12px; align-items: center; font-size: 0.8rem; line-height: 1.4; color: var(--text-dim);">
-              <span class="legend-visual" style="display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-weight: bold; color: var(--text-dimmer); min-width: 60px;">
-                <span class="relation-line barred-red" style="display: inline-block; width: 28px; height: 1.5px; background: var(--danger);"></span>┫
+            <div class="legend-row legend-row-item" id="legend-row-red-barred">
+              <span class="legend-visual legend-visual-tag">
+                <span class="relation-line barred-red"></span>┫
               </span>
               <span class="legend-text"><strong>Arista roja con barra:</strong> Inconsistencia o absurdo. El hecho básico (C) es falso, haciendo colapsar la lógica.</span>
             </div>
@@ -317,31 +320,31 @@
       <h2 id="s04-heading">Los cinco mundos<br>en los <em>límites</em></h2>
       <p id="s04-p1">Para cartografiar el espacio del secreto, primero necesitamos sus fronteras. Los <span class="tip" id="tip-kripke" data-tip="En la semántica de Kripke, los mundos posibles son situaciones completas — no universos físicos, sino estados totales de cosas, incluyendo qué se sabe y qué no.">mundos posibles</span> extremos definen los polos del grafo:</p>
       <div class="worlds-grid">
-        <div class="world-card">
-          <h4 id="s04-wT-title">Transparencia absoluta</h4>
+        <article class="world-card">
+          <h3 id="s04-wT-title">Transparencia absoluta</h3>
           <div class="world-sym">(w<sub>T</sub>)</div>
           <p id="s04-wT-desc">Todo contenido es conocido por todos los agentes. El secreto es imposible por definición.</p>
-        </div>
-        <div class="world-card">
-          <h4 id="s04-wO-title">Opacidad absoluta</h4>
+        </article>
+        <article class="world-card">
+          <h3 id="s04-wO-title">Opacidad absoluta</h3>
           <div class="world-sym">(w<sub>O</sub>)</div>
           <p id="s04-wO-desc">Ningún contenido es cognoscible. El conocimiento mismo colapsa. No hay agentes epistémicos.</p>
-        </div>
-        <div class="world-card">
-          <h4 id="s04-wE-title">Conocimiento eterno</h4>
+        </article>
+        <article class="world-card">
+          <h3 id="s04-wE-title">Conocimiento eterno</h3>
           <div class="world-sym">(w<sub>E</sub>)</div>
           <p id="s04-wE-desc">Toda verdad es conocida. No hay frontera dinámica, no hay emergencia de nuevas incertidumbres.</p>
-        </div>
-        <div class="world-card">
-          <h4 id="s04-wF-title">Cognición finita regenerativa</h4>
+        </article>
+        <article class="world-card">
+          <h3 id="s04-wF-title">Cognición finita regenerativa</h3>
           <div class="world-sym">(w<sub>F</sub>)</div>
           <p id="s04-wF-desc">El conocimiento crece pero siempre emergen nuevas regiones de incertidumbre: horizonte móvil.</p>
-        </div>
-        <div class="world-card">
-          <h4 id="s04-wN-title">No-dualidad epistémica</h4>
+        </article>
+        <article class="world-card">
+          <h3 id="s04-wN-title">No-dualidad epistémica</h3>
           <div class="world-sym">(w<sub>N</sub>)</div>
           <p id="s04-wN-desc">La distinción sujeto-objeto colapsa. No hay secreto porque no hay agente separado del contenido.</p>
-        </div>
+        </article>
       </div>
       <p id="s04-p2">Nuestro mundo — el universo tal como lo habitamos — es una variación de <strong>Cognición finita regenerativa (w<sub>F</sub>)</strong>: conocimiento real pero finito, con un horizonte que se desplaza pero nunca desaparece.</p>
     </div>
@@ -355,15 +358,15 @@
       <p id="s05-p1">Existe un prejuicio implícito en la idea de progreso: que revelar un secreto <em>reduce</em> nuestra ignorancia total. Pero la historia de la ciencia contradice esta intuición de manera sistemática.</p>
       <p id="s05-p2"><strong>La metáfora de la linterna:</strong> Imagina que estás en medio de un bosque oscuro con una linterna. El círculo de luz es tu conocimiento. Si aumentas la potencia de la linterna, tu círculo iluminado se agranda... pero la frontera exterior del círculo (el borde en contacto con la oscuridad de lo desconocido) también se expande inevitablemente. Conocer más no reduce la noche; agranda tu mapa de preguntas.</p>
       <div class="regen-demo">
-        <h4 id="s05-demo-title">Demostración interactiva — Haz clic en "Revelar"</h4>
+        <h3 id="s05-demo-title">Demostración interactiva — Haz clic en "Revelar"</h3>
         <div class="regen-nodes" id="regen-nodes" aria-live="polite">
           <div class="regen-node">Estructura del ADN</div>
           <div class="regen-arrow" aria-hidden="true">→</div>
-          <div class="regen-node" style="opacity:0.3;">Epigenoma</div>
+          <div class="regen-node regen-node-dim">Epigenoma</div>
           <div class="regen-arrow" aria-hidden="true">→</div>
-          <div class="regen-node" style="opacity:0.15;">? ? ?</div>
+          <div class="regen-node regen-node-faint">? ? ?</div>
         </div>
-        <div class="regen-nodes" id="regen-nodes-2" style="display:none;" aria-live="polite">
+        <div class="regen-nodes hidden" id="regen-nodes-2" aria-live="polite">
           <div class="regen-node revealed">Estructura del ADN ✓</div>
           <div class="regen-arrow" aria-hidden="true">→</div>
           <div class="regen-node revealed">Epigenoma ✓</div>
@@ -375,7 +378,7 @@
           <div class="regen-node emerged">??? (nueva frontera)</div>
         </div>
         <button class="regen-btn" id="regen-btn" aria-pressed="false">Revelar →</button>
-        <p id="s05-demo-caption" style="margin-top:12px; font-size:0.82rem; color:var(--text-dimmer);">
+        <p id="s05-demo-caption" class="regen-caption">
           Cada revelación redistribuye la accesibilidad epistémica. El horizonte no retrocede — se transforma.
         </p>
       </div>
@@ -393,13 +396,13 @@
       <p id="s05b-p2">Cada nodo del grafo ocupa una posición determinada por su distancia relativa a estos polos. Un mundo con alto conocimiento se acerca a <strong>Transparencia absoluta (w<sub>T</sub>)</strong>; uno con alta incognoscibilidad se acerca a <strong>Opacidad absoluta (w<sub>O</sub>)</strong>. La topología es la geometría del secreto.</p>
       <p id="s05b-p3">Activa la capa de <strong>Topología</strong> en el selector para ver los nodos de límite estructural y los polos modales en su posición relativa.</p>
 
-      <div id="micro-graph-topology-container" class="micro-graph-section-wrapper">
+      <figure id="micro-graph-topology-container" class="micro-graph-section-wrapper">
         <h3 id="micro-topology-title" class="micro-graph-title">Polos de la Estructura Modal</h3>
         <div id="micro-graph-topology" class="micro-graph-container"></div>
-        <div id="micro-graph-topology-desc" class="micro-graph-desc-panel">
-          <p id="micro-topology-desc" style="text-align: center; color: var(--text-dimmer);">Haz clic en un polo modal para explorar su topología.</p>
-        </div>
-      </div>
+        <figcaption id="micro-graph-topology-desc" class="micro-graph-desc-panel">
+          <p id="micro-topology-desc" class="text-center-dimmer">Haz clic en un polo modal para explorar su topología.</p>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -409,7 +412,7 @@
       <div class="section-label" id="s05c-label">§ 05c — Límites estructurales</div>
       <h2 id="s05c-heading">Más allá del agente:<br><em>límites formales</em></h2>
       <p id="s05c-p1">Hasta ahora hemos hablado de secretos de personas: lo que alguien no sabe hoy, pero podría saber. Pero el universo tiene sus propias barreras insuperables, secretos universales que no dependen de ningún ser humano: los <strong>límites formales y físicos</strong>.</p>
-      <p id="s05c-p2" style="line-height: 1.8;">
+      <p id="s05c-p2" class="line-height-relaxed">
         <strong>¿Hay verdades que nunca podremos demostrar?</strong> El <strong>Límite de Gödel</strong> responde que sí: la matemática siempre tendrá verdades discretas e indemostrables.<br>
         <strong>¿Puede una computadora resolver cualquier acertijo?</strong> El <strong>Límite de Turing</strong> demuestra que hay problemas que entran en bucles infinitos imposibles de resolver en tiempo finito.<br>
         <strong>¿La realidad oculta información o es borrosa por naturaleza?</strong> La <strong>Indeterminación Cuántica</strong> establece que en el mundo subatómico, medir un dato destruye otro de forma física e irreducible.<br>
@@ -429,26 +432,26 @@
       <p id="s05d-p2">La capa <strong>Temporal</strong> del grafo captura esta dinámica: los nodos con alto horizonte de desconocido pulsan hacia afuera, los de alto conocido se comprimen. La <strong>Cognición finita regenerativa (w<sub>F</sub>)</strong> es el motor de esta dinámica perpetua.</p>
       <p id="s05d-p3">Activa la capa <strong>Temporal</strong> para observar la animación de las fronteras cognitivas.</p>
 
-      <div id="micro-graph-temporal-container" class="micro-graph-section-wrapper">
+      <figure id="micro-graph-temporal-container" class="micro-graph-section-wrapper">
         <h3 id="micro-temporal-title" class="micro-graph-title">Fronteras Cognitivas Móviles</h3>
         <div id="micro-graph-temporal" class="micro-graph-container"></div>
-        <div id="micro-graph-temporal-desc" class="micro-graph-desc-panel">
-          <p id="micro-temporal-desc" style="text-align: center; color: var(--text-dimmer);">Los horizontes epistémicos pulsan, expandiendo la incertidumbre a medida que el conocimiento avanza.</p>
-        </div>
-      </div>
+        <figcaption id="micro-graph-temporal-desc" class="micro-graph-desc-panel">
+          <p id="micro-temporal-desc" class="text-center-dimmer">Los horizontes epistémicos pulsan, expandiendo la incertidumbre a medida que el conocimiento avanza.</p>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
   <!-- § 05e — EL DISPOSITIVO EPISTÉMICO COMPLETO -->
-  <div class="graph-section" aria-labelledby="s05-heading">
+  <div class="graph-section" aria-labelledby="graph-main-title">
     <div class="graph-container">
       <div class="graph-header">
         <div class="graph-header-left">
           <div class="section-label" id="graph-section-label">§ 05e — El dispositivo epistémico completo</div>
-          <h2 id="s05-heading" class="graph-main-title" style="font-size:clamp(1.4rem,4vw,1.9rem); margin-bottom:6px;">
+          <h2 id="graph-main-title" class="graph-main-title graph-heading-clamp">
             Grafo Epistémico<br>Modal Dinámico
           </h2>
-          <p class="graph-hint" style="font-size:0.85rem; margin:0; color:var(--text-dimmer);">
+          <p class="graph-hint graph-hint-sm">
             Toca o arrastra los nodos para explorar. Haz clic en un nodo para ver su ficha.
           </p>
         </div>
@@ -557,7 +560,7 @@
 
         <!-- Standalone Options Toggle Gear -->
         <button class="options-toggle-btn" id="options-toggle-btn" aria-label="Alternar Opciones" onclick="toggleOptionsHeader(event)">
-          <svg class="cog-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 18px; height: 18px; display: block; pointer-events: none;">
+          <svg class="cog-svg cog-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="3"></circle>
             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
           </svg>
@@ -579,55 +582,55 @@
         </button>
 
         <!-- Collapsible overlay Legend + Edge Filters card -->
-        <div id="overlay-legend-card" class="overlay-legend-card" role="region" aria-label="Leyenda y Filtro de Aristas">
+        <aside id="overlay-legend-card" class="overlay-legend-card" role="region" aria-label="Leyenda y Filtro de Aristas">
           <div class="overlay-legend-title" id="legend-overlay-title">Aristas & Leyenda</div>
 
           <div class="compact-legend-list">
             <div class="legend-item" data-type="Revelation">
-              <div class="legend-line" style="border-top: 2px dashed var(--gold);"></div>
+              <div class="legend-line legend-line-revelation"></div>
               <span id="legend-lbl-revelation">Revelación</span>
             </div>
             <div class="legend-item" data-type="Concealment">
-              <div class="legend-line" style="background: var(--text-dimmer);"></div>
+              <div class="legend-line legend-line-concealment"></div>
               <span id="legend-lbl-concealment">Ocultamiento</span>
             </div>
             <div class="legend-item" data-type="Emergence">
-              <div class="legend-line" style="border-top: 2px dashed var(--blue-light);"></div>
+              <div class="legend-line legend-line-emergence"></div>
               <span id="legend-lbl-emergence">Emergencia</span>
             </div>
             <div class="legend-item" data-type="Compression">
-              <div class="legend-line" style="background: var(--green-teal);"></div>
+              <div class="legend-line legend-line-compression"></div>
               <span id="legend-lbl-compression">Compresión</span>
             </div>
             <div class="legend-item" data-type="Bifurcation">
-              <div class="legend-line" style="border-top: 2px dashed var(--mystery);"></div>
+              <div class="legend-line legend-line-bifurcation"></div>
               <span id="legend-lbl-bifurcation">Bifurcación</span>
             </div>
             <div class="legend-item" data-type="Degrada">
-              <div class="legend-line" style="border-top: 2px dashed var(--mystery);"></div>
+              <div class="legend-line legend-line-degrada"></div>
               <span id="legend-lbl-degrada">Degrada</span>
             </div>
             <div class="legend-item" data-type="Imposibilita">
-              <div class="legend-line" style="background: var(--danger);"></div>
+              <div class="legend-line legend-line-imposibilita"></div>
               <span id="legend-lbl-imposibilita">Imposibilita</span>
             </div>
             <div class="legend-item" data-type="Restringe_termo">
-              <div class="legend-line" style="border-top: 2px dashed var(--text-dim);"></div>
+              <div class="legend-line legend-line-restringe"></div>
               <span id="legend-lbl-restringe">Restringe (termo)</span>
             </div>
             <div class="legend-item" data-type="Fusiona">
-              <div class="legend-line" style="background: var(--green-teal);"></div>
+              <div class="legend-line legend-line-fusiona"></div>
               <span id="legend-lbl-fusiona">Fusiona</span>
             </div>
             <div class="legend-item" data-type="Colapsa">
-              <div class="legend-line" style="border-top: 2px dashed var(--danger);"></div>
+              <div class="legend-line legend-line-colapsa"></div>
               <span id="legend-lbl-colapsa">Colapsa</span>
             </div>
           </div>
-        </div>
+        </aside>
 
         <!-- Tour narrative panel -->
-        <div class="tour-panel" id="tour-narrative-panel" style="display:none;" role="dialog" aria-modal="false" aria-labelledby="tour-badge-text">
+        <div class="tour-panel hidden" id="tour-narrative-panel" role="dialog" aria-modal="false" aria-labelledby="tour-badge-text">
           <div class="tour-panel-header">
             <span class="tour-badge" id="tour-badge-text">Tour</span>
             <span class="tour-step-count" id="tour-step-indicator">Paso 1 de 3</span>
@@ -643,21 +646,21 @@
         </div>
 
         <!-- Node detail panel -->
-        <div class="node-panel" id="node-panel" role="dialog"
+        <aside class="node-panel" id="node-panel" role="dialog"
              aria-modal="false" aria-labelledby="panel-name">
           <button class="panel-close" onclick="closePanel()"
                   aria-label="Cerrar panel">✕</button>
           <div class="panel-header">
-            <h4 id="panel-name"></h4>
+            <h3 id="panel-name"></h3>
             <div class="world-id" id="panel-id"></div>
-            <p id="panel-description" style="font-size: 0.82rem; color: var(--text-dim); line-height: 1.45; margin-top: 8px; margin-bottom: 4px; font-style: italic; border-bottom: 1px solid rgba(197, 168, 107, 0.15); padding-bottom: 8px;"></p>
+            <p id="panel-description" class="panel-description-text"></p>
           </div>
           <div class="panel-scroll-content">
 
             <!-- Dynamic Modal Formula Block (Primary Analytical Hero) -->
             <div class="panel-section formula-block" id="panel-formula-section">
-              <div class="tech-lbl" style="margin-bottom: 4px;" id="panel-label-formula">Fórmula modal</div>
-              <div class="formula-text" id="panel-formula"></div>
+              <div class="tech-lbl tech-lbl-sm" id="panel-label-formula">Fórmula modal</div>
+              <div class="formula-text formula-calligraphy" id="panel-formula"></div>
               <div class="formula-translation" id="panel-formula-castellano"></div>
             </div>
 
@@ -686,16 +689,16 @@
 
             <div class="panel-section">
               <div class="panel-label" id="panel-label-refs">Referencias</div>
-              <div class="panel-content" id="panel-refs" style="font-size:0.75rem; font-style:italic;"></div>
+              <div class="panel-content panel-refs-text" id="panel-refs"></div>
             </div>
 
-            <div class="panel-section" id="panel-structural-limit-section" style="display:none;" aria-label="Límite estructural">
-              <div class="panel-content" id="panel-structural-limit" style="font-size:0.78rem; color:#FF6B35; font-style:italic; font-weight: 500;">
+            <div class="panel-section hidden" id="panel-structural-limit-section" aria-label="Límite estructural">
+              <div class="panel-content panel-structural-limit-text" id="panel-structural-limit">
                 Límite estructural no-antropocéntrico
               </div>
             </div>
           </div>
-        </div>
+        </aside>
       </div>
 
       <!-- Edge detail panel (fixed, follows cursor) -->
@@ -709,14 +712,14 @@
       <div class="section-label" id="s06-label">§ 06 — La pregunta central</div>
       <h2 id="s06-heading">¿Cuál es el <em>mejor</em><br>secreto posible?</h2>
       <p id="s06-p1">Retomamos la pregunta inicial con el aparato conceptual y modal que hemos construido. ¿Qué condición haría que un secreto fuera verdaderamente "mejor" u óptimo? Podemos formalizar tres candidatos a partir de la estructura del grafo:</p>
-      <div class="formula" id="s06-formula" role="math" aria-label="Tres candidatos formales para el mejor secreto">
-        Candidato 1: Secret(C, a, w) maximizando ◇Kₐ(C)<br>
+      <div class="formula formula-calligraphy" id="s06-formula" role="math" aria-label="Tres candidatos formales para el mejor secreto">
+        Candidato 1: Secret(C, a, w) maximizando <span class="modal-operator">◇</span>Kₐ(C)<br>
         <span class="comment">El secreto más revelable: hoy permanece oculto, pero la posibilidad (◇) de que el agente llegue a conocerlo (K) es máxima. Un umbral de descubrimiento inminente.</span><br><br>
-        Candidato 2: Secret(C, a, w) tal que □¬Kₐ(C)<br>
-        <span class="comment">El misterio absoluto: es estrictamente necesario (□) que el agente nunca conozca (¬K) este hecho. Es una barrera estructural de la realidad. ¿Tiene sentido llamarlo "secreto"?</span><br><br>
+        Candidato 2: Secret(C, a, w) tal que <span class="modal-operator">□</span><span class="modal-operator">¬</span>Kₐ(C)<br>
+        <span class="comment">El misterio absoluto: es strictly necesario (□) que el agente nunca conozca (¬K) este hecho. Es una barrera estructural de la realidad. ¿Tiene sentido llamarlo "secreto"?</span><br><br>
         Candidato 3: Secret(C, a, w) donde revelar C genera maximal ΔH<br>
         <span class="comment">La singularidad epistémica: el secreto cuya revelación produce el mayor cambio posible (Δ) en el horizonte de conocimiento (H), reconfigurando por completo todo el mapa y abriendo preguntas insospechadas.</span><br><br>
-        Candidato 4: Secret(C, a, w) tal que Kₐ(Vulnerabilidad, w) ≡ □¬Kₐ(ConsistenciaMatemática, w)<br>
+        Candidato 4: Secret(C, a, w) tal que Kₐ(Vulnerabilidad, w) <span class="modal-operator">≡</span> <span class="modal-operator">□</span><span class="modal-operator">¬</span>Kₐ(ConsistenciaMatemática, w)<br>
         <span class="comment">El secreto autoprotegido por incompletitud: un secreto cuya inseguridad o ruptura es equivalente a demostrar que las matemáticas son inconsistentes. Dado que esta consistencia es formalmente indemostrable desde dentro del propio sistema, la seguridad es absoluta.</span>
       </div>
       <p id="s06-p2">La tercera y la cuarta opción resultan las más fecundas filosófica y conceptualmente: el <strong>mejor secreto</strong> no sería el más hermético ni el más inaccesible, sino aquel que, al ser finalmente revelado, <em>reconfigura todo nuestro horizonte de conocimiento</em> (ΔH) o aquel cuya seguridad está <em>blindada por la consistencia misma de la verdad matemática</em>.</p>
@@ -756,12 +759,12 @@
       <div class="museum-key">Cómo citar</div>
       <div class="museum-val">Artunduaga Viana, W. C. (2026). Grafo Epistémico Modal Dinámico: Ontología del Secreto. Proyecto de Investigación en Epistemología Formal. github.com/willkwolf/secret-ontology</div>
       <div class="museum-key">Más información</div>
-      <div class="museum-val">Para detalles metodológicos, formalización y código fuente, visite directamente el proyecto en <a href="https://github.com/willkwolf/secret-ontology" target="_blank" rel="noopener noreferrer" style="color:var(--gold); text-decoration:underline;">GitHub</a>.</div>
+      <div class="museum-val">Para detalles metodológicos, formalización y código fuente, visite directamente el proyecto en <a href="https://github.com/willkwolf/secret-ontology" target="_blank" rel="noopener noreferrer" class="museum-link">GitHub</a>.</div>
     </div>
     <div class="cc">
       <a href="https://creativecommons.org/licenses/by-sa/4.0/"
          target="_blank" rel="noopener noreferrer"
-         style="color:inherit; text-decoration:underline dotted;">
+         class="cc-link">
         Creative Commons BY-SA 4.0 · William Camilo Artunduaga Viana · 2026
       </a>
     </div>

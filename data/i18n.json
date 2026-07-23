@@ -11,7 +11,9 @@
       "existential": "Existencial",
       "math": "Matemática",
       "readingMode": "Modo Lectura",
-      "standardMode": "Modo Estándar"
+      "standardMode": "Modo Estándar",
+      "themeDark": "🌙 MODO OSCURO",
+      "themeLight": "☀️ MODO CLARO"
     },
     "hero": {
       "overline": "Ontología del Secreto · Investigación filosófica interactiva",
@@ -655,7 +657,9 @@
       "existential": "Existential",
       "math": "Mathematics",
       "readingMode": "Reading Mode",
-      "standardMode": "Standard Mode"
+      "standardMode": "Standard Mode",
+      "themeDark": "🌙 DARK MODE",
+      "themeLight": "☀️ LIGHT MODE"
     },
     "hero": {
       "overline": "Ontology of Secrecy · Interactive Philosophical Inquiry",

@@ -12,8 +12,32 @@ import { initMicroGraphs, updatePlaygroundGraph } from './micro-graphs.js';
 
 const STORAGE_KEY = 'gemd-lang';
 const READING_STORAGE_KEY = 'gemd-reading-mode';
+const THEME_STORAGE_KEY = 'gemd-theme';
+
+function _initTheme() {
+  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', savedTheme);
+}
+
+window.toggleTheme = function() {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem(THEME_STORAGE_KEY, next);
+  _updateThemeButton();
+};
+
+function _updateThemeButton() {
+  const themeBtn = document.getElementById('theme-btn');
+  if (themeBtn) {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    themeBtn.textContent = isDark ? t('nav.themeLight') : t('nav.themeDark');
+    themeBtn.setAttribute('aria-label', isDark ? 'Cambiar a modo claro / Switch to light mode' : 'Cambiar a modo oscuro / Switch to dark mode');
+  }
+}
 
 async function bootstrap() {
+  _initTheme();
   const savedLang = localStorage.getItem(STORAGE_KEY) || 'es';
   await loadStrings(savedLang);
 
@@ -51,6 +75,7 @@ function _applyStrings() {
     const isReading = document.body.classList.contains('reading-mode');
     readingBtn.textContent = isReading ? t('nav.standardMode') : t('nav.readingMode');
   }
+  _updateThemeButton();
 
   // Domain selector
   const domainLabel = document.getElementById('domain-selector-label');
