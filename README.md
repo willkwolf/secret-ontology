@@ -1,71 +1,74 @@
-# Ontología del Secreto — Grafo Epistémico Modal Dinámico
+# Ontología del Secreto
 
-Un laboratorio conceptual interactivo que cartografía las fronteras entre el conocimiento, la ignorancia y lo incognoscible mediante lógica modal formal y un grafo de fuerzas dinámico (D3.js).
+> **Scrollytelling Interactivo & Grafo Epistémico Modal Dinámico**  
+> Un artefacto libre de hermenéutica filosófica, lógica modal y visualización de datos (*Arte + Ciencia + Dataísmo*).
 
-> **Pregunta axial:** *«¿Cuál es el mejor secreto posible?»*
-> 
-> Esta interrogante no constituye un mero ejercicio de curiosidad intelectual estática. Es un **vector de investigación activo y riguroso** en la intersección de la lógica formal, la teoría de la información, la física cuántica y la criptografía de frontera. 
-
----
-
-## Un Artefacto en Constante Evolución Epistémica
-
-Este proyecto no está diseñado como una pieza de exhibición inmutable, sino como un **modelo dinámico y abierto**. Su propósito es ofrecer una herramienta legible y formalizada para habitar la paradoja del secreto, un campo que se investiga activamente desde diversos frentes:
-
-1. **La Termodinámica de la Información (Shannon, Boltzmann, Landauer):** Mantener asimetrías epistémicas estables (que un agente sepa algo que otro ignora) exige un trabajo físico y computacional continuo. La disipación irreversible de energía para borrar o resguardar trazas informativas plantea límites reales y termodinámicos a la permanencia de la asimetría.
-2. **Membranas Epistémicas y Sistemas Complejos:** El secreto actúa como una membrana de frontera indispensable para la autoorganización y preservación de la identidad sistémica (autopoiesis). La transparencia total equivale a la homogeneidad absoluta o muerte térmica del sistema.
-3. **Fronteras Físicas y Lógicas Absolutas:** El proyecto integra restricciones intrínsecas a la computación y la realidad: los teoremas de incompletitud de **Gödel**, la incomputabilidad de **Turing**, la indeterminación cuántica de **Heisenberg** y el desarrollo contemporáneo de **Zero-Knowledge Proofs (ZKP)** —destacando la criptografía de *Zero-Knowledge Efectivo* (Rahul Ilango)— donde la imposibilidad física y lógica de demostración se utiliza activamente como la propia materia prima de la seguridad y el secreto.
-4. **La Paradoja de la Autoaplicación:** El núcleo del scrollytelling aborda la imposibilidad de representar un secreto perfecto sin disolverlo. Mediante la semántica de Kripke y accesibilidades restringidas, el modelo demuestra que los secretos más potentes no son contenidos planos, sino transiciones dinámicas que impulsan a los agentes a expandir su horizonte modal ($\Delta H$).
+[![CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-blue.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
 ---
 
-## Estructura del Modelo (Arquitectura de Capas)
+## ✦ Propósito
 
-El artefacto implementa una metodología estructurada en capas superpuestas pero conmutables:
-* **Capa de Topología Global:** Relación y tensión del espacio epistémico definido por cinco mundos extremos como polos modales ($w_T, w_O, w_E, w_F, w_N$).
-* **Capa Epistémica:** Relaciones locales e interacciones dinámicas mediante aristas tipificadas de revelación, ocultamiento, emergencia, compresión, bifurcación, imposibilidad, entre otras.
-* **Capa Temporal:** Animación y pulso del horizonte cognitivo móvil, reflejando cómo cada descubrimiento regenera y ensancha la frontera de la ignorancia.
-* **Capa Metalógica:** Reglas y limitaciones lógicas específicas que gobiernan cada dominio regional del grafo.
+Cartografiar la relación entre **contenido** ($C$), **agente** ($a$) y **mundo epistémico** ($w$) formalizado en Lógica Modal:
+
+$$\text{Secret}(C, a, w) \equiv C \land \neg K_a(C, w)$$
+
+Explora si el "mejor secreto posible" es el más hermético, un misterio estructural, una prueba de Zero-Knowledge (ZKP) o aquel cuya revelación expande al máximo el horizonte de la ignorancia ($\Delta H$).
 
 ---
 
-## Estructura del Repositorio
+## ✦ Características
 
-```
-/
-├── index.html              # Interfaz interactiva y narrativa (scrollytelling)
-├── css/
-│   └── main.css            # Estilos (visualización premium, responsive, WCAG AA)
+- **Diseño Dual Claro/Oscuro:** Sistema de temas nativo con persistencia y preferencia del sistema.
+- **Grafo D3.js de 5 Capas:** Topología Modal, Red Epistémica, Frontera Temporal, Metalógica y Narrativa.
+- **Simulador Modal Interactivo (§03):** Desafíos epistémicos en vivo para experimentar la fórmula.
+- **Límites Estructurales (§05c):** Tarjetas de los límites de Gödel, Turing, Heisenberg, Caos y Entropía.
+- **Internacionalización Nativa:** Conmutador fluido en tiempo real entre Español (ES) e Inglés (EN).
+- **Accesibilidad Total (WCAG 2.1 AA):** Navegación por teclado, modo de alto contraste y semántica HTML5.
+
+---
+
+## ✦ Arquitectura del Proyecto
+
+```text
+secret-ontology/
+├── index.html          # HTML5 semántico y scrollytelling
+├── css/main.css        # Sistema de diseño, temas duales y tipografía modal
 ├── js/
-│   ├── app.js              # Bootstrap, simulación y coordinación de la UI
-│   ├── graph.js            # Motor del grafo dinámico D3.js (capas y recorridos)
-│   ├── layers.js           # Sistema de estados y conmutación de capas epistémicas
-│   ├── micro-graphs.js     # Inicialización y control de simuladores dinámicos
-│   └── i18n.js             # Controlador de localización (Español / Inglés)
+│   ├── app.js          # Bootstrap, simulación y coordinación de la UI
+│   ├── graph.js        # Motor del grafo dinámico D3.js (capas y recorridos)
+│   ├── micro-graphs.js # Micro-grafos interactivos para Kripke y simulación
+│   ├── layers.js       # Gestor de capas epistémicas
+│   └── i18n.js         # Motor de internacionalización ES/EN
 ├── data/
-│   ├── graph-data.json     # Estructura del grafo: nodos, aristas y horizontes
-│   └── i18n.json           # Cadenas de traducción de la macronarrativa y la UI
-└── README.md
+│   ├── graph-data.json # Grafo modal: nodos, aristas y horizontes
+│   └── i18n.json       # Diccionario bilingüe (ES / EN)
+└── tests/              # Pruebas e2e defensivas de UI/UX (Playwright)
 ```
 
-## Desarrollo Local
+---
 
-El artefacto no requiere pasos de compilación complejos, asegurando su robustez y vigencia tecnológica a largo plazo. Puede servirse localmente con cualquier servidor estático ligero:
+## ✦ Desarrollo y Verificación Local
+
+Servir localmente con cualquier servidor de archivos estáticos:
 
 ```bash
+# Servidor Python
 python -m http.server 8080
-# o bien
-npx serve .
+
+# O bien ejecutar suite defensiva de Playwright (8 tests)
+npm test
 ```
 
 ---
 
-## Licencia y Cita
+## ✦ Producción / Despliegue
 
-**Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)**
+Sitio publicado en GitHub Pages:  
+👉 **[willkwolf.github.io/secret-ontology](https://willkwolf.github.io/secret-ontology/)**
 
-Puedes reutilizar, adaptar y redistribuir este trabajo siempre que otorgues el crédito correspondiente y distribuyas las obras derivadas bajo la misma licencia.
+---
 
-> *Ontología del Secreto — Grafo Epistémico Modal Dinámico* (2026).  
-> William Camilo Artunduaga Viana.  
-> https://willkwolf.github.io/secret-ontology/
+## ✦ Licencia
+
+[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) — William Camilo Artunduaga Viana (2026).
