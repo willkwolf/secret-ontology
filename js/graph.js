@@ -505,7 +505,7 @@ function _updateGraph() {
         .datum(d)
         .attr('class', 'link link-fusiona-2')
         .attr('fill', 'none')
-        .attr('stroke', '#1ABC9C')
+        .attr('stroke', 'var(--green-teal)')
         .attr('stroke-width', 1.5)
         .attr('stroke-opacity', 0.6)
         .attr('pointer-events', 'none');
@@ -560,11 +560,11 @@ function _updateGraph() {
       if (_bridgeNodeIds.has(d.id)) return _nodeRadius(d) * 1.3;
       return _nodeRadius(d);
     })
-    .attr('fill',         d => NODE_FILL[d.type]   || '#1A3050')
+    .attr('fill',         d => NODE_FILL[d.type]   || 'var(--blue-deep)')
     .attr('stroke',       d => {
-      if (d.type === 'structural_limit') return '#FF6B35';
-      if (_bridgeNodeIds.has(d.id)) return '#C5A86B';
-      return NODE_STROKE[d.type] || '#4A7BC8';
+      if (d.type === 'structural_limit') return 'var(--gold)';
+      if (_bridgeNodeIds.has(d.id)) return 'var(--gold)';
+      return NODE_STROKE[d.type] || 'var(--blue-light)';
     })
     .attr('stroke-width', d => {
       if (d.type === 'structural_limit') return 2.5;
@@ -614,7 +614,7 @@ function _updateGraph() {
     .attr('dy', '0.35em')
     .attr('font-family', "'JetBrains Mono', monospace")
     .attr('font-size', isMobile ? '9px' : '8px')
-    .attr('fill', '#B8C4D4')
+    .attr('fill', 'var(--node-text-inner)')
     .attr('pointer-events', 'none')
     .text(d => d.id);
 
@@ -624,7 +624,7 @@ function _updateGraph() {
     .attr('dy', d => _nodeRadius(d) + (isMobile ? 16 : 14))
     .attr('font-family', "'DM Sans', sans-serif")
     .attr('font-size', isMobile ? '9px' : '8px')
-    .attr('fill', '#6A6864')
+    .attr('fill', 'var(--node-text-label)')
     .attr('pointer-events', 'none')
     .text(d => {
       const translatedName = t('nodes.' + d.id);

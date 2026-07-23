@@ -9,19 +9,21 @@
   --bg2:          #EAE9E0;
   --bg3:          #DFDED4;
   --text:         #181816;
-  --text-dim:     #444440;   /* ≥ 4.5:1 on --bg */
-  --text-dimmer:  #6C6C68;
-  --gold:         #836227;   /* Darkened gold for high-contrast on light background */
-  --gold-dim:     #684B18;
+  --text-dim:     #3A3A36;   /* ≥ 7:1 on --bg */
+  --text-dimmer:  #555550;   /* ≥ 4.5:1 on --bg */
+  --node-text-inner: #FFFFFF;
+  --node-text-label: #181816;
+  --gold:         #785619;   /* High-contrast gold on light background */
+  --gold-dim:     #5E4311;
   --blue-deep:    #142848;
   --blue-mid:     #1E4175;
-  --blue-light:   #2A5A9F;
-  --silver:       #555D6C;
-  --danger:       #A32424;   /* Darker red */
-  --mystery:      #5E278B;   /* Darker violet */
-  --green-teal:   #0E6E5A;   /* Darker green/teal */
+  --blue-light:   #1C4E8C;
+  --silver:       #4A5568;
+  --danger:       #991B1B;   /* Darker red */
+  --mystery:      #581C87;   /* Darker violet */
+  --green-teal:   #046C4E;   /* Darker green/teal */
   --border:       rgba(24, 24, 22, 0.12);
-  --border-gold:  rgba(131, 98, 39, 0.25);
+  --border-gold:  rgba(120, 86, 25, 0.3);
   --font-title:   'Cormorant Garamond', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
   --font-mono:    'JetBrains Mono', monospace;
@@ -36,19 +38,21 @@
   --bg2:          #121620;
   --bg3:          #1A202C;
   --text:         #F0F2F5;
-  --text-dim:     #A0AEC0;
-  --text-dimmer:  #718096;
-  --gold:         #D4AF37;
-  --gold-dim:     #B8860B;
-  --blue-deep:    #1E3A8A;
+  --text-dim:     #CBD5E0;   /* ≥ 11:1 on --bg */
+  --text-dimmer:  #94A3B8;   /* ≥ 6.8:1 on --bg */
+  --node-text-inner: #F8FAFC;
+  --node-text-label: #E2E8F0;
+  --gold:         #EAB308;
+  --gold-dim:     #CA8A04;
+  --blue-deep:    #1E293B;
   --blue-mid:     #2563EB;
   --blue-light:   #60A5FA;
   --silver:       #94A3B8;
-  --danger:       #EF4444;
-  --mystery:      #A855F7;
-  --green-teal:   #10B981;
+  --danger:       #F87171;
+  --mystery:      #C084FC;
+  --green-teal:   #34D399;
   --border:       rgba(240, 242, 245, 0.12);
-  --border-gold:  rgba(212, 175, 55, 0.35);
+  --border-gold:  rgba(234, 179, 8, 0.35);
   --overlay-bg:   rgba(10, 12, 18, 0.90);
   --overlay-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
