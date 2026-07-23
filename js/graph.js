@@ -65,7 +65,7 @@ const NODE_FILL = {
   'domain-political': 'var(--gold-dim)',
   'domain-existential':'var(--mystery)',
   'domain-math':      'var(--blue-mid)',
-  emergent:           'var(--gold)',
+  emergent:           'var(--gold-dim)',
 };
 const NODE_STROKE = {
   extremo:            'var(--blue-light)',
@@ -613,7 +613,8 @@ function _updateGraph() {
     .attr('text-anchor', 'middle')
     .attr('dy', '0.35em')
     .attr('font-family', "'JetBrains Mono', monospace")
-    .attr('font-size', isMobile ? '9px' : '8px')
+    .attr('font-size', isMobile ? '9px' : '8.5px')
+    .attr('font-weight', '600')
     .attr('fill', 'var(--node-text-inner)')
     .attr('pointer-events', 'none')
     .text(d => d.id);
