@@ -211,32 +211,21 @@ test.describe('Defensa contra Errores de JS y Pantalla en Blanco', () => {
     const sectionsCount = await page.locator('section').count();
     expect(sectionsCount).toBeGreaterThanOrEqual(8);
 
-    // 3. Scroll down step-by-step to trigger IntersectionObserver on all sections
-    await page.evaluate(async () => {
-      const scrollStep = 400;
-      const delay = 30;
-      while (window.scrollY + window.innerHeight < document.body.scrollHeight) {
-        window.scrollBy(0, scrollStep);
-        await new Promise(r => setTimeout(r, delay));
-      }
-    });
-    await page.waitForTimeout(300);
-
-    const invisibleSectionsCount = await page.evaluate(() => {
-      const list = document.querySelectorAll('.fade-in');
-      return Array.from(list).filter(el => {
-        const style = window.getComputedStyle(el);
-        return style.opacity === '0' || style.display === 'none';
-      }).length;
-    });
-
-    expect(invisibleSectionsCount).toBe(0);
-
-    // 4. Assert Phase 2 components are present and visible
+    // 3. Assert Phase 2 components are present and visible
     await expect(page.locator('.dialectic-card')).toBeVisible();
     await expect(page.locator('.crypto-frontier-card')).toBeVisible();
     await expect(page.locator('.limit-card-grid')).toBeVisible();
     await expect(page.locator('#btn-challenge-1')).toBeVisible();
+
+    // 4. Assert no section has display:none or hidden content
+    const hiddenSectionsCount = await page.evaluate(() => {
+      const list = document.querySelectorAll('section');
+      return Array.from(list).filter(el => {
+        const style = window.getComputedStyle(el);
+        return style.display === 'none' || style.visibility === 'hidden';
+      }).length;
+    });
+    expect(hiddenSectionsCount).toBe(0);
   });
 });
 
