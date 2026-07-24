@@ -608,29 +608,62 @@ function _updateGraph() {
         .attr('stroke-opacity', opacity);
     });
 
-  // Symbol label inside
+function _getShortSymbol(d) {
+  if (d.symbol) return d.symbol;
+  if (d.id.length <= 5) return d.id;
+
+  const shortMap = {
+    secreto_estado: 'SE',
+    filtracion: 'FIL',
+    secreto_reforzado: 'SR',
+    conciencia: 'CON',
+    pre_adn: 'ADN',
+    post_adn: 'EPI',
+    emerg_epigen: 'EEG',
+    misterio_cuantico: 'MC',
+    copenhague: 'COP',
+    muchos_mundos: 'MM',
+    bohm: 'BOH',
+    incertidumbre_cosmologica: 'IC',
+    relatividad_general: 'RG',
+    incompletitud: 'INC',
+    indecidibilidad: 'IND',
+    zkp_clase: 'ZKP',
+    nizkp_imposible: 'NIZ',
+    proof_complexity: 'PC',
+    zkp_efectivo: 'ZKE',
+    mejor_secreto: 'MS'
+  };
+
+  if (shortMap[d.id]) return shortMap[d.id];
+  return d.id.split('_').map(w => w[0]?.toUpperCase() || '').join('').slice(0, 4);
+}
+
+  // Symbol label inside (fitted strictly inside the circle)
   nodeEnter.append('text')
+    .attr('class', 'node-inner-symbol')
     .attr('text-anchor', 'middle')
     .attr('dy', '0.35em')
     .attr('font-family', "'JetBrains Mono', monospace")
     .attr('font-size', isMobile ? '9px' : '8.5px')
-    .attr('font-weight', '600')
+    .attr('font-weight', '700')
     .attr('fill', 'var(--node-text-inner)')
     .attr('pointer-events', 'none')
-    .text(d => d.id);
+    .text(d => _getShortSymbol(d));
 
-  // Name label below
+  // Name label below (with paint-order halo stroke for 100% anti-glare contrast)
   nodeEnter.append('text')
+    .attr('class', 'node-name-label')
     .attr('text-anchor', 'middle')
     .attr('dy', d => _nodeRadius(d) + (isMobile ? 16 : 14))
     .attr('font-family', "'DM Sans', sans-serif")
-    .attr('font-size', isMobile ? '9px' : '8px')
+    .attr('font-size', isMobile ? '9.5px' : '9px')
     .attr('fill', 'var(--node-text-label)')
     .attr('pointer-events', 'none')
     .text(d => {
       const translatedName = t('nodes.' + d.id);
       const name = (translatedName !== 'nodes.' + d.id) ? translatedName : (d.label || d.id);
-      return name.length > 22 ? name.slice(0, 20) + '…' : name;
+      return name.length > 24 ? name.slice(0, 22) + '…' : name;
     });
 
   _nodeGroup.selectAll('g.node').merge(nodeEnter);

@@ -566,6 +566,23 @@ p strong { color: var(--text); font-weight: 500; }
   background: rgba(197,168,107,0.06);
 }
 
+/* SVG D3 Node Text Contrast Halo Rules */
+.node text.node-inner-symbol {
+  font-family: var(--font-mono);
+  fill: var(--node-text-inner);
+  font-weight: 700;
+  pointer-events: none;
+}
+.node text.node-name-label {
+  font-family: var(--font-body);
+  fill: var(--node-text-label);
+  pointer-events: none;
+  paint-order: stroke fill;
+  stroke: var(--bg);
+  stroke-width: 3.5px;
+  stroke-linejoin: round;
+}
+
 .graph-relative-wrapper {
   position: relative;
   overflow: hidden;
