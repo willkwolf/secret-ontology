@@ -148,17 +148,90 @@ export function filterEdge(type) {
   _updateGraph();
 }
 
+/**
+ * Wraps node label text into multiple lines for SVG rendering.
+ * Avoids truncating with '...' and enforces a max width while allowing vertical line flow.
+ * @param {string} text - The input string label.
+ * @param {number} maxChars - Maximum characters per line (default 14).
+ * @returns {string[]} Array of line strings.
+ */
+function _wrapLabelText(text, maxChars = 14) {
+  if (!text) return [];
+
+  const rawWords = text.split(/\s+/);
+  const tokens = [];
+
+  rawWords.forEach(word => {
+    // If a single word is longer than maxChars and contains a hyphen/dash, split across hyphens
+    if (word.length > maxChars && /[‑-]/.test(word)) {
+      const parts = word.split(/([‑-])/);
+      for (let i = 0; i < parts.length; i += 2) {
+        const sub = parts[i];
+        const hyp = parts[i + 1] || '';
+        if (sub + hyp) {
+          tokens.push(sub + hyp);
+        }
+      }
+    } else {
+      tokens.push(word);
+    }
+  });
+
+  const lines = [];
+  let currentLine = '';
+
+  tokens.forEach(token => {
+    if (!currentLine) {
+      currentLine = token;
+    } else {
+      const needsSpace = !/[‑-]$/.test(currentLine);
+      const testLine = currentLine + (needsSpace ? ' ' : '') + token;
+      if (testLine.length <= maxChars) {
+        currentLine = testLine;
+      } else {
+        lines.push(currentLine);
+        currentLine = token;
+      }
+    }
+  });
+
+  if (currentLine) {
+    lines.push(currentLine);
+  }
+
+  return lines;
+}
+
+/**
+ * Renders or updates multi-line text (<tspan>) inside node-name-label <text> elements.
+ * @param {d3.Selection} textSelection - D3 selection of <text class="node-name-label">
+ * @param {boolean} isMobile - Whether mobile layout is active
+ */
+function _updateNodeNameLabels(textSelection, isMobile = (window.innerWidth < 600)) {
+  textSelection.each(function(d) {
+    const el = d3.select(this);
+    el.text(null); // Clear previous text / tspans
+
+    const translatedName = t('nodes.' + d.id);
+    const name = (translatedName !== 'nodes.' + d.id) ? translatedName : (d.label || d.id);
+    const lines = _wrapLabelText(name, isMobile ? 13 : 14);
+    const startDy = _nodeRadius(d) + (isMobile ? 15 : 14);
+
+    lines.forEach((line, i) => {
+      el.append('tspan')
+        .attr('x', 0)
+        .attr('dy', i === 0 ? `${startDy}px` : '1.15em')
+        .text(line);
+    });
+  });
+}
+
 export function updateGraphLabels() {
   if (!_nodeGroup) return;
-  _nodeGroup.selectAll('g.node').selectAll('text')
-    .filter(function() {
-      return d3.select(this).attr('font-family') === "'DM Sans', sans-serif";
-    })
-    .text(d => {
-      const translatedName = t('nodes.' + d.id);
-      const name = (translatedName !== 'nodes.' + d.id) ? translatedName : (d.label || d.id);
-      return name.length > 22 ? name.slice(0, 20) + '…' : name;
-    });
+  const isMobile = window.innerWidth < 600;
+
+  const textLabels = _nodeGroup.selectAll('g.node text.node-name-label');
+  _updateNodeNameLabels(textLabels, isMobile);
 
   // Also translate the node aria-label
   _nodeGroup.selectAll('g.node')
@@ -652,19 +725,15 @@ function _getShortSymbol(d) {
     .text(d => _getShortSymbol(d));
 
   // Name label below (with paint-order halo stroke for 100% anti-glare contrast)
-  nodeEnter.append('text')
+  const nameLabels = nodeEnter.append('text')
     .attr('class', 'node-name-label')
     .attr('text-anchor', 'middle')
-    .attr('dy', d => _nodeRadius(d) + (isMobile ? 16 : 14))
     .attr('font-family', "'DM Sans', sans-serif")
     .attr('font-size', isMobile ? '9.5px' : '9px')
     .attr('fill', 'var(--node-text-label)')
-    .attr('pointer-events', 'none')
-    .text(d => {
-      const translatedName = t('nodes.' + d.id);
-      const name = (translatedName !== 'nodes.' + d.id) ? translatedName : (d.label || d.id);
-      return name.length > 24 ? name.slice(0, 22) + '…' : name;
-    });
+    .attr('pointer-events', 'none');
+
+  _updateNodeNameLabels(nameLabels, isMobile);
 
   _nodeGroup.selectAll('g.node').merge(nodeEnter);
 
