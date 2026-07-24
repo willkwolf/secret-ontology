@@ -1182,37 +1182,6 @@ function _showNodePanel(e, d) {
   const refsEl = panel.querySelector('#panel-refs');
   if (refsEl) refsEl.textContent = refs;
 
-  const hz = d.horizon
-    ? [
-        Math.round((d.horizon.conocido   || 0) * 100),
-        Math.round((d.horizon.desconocido || 0) * 100),
-        Math.round((d.horizon.incognoscible || 0) * 100),
-      ]
-    : [33, 33, 34];
-
-  // Set sparkbar segments
-  const sparkKnown = panel.querySelector('#spark-known');
-  const sparkUnknown = panel.querySelector('#spark-unknown');
-  const sparkIncog = panel.querySelector('#spark-incog');
-  if (sparkKnown) sparkKnown.style.width = `${hz[0]}%`;
-  if (sparkUnknown) sparkUnknown.style.width = `${hz[1]}%`;
-  if (sparkIncog) sparkIncog.style.width = `${hz[2]}%`;
-
-  // Set localized numeric labels
-  const lblKnown = panel.querySelector('#lbl-known');
-  const lblUnknown = panel.querySelector('#lbl-unknown');
-  const lblIncog = panel.querySelector('#lbl-incog');
-  
-  if (lblKnown) {
-    lblKnown.parentElement.innerHTML = `● <strong>${hz[0]}%</strong> ${t('panel.known') || 'Conocido'}`;
-  }
-  if (lblUnknown) {
-    lblUnknown.parentElement.innerHTML = `● <strong>${hz[1]}%</strong> ${t('panel.unknown') || 'Desconocido'}`;
-  }
-  if (lblIncog) {
-    lblIncog.parentElement.innerHTML = `● <strong>${hz[2]}%</strong> ${t('panel.incognoscible') || 'Incognoscible'}`;
-  }
-
   // Layers section
   const layersContainer = panel.querySelector('#panel-layers');
   if (layersContainer) {

@@ -3,10 +3,10 @@
  * Imports graph.js and i18n.js as ES modules.
  */
 
-import { loadStrings, t, getLang, setLang } from './i18n.js?v=2.1';
-import { initGraph, changeDomain, filterEdge, changeVersion, updateGraphLabels } from './graph.js?v=2.1';
-import layerSystem from './layers.js?v=2.1';
-import { initMicroGraphs, updatePlaygroundGraph } from './micro-graphs.js?v=2.1';
+import { loadStrings, t, getLang, setLang } from './i18n.js?v=2.2';
+import { initGraph, changeDomain, filterEdge, changeVersion, updateGraphLabels } from './graph.js?v=2.2';
+import layerSystem from './layers.js?v=2.2';
+import { initMicroGraphs, updatePlaygroundGraph } from './micro-graphs.js?v=2.2';
 
 // ─── LANGUAGE ─────────────────────────────────────────────────────────────────
 
@@ -171,7 +171,6 @@ function _applyStrings() {
   const panelLabels = {
     '#panel-label-agents':   'panel.agents',
     '#panel-label-contents': 'panel.contents',
-    '#panel-label-horizon':  'panel.horizon',
     '#panel-label-refs':     'panel.refs',
   };
   Object.entries(panelLabels).forEach(([sel, key]) => {
