@@ -3,10 +3,10 @@
  * Imports graph.js and i18n.js as ES modules.
  */
 
-import { loadStrings, t, getLang, setLang } from './i18n.js';
-import { initGraph, changeDomain, filterEdge, changeVersion, updateGraphLabels } from './graph.js';
-import layerSystem from './layers.js';
-import { initMicroGraphs, updatePlaygroundGraph } from './micro-graphs.js';
+import { loadStrings, t, getLang, setLang } from './i18n.js?v=2.1';
+import { initGraph, changeDomain, filterEdge, changeVersion, updateGraphLabels } from './graph.js?v=2.1';
+import layerSystem from './layers.js?v=2.1';
+import { initMicroGraphs, updatePlaygroundGraph } from './micro-graphs.js?v=2.1';
 
 // ─── LANGUAGE ─────────────────────────────────────────────────────────────────
 

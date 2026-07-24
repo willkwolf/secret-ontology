@@ -150,20 +150,20 @@ export function filterEdge(type) {
 
 /**
  * Wraps node label text into multiple lines for SVG rendering.
- * Avoids truncating with '...' and enforces a max width while allowing vertical line flow.
+ * Avoids truncating with '...' and enforces a smart max width to prevent collisions.
  * @param {string} text - The input string label.
- * @param {number} maxChars - Maximum characters per line (default 14).
+ * @param {number} maxChars - Maximum characters per line (default 12).
  * @returns {string[]} Array of line strings.
  */
-function _wrapLabelText(text, maxChars = 14) {
+function _wrapLabelText(text, maxChars = 12) {
   if (!text) return [];
 
   const rawWords = text.split(/\s+/);
   const tokens = [];
 
   rawWords.forEach(word => {
-    // If a single word is longer than maxChars and contains a hyphen/dash, split across hyphens
-    if (word.length > maxChars && /[‑-]/.test(word)) {
+    // If a single word is longer than 10 chars and contains a hyphen/dash, split across hyphens
+    if (word.length > 10 && /[‑-]/.test(word)) {
       const parts = word.split(/([‑-])/);
       for (let i = 0; i < parts.length; i += 2) {
         const sub = parts[i];
@@ -214,7 +214,7 @@ function _updateNodeNameLabels(textSelection, isMobile = (window.innerWidth < 60
 
     const translatedName = t('nodes.' + d.id);
     const name = (translatedName !== 'nodes.' + d.id) ? translatedName : (d.label || d.id);
-    const lines = _wrapLabelText(name, isMobile ? 13 : 14);
+    const lines = _wrapLabelText(name, isMobile ? 11 : 12);
     const startDy = _nodeRadius(d) + (isMobile ? 15 : 14);
 
     lines.forEach((line, i) => {
